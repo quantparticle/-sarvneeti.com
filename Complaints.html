@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaints | IndexNeeti</title>
+    <meta name="description" content="Complaints disclosure and complaint submission form for IndexNeeti." />
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --color-bg: #f8fafc;
+            --color-surface: #ffffff;
+            --color-border: #e2e8f0;
+            --color-text: #0f172a;
+            --color-muted: #64748b;
+            --color-primary: #059669;
+            --color-primary-dark: #047857;
+            --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.08);
+            --font-body: 'Satoshi', system-ui, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-link {
+            color: #334155;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #059669, #0891b2);
+            color: #fff;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 14px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            opacity: 0.96;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .section-text {
+            font-size: 0.97rem;
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .field-input {
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 14px 15px;
+            font-size: 0.96rem;
+            color: #0f172a;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .field-input:focus {
+            border-color: #059669;
+            box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.10);
+        }
+
+        .status-box {
+            display: none;
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 0.94rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: #ecfdf5;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status-error {
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            background: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+        }
+
+        th, td {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 14px 14px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 0.94rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .footer-link {
+            color: #64748b;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #059669;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav { display: none; }
+            .hero-heading { font-size: 2rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-5 md:px-6 h-[78px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img
+                    src="logo.png"
+                    alt="IndexNeeti Logo"
+                    class="h-12 md:h-14 w-auto"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/220x72/f8fafc/0f172a?text=INDEXNEETI';"
+                />
+            </a>
+
+            <nav class="desktop-nav flex items-center gap-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about_us/index.html" class="nav-link">About Us</a>
+                <a href="Disclosure.html" class="nav-link">Disclosure</a>
+                <a href="Grievance_Redressal.html" class="nav-link">Grievance Redressal</a>
+                <a href="Investor_Charter.html" class="nav-link">Investor Charter</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="py-14 md:py-16">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="card p-8 md:p-10 mb-8">
+                <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 px-4 py-2 text-xs font-extrabold mb-5">
+                    Complaint Disclosure
+                </div>
+
+                <h1 class="hero-heading" style="font-size: 3rem; font-weight: 900; color: #0f172a; line-height: 1.1; margin-bottom: 16px;">
+                    Complaints
+                </h1>
+
+                <p class="section-text" style="max-width: 880px;">
+                    This page presents complaint-related disclosure data and also provides a complaint form for clients or visitors who wish to submit a complaint or concern.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="card p-8 md:p-10">
+                    <h2 class="section-title">Number Of Client's Complaints</h2>
+                    <p class="section-text mb-5">Complaint Status – Data for the Month Ending May 2026</p>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sr. No</th>
+                                    <th>Complaint Status</th>
+                                    <th>Pending at the end of last month</th>
+                                    <th>Received</th>
+                                    <th>Resolved</th>
+                                    <th>Total Pending</th>
+                                    <th>Pending complaints &gt; 3 months</th>
+                                    <th>Average Resolution time (in days)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Directly from Investors</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>NA</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>SEBI (SCORES)</td>
+                                    <td>Nil</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Other Sources (if any)</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>NA</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="font-weight: 800; color: #0f172a;">Grand Total</td>
+                                    <td>Nil</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>NA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card p-8 md:p-10">
+                    <h2 class="section-title">Trend of Monthly Disposal of Complaints</h2>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Month</th>
+                                    <th>Carried forward from Previous Month</th>
+                                    <th>Received</th>
+                                    <th>Resolved</th>
+                                    <th>Pending</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>May 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>2</td><td>Jun 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>3</td><td>July 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>4</td><td>Aug 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>5</td><td>Sept 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>6</td><td>Oct 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>7</td><td>Nov 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>8</td><td>Dec 2025</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>9</td><td>Jan 2026</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>10</td><td>Feb 2026</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>11</td><td>March 2026</td><td>Nil</td><td>1</td><td>1</td><td>Nil</td></tr>
+                                <tr><td>12</td><td>April 2026</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr>
+                                    <td colspan="2" style="font-weight: 800; color: #0f172a;">Grand Total</td>
+                                    <td>Nil</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>Nil</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card p-8 md:p-10">
+                    <h2 class="section-title">Trend of Annual Disposal of Complaints</h2>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Year</th>
+                                    <th>Carried forward from Previous Month</th>
+                                    <th>Received</th>
+                                    <th>Resolved</th>
+                                    <th>Pending</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>2022-23</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>2</td><td>2023-24</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>3</td><td>2024-25</td><td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td></tr>
+                                <tr><td>4</td><td>2025-26</td><td>Nil</td><td>1</td><td>1</td><td>Nil</td></tr>
+                                <tr>
+                                    <td colspan="2" style="font-weight: 800; color: #0f172a;">Grand Total</td>
+                                    <td>Nil</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>Nil</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card p-8 md:p-10" style="box-shadow: var(--shadow-md);">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <h2 class="section-title">Complaint Form</h2>
+                            <p class="section-text mb-6">
+                                Use this form to submit your complaint or issue. The submission will be stored in the same connected Google Sheet used for your contact page.
+                            </p>
+
+                            <div class="info-box mb-4">
+                                <div style="font-size: 0.85rem; font-weight: 800; color: #059669; margin-bottom: 6px;">Submission details</div>
+                                <p style="font-size: 0.95rem; color: #475569; line-height: 1.8;">
+                                    The form stores your full name, email address, contact number, and complaint message in your Google Sheet for internal follow-up.
+                                </p>
+                            </div>
+
+                            <div class="info-box">
+                                <div style="font-size: 0.85rem; font-weight: 800; color: #1d4ed8; margin-bottom: 6px;">Use this form for</div>
+                                <ul style="color: #475569; font-size: 0.95rem; line-height: 1.9; padding-left: 18px;">
+                                    <li>Service-related complaints</li>
+                                    <li>Support delays</li>
+                                    <li>Communication issues</li>
+                                    <li>General complaint follow-up</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div id="successMessage" class="status-box status-success mb-4">
+                                Your complaint has been submitted successfully.
+                            </div>
+
+                            <div id="errorMessage" class="status-box status-error mb-4">
+                                Something went wrong. Please try again.
+                            </div>
+
+                            <form id="complaintForm" class="space-y-5">
+                                <div>
+                                    <label for="name" class="field-label">Full Name</label>
+                                    <input type="text" id="name" name="name" class="field-input" placeholder="Enter your full name" required />
+                                </div>
+
+                                <div>
+                                    <label for="email" class="field-label">Email Address</label>
+                                    <input type="email" id="email" name="email" class="field-input" placeholder="Enter your email address" required />
+                                </div>
+
+                                <div>
+                                    <label for="contact" class="field-label">Contact Number</label>
+                                    <input type="tel" id="contact" name="contact" class="field-input" placeholder="Enter your mobile number" required />
+                                </div>
+
+                                <div>
+                                    <label for="message" class="field-label">Complaint Message</label>
+                                    <textarea id="message" name="message" rows="6" class="field-input" placeholder="Write your complaint here" required></textarea>
+                                </div>
+
+                                <button type="submit" id="submitBtn" class="btn-primary w-full">
+                                    Submit Complaint
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-slate-200 py-10">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <img
+                        src="logo.png"
+                        alt="IndexNeeti"
+                        class="h-11 w-auto mb-4"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/220x72/f8fafc/0f172a?text=INDEXNEETI';"
+                    />
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.8;">
+                        IndexNeeti is a research-led platform focused on disciplined market understanding and risk-aware communication.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #0f172a; margin-bottom: 12px;">Legal Pages</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px;">
+                        <li><a href="Disclaimer.html" class="footer-link">Disclaimer</a></li>
+                        <li><a href="Disclosure.html" class="footer-link">Disclosure</a></li>
+                        <li><a href="Privacy_Policy.html" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="Terms_and_Condition.html" class="footer-link">Terms and Condition</a></li>
+                        <li><a href="Grievance_Redressal.html" class="footer-link">Grievance Redressal</a></li>
+                        <li><a href="Investor_Charter.html" class="footer-link">Investor Charter</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #0f172a; margin-bottom: 12px;">Quick Links</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px;">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about_us/index.html" class="footer-link">About Us</a></li>
+                        <li><a href="contact/" class="footer-link">Contact Us</a></li>
+                        <li><a href="Complaints.html" class="footer-link">Complaints</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; margin-top: 24px; padding-top: 18px; text-align: center; font-size: 12px; color: #94a3b8;">
+                IndexNeeti ©2026 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyila3EuUfCRsbtDI3wygRsZ7zl4WjfRmD62270v2NEite0S6OtgVJfVjaNd9qT4rN-/exec";
+
+        const form = document.getElementById("complaintForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const successMessage = document.getElementById("successMessage");
+        const errorMessage = document.getElementById("errorMessage");
+
+        function showSuccess(message) {
+            successMessage.textContent = message;
+            successMessage.style.display = "block";
+            errorMessage.style.display = "none";
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = "block";
+            successMessage.style.display = "none";
+        }
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            successMessage.style.display = "none";
+            errorMessage.style.display = "none";
+
+            const formData = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                contact: document.getElementById("contact").value.trim(),
+                message: document.getElementById("message").value.trim()
+            };
+
+            if (!formData.name || !formData.email || !formData.contact || !formData.message) {
+                showError("Please fill in all fields.");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Submitting...";
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                form.reset();
+                showSuccess("Your complaint has been submitted successfully.");
+            } catch (error) {
+                showError("Submission failed. Please try again.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Submit Complaint";
+            }
+        });
+    </script>
+
+</body>
+</html>
