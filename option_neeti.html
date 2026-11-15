@@ -3,304 +3,305 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0f12">
-<meta name="description" content="OptionNeeti — research-based Nifty, Bank Nifty and Sensex index options advisory, intraday and BTST setups, Telegram research updates and risk management education.">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="OptionNeeti: research-led intraday and BTST index options advisory for Nifty, Bank Nifty and Sensex, with risk levels and premium research alerts.">
 <title>OptionNeeti | Index Options Research & Advisory</title>
 <link rel="icon" href="logo.png" type="image/png">
+<link rel="preload" as="image" href="frames/frame-025.webp" fetchpriority="high">
 <style>
-:root{color-scheme:dark;--bg:#0b0f12;--surface:#131a1d;--surface2:#1a2426;--muted:#a6b4b5;--line:rgba(223,238,234,.13);--white:#f8f5ed;--mint:#75d4c6;--orange:#ff533e;--max:1320px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:var(--bg);color:#f5f5f0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--mint);outline-offset:4px}::selection{background:#4a817c;color:white}.container{width:min(var(--max),calc(100% - 72px));margin-inline:auto}.muted{color:var(--muted)}
-/* Floating header inspired by the reference screenshot */
-.site-header{position:fixed;z-index:90;top:20px;left:50%;transform:translateX(-50%);width:min(1460px,calc(100% - 48px));height:88px;display:flex;align-items:center;justify-content:space-between;gap:25px;padding:14px 19px 14px 29px;border-radius:24px;background:rgba(13,19,21,.94);border:1px solid rgba(247,250,248,.16);box-shadow:0 18px 70px rgba(0,0,0,.28);backdrop-filter:blur(22px)}.brand{display:flex;align-items:center;gap:15px;flex-shrink:0}.brand img{height:45px;max-width:178px;width:auto;object-fit:contain}.brand span{font-size:13px;font-weight:850;letter-spacing:.045em;border-left:1px solid #354240;padding-left:15px}.nav-links{display:flex;align-items:center;gap:clamp(16px,2.6vw,39px)}.nav-links>a{font-size:13px;font-weight:750;transition:color .2s}.nav-links>a:hover{color:var(--mint)}.header-cta,.btn-red{display:inline-flex;align-items:center;justify-content:center;gap:24px;background:var(--orange);color:#fff;border:0;border-radius:10px;font-weight:850;font-size:12px;letter-spacing:.045em;min-height:54px;padding:0 22px;white-space:nowrap;transition:transform .3s,background .3s,box-shadow .3s}.header-cta:hover,.btn-red:hover{background:#ff6a55;transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,83,62,.21)}.header-cta b,.btn-red b{font-size:19px}.mobile-menu{display:none;border:1px solid var(--line);background:#222c2d;color:white;border-radius:9px;width:43px;height:43px;font-size:23px;cursor:pointer}
-/* Hero: large white phone panel on left, content on right */
-.hero-scroll{position:relative;height:285svh;background:radial-gradient(ellipse at 80% 25%,rgba(59,105,99,.17),transparent 48%),radial-gradient(ellipse at 12% 73%,rgba(198,91,66,.07),transparent 46%),var(--bg)}.hero-pin{position:sticky;top:0;height:100svh;min-height:620px;display:flex;align-items:center;overflow:hidden;padding:122px 0 34px}.hero-pin::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;mask-image:linear-gradient(to bottom,black,transparent)}.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:clamp(40px,6vw,98px);height:100%}.phone-card{position:relative;min-width:0;height:min(66vh,650px);min-height:400px;background:#fff;border-radius:32px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.29);isolation:isolate;transform:translate3d(0,0,0)}.phone-card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(24,42,38,.1);z-index:4}.phone-card-head{position:absolute;z-index:5;top:22px;left:22px;right:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#1b292b;font-weight:800;font-size:10px;letter-spacing:.13em}.phone-card-head span:last-child{color:#6d807e;font-weight:650}.phone-visual{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}.phone-visual>img,.phone-visual>canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}.phone-visual>canvas{opacity:0;transition:opacity .2s}.phone-card-foot{position:absolute;z-index:5;bottom:20px;left:22px;right:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#344747;font-size:10px;font-weight:750}.phone-progress{height:4px;width:90px;background:#dce4e2;border-radius:9px;overflow:hidden}.phone-progress i{display:block;width:0;height:100%;background:var(--orange);transition:width .1s linear}.phone-caption{position:absolute;z-index:6;right:15px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:9px;letter-spacing:.1em;color:#91a09f}.float-sticker{position:absolute;z-index:6;left:-18px;bottom:15%;border-radius:14px;background:#162b2a;border:1px solid #36605b;padding:15px 18px;box-shadow:0 15px 38px #0006;transform:rotate(-5deg)}.float-sticker span{display:block;font-size:9px;letter-spacing:.1em;color:#8bdccf;margin-bottom:6px}.float-sticker strong{font-size:13px}.hero-content{max-width:660px}.kicker{display:inline-flex;align-items:center;gap:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:850;color:var(--mint)}.kicker::before{content:"";width:22px;height:2px;background:var(--mint)}.hero-content h1{font-size:clamp(48px,5.4vw,84px);font-weight:870;letter-spacing:-.075em;line-height:1.02;margin:21px 0 21px}.hero-content h1 em{font-style:normal;color:var(--mint)}.hero-content>p{font-size:clamp(15px,1.22vw,18px);line-height:1.8;color:#b4c1c0;max-width:555px}.market-tags{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 30px}.market-tags span{font-size:10px;font-weight:850;letter-spacing:.075em;padding:10px 13px;border:1px solid #344544;border-radius:100px;color:#d2e1df}.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.btn-line{min-height:54px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:0 19px;border:1px solid #46605b;border-radius:10px;font-size:12px;font-weight:850;transition:background .2s}.btn-line:hover{background:#263732}.reg-line{display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line);padding-top:23px;margin-top:29px;color:#9dafae;font-size:11px;line-height:1.7}.reg-line b{color:#e6eeea}.reg-line strong{font-size:17px;color:var(--mint)}.scroll-hint{position:absolute;bottom:20px;right:0;color:#859995;font-weight:750;letter-spacing:.16em;font-size:10px;display:flex;align-items:center;gap:12px}.scroll-hint::after{content:"";height:30px;width:1px;background:var(--mint)}
-/* Movement between big sections */
-.ticker{background:#78c7ba;color:#102522;overflow:hidden;position:relative;z-index:2;border-block:1px solid #abeee4}.ticker-track{display:flex;width:max-content;animation:marquee 35s linear infinite}.ticker-set{display:flex;gap:31px;align-items:center;padding:19px 17px;font-size:12px;letter-spacing:.16em;font-weight:950;white-space:nowrap}.ticker-set i{font-style:normal;font-size:21px;color:#eaf8ed}
-.section{padding:120px 0}.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px}.section-title{font-size:clamp(36px,4.65vw,66px);letter-spacing:-.067em;line-height:1.06;margin:16px 0 0;max-width:760px}.section-intro{color:#a9b8b6;max-width:360px;line-height:1.85;font-size:14px;margin:0 0 5px}.accent{color:var(--mint)}
-/* Scroll animated cards with warm cream interiors inspired by recording */
-.services{position:relative;background:#101819;border-radius:42px 42px 0 0;overflow-x:clip}.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.service-card{position:relative;min-height:308px;padding:31px;border-radius:22px 22px 60px 22px;background:#ede9dd;color:#172c2b;overflow:hidden;transform:translateY(55px) rotate(3deg);opacity:0;transition:transform .8s cubic-bezier(.16,1,.3,1),opacity .8s,border-radius .35s}.service-card:nth-child(even){background:#d8e6df;transform:translateY(70px) rotate(-3deg)}.service-card.in-view{transform:translateY(0) rotate(0);opacity:1}.service-card:hover{border-radius:22px 60px 22px 22px;transform:translateY(-9px) rotate(-1deg)}.service-icon{display:grid;place-items:center;border:1px solid #aabeba;width:51px;height:51px;border-radius:50%;font-size:23px}.service-no{position:absolute;right:30px;top:31px;font-size:11px;font-weight:800;opacity:.45}.service-card h3{font-size:clamp(21px,2.1vw,29px);letter-spacing:-.045em;line-height:1.14;margin:49px 0 12px}.service-card p{font-size:13px;line-height:1.7;color:#52625f;max-width:300px;margin:0}.service-card .card-arrow{position:absolute;bottom:26px;right:28px;font-size:24px;transform:rotate(-45deg)}
-/* Numbered process / visual section */
-.process{background:#103d3b;position:relative;overflow:hidden;border-radius:38px}.process::after{content:"";position:absolute;width:480px;height:480px;right:-180px;top:-160px;border:1px solid #b5f0e330;border-radius:50%;box-shadow:0 0 0 70px #b5f0e308,0 0 0 145px #b5f0e306;pointer-events:none}.process .section-intro{color:#c0d4cd}.process-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:65px;align-items:center}.process-copy h2{font-size:clamp(40px,4.6vw,66px);letter-spacing:-.07em;line-height:1.08;margin:15px 0}.process-copy p{color:#b7d2cc;line-height:1.85;font-size:15px}.step-stack{display:grid;gap:11px}.step{display:flex;gap:22px;border:1px solid #c4fff12b;background:#174a46;padding:23px 25px;border-radius:16px;transform:translateX(55px);opacity:0;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .7s}.step.in-view{transform:translateX(0);opacity:1}.step-num{color:#9ce4d6;font-weight:900;font-size:12px}.step b{display:block;margin-bottom:7px;font-size:15px}.step p{font-size:12px;line-height:1.7;color:#b0cbc4;margin:0}
-/* Pricing: distinct elevated cards animate in on scroll */
-.pricing{background:#0b1012;overflow-x:clip}.plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px;align-items:stretch;padding-top:16px}.plan{--tilt:0deg;position:relative;display:flex;flex-direction:column;border:1px solid #364543;background:#151e20;border-radius:26px;padding:34px 29px 28px;box-shadow:0 23px 55px #0003;transform:translateY(105px) rotate(var(--tilt)) scale(.94);opacity:0;transition:transform .95s cubic-bezier(.16,1,.3,1),opacity .95s,border-color .25s}.plan:nth-child(1){--tilt:-7deg}.plan:nth-child(3){--tilt:7deg}.plan.in-view{transform:translateY(0) rotate(0) scale(1);opacity:1}.plan:hover{transform:translateY(-12px) rotate(0) scale(1.01);border-color:var(--mint)}.plan.featured{background:#ebeee3;color:#163130;border-color:#a7e5d6;box-shadow:0 26px 65px #50bf9a18}.plan-featured-label{position:absolute;left:25px;top:-17px;background:var(--orange);color:white;border-radius:7px;padding:10px 15px;font-size:10px;font-weight:900;letter-spacing:.1em}.plan .eyebrow-small{letter-spacing:.15em;font-size:10px;color:#76bfaf;font-weight:850}.plan.featured .eyebrow-small{color:#326f64}.plan h3{font-size:clamp(35px,3vw,47px);letter-spacing:-.065em;margin:15px 0 3px}.plan-sub{font-weight:750;font-size:12px;color:#b5c7c0;margin:0 0 15px}.plan.featured .plan-sub{color:#5c7570}.plan-summary{font-size:13px;line-height:1.8;color:#afbfba;min-height:78px}.plan.featured .plan-summary{color:#566d67}.plan ul{padding:25px 0 20px;list-style:none;margin:18px 0 0;border-top:1px solid #ffffff20;flex:1;display:grid;align-content:start;gap:15px}.plan.featured ul{border-top-color:#203e3933}.plan li{display:flex;gap:11px;color:#c1ceca;font-size:12px;line-height:1.65}.plan.featured li{color:#365a51}.plan li::before{content:"↗";color:var(--mint);font-weight:900;flex-shrink:0}.plan.featured li::before{color:#158875}.plan-risk{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #ffffff20;padding:18px 0;font-size:12px}.plan.featured .plan-risk{border-color:#203e3933}.plan-risk b{color:#ffc8a7}.plan.featured .plan-risk b{color:#c0563d}.plan .btn-red,.plan .btn-line{width:100%}.plan.featured .btn-line{color:#183c35;border-color:#617d70}.plan-note{max-width:950px;margin:25px auto 0;text-align:center;color:#93aaa4;font-size:12px;line-height:1.85}
-/* Differentiators and FAQ */
-.benefit-section{background:#12191b}.benefits{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}.benefit-panel{background:#eae8de;color:#173532;padding:55px;border-radius:30px 90px 30px 30px;min-height:440px;display:flex;flex-direction:column;justify-content:space-between}.benefit-panel h2{font-size:clamp(39px,4.1vw,58px);letter-spacing:-.068em;line-height:1.06;margin:0}.benefit-panel p{color:#4d6964;line-height:1.9;font-size:14px}.benefit-list{display:grid;gap:0}.benefit-row{padding:29px 0;border-bottom:1px solid #a8c1bd28;display:flex;gap:20px}.benefit-row span{color:var(--mint);font-weight:850;font-size:12px}.benefit-row h3{font-size:18px;margin:0 0 9px;letter-spacing:-.025em}.benefit-row p{font-size:13px;line-height:1.75;color:#a7b7b1;margin:0}.faq{background:#0b0f12}.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px}.faq-list details{border-bottom:1px solid #34433f;padding:22px 0}.faq-list summary{list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;cursor:pointer;font-size:15px;font-weight:750}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary::after{content:"+";font-size:26px;color:var(--mint);font-weight:400}.faq-list details[open] summary::after{content:"−"}.faq-list p{color:#a9bbb4;line-height:1.9;font-size:13px;max-width:650px;margin:15px 20px 5px 0}.closing{background:#83cfc1;color:#14302e;border-radius:36px;min-height:340px;padding:65px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:28px}.closing::before{content:"";position:absolute;right:-110px;bottom:-160px;border:1px solid #15524c35;border-radius:50%;width:500px;height:500px;box-shadow:0 0 0 80px #fafff014,0 0 0 160px #fafff00b}.closing h2{position:relative;font-size:clamp(38px,5.2vw,72px);line-height:1.05;letter-spacing:-.07em;margin:0 0 20px;max-width:730px}.closing p{position:relative;font-size:14px;line-height:1.7;max-width:620px;color:#285b52}.closing .btn-red{position:relative;flex-shrink:0}
-/* Branding now uses local logo.png; no old-brand logo or name */
-.footer{background:#0a1012;margin-top:110px;border-top:1px solid #ffffff1d}.footer-main{display:grid;grid-template-columns:1.55fr .8fr 1fr 1.4fr;gap:42px;padding:64px 0 42px}.footer-logo{max-width:185px;max-height:62px;width:auto;height:auto;object-fit:contain;display:block;margin-bottom:15px}.footer-brand-name{font-weight:850;font-size:18px;margin-bottom:12px}.footer h3{font-size:13px;margin:0 0 17px}.footer p,.footer li{font-size:12px;color:#a0b0aa;line-height:1.85}.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.footer a:hover{color:var(--mint)}.footer-legal{border-top:1px solid var(--line);padding:27px 0}.footer-legal p{margin:0 0 12px;line-height:1.8}.footer-legal strong,.registration strong{color:#eff6f0}.registration{display:grid;grid-template-columns:1fr 1fr;gap:35px;border-top:1px solid var(--line);padding:26px 0}.registration h3{margin-bottom:12px}.registration p{margin:4px 0}.footer-base{border-top:1px solid var(--line);padding:24px 0;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#869a93;font-size:12px}
-/* Scroll effects */
-.reveal{opacity:0;transform:translateY(42px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}.reveal.in-view{opacity:1;transform:none}.stagger>*{transition-delay:calc(var(--i,0) * 100ms)}.top-progress{position:fixed;z-index:100;top:0;left:0;height:3px;background:var(--orange);width:0;pointer-events:none}
-@keyframes marquee{to{transform:translateX(-50%)}}
-@media(max-width:1120px){.site-header{width:calc(100% - 34px)}.nav-links{gap:17px}.hero-grid{gap:36px}.hero-content h1{font-size:clamp(45px,5.2vw,68px)}.footer-main{grid-template-columns:1.3fr 1fr;row-gap:35px}.service-card{padding:25px}.service-card h3{font-size:24px}.plan{padding:30px 23px 24px}.benefits{gap:38px}}
-@media(max-width:850px){.site-header{height:73px;top:12px;padding:10px 12px 10px 19px;border-radius:18px}.brand img{height:37px;max-width:137px}.brand span{font-size:11px;padding-left:11px}.mobile-menu{display:block}.nav-links{position:absolute;top:77px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:12px 18px;background:#121c1b;border:1px solid #354440;border-radius:16px;box-shadow:0 20px 40px #0007}.nav-links.open{display:flex}.nav-links>a{padding:14px 10px}.header-cta{display:none}.hero-pin{padding:100px 0 22px;min-height:600px}.hero-scroll{height:250svh}.hero-grid{grid-template-columns:.95fr 1.05fr;gap:25px}.phone-card{height:min(56vh,530px);min-height:360px}.hero-content h1{font-size:clamp(40px,5.7vw,58px)}.market-tags span{padding:8px 10px}.hero-content>p{font-size:13px}.section{padding:85px 0}.section-top{align-items:start;flex-direction:column}.section-intro{max-width:660px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.plan-grid{grid-template-columns:1fr;max-width:600px;margin-inline:auto;gap:32px}.plan-summary{min-height:auto}.process-grid,.benefits,.faq-grid{grid-template-columns:1fr;gap:35px}.benefit-panel{min-height:320px}.closing{padding:50px;align-items:flex-start;flex-direction:column}.closing .btn-red{align-self:flex-start}}
-@media(max-width:620px){.container{width:calc(100% - 36px)}.site-header{width:calc(100% - 20px);top:10px;height:68px;padding-left:13px}.brand img{max-width:113px;height:33px}.brand span{font-size:10px}.hero-scroll{height:260svh}.hero-pin{min-height:0;height:100svh;padding:91px 0 14px}.hero-grid{display:flex;flex-direction:column;gap:16px;justify-content:center;height:100%}.hero-visual{width:100%;height:min(43svh,350px);min-height:205px}.phone-card{height:100%;min-height:0;border-radius:21px}.phone-card-head{top:11px;left:13px;right:13px;font-size:8px}.phone-card-foot{bottom:10px;left:13px;right:13px;font-size:8px}.phone-progress{width:53px}.phone-caption,.float-sticker{display:none}.hero-content{width:100%}.kicker{font-size:9px;letter-spacing:.1em}.hero-content h1{font-size:clamp(36px,9vw,52px);margin:12px 0 10px}.hero-content>p{font-size:12px;line-height:1.62;margin:0}.market-tags{margin:12px 0;gap:5px}.market-tags span{font-size:8px;padding:6px 8px}.hero-actions{gap:7px}.hero-actions .btn-red,.hero-actions .btn-line{font-size:10px;min-height:42px;padding:0 12px;gap:8px}.hero-actions .btn-red b{font-size:15px}.reg-line{margin-top:10px;padding-top:8px;font-size:9px;line-height:1.45}.scroll-hint{display:none}.ticker-set{padding:13px 9px;font-size:10px;gap:18px}.section{padding:70px 0}.section-title{font-size:clamp(34px,9vw,46px)}.service-grid{grid-template-columns:1fr}.service-card{min-height:240px}.service-card h3{margin-top:35px}.process{border-radius:22px}.process-grid{gap:26px}.step{padding:19px}.plan-grid{gap:30px}.benefit-panel{padding:35px;border-radius:24px 70px 24px 24px}.closing{padding:38px 25px;min-height:300px;border-radius:22px}.closing .btn-red{width:100%}.footer{margin-top:65px}.footer-main{grid-template-columns:1fr;gap:26px}.registration{grid-template-columns:1fr}.footer-base{flex-direction:column}}
-@media(max-height:690px) and (max-width:620px){.hero-pin{padding-top:80px}.hero-grid{gap:8px}.hero-visual{height:35svh}.hero-content h1{font-size:36px;margin:9px 0}.market-tags{margin:8px 0}.reg-line{padding-top:6px;margin-top:8px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal,.service-card,.step,.plan{opacity:1!important;transform:none!important}}
+:root{--ink:#102c39;--navy:#0b3443;--teal:#187f9b;--aqua:#28a6b6;--soft:#e8f7f7;--paper:#fff;--peach:#ffd7c6;--coral:#f96850;--muted:#58717c;--line:#d9e8e9;--max:1320px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:125px}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff;color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}body.loading{overflow:hidden}a{text-decoration:none;color:inherit}button{font:inherit}button,a,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #008c9b;outline-offset:4px}.container{width:min(var(--max),calc(100% - 80px));margin-inline:auto}.muted{color:var(--muted)}
+/* Candle preloader — shows while phone frames are fetched */
+.loader{position:fixed;inset:0;z-index:999;background:linear-gradient(145deg,#f8ffff,#e5f4f5);display:grid;place-items:center;padding:22px;transition:opacity .7s ease,visibility .7s ease}.loader.is-done{opacity:0;visibility:hidden;pointer-events:none}.loader-content{text-align:center;max-width:400px;width:100%}.loader-title{font-size:clamp(24px,4vw,40px);letter-spacing:-.06em;margin:24px 0 8px}.loader-sub{color:#6c8991;font-size:13px;line-height:1.7}.candle-loading{display:flex;align-items:center;justify-content:center;gap:16px;height:112px}.candle-loading i{display:block;position:relative;width:17px;height:42px;border-radius:3px;background:#23a9ae;transform-origin:center;animation:candleBounce 1.15s ease-in-out infinite alternate}.candle-loading i::before{content:"";position:absolute;top:-14px;bottom:-14px;left:7px;width:2px;background:currentColor;color:#167c91;z-index:-1}.candle-loading i:nth-child(2){height:62px;background:#f28a75;animation-delay:.18s}.candle-loading i:nth-child(3){height:35px;animation-delay:.36s}.candle-loading i:nth-child(4){height:76px;background:#f28a75;animation-delay:.54s}.candle-loading i:nth-child(5){height:52px;animation-delay:.72s}.loading-track{height:5px;background:#cce3e5;border-radius:20px;overflow:hidden;margin:22px auto 8px;max-width:270px}.loading-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,#1988a7,#68c9c3);transition:width .25s}.loading-count{font-size:11px;letter-spacing:.12em;font-weight:800;color:#56848d}.skip-load{border:0;background:none;color:#447d88;margin-top:16px;font-size:12px;text-decoration:underline;cursor:pointer;display:none}
+@keyframes candleBounce{to{transform:translateY(-12px) scaleY(.82)}}
+/* Floating rounded header */
+.site-header{position:fixed;z-index:100;top:18px;left:50%;transform:translateX(-50%);width:min(1460px,calc(100% - 52px));min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:13px 19px 13px 28px;background:rgba(255,255,255,.94);backdrop-filter:blur(19px);border:1px solid rgba(16,82,98,.14);border-radius:28px;box-shadow:0 14px 55px rgba(10,67,77,.12)}.brand{display:inline-flex;align-items:center;flex-shrink:0;background:#167e96;border-radius:16px;padding:9px 15px;min-height:58px}.brand img{display:block;max-height:58px;max-width:215px;width:auto;height:auto;object-fit:contain}.nav-links{display:flex;align-items:center;gap:clamp(16px,2.55vw,36px)}.nav-links a{font-size:13px;font-weight:750;color:#254956;transition:color .2s}.nav-links a:hover{color:var(--teal)}.header-cta,.btn-coral{display:inline-flex;justify-content:center;align-items:center;gap:18px;background:var(--coral);color:white;padding:0 24px;border-radius:13px;min-height:54px;font-size:12px;font-weight:850;letter-spacing:.025em;white-space:nowrap;transition:transform .25s,box-shadow .25s,background .25s}.header-cta:hover,.btn-coral:hover{transform:translateY(-3px);box-shadow:0 13px 27px #ed7a6352;background:#ed5943;color:white}.btn-coral b,.header-cta b{font-size:21px;line-height:1}.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:11px;color:var(--navy);background:#f3fbfb;font-size:22px;cursor:pointer}
+/* HERO: white background, larger phone without a card */
+.hero-scroll{height:290svh;position:relative;background:#fff}.hero-pin{position:sticky;top:0;height:100svh;min-height:610px;display:flex;align-items:center;padding:125px 0 24px;overflow:hidden}.hero-grid{height:100%;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(35px,5vw,88px);align-items:center}.hero-phone{position:relative;min-width:0;height:min(76svh,770px);display:grid;place-items:center;overflow:visible}.hero-phone img,.hero-phone canvas{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.hero-phone canvas{opacity:0;transition:opacity .18s ease}.phone-footnote{position:absolute;bottom:5px;left:0;right:0;z-index:3;text-align:center;letter-spacing:.13em;font-size:9px;font-weight:800;color:#71939d}.hero-copy{position:relative;z-index:2}.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}.eyebrow::before{content:"";display:block;width:25px;height:2px;background:var(--aqua)}.hero-copy h1{font-size:clamp(50px,5.6vw,90px);line-height:1.055;letter-spacing:-.075em;font-weight:800;margin:21px 0 23px}.hero-copy h1 span{color:#1998a8}.hero-copy p{color:#5e7a84;line-height:1.8;font-size:clamp(15px,1.24vw,18px);max-width:615px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 28px}.pills span{border:1px solid #cce5e8;padding:9px 13px;border-radius:30px;font-size:11px;font-weight:750;color:#356879;background:#f9ffff}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 23px;border-radius:13px;border:1px solid #afcbd0;background:white;color:#234d58;font-size:12px;font-weight:850;transition:background .2s,transform .2s}.btn-ghost:hover{background:#ecf9f9;transform:translateY(-3px)}.hero-reg{border-top:1px solid #d7e7e9;display:flex;align-items:flex-start;gap:10px;margin-top:29px;padding-top:19px;font-size:11px;line-height:1.65;color:#6a818c}.hero-reg strong{font-size:17px;color:var(--teal)}.hero-reg b{color:#31525d}.hero-scroll-cue{position:absolute;bottom:21px;right:35px;letter-spacing:.14em;font-weight:800;color:#6d969b;font-size:10px;display:flex;align-items:center;gap:11px}.hero-scroll-cue::after{content:"";height:30px;width:2px;background:#42a8b2}
+/* Color band */
+.ticker{background:linear-gradient(98deg,#1689a6,#79c2c0,#b5d1c7);color:white;overflow:hidden}.ticker-track{display:flex;width:max-content;animation:marquee 33s linear infinite}.ticker-set{display:flex;gap:34px;padding:22px 17px;align-items:center;white-space:nowrap;font-size:12px;letter-spacing:.12em;font-weight:850}.ticker-set i{font-style:normal;font-size:21px;color:#fbe0c9}@keyframes marquee{to{transform:translateX(-50%)}}
+/* Sections */
+.section{padding:115px 0}.section-heading{margin-bottom:43px;display:flex;justify-content:space-between;align-items:end;gap:28px}.section-heading h2,.big-title{font-size:clamp(37px,4.9vw,67px);letter-spacing:-.068em;line-height:1.1;margin:16px 0 0}.section-heading p{max-width:390px;color:var(--muted);line-height:1.85;font-size:14px;margin:0 0 4px}.ink-accent{color:var(--teal)}
+/* Interactive service cards */
+.services-section{background:#e7f4f5;border-radius:52px 52px 0 0}.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.service-card{position:relative;overflow:hidden;min-height:307px;border-radius:22px 22px 57px 22px;padding:30px;background:white;border:1px solid #d8e9eb;color:#173b4b;opacity:0;transform:translateY(65px) rotate(3deg);transition:transform .8s cubic-bezier(.16,1,.3,1),opacity .8s,border-radius .3s,box-shadow .3s}.service-card:nth-child(2n){background:#d4eff0;transform:translateY(65px) rotate(-3deg)}.service-card:nth-child(3n){background:#ffeadc}.service-card.is-visible{opacity:1;transform:translateY(0) rotate(0)}.service-card:hover{box-shadow:0 20px 45px #276b7220;border-radius:22px 57px 22px 22px;transform:translateY(-8px)}.service-icon{display:grid;place-items:center;border:1px solid #a6c8c9;border-radius:50%;width:55px;height:55px;font-size:24px;color:var(--teal)}.service-no{position:absolute;right:29px;top:31px;color:#708d92;font-weight:850;font-size:11px}.service-card h3{font-size:clamp(22px,2.1vw,30px);line-height:1.12;letter-spacing:-.05em;margin:45px 0 13px}.service-card p{color:#607b82;font-size:13px;line-height:1.8;margin:0;max-width:330px}.card-arrow{position:absolute;right:28px;bottom:25px;font-size:23px;color:var(--teal)}
+/* Process - vibrant gradient */
+.process-section{background:linear-gradient(124deg,#137e9c 4%,#68b6bd 55%,#c1d1c5 110%);color:#fff;border-radius:52px;position:relative;overflow:hidden}.process-section::after{content:"";position:absolute;border-radius:50%;width:490px;height:490px;border:1px solid #ffffff45;box-shadow:0 0 0 70px #ffffff10,0 0 0 140px #ffffff08;right:-150px;top:-200px;pointer-events:none}.process-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;z-index:1}.process-copy h2{font-size:clamp(39px,4.9vw,68px);line-height:1.07;letter-spacing:-.06em;margin:15px 0}.process-copy p{color:#f0ffff;line-height:1.9;font-size:15px;max-width:540px}.process-copy .eyebrow{color:#fff}.process-copy .eyebrow::before{background:white}.step-list{display:grid;gap:11px}.step{border:1px solid #ffffff65;background:#ffffffdd;display:flex;gap:21px;padding:24px;border-radius:17px;color:#204353;opacity:0;transform:translateX(65px);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}.step.is-visible{opacity:1;transform:none}.step-number{font-size:16px;font-weight:900;color:var(--teal)}.step b{font-size:15px}.step p{font-size:12px;color:#647e87;margin:7px 0 0;line-height:1.7}
+/* Plan cards, with cascading motion */
+.pricing-section{background:#fff}.plans-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}.plan{border:1px solid #d4e4e6;border-radius:27px;background:#f7fbfb;display:flex;flex-direction:column;padding:33px 27px;min-width:0;position:relative;opacity:0;transform:translateY(95px) scale(.96);transition:opacity .75s,transform .8s cubic-bezier(.16,1,.3,1),box-shadow .25s}.plan:nth-child(2){background:#d6eef0;border:1px solid #8bc9d0}.plan:nth-child(3){background:#fff1e9}.plan.is-visible{opacity:1;transform:none}.plan:hover{box-shadow:0 26px 60px #21778b1c;transform:translateY(-8px)}.plan-badge{position:absolute;top:-14px;left:24px;background:var(--teal);color:#fff;padding:8px 13px;border-radius:9px;font-size:10px;font-weight:850;letter-spacing:.09em}.plan .tier{letter-spacing:.14em;font-size:10px;color:#6c8993;font-weight:900}.plan h3{font-size:41px;margin:14px 0 7px;letter-spacing:-.07em}.plan h3 em{font-style:normal;color:var(--teal)}.plan .for{font-size:13px;font-weight:800;color:#315463;margin:0 0 12px}.plan .desc{font-size:13px;line-height:1.75;color:#5c7882;min-height:72px}.plan ul{margin:18px 0 25px;padding:22px 0 0;list-style:none;display:grid;gap:13px;border-top:1px solid #bdd6d8;flex:1}.plan li{font-size:12px;line-height:1.65;color:#405f6a;display:flex;gap:10px}.plan li::before{content:"✓";color:#008ca0;font-weight:900}.plan-risk{padding:19px 0;border-top:1px solid #bdd6d8;display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#68818b}.plan-risk b{color:#9b5f30}.plan .btn-coral,.plan .btn-ghost{width:100%}.plan-note{margin-top:23px;color:#69818a;font-size:12px;line-height:1.8}
+/* Risk/benefit */
+.benefits-section{background:#f1f8f7}.benefits-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:start}.benefits-copy p{font-size:15px;line-height:1.9;color:#62808b;max-width:550px}.benefit-list{display:grid;gap:12px}.benefit{display:flex;gap:20px;padding:25px;border-radius:19px;background:#fff;border:1px solid #d8e9e8;opacity:0;transform:translateY(35px);transition:opacity .7s,transform .7s}.benefit.is-visible{opacity:1;transform:none}.benefit>span{color:var(--teal);font-size:17px;font-weight:900}.benefit h3{margin:0 0 7px;font-size:17px}.benefit p{margin:0;font-size:13px;color:#718893;line-height:1.75}
+/* FAQ */
+.faq-section{background:#fff}.faq-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:75px}.faq-list{display:grid;gap:12px}.faq-list details{background:#f6fbfb;border-radius:14px;border:1px solid #d6e7e8;padding:20px 23px}.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:15px;font-weight:800;font-size:14px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary::after{content:"+";font-weight:400;font-size:21px;color:var(--teal)}.faq-list details[open] summary::after{content:"−"}.faq-list details p{color:#66818d;font-size:13px;line-height:1.8;margin:13px 0 0}
+/* CTA and footer */
+.closing{background:linear-gradient(108deg,#188eaa,#77c3c1,#b7d5c8);padding:67px;border-radius:32px;display:flex;align-items:center;justify-content:space-between;gap:35px;color:white;transform:translateY(35px);opacity:0;transition:opacity .7s,transform .7s}.closing.is-visible{opacity:1;transform:none}.closing h2{font-size:clamp(31px,4.4vw,55px);letter-spacing:-.06em;line-height:1.1;margin:0 0 14px}.closing p{margin:0;max-width:570px;color:#f2ffff;font-size:14px;line-height:1.8}.closing .btn-coral{flex-shrink:0}.footer{margin-top:100px;background:#e8f4f5;border-top:1px solid #cfdee1;color:#254653;padding-top:60px}.footer-main{display:grid;grid-template-columns:1.55fr .75fr 1.05fr 1.4fr;gap:34px;padding-bottom:45px}.footer-logo{display:block;max-height:45px;max-width:170px;object-fit:contain;width:auto;height:auto}.footer-logo-wrap{display:inline-flex;align-items:center;padding:11px 16px;border-radius:14px;background:#167e96;margin-bottom:15px}.footer-name{font-size:20px;font-weight:850;letter-spacing:-.04em}.footer h3{font-size:13px;margin:4px 0 17px}.footer p,.footer li{font-size:12px;color:#597480;line-height:1.85}.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}.footer a:hover{color:var(--teal)}.footer-legal{padding:28px 0;border-top:1px solid #cbdddf;display:grid;gap:11px}.footer-legal p{margin:0}.footer-legal strong{color:#234b5b}.registration{padding:27px 0;display:grid;grid-template-columns:1fr 1fr;gap:35px;border-top:1px solid #cbdddf}.registration p{margin:5px 0}.footer-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:23px 0;border-top:1px solid #cbdddf;color:#718b95;font-size:11px}
+/* Scroll reveals */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .75s ease,transform .8s cubic-bezier(.18,1,.3,1)}.reveal.is-visible{opacity:1;transform:none}
+@media(max-width:1090px){.container{width:min(var(--max),calc(100% - 56px))}.site-header{gap:12px}.brand img{max-width:155px;max-height:47px}.nav-links{gap:15px}.hero-grid{gap:32px}.hero-copy h1{font-size:clamp(44px,5.3vw,70px)}.footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}.process-grid{gap:30px}}
+@media(max-width:800px){.site-header{top:10px;min-height:69px;width:calc(100% - 26px);border-radius:19px;padding:9px 13px 9px 17px}.brand{min-height:46px;padding:7px 11px}.brand img{max-height:35px;max-width:135px}.menu-btn{display:block}.header-cta{margin-left:auto;min-height:42px;padding:0 13px;font-size:10px;gap:8px}.nav-links{position:absolute;top:76px;left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 20px 45px #1b5e7025;display:none;flex-direction:column;align-items:stretch;gap:0;padding:10px 20px}.nav-links.open{display:flex}.nav-links a{padding:13px 4px;border-bottom:1px solid #e7eeee}.nav-links a:last-child{border:0}.hero-scroll{height:235svh}.hero-pin{min-height:0;padding:87px 0 14px}.hero-grid{grid-template-columns:1fr;grid-template-rows:minmax(0,.92fr) minmax(0,1.08fr);gap:0}.hero-phone{height:100%;min-height:0;max-height:46svh}.hero-copy{align-self:center}.hero-copy h1{font-size:clamp(35px,5.9vw,53px);margin:11px 0}.hero-copy p{font-size:13px;line-height:1.55;margin:0}.pills{gap:7px;margin:13px 0}.pills span{font-size:9px;padding:6px 9px}.hero-actions .btn-coral,.hero-actions .btn-ghost{min-height:42px;padding:0 14px;font-size:10px}.hero-reg{padding-top:10px;margin-top:13px}.hero-scroll-cue{bottom:7px;right:22px}.section{padding:82px 0}.section-heading{display:block}.section-heading p{margin-top:18px;max-width:650px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.process-grid{grid-template-columns:1fr}.plans-grid{grid-template-columns:1fr;max-width:610px;margin-inline:auto}.plan .desc{min-height:0}.benefits-grid,.faq-layout{grid-template-columns:1fr;gap:35px}.closing{padding:43px;flex-wrap:wrap}.footer{margin-top:75px}}
+@media(max-width:520px){.container{width:calc(100% - 38px)}.site-header{min-height:62px}.brand{min-height:42px;padding:7px 10px}.brand img{max-height:30px;max-width:100px}.header-cta{font-size:9px;padding:0 10px;min-height:39px;gap:5px}.header-cta b{font-size:15px}.menu-btn{height:39px;width:39px}.nav-links{top:69px}.hero-scroll{height:210svh}.hero-pin{padding:77px 0 16px}.hero-grid{grid-template-rows:42% 58%}.hero-phone{height:100%;max-height:42svh}.phone-footnote{font-size:7px;bottom:0}.hero-copy .eyebrow{font-size:8px;letter-spacing:.075em}.hero-copy h1{font-size:clamp(35px,10.2vw,49px);line-height:1.03;margin:9px 0}.hero-copy p{font-size:12px;line-height:1.52}.pills{margin:9px 0;gap:5px}.pills span{font-size:8px;padding:5px 7px}.hero-actions{gap:8px}.hero-actions .btn-coral,.hero-actions .btn-ghost{font-size:9px;min-height:39px;padding:0 10px;gap:6px}.hero-reg{font-size:9px;line-height:1.35;padding-top:8px;margin-top:10px}.hero-reg strong{font-size:13px}.hero-scroll-cue{display:none}.section{padding:68px 0}.section-heading h2,.big-title{font-size:clamp(35px,9vw,47px)}.section-heading p{font-size:13px}.services-section,.process-section{border-radius:29px 29px 0 0}.service-grid{grid-template-columns:1fr}.service-card{min-height:268px}.service-card h3{margin-top:38px}.step{padding:18px}.plan{padding:26px 22px}.plan h3{font-size:35px}.benefit{padding:19px}.closing{padding:34px 24px}.closing .btn-coral{width:100%}.footer-main{grid-template-columns:1fr;gap:24px}.registration{grid-template-columns:1fr}.footer{padding-top:44px}.footer-bottom{font-size:10px}}
+@media(max-height:710px) and (max-width:800px){.hero-copy h1{font-size:clamp(31px,5vw,42px)}.hero-copy p{font-size:11px}.hero-reg{display:none}.pills span{font-size:8px}.hero-copy .eyebrow{font-size:9px}.hero-actions .btn-coral,.hero-actions .btn-ghost{min-height:35px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal,.service-card,.step,.plan,.benefit,.closing{opacity:1!important;transform:none!important}}
 </style>
 </head>
-<body>
-<div class="top-progress" id="topProgress" aria-hidden="true"></div>
+<body class="loading">
+<!-- Animated candles while the browser preloads the phone sequence -->
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader-content">
+    <div class="candle-loading" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <h2 class="loader-title">Preparing OptionNeeti</h2>
+    <p class="loader-sub">Loading your interactive research experience</p>
+    <div class="loading-track"><span id="loadBar"></span></div>
+    <div class="loading-count" id="loadPct">0%</div>
+    <button type="button" class="skip-load" id="skipLoad">Open website now</button>
+  </div>
+</div>
 <header class="site-header">
-  <a class="brand" href="/" aria-label="Sarvneeti home"><img src="logo.png" alt="Sarvneeti logo"><span>OPTIONNEETI</span></a>
+  <a class="brand" href="/" aria-label="Sarvneeti homepage"><img src="logo.png" alt="Sarvneeti logo"></a>
   <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-    <a href="#services">Services</a><a href="#plans">Pricing</a><a href="#about">About us</a><a href="#faq">FAQ</a><a href="/contact">Contact</a>
+    <a href="#services">Services</a><a href="#plans">Pricing</a><a href="#about">About Us</a><a href="#faq">FAQ</a><a href="/contact">Contact</a>
   </nav>
   <a class="header-cta" href="/contact">GET RESEARCH DETAILS <b aria-hidden="true">↗</b></a>
-  <button class="mobile-menu" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+  <button class="menu-btn" id="menuBtn" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Open menu">☰</button>
 </header>
 <main>
-  <!-- Scroll-scrubbed phone hero. Source: /frames/frame-001.webp ... frame-222.webp -->
-  <section class="hero-scroll" id="home" aria-label="OptionNeeti research introduction">
+  <!-- Sticky scroll hero: phone left, text right. No white card around phone. -->
+  <section class="hero-scroll" id="home" aria-label="OptionNeeti introduction">
     <div class="hero-pin"><div class="container hero-grid">
-      <div class="hero-visual">
-        <div class="phone-card">
-          <div class="phone-card-head"><span>OPTIONNEETI / RESEARCH IN MOTION</span><span>01 — 03</span></div>
-          <div class="phone-visual">
-            <img id="phonePoster" src="frames/frame-025.webp" alt="Illustrative phone research animation showing a sample options research message and trading application">
-            <canvas id="phoneCanvas" aria-hidden="true"></canvas>
-          </div>
-          <div class="phone-caption">ILLUSTRATIVE SEQUENCE · NOT A TRACK RECORD</div>
-          <div class="phone-card-foot"><span id="phoneStatus">SCROLL TO EXPLORE THE SEQUENCE</span><span class="phone-progress"><i id="phoneProgress"></i></span></div>
-        </div>
-        <div class="float-sticker" aria-hidden="true"><span>DISCIPLINE BEFORE DECISION</span><strong>Research / Levels / Risk ↗</strong></div>
+      <div class="hero-phone" aria-label="Illustrative phone animation; not live trades or verified results">
+        <img id="phonePoster" src="frames/frame-025.webp" alt="Illustrative OptionNeeti Telegram research phone screen" fetchpriority="high">
+        <canvas id="phoneCanvas" aria-hidden="true"></canvas>
+        <div class="phone-footnote">ILLUSTRATIVE SEQUENCE · NOT ACTUAL TRADE PERFORMANCE</div>
       </div>
-      <div class="hero-content">
-        <span class="kicker">SEBI Registered Research Analyst</span>
-        <h1>Options research.<br><em>Built around</em><br>discipline.</h1>
-        <p>Daily intraday and BTST index options research for <strong>Nifty, Bank Nifty and Sensex</strong> — with structured entries, targets, stop-loss levels, market context and timely premium channel alerts.</p>
-        <div class="market-tags"><span>NIFTY</span><span>BANK NIFTY</span><span>SENSEX</span><span>INTRADAY + BTST</span></div>
-        <div class="hero-actions"><a href="/contact" class="btn-red">CONNECT WITH ADVISORY DESK <b aria-hidden="true">↗</b></a><a class="btn-line" href="#plans">VIEW PLANS ↓</a></div>
-        <div class="reg-line"><strong aria-hidden="true">✳</strong><div><b>Research Analyst: Amit Kori</b> · SEBI Reg. No. <b>INH000016533</b><br>Research recommendations only. No assured returns. Options trading involves substantial risk.</div></div>
+      <div class="hero-copy">
+        <span class="eyebrow">SEBI Registered Research Analyst</span>
+        <h1>Options research.<br><span>Built around</span><br>discipline.</h1>
+        <p>Daily intraday and BTST index options research for <strong>Nifty, Bank Nifty and Sensex</strong> — structured entries, targets, stop-loss levels, market context and premium channel alerts.</p>
+        <div class="pills"><span>NIFTY</span><span>BANK NIFTY</span><span>SENSEX</span><span>INTRADAY + BTST</span></div>
+        <div class="hero-actions"><a href="/contact" class="btn-coral">CONNECT WITH ADVISORY DESK <b aria-hidden="true">↗</b></a><a href="#plans" class="btn-ghost">VIEW PLANS ↓</a></div>
+        <div class="hero-reg"><strong>✳</strong><span><b>Research Analyst: Amit Kori</b> · SEBI RA INH000016533<br>Research recommendations only. No guaranteed returns or account management.</span></div>
       </div>
-      <div class="scroll-hint">SCROLL TO EXPLORE</div>
     </div></div>
+    <div class="hero-scroll-cue">SCROLL TO EXPLORE</div>
   </section>
-
+  <!-- Animated ribbon -->
   <div class="ticker" aria-hidden="true"><div class="ticker-track">
-    <div class="ticker-set"><span>INDEX OPTIONS RESEARCH</span><i>✳</i><span>NIFTY</span><i>✳</i><span>BANK NIFTY</span><i>✳</i><span>SENSEX</span><i>✳</i><span>RISK FIRST</span><i>✳</i><span>INTRADAY & BTST</span><i>✳</i></div>
-    <div class="ticker-set"><span>INDEX OPTIONS RESEARCH</span><i>✳</i><span>NIFTY</span><i>✳</i><span>BANK NIFTY</span><i>✳</i><span>SENSEX</span><i>✳</i><span>RISK FIRST</span><i>✳</i><span>INTRADAY & BTST</span><i>✳</i></div>
+    <div class="ticker-set"><span>NIFTY 50</span><i>✦</i><span>BANK NIFTY</span><i>✦</i><span>SENSEX</span><i>✦</i><span>INTRADAY RESEARCH</span><i>✦</i><span>BTST SETUPS</span><i>✦</i><span>RISK MANAGEMENT</span><i>✦</i></div>
+    <div class="ticker-set"><span>NIFTY 50</span><i>✦</i><span>BANK NIFTY</span><i>✦</i><span>SENSEX</span><i>✦</i><span>INTRADAY RESEARCH</span><i>✦</i><span>BTST SETUPS</span><i>✦</i><span>RISK MANAGEMENT</span><i>✦</i></div>
   </div></div>
-
-  <section class="section services" id="services"><div class="container">
-    <div class="section-top reveal"><div><span class="kicker">01 / WHAT YOU GET</span><h2 class="section-title">Research that goes<br><span class="accent">beyond a trade alert.</span></h2></div><p class="section-intro">From the first market level to the final update, our service is designed to make research easier to understand and risk easier to evaluate.</p></div>
-    <div class="service-grid stagger">
-      <article class="service-card" style="--i:0"><span class="service-icon">↗</span><span class="service-no">01</span><h3>Intraday index calls</h3><p>Research-based trade setups with possible entry zones, target areas, invalidation and stop-loss levels.</p><span class="card-arrow">↗</span></article>
-      <article class="service-card" style="--i:1"><span class="service-icon">◷</span><span class="service-no">02</span><h3>BTST research</h3><p>Select overnight index options ideas with gap, time-decay and volatility risks clearly highlighted.</p><span class="card-arrow">↗</span></article>
-      <article class="service-card" style="--i:2"><span class="service-icon">✈</span><span class="service-no">03</span><h3>Premium Telegram access</h3><p>Plan-based channel access for research messages, follow-up commentary and market updates after onboarding.</p><span class="card-arrow">↗</span></article>
-      <article class="service-card" style="--i:0"><span class="service-icon">◇</span><span class="service-no">04</span><h3>Daily risk notes</h3><p>Position-sizing education, loss limits, stop discipline and practical reminders about overtrading.</p><span class="card-arrow">↗</span></article>
-      <article class="service-card" style="--i:1"><span class="service-icon">≋</span><span class="service-no">05</span><h3>Expiry & volatility</h3><p>Research observations on weekly expiries, changing index structure and options premium sensitivity.</p><span class="card-arrow">↗</span></article>
-      <article class="service-card" style="--i:2"><span class="service-icon">◎</span><span class="service-no">06</span><h3>Research support</h3><p>Context around trade logic, updated levels and trading psychology based on your chosen service tier.</p><span class="card-arrow">↗</span></article>
+  <!-- Services -->
+  <section class="section services-section" id="services"><div class="container">
+    <div class="section-heading reveal"><div><span class="eyebrow">01 / WHAT WE OFFER</span><h2>Research with<br><span class="ink-accent">a clearer direction.</span></h2></div><p>Understand the research thesis, the levels that matter, and the risks before deciding whether to trade.</p></div>
+    <div class="service-grid">
+      <article class="service-card"><span class="service-icon">⌁</span><span class="service-no">01</span><h3>Intraday options<br>setups</h3><p>Research-led index option setups with entry zones, target levels and stop-loss frameworks.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">↗</span><span class="service-no">02</span><h3>BTST opportunity<br>research</h3><p>Short-term setups when conditions warrant, including overnight gap and premium-decay risk notes.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">✈</span><span class="service-no">03</span><h3>Premium Telegram<br>channel</h3><p>Plan-based research alerts, key level updates and market commentary after onboarding.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">◇</span><span class="service-no">04</span><h3>Daily risk<br>management</h3><p>Guidance on sizing discipline, stop-loss planning, drawdowns and avoiding overtrading.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">◷</span><span class="service-no">05</span><h3>Expiry &amp; volatility<br>research</h3><p>Structured observations on option premiums, key index levels and expiry-related conditions.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">◎</span><span class="service-no">06</span><h3>Trader learning<br>&amp; reviews</h3><p>Educational explanations of setups, market psychology and the importance of a repeatable process.</p><span class="card-arrow">↗</span></article>
     </div>
   </div></section>
-
-  <section class="section process" id="how-it-works"><div class="container process-grid">
-    <div class="process-copy reveal"><span class="kicker">02 / THE PROCESS</span><h2>Less noise.<br>More <span style="color:#a0e2d4">structure.</span></h2><p>Understand the research before acting. A valid trade setup needs context, risk boundaries and the freedom to skip an unsuitable opportunity.</p><a href="/contact" class="btn-red" style="margin-top:16px">START A CONVERSATION <b aria-hidden="true">↗</b></a></div>
-    <div class="step-stack stagger">
-      <div class="step" style="--i:0"><span class="step-num">01 /</span><div><b>Select a research plan</b><p>Understand coverage, advisory fees, suitability considerations, risk disclosures and onboarding.</p></div></div>
-      <div class="step" style="--i:1"><span class="step-num">02 /</span><div><b>Get premium channel access</b><p>After onboarding, receive the relevant Telegram or communication channel access details.</p></div></div>
-      <div class="step" style="--i:2"><span class="step-num">03 /</span><div><b>Review the complete setup</b><p>Assess entry, target, stop-loss, invalidation conditions and options-specific risks.</p></div></div>
-      <div class="step" style="--i:3"><span class="step-num">04 /</span><div><b>Decide and manage your risk</b><p>You remain in control of trade execution, position size, your funds and whether to act.</p></div></div>
+  <!-- How it works -->
+  <section class="section process-section" id="process"><div class="container process-grid">
+    <div class="process-copy reveal"><span class="eyebrow">02 / OUR PROCESS</span><h2>From market noise<br>to a structured<br>research plan.</h2><p>Understand how research ideas move from market observation to communication, with defined risk considerations at every stage.</p><a href="/contact" class="btn-ghost" style="margin-top:20px">TALK TO OUR DESK ↗</a></div>
+    <div class="step-list">
+      <article class="step"><span class="step-number">01</span><div><b>Choose an advisory plan</b><p>Review coverage, fees, duration, disclosure documents and onboarding steps.</p></div></article>
+      <article class="step"><span class="step-number">02</span><div><b>Get premium channel access</b><p>Receive the applicable Telegram research channel details after activation.</p></div></article>
+      <article class="step"><span class="step-number">03</span><div><b>Review each research setup</b><p>Evaluate the entry zone, thesis, target, stop-loss and invalidation level.</p></div></article>
+      <article class="step"><span class="step-number">04</span><div><b>Execute independently</b><p>Use research alongside your own assessment; trading decisions remain yours.</p></div></article>
     </div>
   </div></section>
-
-  <section class="section pricing" id="plans"><div class="container">
-    <div class="section-top reveal"><div><span class="kicker">03 / ADVISORY PLANS</span><h2 class="section-title">Choose your<br><span class="accent">research depth.</span></h2></div><p class="section-intro">Three levels of index options coverage. Setups are shared only when conditions warrant; no daily quantity or trading result is guaranteed.</p></div>
-    <div class="plan-grid stagger">
-      <article class="plan" style="--i:0"><span class="eyebrow-small">OPTIONNEETI / 01</span><h3>Core<span class="accent">.</span></h3><p class="plan-sub">For structured learners</p><p class="plan-summary">A focused introduction to index options research with defined risk levels and understandable logic.</p><ul><li>Up to 1 research setup per trading day</li><li>Nifty and selected index options</li><li>Entry, target and stop-loss framework</li><li>Intraday index market insights</li><li>Basic market-hour research support</li><li>Educational trade-logic notes</li></ul><div class="plan-risk"><span>Risk profile</span><b>High</b></div><a href="/contact" class="btn-line">ENQUIRE ABOUT CORE ↗</a></article>
-      <article class="plan featured" style="--i:1"><span class="plan-featured-label">FEATURED PLAN</span><span class="eyebrow-small">OPTIONNEETI / 02</span><h3>Pro<span style="color:#228d7d">.</span></h3><p class="plan-sub">For active index traders</p><p class="plan-summary">Broader research coverage, timely channel updates and additional short-term options context.</p><ul><li>Up to 2 research setups per trading day</li><li>Nifty, Bank Nifty and selected indices</li><li>Intraday and select BTST setups</li><li>Defined levels, exits and risk logic</li><li>Expiry and volatility observations</li><li>Premium Telegram research alerts</li><li>Priority market-hour support</li></ul><div class="plan-risk"><span>Risk profile</span><b>High to Very High</b></div><a href="/contact" class="btn-red">EXPLORE PRO <b aria-hidden="true">↗</b></a></article>
-      <article class="plan" style="--i:2"><span class="eyebrow-small">OPTIONNEETI / 03</span><h3>Elite<span class="accent">.</span></h3><p class="plan-sub">For experienced traders</p><p class="plan-summary">Expanded index coverage with deeper volatility, expiry and trading psychology research.</p><ul><li>Up to 3 research setups per trading day</li><li>Nifty, Bank Nifty, Sensex and selected indices</li><li>Intraday, BTST and expiry research</li><li>Advanced volatility-based observations</li><li>Premium Telegram alerts and updates</li><li>Priority research desk support</li><li>Trading psychology and exposure notes</li></ul><div class="plan-risk"><span>Risk profile</span><b>High to Very High</b></div><a href="/contact" class="btn-line">ENQUIRE ABOUT ELITE ↗</a></article>
+  <!-- Plans -->
+  <section class="section pricing-section" id="plans"><div class="container">
+    <div class="section-heading reveal"><div><span class="eyebrow">03 / RESEARCH PLANS</span><h2>Find your<br><span class="ink-accent">trading rhythm.</span></h2></div><p>Choose research coverage suited to your market experience and ability to manage options risk. Plans do not guarantee results.</p></div>
+    <div class="plans-grid">
+      <article class="plan"><span class="tier">OPTIONNEETI / 01</span><h3>Core<em>.</em></h3><p class="for">For structured learners</p><p class="desc">A focused starting point for traders learning to review defined index option setups.</p><ul><li>Up to 1 research setup per trading day</li><li>Nifty and selected index options</li><li>Clear entry, target and stop-loss levels</li><li>Basic intraday index commentary</li><li>Market-hour research support</li><li>Educational trade rationale</li></ul><div class="plan-risk"><span>Risk profile</span><b>HIGH</b></div><a href="/contact" class="btn-ghost">ENQUIRE ABOUT CORE ↗</a></article>
+      <article class="plan"><span class="plan-badge">POPULAR PLAN</span><span class="tier">OPTIONNEETI / 02</span><h3>Pro<em>.</em></h3><p class="for">For active options traders</p><p class="desc">Broader research coverage and alerts for disciplined, active participants.</p><ul><li>Up to 2 research setups per trading day</li><li>Nifty, Bank Nifty and selected indices</li><li>Intraday and selected BTST opportunities</li><li>Defined entry, exit and risk levels</li><li>Expiry and volatility-related research</li><li>Premium Telegram alerts and updates</li><li>Priority market-hour support</li></ul><div class="plan-risk"><span>Risk profile</span><b>HIGH TO VERY HIGH</b></div><a href="/contact" class="btn-coral">ENQUIRE ABOUT PRO ↗</a></article>
+      <article class="plan"><span class="tier">OPTIONNEETI / 03</span><h3>Elite<em>.</em></h3><p class="for">For experienced participants</p><p class="desc">Expanded index coverage with volatility and expiry-focused research scenarios.</p><ul><li>Up to 3 research setups per trading day</li><li>Nifty, Bank Nifty, Sensex and selected indices</li><li>Intraday, BTST and expiry research</li><li>Advanced volatility and levels commentary</li><li>Premium Telegram research updates</li><li>Priority desk support</li><li>Trading psychology and risk-exposure notes</li></ul><div class="plan-risk"><span>Risk profile</span><b>HIGH TO VERY HIGH</b></div><a href="/contact" class="btn-ghost">ENQUIRE ABOUT ELITE ↗</a></article>
     </div>
-    <p class="plan-note">Fees, service duration, taxes, suitability information, policies and disclosures are provided before onboarding. “Up to” describes a maximum number of research ideas, not a commitment to publish qualifying calls every trading day. Options buying can result in loss of the full premium paid.</p>
+    <p class="plan-note">Current prices, subscription terms, applicable taxes and cancellation policies are supplied during onboarding. Trade-setup counts are maximums, not commitments to issue calls every day. Options can result in a rapid loss of the entire premium.</p>
   </div></section>
-
-  <section class="section benefit-section" id="about"><div class="container benefits">
-    <div class="benefit-panel reveal"><span style="font-size:11px;letter-spacing:.16em;font-weight:850">04 / THE OPTIONNEETI APPROACH</span><h2>Research first.<br>Risk always.<br>Hype never.</h2><p>Research gives you a scenario, not certainty. We focus on communicating levels and the reasoning behind them, while keeping execution decisions and capital firmly under your control.</p></div>
+  <!-- About/benefits -->
+  <section class="section benefits-section" id="about"><div class="container benefits-grid">
+    <div class="benefits-copy reveal"><span class="eyebrow">04 / OUR APPROACH</span><h2 class="big-title">Good research.<br><span class="ink-accent">Clearer decisions.</span></h2><p>OptionNeeti focuses on research structure and risk-aware communication rather than excitement, target chasing or promises of accuracy.</p><p>Index options carry substantial risk and may not suit every investor. Research does not remove uncertainty or guarantee a profitable outcome.</p><a href="/contact" class="btn-coral" style="margin-top:14px">CONNECT WITH US ↗</a></div>
     <div class="benefit-list">
-      <div class="benefit-row reveal"><span>01</span><div><h3>Clearer invalidation</h3><p>Know what could challenge a research thesis before considering the trade.</p></div></div>
-      <div class="benefit-row reveal"><span>02</span><div><h3>Volatility-aware commentary</h3><p>Take expiry, gap risk, implied volatility and time decay into account.</p></div></div>
-      <div class="benefit-row reveal"><span>03</span><div><h3>Research you can review</h3><p>Understand context and revisit the rationale rather than reacting to an isolated alert.</p></div></div>
-      <div class="benefit-row reveal"><span>04</span><div><h3>Decision-making remains yours</h3><p>No trade execution, custody of funds, discretionary account management or assured returns.</p></div></div>
+      <article class="benefit"><span>01</span><div><h3>Know what invalidates a setup</h3><p>Consider the level or market condition at which the research thesis no longer applies.</p></div></article>
+      <article class="benefit"><span>02</span><div><h3>Volatility-aware commentary</h3><p>Expiry, time decay and changing implied volatility can materially affect option prices.</p></div></article>
+      <article class="benefit"><span>03</span><div><h3>Learn the research logic</h3><p>Educational context helps you understand the idea rather than just receiving a number.</p></div></article>
+      <article class="benefit"><span>04</span><div><h3>Keep control of your own account</h3><p>No order execution, client-fund custody, discretionary trading or assured returns.</p></div></article>
     </div>
   </div></section>
-
-  <section class="section faq" id="faq"><div class="container faq-grid">
-    <div class="reveal"><span class="kicker">05 / FREQUENTLY ASKED</span><h2 class="section-title">Answers,<br><span class="accent">without the noise.</span></h2><p class="section-intro" style="margin-top:20px">Have more questions about research coverage, subscription terms or advisory onboarding? Contact the desk directly.</p></div>
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq"><div class="container faq-layout">
+    <div class="reveal"><span class="eyebrow">05 / QUESTIONS ANSWERED</span><h2 class="big-title">Before you<br><span class="ink-accent">get started.</span></h2><p class="muted" style="line-height:1.8">Speak with our advisory desk to understand services, fees, risk disclosures and onboarding requirements.</p></div>
     <div class="faq-list reveal">
-      <details><summary>Which index options do you cover?</summary><p>Nifty and Bank Nifty are key research markets. Sensex and selected indices may be covered depending on your plan and prevailing market conditions.</p></details>
-      <details><summary>Will I get a trade call every day?</summary><p>No fixed number of setups is promised. Plan limits describe the maximum possible coverage, and a trading day may have no qualifying research opportunity.</p></details>
-      <details><summary>How do I receive Telegram research updates?</summary><p>Following applicable onboarding and subscription activation, the research desk shares access to the communication channel corresponding to your plan.</p></details>
-      <details><summary>Does BTST carry overnight risk?</summary><p>Yes. Holding options overnight adds gap risk, time decay and volatility changes. Premiums can fall sharply, and the entire option premium may be lost.</p></details>
-      <details><summary>Are profits or accuracy guaranteed?</summary><p>No. SEBI registration and NISM certification do not guarantee performance or returns. All securities-market investments carry risk; options are particularly risky.</p></details>
-      <details><summary>Does the advisory execute trades for me?</summary><p>No. Research recommendations do not include custody of funds or account access. The subscriber decides whether, when and how much to trade.</p></details>
-      <details><summary>How can I check plan pricing?</summary><p>Contact the advisory desk to receive current subscription fees, duration, applicable taxes and policies before completing onboarding.</p></details>
+      <details><summary>Which index options are covered?</summary><p>Research focuses on Nifty and Bank Nifty, with Sensex and selected indices included depending on the chosen plan and market conditions.</p></details>
+      <details><summary>Will I receive a call every day?</summary><p>Not necessarily. Each plan states an upper limit on setups, and some sessions may not produce a qualifying opportunity.</p></details>
+      <details><summary>How is Telegram access provided?</summary><p>Access to the applicable advisory channel is shared once the relevant subscription and onboarding process is completed.</p></details>
+      <details><summary>What are the risks of BTST options?</summary><p>Holding options overnight involves gap risk, time decay and changes in implied volatility; option premiums can fall sharply.</p></details>
+      <details><summary>Do you guarantee profits or accuracy?</summary><p>No. SEBI registration or NISM certification does not guarantee performance or any returns, and index options can cause substantial losses.</p></details>
+      <details><summary>Do you manage my trading account?</summary><p>No. This is a research and recommendations service. You independently decide whether to trade and retain control of your account.</p></details>
+      <details><summary>How can I find out the plan fees?</summary><p>Contact our desk to review the current fees, subscription terms, taxes, disclosures and applicable policies before subscribing.</p></details>
     </div>
   </div></section>
-
-  <section class="container"><div class="closing reveal"><div><h2>Clarity starts<br>with a conversation.</h2><p>Understand our advisory coverage, premium Telegram access, subscription terms and risk disclosures before choosing a plan.</p></div><a href="/contact" class="btn-red">CONNECT WITH US <b aria-hidden="true">↗</b></a></div></section>
+  <!-- Closing CTA -->
+  <section class="container"><div class="closing"><div><h2>Clarity starts<br>with a conversation.</h2><p>Learn about index options research coverage, premium alerts, subscription terms and risk disclosures.</p></div><a href="/contact" class="btn-coral">GET RESEARCH DETAILS ↗</a></div></section>
 </main>
-
-<footer class="footer" id="disclaimer">
-  <div class="container footer-main">
-    <div><a href="/" aria-label="Sarvneeti home"><img class="footer-logo" src="logo.png" alt="Sarvneeti logo"></a><div class="footer-brand-name">Sarvneeti · OptionNeeti</div><p>Index options research and advisory information covering Nifty, Bank Nifty, Sensex, intraday and BTST market scenarios. Research analyst services: Amit Kori, SEBI Reg. No. INH000016533.</p></div>
-    <div><h3>Quick Links</h3><ul><li><a href="#services">Services</a></li><li><a href="#plans">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#disclaimer">Disclaimer</a></li><li><a href="/contact">Contact</a></li></ul></div>
-    <div><h3>Contact Us</h3><ul><li><a href="tel:+919137932216">+91 91379 32216</a></li><li><a href="/contact">Send us an enquiry ↗</a></li><li>Advisory group access shared after onboarding</li><li>Mon – Sat, 9:00 AM – 6:00 PM</li></ul></div>
-    <div><h3>Legal & Policy</h3><ul>
-      <!-- Existing externally hosted policies: confirm they apply to the newly branded website before launch. -->
-      <li><a href="https://niiveshneeti.com/Disclaimer.html" target="_blank" rel="noopener noreferrer">Disclaimer</a></li>
-      <li><a href="https://niiveshneeti.com/Disclosure_niiveshneeti1.pdf" target="_blank" rel="noopener noreferrer">Disclosure</a></li>
-      <li><a href="https://niiveshneeti.com/new-investor-charter.pdf" target="_blank" rel="noopener noreferrer">Investor Charter</a></li>
-      <li><a href="https://niiveshneeti.com/Terms_and_Condition.html" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
-      <li><a href="https://niiveshneeti.com/Privacy_Policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-      <li><a href="https://niiveshneeti.com/Grievance_Redressal.html" target="_blank" rel="noopener noreferrer">Grievance Redressal</a></li>
-      <li><a href="https://niiveshneeti.com/about_us" target="_blank" rel="noopener noreferrer">About Us</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="https://niiveshneeti.com/Complaints.html" target="_blank" rel="noopener noreferrer">Complaints</a></li>
-    </ul></div>
-  </div>
-  <div class="container footer-legal">
-    <p><strong>Disclaimer:</strong> Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.</p>
-    <p><strong>Illustration disclaimer:</strong> The securities quoted (if any) on our website or in our advertisements are for illustration only and are not recommendatory. The animated phone sequence is illustrative, not verified trade performance, real client results or a return claim.</p>
-    <p><strong>Standard warning:</strong> Investment in securities market are subject to market risks. Read all the related documents carefully before investing.</p>
-    <p><strong>Mandatory notice:</strong> Clients shall be requested to go through Do's and Don'ts while dealing with RA as specified in SEBI master circular no. SEBI/HO/MIRSD-POD-1/P/CIR/2024/49 dated May 21, 2024 or as may be specified by SEBI from time to time.</p>
-  </div>
-  <div class="container registration"><div><h3>SEBI Registered Research Analyst Details</h3><p><strong>Registered Name:</strong> Amit Kori</p><p><strong>Registration Type:</strong> Individual</p><p><strong>Registration No.:</strong> INH000016533</p><p><strong>Validity:</strong> Nov 22, 2027</p></div><div><h3>Nearest SEBI Office Address</h3><p>SEBI Bhavan BKC, Plot No. C4-A, 'G' Block, Bandra-Kurla Complex, Bandra (East), Mumbai – 400051, Maharashtra, India.</p></div></div>
-  <div class="container footer-base"><span>© <span id="year">2026</span> Sarvneeti · OptionNeeti. All Rights Reserved.</span><span>Research recommendations only · <a href="/contact">Contact advisory desk ↗</a></span></div>
+<!-- Footer: Sarvneeti logo only, no previous brand name or logo -->
+<footer class="footer" id="disclaimer"><div class="container footer-main">
+  <div><a href="/" class="footer-logo-wrap" aria-label="Sarvneeti homepage"><img class="footer-logo" src="logo.png" alt="Sarvneeti logo"></a><div class="footer-name">Sarvneeti · OptionNeeti</div><p>Research-based index options advisory for Nifty, Bank Nifty and Sensex, covering intraday and BTST setups, levels, risk commentary and educational market notes.</p></div>
+  <div><h3>Quick Links</h3><ul><li><a href="#services">Services</a></li><li><a href="#plans">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#disclaimer">Disclaimer</a></li><li><a href="/contact">Contact</a></li></ul></div>
+  <div><h3>Contact Us</h3><ul><li><a href="tel:+919137932216">+91 91379 32216</a></li><li><a href="mailto:support@niiveshneeti.com">support@niiveshneeti.com</a></li><li>Advisory channel access shared after onboarding</li><li>Mon – Sat, 9:00 AM – 6:00 PM</li></ul></div>
+  <div><h3>Legal &amp; Policy</h3><ul>
+    <!-- Confirm existing externally hosted documents are valid for this new domain and branding. -->
+    <li><a href="https://niiveshneeti.com/Disclaimer.html" target="_blank" rel="noopener noreferrer">Disclaimer</a></li>
+    <li><a href="https://niiveshneeti.com/Disclosure_niiveshneeti1.pdf" target="_blank" rel="noopener noreferrer">Disclosure</a></li>
+    <li><a href="https://niiveshneeti.com/new-investor-charter.pdf" target="_blank" rel="noopener noreferrer">Investor Charter</a></li>
+    <li><a href="https://niiveshneeti.com/Terms_and_Condition.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a></li>
+    <li><a href="https://niiveshneeti.com/Privacy_Policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+    <li><a href="https://niiveshneeti.com/Grievance_Redressal.html" target="_blank" rel="noopener noreferrer">Grievance Redressal</a></li>
+    <li><a href="https://niiveshneeti.com/about_us" target="_blank" rel="noopener noreferrer">About Us</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="https://niiveshneeti.com/Complaints.html" target="_blank" rel="noopener noreferrer">Complaints</a></li>
+  </ul></div>
+</div>
+<div class="container footer-legal">
+  <p><strong>Disclaimer:</strong> Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.</p>
+  <p><strong>Illustration disclaimer:</strong> The securities quoted (if any) on our website and advertisements are for illustration only and are not recommendatory. The animated phone screens are illustrative, not live research, verified trade results or performance claims.</p>
+  <p><strong>Standard warning:</strong> Investment in securities market are subject to market risks. Read all the related documents carefully before investing.</p>
+  <p><strong>Mandatory notice:</strong> Clients shall be requested to go through Do's and Don'ts while dealing with RA as specified in SEBI master circular no. SEBI/HO/MIRSD-POD-1/P/CIR/2024/49 dated May 21, 2024 or as may be specified by SEBI from time to time.</p>
+</div>
+<div class="container registration"><div><h3>SEBI Registered Research Analyst Details</h3><p><strong>Registered Name:</strong> Amit Kori</p><p><strong>Registration Type:</strong> Individual</p><p><strong>Registration No.:</strong> INH000016533</p><p><strong>Validity:</strong> November 22, 2027</p></div><div><h3>Nearest SEBI Office Address</h3><p>SEBI Bhavan BKC, Plot No. C4-A, 'G' Block, Bandra-Kurla Complex, Bandra (East), Mumbai – 400051, Maharashtra, India.</p></div></div>
+<div class="container footer-bottom"><span>© <span id="year">2026</span> Sarvneeti · OptionNeeti. All Rights Reserved.</span><span>Research recommendations only · <a href="/contact">Contact the advisory desk ↗</a></span></div>
 </footer>
-
 <script>
 (() => {
   'use strict';
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const nav = document.getElementById('navLinks');
-  const menu = document.getElementById('menuToggle');
-  menu.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    menu.setAttribute('aria-expanded', String(open));
-    menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    menu.textContent = open ? '×' : '☰';
-  });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-label', 'Open menu'); menu.textContent = '☰';
-  }));
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Fade / rotate cards into place in the same overlapping-section spirit as the reference.
-  const animated = document.querySelectorAll('.reveal,.service-card,.step,.plan');
-  if (reduced || !('IntersectionObserver' in window)) {
-    animated.forEach(el => el.classList.add('in-view'));
-  } else {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view'); observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold:.09, rootMargin:'0px 0px -40px 0px' });
-    animated.forEach(el => observer.observe(el));
-  }
-
-  // PHONE SCROLL SEQUENCE — 222 frames already uploaded at root /frames/.
-  // Only nearby frames are kept decoded in memory, avoiding 222 full-size images at once.
-  const COUNT = 222, START = 24; // Start at frame 025, with the research phone fully visible.
+  const TOTAL = 222, FIRST = 24; // file frame-025.webp is the initial full-phone view
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = matchMedia('(max-width: 700px)').matches;
+  const frameURL = i => `frames/frame-${String(i + 1).padStart(3,'0')}.webp`;
+  const loader = document.getElementById('loader');
+  const bar = document.getElementById('loadBar');
+  const pct = document.getElementById('loadPct');
+  const skip = document.getElementById('skipLoad');
   const stage = document.querySelector('.hero-scroll');
   const canvas = document.getElementById('phoneCanvas');
   const poster = document.getElementById('phonePoster');
   const ctx = canvas.getContext('2d', { alpha:false });
-  const progressLine = document.getElementById('phoneProgress');
-  const status = document.getElementById('phoneStatus');
-  const memory = new Map();
-  const inFlight = new Set();
-  const maxDecoded = window.innerWidth <= 620 ? 10 : 18;
-  let desired = START, lastDrawn = -1, rafPending = false;
-  const filePath = i => `frames/frame-${String(i + 1).padStart(3,'0')}.webp`;
+  const loaded = new Map();
+  const pending = new Set();
+  const limit = mobile ? 7 : 15;
+  let target = FIRST, drawn = -1, queued = false, opened = false;
 
-  function cacheImage(i, img) {
-    if (memory.has(i)) memory.delete(i);
-    memory.set(i, img);
-    while (memory.size > maxDecoded) {
-      const oldest = memory.keys().next().value;
-      memory.delete(oldest);
-    }
+  // Mobile menu
+  const menu = document.getElementById('menuBtn'), nav = document.getElementById('navLinks');
+  menu.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(isOpen));
+    menu.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    menu.textContent = isOpen ? '×' : '☰';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';
+  }));
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll-triggered cards / text animations
+  const revealItems = document.querySelectorAll('.reveal,.service-card,.step,.plan,.benefit,.closing');
+  if(reduced || !('IntersectionObserver' in window)) revealItems.forEach(el=>el.classList.add('is-visible'));
+  else {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
+    }),{threshold:.08,rootMargin:'0px 0px -25px 0px'});
+    revealItems.forEach((el,i)=>{
+      if(el.matches('.service-card,.step,.plan,.benefit')) el.style.transitionDelay = `${(i%3)*75}ms`;
+      observer.observe(el);
+    });
   }
-  function requestFrame(i) {
-    if (i < START || i >= COUNT || inFlight.has(i)) return;
-    if (memory.has(i)) { const img = memory.get(i); cacheImage(i,img); return; }
-    inFlight.add(i);
-    const img = new Image(); img.decoding = 'async';
-    img.onload = () => { inFlight.delete(i); cacheImage(i,img); if (Math.abs(desired-i) < 3) scheduleDraw(); };
-    img.onerror = () => { inFlight.delete(i); }; // Missing frame leaves the last valid image visible.
-    img.src = filePath(i);
+
+  // Keep only a small number of decoded high-resolution frames in memory.
+  // All 222 compressed WebP images are pre-fetched into the browser's HTTP cache.
+  function cache(i,img){
+    loaded.delete(i);loaded.set(i,img);
+    while(loaded.size>limit) loaded.delete(loaded.keys().next().value);
   }
-  function sizeCanvas() {
-    const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    const w = Math.max(1, Math.round(rect.width*dpr));
-    const h = Math.max(1, Math.round(rect.height*dpr));
-    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; lastDrawn = -1; }
+  function request(i){
+    if(i<FIRST || i>=TOTAL || pending.has(i)) return;
+    if(loaded.has(i)){cache(i,loaded.get(i));return;}
+    pending.add(i);
+    const img = new Image();img.decoding='async';
+    img.onload=()=>{pending.delete(i);cache(i,img);if(Math.abs(target-i)<4) scheduleDraw();};
+    img.onerror=()=>pending.delete(i);
+    img.src=frameURL(i);
   }
-  function render() {
-    rafPending = false;
-    sizeCanvas();
-    let img = memory.get(desired), candidate = desired;
-    if (!img) {
-      for (let offset=1;offset<=5;offset++) {
-        if (memory.has(desired-offset)) { candidate=desired-offset; img=memory.get(candidate); break; }
-        if (memory.has(desired+offset)) { candidate=desired+offset; img=memory.get(candidate); break; }
-      }
-    }
-    if (!img || !img.naturalWidth || (candidate === lastDrawn && canvas.style.opacity === '1')) return;
-    const cw = canvas.width, ch = canvas.height;
-    const ratio = Math.min(cw/img.naturalWidth, ch/img.naturalHeight);
-    const w=img.naturalWidth*ratio, h=img.naturalHeight*ratio;
-    ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,cw,ch);
-    ctx.drawImage(img,(cw-w)/2,(ch-h)/2,w,h);
-    lastDrawn = candidate;
-    canvas.style.opacity = '1'; poster.style.opacity = '0';
+  function resizeCanvas(){
+    const r=canvas.getBoundingClientRect();
+    const scale=Math.min(devicePixelRatio||1,1.5);
+    const w=Math.max(1,Math.round(r.width*scale));
+    const h=Math.max(1,Math.round(r.height*scale));
+    if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;drawn=-1;}
   }
-  function scheduleDraw() {
-    if (!rafPending) { rafPending = true; requestAnimationFrame(render); }
+  function draw(){
+    queued=false;resizeCanvas();
+    let i=target,img=loaded.get(i);
+    if(!img){for(let d=1;d<=6;d++){
+      if(loaded.has(target-d)){i=target-d;img=loaded.get(i);break;}
+      if(loaded.has(target+d)){i=target+d;img=loaded.get(i);break;}
+    }}
+    if(!img || !img.naturalWidth || (i===drawn && canvas.style.opacity==='1'))return;
+    const w=canvas.width,h=canvas.height;
+    const ratio=Math.min(w/img.naturalWidth,h/img.naturalHeight);
+    const dw=img.naturalWidth*ratio,dh=img.naturalHeight*ratio;
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
+    ctx.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);
+    drawn=i;canvas.style.opacity='1';poster.style.opacity='0';
   }
-  function progress() {
-    const bounds = stage.getBoundingClientRect();
-    const travel = stage.offsetHeight - window.innerHeight;
-    return travel > 0 ? Math.min(1,Math.max(0,-bounds.top/travel)) : 0;
-  }
-  function onScroll() {
-    const p=progress();
-    desired = reduced ? START : Math.min(COUNT-1,START+Math.round(p*(COUNT-1-START)));
-    progressLine.style.width = `${p*100}%`;
-    if (p>.97) status.textContent = 'ILLUSTRATIVE RESEARCH → EXIT SEQUENCE';
-    else if (p>.38) status.textContent = 'ILLUSTRATIVE EXECUTION SEQUENCE';
-    else status.textContent = 'SCROLL TO EXPLORE THE SEQUENCE';
-    requestFrame(desired);
-    // Keep a small window ready, rather than decoding every high-resolution WebP.
-    for (let offset=1;offset<=3;offset++) {
-      requestFrame(desired+offset); requestFrame(desired-offset);
-    }
+  function scheduleDraw(){if(!queued){queued=true;requestAnimationFrame(draw);}}
+  function update(){
+    if(!opened)return;
+    const b=stage.getBoundingClientRect();
+    const travel=Math.max(1,stage.offsetHeight-innerHeight);
+    const progress=Math.min(1,Math.max(0,-b.top/travel));
+    target=reduced?FIRST:FIRST+Math.round(progress*(TOTAL-1-FIRST));
+    request(target);
+    for(let d=1;d<=3;d++){request(target+d);request(target-d);}
     scheduleDraw();
-    const total=document.documentElement.scrollHeight-window.innerHeight;
-    document.getElementById('topProgress').style.width = (total>0 ? window.scrollY/total*100 : 0)+'%';
   }
-  // Prime the initial frame; progressively fetch compressed files into browser cache.
-  // Fetching rather than decoding all 222 keeps phone scrolling lighter on mobile.
-  requestFrame(START);
-  let next = START+1;
-  async function prefetchWorker() {
-    while (next < COUNT && !reduced) {
-      const i = next++;
-      try {
-        const res = await fetch(filePath(i), { cache:'force-cache' });
-        if (res.ok) await res.blob();
-      } catch (_) { /* The visible poster and on-demand frame loading still work. */ }
-      await new Promise(resolve => setTimeout(resolve, 50));
+  addEventListener('scroll',update,{passive:true});
+  addEventListener('resize',()=>{drawn=-1;update();},{passive:true});
+
+  function openWebsite(){
+    if(opened)return;
+    opened=true;loader.classList.add('is-done');document.body.classList.remove('loading');
+    setTimeout(()=>{loader.hidden=true;},750);
+    request(FIRST);update();
+  }
+  skip.addEventListener('click',openWebsite);
+  // If slow/blocked, site remains accessible rather than loading forever.
+  setTimeout(()=>{if(!opened){skip.style.display='inline-block';}},5000);
+  setTimeout(openWebsite,18000);
+
+  // Preload 222 frames with bounded concurrency. Cached bytes are reused
+  // by <img> while scrolling; high-resolution frames are decoded on demand.
+  let next=0,complete=0,success=0;
+  const countToPrefetch=reduced?30:TOTAL;
+  async function worker(){
+    while(next<countToPrefetch){
+      const i=next++;
+      try{
+        const response=await fetch(frameURL(i),{cache:'force-cache'});
+        if(response.ok){await response.blob();success++;}
+      }catch(err){/* Missing frames cannot prevent the site opening. */}
+      complete++;
+      const percent=Math.floor(complete/countToPrefetch*100);
+      bar.style.width=percent+'%';pct.textContent=percent+'%';
     }
   }
-  if (!reduced) setTimeout(() => {
-    for (let worker=0; worker<4; worker++) prefetchWorker();
-  }, 450);
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',()=>{lastDrawn=-1;onScroll()},{passive:true});
-  onScroll();
+  Promise.all(Array.from({length:mobile?5:8},()=>worker())).then(()=>{
+    // Give the first phone image a chance to decode before revealing.
+    if(success>0) request(FIRST);
+    openWebsite();
+  });
 })();
 </script>
 </body>
