@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070b17" />
+
+  <meta
+    name="description"
+    content="Serveneeti — smarter systems for ambitious businesses. Our new digital experience is coming soon."
+  />
+
+  <title>Serveneeti — Coming Soon</title>
+
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070b17;
+      --text: #f6f8ff;
+      --muted: #9ca9c1;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #8b85ff;
+      --cyan: #57e4dc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse 50% 48% at 72% 38%,
+          rgba(74, 68, 178, 0.25),
+          transparent 78%
+        ),
+        radial-gradient(
+          ellipse 45% 44% at 18% 80%,
+          rgba(31, 135, 154, 0.14),
+          transparent 80%
+        );
+      z-index: -2;
+    }
+
+    /* Background grid */
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.026) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.026) 1px,
+          transparent 1px
+        );
+
+      background-size: 64px 64px;
+
+      mask-image:
+        linear-gradient(to bottom, black, transparent 96%);
+    }
+
+    .shell {
+      max-width: 1240px;
+      margin: auto;
+      padding: 0 48px;
+      min-height: 100svh;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+
+    header {
+      height: 106px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    /* Logo image */
+
+    .brand-logo {
+      height: 48px;
+      width: auto;
+      max-width: 230px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-tag {
+      font-size: 12px;
+      color: #c0c9dc;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .pulse {
+      height: 7px;
+      width: 7px;
+      border-radius: 50%;
+      background: #69eacb;
+      box-shadow: 0 0 0 5px rgba(105, 234, 203, 0.1);
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    /* Main */
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 34px;
+      padding: 80px 0 95px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #c6caff;
+      letter-spacing: 0.17em;
+      font-size: 11px;
+      font-weight: 750;
+      text-transform: uppercase;
+      margin: 0 0 25px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 23px;
+      height: 1px;
+      background: #a7a4ff;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      line-height: 1.055;
+      font-size: clamp(64px, 7.6vw, 110px);
+      font-weight: 770;
+      letter-spacing: -0.078em;
+    }
+
+    h1 span {
+      display: block;
+      background:
+        linear-gradient(
+          110deg,
+          #f8f9ff 7%,
+          #a8a4ff 50%,
+          #69e9e2 99%
+        );
+
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .sub {
+      max-width: 540px;
+      color: var(--muted);
+      line-height: 1.78;
+      font-size: clamp(16px, 1.4vw, 19px);
+      margin: 28px 0 0;
+    }
+
+    /* Services */
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 31px;
+    }
+
+    .services span {
+      font-size: 12px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: #cbd3e5;
+      background: rgba(255, 255, 255, 0.025);
+      transition: 0.3s ease;
+    }
+
+    .services span:hover {
+      border-color: rgba(139, 133, 255, 0.5);
+      background: rgba(139, 133, 255, 0.08);
+      transform: translateY(-3px);
+    }
+
+    /* Status */
+
+    .status {
+      margin-top: 46px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-size: 13px;
+      color: #aebbd1;
+    }
+
+    .status-icon {
+      height: 32px;
+      width: 32px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(111, 231, 217, 0.34);
+      color: var(--cyan);
+      font-size: 15px;
+    }
+
+    /* Right side animation */
+
+    .art {
+      position: relative;
+      height: min(520px, 50vw);
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .glow {
+      position: absolute;
+      width: 80%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(99, 91, 239, 0.24),
+          rgba(53, 176, 199, 0.08) 48%,
+          transparent 68%
+        );
+
+      filter: blur(13px);
+      animation: breathe 7s ease-in-out infinite;
+    }
+
+    /* Orbit rings */
+
+    .orbit {
+      position: absolute;
+      border: 1px solid rgba(166, 176, 255, 0.15);
+      border-radius: 50%;
+      width: 89%;
+      aspect-ratio: 1;
+      transform: rotate(-27deg) scaleY(0.62);
+    }
+
+    .orbit.two {
+      width: 108%;
+      transform: rotate(35deg) scaleY(0.63);
+      border-color: rgba(104, 225, 223, 0.12);
+    }
+
+    .orbit::after {
+      content: "";
+      position: absolute;
+      left: 11%;
+      top: 13%;
+      width: 8px;
+      height: 8px;
+      background: #74ebe6;
+      border-radius: 50%;
+      box-shadow: 0 0 24px #73eae1;
+    }
+
+    .orbit.two::after {
+      background: #b1a8ff;
+      box-shadow: 0 0 22px #a5a1ff;
+      left: auto;
+      right: 16%;
+      top: 15%;
+    }
+
+    /* Animated 3D-style core */
+
+    .core {
+      width: 64%;
+      max-width: 330px;
+      aspect-ratio: 1;
+      border-radius: 30%;
+
+      position: relative;
+      display: grid;
+      place-items: center;
+
+      transform: rotate(-17deg);
+
+      background:
+        linear-gradient(
+          142deg,
+          rgba(157, 149, 255, 0.24),
+          rgba(95, 91, 221, 0.1) 51%,
+          rgba(53, 209, 215, 0.2)
+        );
+
+      border: 1px solid rgba(190, 197, 255, 0.38);
+
+      box-shadow:
+        inset 0 1px 45px rgba(177, 177, 255, 0.13),
+        0 35px 120px rgba(31, 29, 91, 0.48);
+
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .core::before {
+      content: "";
+      position: absolute;
+      inset: 17px;
+      border-radius: 27%;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .core-letter {
+      font-size: clamp(130px, 18vw, 235px);
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: -0.13em;
+      padding-right: 0.16em;
+
+      transform: rotate(17deg);
+
+      background:
+        linear-gradient(
+          160deg,
+          #ffffff,
+          #b0aaff 53%,
+          #6ff1ed
+        );
+
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+
+      text-shadow:
+        0 10px 55px rgba(147, 151, 255, 0.15);
+    }
+
+    /* Floating cards */
+
+    .small-card {
+      position: absolute;
+      border: 1px solid rgba(215, 220, 255, 0.17);
+
+      background: rgba(19, 25, 48, 0.76);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      border-radius: 15px;
+      padding: 14px 17px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #d8e4f4;
+      font-size: 12px;
+
+      box-shadow:
+        0 10px 38px rgba(0, 0, 0, 0.18);
+    }
+
+    .small-card b {
+      display: block;
+      color: white;
+      margin-bottom: 3px;
+      font-size: 12px;
+    }
+
+    .small-card em {
+      font-style: normal;
+      color: #a9b8ce;
+      font-size: 11px;
+    }
+
+    .card-top {
+      top: 12%;
+      right: -1%;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    .card-bottom {
+      bottom: 12%;
+      left: 0;
+      animation: cardFloat 7s ease-in-out infinite reverse;
+    }
+
+    .card-icon {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+
+      background: rgba(106, 227, 215, 0.12);
+      color: #75ebe0;
+
+      border-radius: 9px;
+      font-size: 17px;
+    }
+
+    /* Footer */
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      min-height: 80px;
+      border-top: 1px solid var(--line);
+
+      color: #7f8ca5;
+      font-size: 12px;
+    }
+
+    footer .foot-right {
+      color: #9dabbe;
+    }
+
+    /* Animations */
+
+    @keyframes float {
+      0%, 100% {
+        translate: 0 0;
+      }
+
+      50% {
+        translate: 0 -14px;
+      }
+    }
+
+    @keyframes breathe {
+      0%, 100% {
+        scale: 1;
+        opacity: 0.75;
+      }
+
+      50% {
+        scale: 1.14;
+        opacity: 1;
+      }
+    }
+
+    @keyframes cardFloat {
+      0%, 100% {
+        translate: 0 0;
+      }
+
+      50% {
+        translate: 0 -9px;
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 5px rgba(105, 234, 203, 0.1);
+      }
+
+      50% {
+        box-shadow: 0 0 0 9px rgba(105, 234, 203, 0.03);
+      }
+    }
+
+    /* Tablet */
+
+    @media (max-width: 850px) {
+      .shell {
+        padding: 0 24px;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+        padding: 70px 0 42px;
+        gap: 24px;
+      }
+
+      .art {
+        height: 410px;
+        min-height: 0;
+        max-width: 530px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .card-top {
+        right: 4%;
+      }
+
+      .card-bottom {
+        left: 4%;
+      }
+
+      h1 {
+        font-size: clamp(62px, 11vw, 88px);
+      }
+
+      .sub {
+        max-width: 650px;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 480px) {
+      .shell {
+        padding: 0 20px;
+      }
+
+      header {
+        height: 83px;
+      }
+
+      .brand-logo {
+        height: 36px;
+        max-width: 155px;
+      }
+
+      .header-tag {
+        font-size: 9px;
+        letter-spacing: 0.08em;
+      }
+
+      main {
+        padding: 60px 0 25px;
+      }
+
+      h1 {
+        font-size: clamp(58px, 14vw, 75px);
+      }
+
+      .sub {
+        font-size: 16px;
+      }
+
+      .art {
+        height: 310px;
+      }
+
+      .core {
+        width: 61%;
+      }
+
+      .core-letter {
+        font-size: 125px;
+      }
+
+      .small-card {
+        padding: 9px 10px;
+        font-size: 10px;
+      }
+
+      .small-card b {
+        font-size: 10px;
+      }
+
+      .small-card em {
+        font-size: 9px;
+      }
+
+      .card-icon {
+        width: 27px;
+        height: 27px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 7px;
+        padding: 18px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Grid -->
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="shell">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Logo from logo.png -->
+      <a
+        class="brand"
+        href="./"
+        aria-label="Serveneeti Home"
+      >
+        <img
+          src="logo.png"
+          alt="Serveneeti"
+          class="brand-logo"
+        />
+      </a>
+
+      <div class="header-tag">
+        <span class="pulse" aria-hidden="true"></span>
+        In Development
+      </div>
+
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+      <!-- Left Content -->
+      <section aria-labelledby="headline">
+
+        <p class="eyebrow">
+          Something new is on the way
+        </p>
+
+        <h1 id="headline">
+          Coming
+          <span>soon.</span>
+        </h1>
+
+        <p class="sub">
+          Smarter tools. Simpler workflows. Stronger businesses.
+          We're building a connected digital experience to help
+          teams work better, move faster, and grow further.
+        </p>
+
+        <!-- Services -->
+        <div class="services" aria-label="Our Focus Areas">
+
+          <span>Business Software</span>
+
+          <span>Automation</span>
+
+          <span>Digital Solutions</span>
+
+          <span>AI-Powered Tools</span>
+
+        </div>
+
+        <!-- Status -->
+        <div class="status">
+
+          <span class="status-icon" aria-hidden="true">
+            ↗
+          </span>
+
+          Our new website is taking shape. Stay tuned.
+
+        </div>
+
+      </section>
+
+      <!-- Right Animation -->
+      <div class="art" aria-hidden="true">
+
+        <div class="glow"></div>
+
+        <div class="orbit"></div>
+
+        <div class="orbit two"></div>
+
+        <!-- Animated S -->
+        <div class="core">
+
+          <div class="core-letter">
+            S
+          </div>
+
+        </div>
+
+        <!-- Top Floating Card -->
+        <div class="small-card card-top">
+
+          <span class="card-icon">
+            ✦
+          </span>
+
+          <div>
+            <b>Built for what's next</b>
+            <em>Modern digital experiences</em>
+          </div>
+
+        </div>
+
+        <!-- Bottom Floating Card -->
+        <div class="small-card card-bottom">
+
+          <span class="card-icon">
+            ⌁
+          </span>
+
+          <div>
+            <b>Work smarter</b>
+            <em>Connected business tools</em>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+
+      <span>
+        © <span id="year">2026</span>
+        Serveneeti. All rights reserved.
+      </span>
+
+      <span class="foot-right">
+        Creating what's next.
+      </span>
+
+    </footer>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
