@@ -1,789 +1,777 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#070b17" />
-
-  <meta
-    name="description"
-    content="Serveneeti — smarter systems for ambitious businesses. Our new digital experience is coming soon."
-  />
-
-  <title>Serveneeti — Coming Soon</title>
-
-  <link rel="icon" type="image/png" href="logo.png" />
-
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #070b17;
-      --text: #f6f8ff;
-      --muted: #9ca9c1;
-      --line: rgba(255, 255, 255, 0.12);
-      --accent: #8b85ff;
-      --cyan: #57e4dc;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100svh;
-      background: var(--bg);
-      color: var(--text);
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(
-          ellipse 50% 48% at 72% 38%,
-          rgba(74, 68, 178, 0.25),
-          transparent 78%
-        ),
-        radial-gradient(
-          ellipse 45% 44% at 18% 80%,
-          rgba(31, 135, 154, 0.14),
-          transparent 80%
-        );
-      z-index: -2;
-    }
-
-    /* Background grid */
-
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-
-      background-image:
-        linear-gradient(
-          rgba(255, 255, 255, 0.026) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.026) 1px,
-          transparent 1px
-        );
-
-      background-size: 64px 64px;
-
-      mask-image:
-        linear-gradient(to bottom, black, transparent 96%);
-    }
-
-    .shell {
-      max-width: 1240px;
-      margin: auto;
-      padding: 0 48px;
-      min-height: 100svh;
-
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Header */
-
-    header {
-      height: 106px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    /* Logo image */
-
-    .brand-logo {
-      height: 48px;
-      width: auto;
-      max-width: 230px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .header-tag {
-      font-size: 12px;
-      color: #c0c9dc;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .pulse {
-      height: 7px;
-      width: 7px;
-      border-radius: 50%;
-      background: #69eacb;
-      box-shadow: 0 0 0 5px rgba(105, 234, 203, 0.1);
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-
-    /* Main */
-
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 34px;
-      padding: 80px 0 95px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #c6caff;
-      letter-spacing: 0.17em;
-      font-size: 11px;
-      font-weight: 750;
-      text-transform: uppercase;
-      margin: 0 0 25px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 23px;
-      height: 1px;
-      background: #a7a4ff;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 720px;
-      line-height: 1.055;
-      font-size: clamp(64px, 7.6vw, 110px);
-      font-weight: 770;
-      letter-spacing: -0.078em;
-    }
-
-    h1 span {
-      display: block;
-      background:
-        linear-gradient(
-          110deg,
-          #f8f9ff 7%,
-          #a8a4ff 50%,
-          #69e9e2 99%
-        );
-
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .sub {
-      max-width: 540px;
-      color: var(--muted);
-      line-height: 1.78;
-      font-size: clamp(16px, 1.4vw, 19px);
-      margin: 28px 0 0;
-    }
-
-    /* Services */
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 31px;
-    }
-
-    .services span {
-      font-size: 12px;
-      padding: 10px 13px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: #cbd3e5;
-      background: rgba(255, 255, 255, 0.025);
-      transition: 0.3s ease;
-    }
-
-    .services span:hover {
-      border-color: rgba(139, 133, 255, 0.5);
-      background: rgba(139, 133, 255, 0.08);
-      transform: translateY(-3px);
-    }
-
-    /* Status */
-
-    .status {
-      margin-top: 46px;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      font-size: 13px;
-      color: #aebbd1;
-    }
-
-    .status-icon {
-      height: 32px;
-      width: 32px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 1px solid rgba(111, 231, 217, 0.34);
-      color: var(--cyan);
-      font-size: 15px;
-    }
-
-    /* Right side animation */
-
-    .art {
-      position: relative;
-      height: min(520px, 50vw);
-      min-height: 390px;
-      display: grid;
-      place-items: center;
-      isolation: isolate;
-    }
-
-    .glow {
-      position: absolute;
-      width: 80%;
-      aspect-ratio: 1;
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(99, 91, 239, 0.24),
-          rgba(53, 176, 199, 0.08) 48%,
-          transparent 68%
-        );
-
-      filter: blur(13px);
-      animation: breathe 7s ease-in-out infinite;
-    }
-
-    /* Orbit rings */
-
-    .orbit {
-      position: absolute;
-      border: 1px solid rgba(166, 176, 255, 0.15);
-      border-radius: 50%;
-      width: 89%;
-      aspect-ratio: 1;
-      transform: rotate(-27deg) scaleY(0.62);
-    }
-
-    .orbit.two {
-      width: 108%;
-      transform: rotate(35deg) scaleY(0.63);
-      border-color: rgba(104, 225, 223, 0.12);
-    }
-
-    .orbit::after {
-      content: "";
-      position: absolute;
-      left: 11%;
-      top: 13%;
-      width: 8px;
-      height: 8px;
-      background: #74ebe6;
-      border-radius: 50%;
-      box-shadow: 0 0 24px #73eae1;
-    }
-
-    .orbit.two::after {
-      background: #b1a8ff;
-      box-shadow: 0 0 22px #a5a1ff;
-      left: auto;
-      right: 16%;
-      top: 15%;
-    }
-
-    /* Animated 3D-style core */
-
-    .core {
-      width: 64%;
-      max-width: 330px;
-      aspect-ratio: 1;
-      border-radius: 30%;
-
-      position: relative;
-      display: grid;
-      place-items: center;
-
-      transform: rotate(-17deg);
-
-      background:
-        linear-gradient(
-          142deg,
-          rgba(157, 149, 255, 0.24),
-          rgba(95, 91, 221, 0.1) 51%,
-          rgba(53, 209, 215, 0.2)
-        );
-
-      border: 1px solid rgba(190, 197, 255, 0.38);
-
-      box-shadow:
-        inset 0 1px 45px rgba(177, 177, 255, 0.13),
-        0 35px 120px rgba(31, 29, 91, 0.48);
-
-      animation: float 7s ease-in-out infinite;
-    }
-
-    .core::before {
-      content: "";
-      position: absolute;
-      inset: 17px;
-      border-radius: 27%;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-    }
-
-    .core-letter {
-      font-size: clamp(130px, 18vw, 235px);
-      line-height: 1;
-      font-weight: 850;
-      letter-spacing: -0.13em;
-      padding-right: 0.16em;
-
-      transform: rotate(17deg);
-
-      background:
-        linear-gradient(
-          160deg,
-          #ffffff,
-          #b0aaff 53%,
-          #6ff1ed
-        );
-
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-
-      text-shadow:
-        0 10px 55px rgba(147, 151, 255, 0.15);
-    }
-
-    /* Floating cards */
-
-    .small-card {
-      position: absolute;
-      border: 1px solid rgba(215, 220, 255, 0.17);
-
-      background: rgba(19, 25, 48, 0.76);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-
-      border-radius: 15px;
-      padding: 14px 17px;
-
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      color: #d8e4f4;
-      font-size: 12px;
-
-      box-shadow:
-        0 10px 38px rgba(0, 0, 0, 0.18);
-    }
-
-    .small-card b {
-      display: block;
-      color: white;
-      margin-bottom: 3px;
-      font-size: 12px;
-    }
-
-    .small-card em {
-      font-style: normal;
-      color: #a9b8ce;
-      font-size: 11px;
-    }
-
-    .card-top {
-      top: 12%;
-      right: -1%;
-      animation: cardFloat 6s ease-in-out infinite;
-    }
-
-    .card-bottom {
-      bottom: 12%;
-      left: 0;
-      animation: cardFloat 7s ease-in-out infinite reverse;
-    }
-
-    .card-icon {
-      width: 31px;
-      height: 31px;
-      display: grid;
-      place-items: center;
-
-      background: rgba(106, 227, 215, 0.12);
-      color: #75ebe0;
-
-      border-radius: 9px;
-      font-size: 17px;
-    }
-
-    /* Footer */
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-
-      min-height: 80px;
-      border-top: 1px solid var(--line);
-
-      color: #7f8ca5;
-      font-size: 12px;
-    }
-
-    footer .foot-right {
-      color: #9dabbe;
-    }
-
-    /* Animations */
-
-    @keyframes float {
-      0%, 100% {
-        translate: 0 0;
-      }
-
-      50% {
-        translate: 0 -14px;
-      }
-    }
-
-    @keyframes breathe {
-      0%, 100% {
-        scale: 1;
-        opacity: 0.75;
-      }
-
-      50% {
-        scale: 1.14;
-        opacity: 1;
-      }
-    }
-
-    @keyframes cardFloat {
-      0%, 100% {
-        translate: 0 0;
-      }
-
-      50% {
-        translate: 0 -9px;
-      }
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% {
-        box-shadow: 0 0 0 5px rgba(105, 234, 203, 0.1);
-      }
-
-      50% {
-        box-shadow: 0 0 0 9px rgba(105, 234, 203, 0.03);
-      }
-    }
-
-    /* Tablet */
-
-    @media (max-width: 850px) {
-      .shell {
-        padding: 0 24px;
-      }
-
-      main {
-        grid-template-columns: 1fr;
-        padding: 70px 0 42px;
-        gap: 24px;
-      }
-
-      .art {
-        height: 410px;
-        min-height: 0;
-        max-width: 530px;
-        width: 100%;
-        margin: auto;
-      }
-
-      .card-top {
-        right: 4%;
-      }
-
-      .card-bottom {
-        left: 4%;
-      }
-
-      h1 {
-        font-size: clamp(62px, 11vw, 88px);
-      }
-
-      .sub {
-        max-width: 650px;
-      }
-    }
-
-    /* Mobile */
-
-    @media (max-width: 480px) {
-      .shell {
-        padding: 0 20px;
-      }
-
-      header {
-        height: 83px;
-      }
-
-      .brand-logo {
-        height: 36px;
-        max-width: 155px;
-      }
-
-      .header-tag {
-        font-size: 9px;
-        letter-spacing: 0.08em;
-      }
-
-      main {
-        padding: 60px 0 25px;
-      }
-
-      h1 {
-        font-size: clamp(58px, 14vw, 75px);
-      }
-
-      .sub {
-        font-size: 16px;
-      }
-
-      .art {
-        height: 310px;
-      }
-
-      .core {
-        width: 61%;
-      }
-
-      .core-letter {
-        font-size: 125px;
-      }
-
-      .small-card {
-        padding: 9px 10px;
-        font-size: 10px;
-      }
-
-      .small-card b {
-        font-size: 10px;
-      }
-
-      .small-card em {
-        font-size: 9px;
-      }
-
-      .card-icon {
-        width: 27px;
-        height: 27px;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 7px;
-        padding: 18px 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="OptionNeeti: research-led intraday and BTST index options advisory for Nifty, Bank Nifty and Sensex, with risk levels and premium research alerts.">
+<title>OptionNeeti | Sarvneeti Index Options Research</title>
+<link rel="icon" href="logo.png" type="image/png">
+
+<style>
+:root{--ink:#102c39;--navy:#0b3443;--teal:#187f9b;--aqua:#28a6b6;--soft:#e8f7f7;--paper:#fff;--peach:#ffd7c6;--coral:#f96850;--muted:#58717c;--line:#d9e8e9;--max:1320px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:125px}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff;color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}body.loading{overflow:hidden}a{text-decoration:none;color:inherit}button{font:inherit}button,a,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #008c9b;outline-offset:4px}.container{width:min(var(--max),calc(100% - 80px));margin-inline:auto}.muted{color:var(--muted)}
+/* Candle preloader — a short transition while the DOM/logo initializes */
+.loader{position:fixed;inset:0;z-index:999;background:linear-gradient(145deg,#f8ffff,#e5f4f5);display:grid;place-items:center;padding:22px;transition:opacity .7s ease,visibility .7s ease}.loader.is-done{opacity:0;visibility:hidden;pointer-events:none}.loader-content{text-align:center;max-width:400px;width:100%}.loader-title{font-size:clamp(24px,4vw,40px);letter-spacing:-.06em;margin:24px 0 8px}.loader-sub{color:#6c8991;font-size:13px;line-height:1.7}.candle-loading{display:flex;align-items:center;justify-content:center;gap:16px;height:112px}.candle-loading i{display:block;position:relative;width:17px;height:42px;border-radius:3px;background:#23a9ae;transform-origin:center;animation:candleBounce 1.15s ease-in-out infinite alternate}.candle-loading i::before{content:"";position:absolute;top:-14px;bottom:-14px;left:7px;width:2px;background:currentColor;color:#167c91;z-index:-1}.candle-loading i:nth-child(2){height:62px;background:#f28a75;animation-delay:.18s}.candle-loading i:nth-child(3){height:35px;animation-delay:.36s}.candle-loading i:nth-child(4){height:76px;background:#f28a75;animation-delay:.54s}.candle-loading i:nth-child(5){height:52px;animation-delay:.72s}.loading-track{height:5px;background:#cce3e5;border-radius:20px;overflow:hidden;margin:22px auto 8px;max-width:270px}.loading-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,#1988a7,#68c9c3);transition:width .25s}.loading-count{font-size:11px;letter-spacing:.12em;font-weight:800;color:#56848d}.skip-load{border:0;background:none;color:#447d88;margin-top:16px;font-size:12px;text-decoration:underline;cursor:pointer;display:none}
+@keyframes candleBounce{to{transform:translateY(-12px) scaleY(.82)}}
+/* Floating rounded header */
+.site-header{position:fixed;z-index:100;top:18px;left:50%;transform:translateX(-50%);width:min(1460px,calc(100% - 52px));min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:13px 19px 13px 28px;background:rgba(255,255,255,.94);backdrop-filter:blur(19px);border:1px solid rgba(16,82,98,.14);border-radius:28px;box-shadow:0 14px 55px rgba(10,67,77,.12)}.brand{display:inline-flex;align-items:center;flex-shrink:0;background:#167e96;border-radius:16px;padding:9px 15px;min-height:58px}.brand img{display:block;max-height:58px;max-width:215px;width:auto;height:auto;object-fit:contain}.nav-links{display:flex;align-items:center;gap:clamp(16px,2.55vw,36px)}.nav-links a{font-size:13px;font-weight:750;color:#254956;transition:color .2s}.nav-links a:hover{color:var(--teal)}.header-cta,.btn-coral{display:inline-flex;justify-content:center;align-items:center;gap:18px;background:var(--coral);color:white;padding:0 24px;border-radius:13px;min-height:54px;font-size:12px;font-weight:850;letter-spacing:.025em;white-space:nowrap;transition:transform .25s,box-shadow .25s,background .25s}.header-cta:hover,.btn-coral:hover{transform:translateY(-3px);box-shadow:0 13px 27px #ed7a6352;background:#ed5943;color:white}.btn-coral b,.header-cta b{font-size:21px;line-height:1}.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:11px;color:var(--navy);background:#f3fbfb;font-size:22px;cursor:pointer}
+/* HERO: white background, larger phone without a card */
+.hero-scroll{height:290svh;position:relative;background:#fff}.hero-pin{position:sticky;top:0;height:100svh;min-height:610px;display:flex;align-items:center;padding:125px 0 24px;overflow:hidden}.hero-grid{height:100%;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(35px,5vw,88px);align-items:center}.hero-phone{position:relative;min-width:0;height:min(76svh,770px);display:grid;place-items:center;overflow:visible}.hero-phone img,.hero-phone canvas{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.hero-phone canvas{opacity:0;transition:opacity .18s ease}.phone-footnote{position:absolute;bottom:5px;left:0;right:0;z-index:3;text-align:center;letter-spacing:.13em;font-size:9px;font-weight:800;color:#71939d}.hero-copy{position:relative;z-index:2}.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}.eyebrow::before{content:"";display:block;width:25px;height:2px;background:var(--aqua)}.hero-copy h1{font-size:clamp(50px,5.6vw,90px);line-height:1.055;letter-spacing:-.075em;font-weight:800;margin:21px 0 23px}.hero-copy h1 span{color:#1998a8}.hero-copy p{color:#5e7a84;line-height:1.8;font-size:clamp(15px,1.24vw,18px);max-width:615px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 28px}.pills span{border:1px solid #cce5e8;padding:9px 13px;border-radius:30px;font-size:11px;font-weight:750;color:#356879;background:#f9ffff}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 23px;border-radius:13px;border:1px solid #afcbd0;background:white;color:#234d58;font-size:12px;font-weight:850;transition:background .2s,transform .2s}.btn-ghost:hover{background:#ecf9f9;transform:translateY(-3px)}.hero-reg{border-top:1px solid #d7e7e9;display:flex;align-items:flex-start;gap:10px;margin-top:29px;padding-top:19px;font-size:11px;line-height:1.65;color:#6a818c}.hero-reg strong{font-size:17px;color:var(--teal)}.hero-reg b{color:#31525d}.hero-scroll-cue{position:absolute;bottom:21px;right:35px;letter-spacing:.14em;font-weight:800;color:#6d969b;font-size:10px;display:flex;align-items:center;gap:11px}.hero-scroll-cue::after{content:"";height:30px;width:2px;background:#42a8b2}
+/* Color band */
+.ticker{background:linear-gradient(98deg,#1689a6,#79c2c0,#b5d1c7);color:white;overflow:hidden}.ticker-track{display:flex;width:max-content;animation:marquee 33s linear infinite}.ticker-set{display:flex;gap:34px;padding:22px 17px;align-items:center;white-space:nowrap;font-size:12px;letter-spacing:.12em;font-weight:850}.ticker-set i{font-style:normal;font-size:21px;color:#fbe0c9}@keyframes marquee{to{transform:translateX(-50%)}}
+/* Sections */
+.section{padding:115px 0}.section-heading{margin-bottom:43px;display:flex;justify-content:space-between;align-items:end;gap:28px}.section-heading h2,.big-title{font-size:clamp(37px,4.9vw,67px);letter-spacing:-.068em;line-height:1.1;margin:16px 0 0}.section-heading p{max-width:390px;color:var(--muted);line-height:1.85;font-size:14px;margin:0 0 4px}.ink-accent{color:var(--teal)}
+/* Interactive service cards */
+.services-section{background:#e7f4f5;border-radius:52px 52px 0 0}.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.service-card{position:relative;overflow:hidden;min-height:307px;border-radius:22px 22px 57px 22px;padding:30px;background:white;border:1px solid #d8e9eb;color:#173b4b;opacity:0;transform:translateY(65px) rotate(3deg);transition:transform .8s cubic-bezier(.16,1,.3,1),opacity .8s,border-radius .3s,box-shadow .3s}.service-card:nth-child(2n){background:#d4eff0;transform:translateY(65px) rotate(-3deg)}.service-card:nth-child(3n){background:#ffeadc}.service-card.is-visible{opacity:1;transform:translateY(0) rotate(0)}.service-card:hover{box-shadow:0 20px 45px #276b7220;border-radius:22px 57px 22px 22px;transform:translateY(-8px)}.service-icon{display:grid;place-items:center;border:1px solid #a6c8c9;border-radius:50%;width:55px;height:55px;font-size:24px;color:var(--teal)}.service-no{position:absolute;right:29px;top:31px;color:#708d92;font-weight:850;font-size:11px}.service-card h3{font-size:clamp(22px,2.1vw,30px);line-height:1.12;letter-spacing:-.05em;margin:45px 0 13px}.service-card p{color:#607b82;font-size:13px;line-height:1.8;margin:0;max-width:330px}.card-arrow{position:absolute;right:28px;bottom:25px;font-size:23px;color:var(--teal)}
+/* Process - vibrant gradient */
+.process-section{background:linear-gradient(124deg,#137e9c 4%,#68b6bd 55%,#c1d1c5 110%);color:#fff;border-radius:52px;position:relative;overflow:hidden}.process-section::after{content:"";position:absolute;border-radius:50%;width:490px;height:490px;border:1px solid #ffffff45;box-shadow:0 0 0 70px #ffffff10,0 0 0 140px #ffffff08;right:-150px;top:-200px;pointer-events:none}.process-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;z-index:1}.process-copy h2{font-size:clamp(39px,4.9vw,68px);line-height:1.07;letter-spacing:-.06em;margin:15px 0}.process-copy p{color:#f0ffff;line-height:1.9;font-size:15px;max-width:540px}.process-copy .eyebrow{color:#fff}.process-copy .eyebrow::before{background:white}.step-list{display:grid;gap:11px}.step{border:1px solid #ffffff65;background:#ffffffdd;display:flex;gap:21px;padding:24px;border-radius:17px;color:#204353;opacity:0;transform:translateX(65px);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}.step.is-visible{opacity:1;transform:none}.step-number{font-size:16px;font-weight:900;color:var(--teal)}.step b{font-size:15px}.step p{font-size:12px;color:#647e87;margin:7px 0 0;line-height:1.7}
+/* Plan cards, with cascading motion */
+.pricing-section{background:#fff}.plans-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}.plan{border:1px solid #d4e4e6;border-radius:27px;background:#f7fbfb;display:flex;flex-direction:column;padding:33px 27px;min-width:0;position:relative;opacity:0;transform:translateY(95px) scale(.96);transition:opacity .75s,transform .8s cubic-bezier(.16,1,.3,1),box-shadow .25s}.plan:nth-child(2){background:#d6eef0;border:1px solid #8bc9d0}.plan:nth-child(3){background:#fff1e9}.plan.is-visible{opacity:1;transform:none}.plan:hover{box-shadow:0 26px 60px #21778b1c;transform:translateY(-8px)}.plan-badge{position:absolute;top:-14px;left:24px;background:var(--teal);color:#fff;padding:8px 13px;border-radius:9px;font-size:10px;font-weight:850;letter-spacing:.09em}.plan .tier{letter-spacing:.14em;font-size:10px;color:#6c8993;font-weight:900}.plan h3{font-size:41px;margin:14px 0 7px;letter-spacing:-.07em}.plan h3 em{font-style:normal;color:var(--teal)}.plan .for{font-size:13px;font-weight:800;color:#315463;margin:0 0 12px}.plan .desc{font-size:13px;line-height:1.75;color:#5c7882;min-height:72px}.plan ul{margin:18px 0 25px;padding:22px 0 0;list-style:none;display:grid;gap:13px;border-top:1px solid #bdd6d8;flex:1}.plan li{font-size:12px;line-height:1.65;color:#405f6a;display:flex;gap:10px}.plan li::before{content:"✓";color:#008ca0;font-weight:900}.plan-risk{padding:19px 0;border-top:1px solid #bdd6d8;display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#68818b}.plan-risk b{color:#9b5f30}.plan .btn-coral,.plan .btn-ghost{width:100%}.plan-note{margin-top:23px;color:#69818a;font-size:12px;line-height:1.8}
+/* Risk/benefit */
+.benefits-section{background:#f1f8f7}.benefits-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:start}.benefits-copy p{font-size:15px;line-height:1.9;color:#62808b;max-width:550px}.benefit-list{display:grid;gap:12px}.benefit{display:flex;gap:20px;padding:25px;border-radius:19px;background:#fff;border:1px solid #d8e9e8;opacity:0;transform:translateY(35px);transition:opacity .7s,transform .7s}.benefit.is-visible{opacity:1;transform:none}.benefit>span{color:var(--teal);font-size:17px;font-weight:900}.benefit h3{margin:0 0 7px;font-size:17px}.benefit p{margin:0;font-size:13px;color:#718893;line-height:1.75}
+/* FAQ */
+.faq-section{background:#fff}.faq-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:75px}.faq-list{display:grid;gap:12px}.faq-list details{background:#f6fbfb;border-radius:14px;border:1px solid #d6e7e8;padding:20px 23px}.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:15px;font-weight:800;font-size:14px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary::after{content:"+";font-weight:400;font-size:21px;color:var(--teal)}.faq-list details[open] summary::after{content:"−"}.faq-list details p{color:#66818d;font-size:13px;line-height:1.8;margin:13px 0 0}
+/* CTA and footer */
+.closing{background:linear-gradient(108deg,#188eaa,#77c3c1,#b7d5c8);padding:67px;border-radius:32px;display:flex;align-items:center;justify-content:space-between;gap:35px;color:white;transform:translateY(35px);opacity:0;transition:opacity .7s,transform .7s}.closing.is-visible{opacity:1;transform:none}.closing h2{font-size:clamp(31px,4.4vw,55px);letter-spacing:-.06em;line-height:1.1;margin:0 0 14px}.closing p{margin:0;max-width:570px;color:#f2ffff;font-size:14px;line-height:1.8}.closing .btn-coral{flex-shrink:0}.footer{margin-top:100px;background:#e8f4f5;border-top:1px solid #cfdee1;color:#254653;padding-top:60px}.footer-main{display:grid;grid-template-columns:1.55fr .75fr 1.05fr 1.4fr;gap:34px;padding-bottom:45px}.footer-logo{display:block;max-height:45px;max-width:170px;object-fit:contain;width:auto;height:auto}.footer-logo-wrap{display:inline-flex;align-items:center;padding:11px 16px;border-radius:14px;background:#167e96;margin-bottom:15px}.footer-name{font-size:20px;font-weight:850;letter-spacing:-.04em}.footer h3{font-size:13px;margin:4px 0 17px}.footer p,.footer li{font-size:12px;color:#597480;line-height:1.85}.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}.footer a:hover{color:var(--teal)}.footer-legal{padding:28px 0;border-top:1px solid #cbdddf;display:grid;gap:11px}.footer-legal p{margin:0}.footer-legal strong{color:#234b5b}.registration{padding:27px 0;display:grid;grid-template-columns:1fr 1fr;gap:35px;border-top:1px solid #cbdddf}.registration p{margin:5px 0}.footer-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:23px 0;border-top:1px solid #cbdddf;color:#718b95;font-size:11px}
+/* Scroll reveals */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .75s ease,transform .8s cubic-bezier(.18,1,.3,1)}.reveal.is-visible{opacity:1;transform:none}
+@media(max-width:1090px){.container{width:min(var(--max),calc(100% - 56px))}.site-header{gap:12px}.brand img{max-width:155px;max-height:47px}.nav-links{gap:15px}.hero-grid{gap:32px}.hero-copy h1{font-size:clamp(44px,5.3vw,70px)}.footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}.process-grid{gap:30px}}
+@media(max-width:800px){.site-header{top:10px;min-height:69px;width:calc(100% - 26px);border-radius:19px;padding:9px 13px 9px 17px}.brand{min-height:46px;padding:7px 11px}.brand img{max-height:35px;max-width:135px}.menu-btn{display:block}.header-cta{margin-left:auto;min-height:42px;padding:0 13px;font-size:10px;gap:8px}.nav-links{position:absolute;top:76px;left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 20px 45px #1b5e7025;display:none;flex-direction:column;align-items:stretch;gap:0;padding:10px 20px}.nav-links.open{display:flex}.nav-links a{padding:13px 4px;border-bottom:1px solid #e7eeee}.nav-links a:last-child{border:0}.hero-scroll{height:235svh}.hero-pin{min-height:0;padding:87px 0 14px}.hero-grid{grid-template-columns:1fr;grid-template-rows:minmax(0,.92fr) minmax(0,1.08fr);gap:0}.hero-phone{height:100%;min-height:0;max-height:46svh}.hero-copy{align-self:center}.hero-copy h1{font-size:clamp(35px,5.9vw,53px);margin:11px 0}.hero-copy p{font-size:13px;line-height:1.55;margin:0}.pills{gap:7px;margin:13px 0}.pills span{font-size:9px;padding:6px 9px}.hero-actions .btn-coral,.hero-actions .btn-ghost{min-height:42px;padding:0 14px;font-size:10px}.hero-reg{padding-top:10px;margin-top:13px}.hero-scroll-cue{bottom:7px;right:22px}.section{padding:82px 0}.section-heading{display:block}.section-heading p{margin-top:18px;max-width:650px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.process-grid{grid-template-columns:1fr}.plans-grid{grid-template-columns:1fr;max-width:610px;margin-inline:auto}.plan .desc{min-height:0}.benefits-grid,.faq-layout{grid-template-columns:1fr;gap:35px}.closing{padding:43px;flex-wrap:wrap}.footer{margin-top:75px}}
+@media(max-width:520px){.container{width:calc(100% - 38px)}.site-header{min-height:62px}.brand{min-height:42px;padding:7px 10px}.brand img{max-height:30px;max-width:100px}.header-cta{font-size:9px;padding:0 10px;min-height:39px;gap:5px}.header-cta b{font-size:15px}.menu-btn{height:39px;width:39px}.nav-links{top:69px}.hero-scroll{height:210svh}.hero-pin{padding:77px 0 16px}.hero-grid{grid-template-rows:42% 58%}.hero-phone{height:100%;max-height:42svh}.phone-footnote{font-size:7px;bottom:0}.hero-copy .eyebrow{font-size:8px;letter-spacing:.075em}.hero-copy h1{font-size:clamp(35px,10.2vw,49px);line-height:1.03;margin:9px 0}.hero-copy p{font-size:12px;line-height:1.52}.pills{margin:9px 0;gap:5px}.pills span{font-size:8px;padding:5px 7px}.hero-actions{gap:8px}.hero-actions .btn-coral,.hero-actions .btn-ghost{font-size:9px;min-height:39px;padding:0 10px;gap:6px}.hero-reg{font-size:9px;line-height:1.35;padding-top:8px;margin-top:10px}.hero-reg strong{font-size:13px}.hero-scroll-cue{display:none}.section{padding:68px 0}.section-heading h2,.big-title{font-size:clamp(35px,9vw,47px)}.section-heading p{font-size:13px}.services-section,.process-section{border-radius:29px 29px 0 0}.service-grid{grid-template-columns:1fr}.service-card{min-height:268px}.service-card h3{margin-top:38px}.step{padding:18px}.plan{padding:26px 22px}.plan h3{font-size:35px}.benefit{padding:19px}.closing{padding:34px 24px}.closing .btn-coral{width:100%}.footer-main{grid-template-columns:1fr;gap:24px}.registration{grid-template-columns:1fr}.footer{padding-top:44px}.footer-bottom{font-size:10px}}
+@media(max-height:710px) and (max-width:800px){.hero-copy h1{font-size:clamp(31px,5vw,42px)}.hero-copy p{font-size:11px}.hero-reg{display:none}.pills span{font-size:8px}.hero-copy .eyebrow{font-size:9px}.hero-actions .btn-coral,.hero-actions .btn-ghost{min-height:35px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal,.service-card,.step,.plan,.benefit,.closing{opacity:1!important;transform:none!important}}
+
+/* Original standalone phone animation (scoped) */
+@keyframes orbFloat{ 0%,100%{transform:translate(0,0);} 50%{transform:translate(30px,24px);} }
+.phone-scene .pill{
+    position:absolute; background:#fff; border-radius:14px; box-shadow:0 12px 30px rgba(15,23,42,.12);
+    border:1px solid rgba(15,23,42,.06); padding:10px 14px; font-size:11px; z-index:5;
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+.phone-scene .pill .dot{ width:8px; height:8px; background:#4ade80; border-radius:50%; position:relative; }
+.phone-scene .pill .dot::after{ content:""; position:absolute; inset:0; border-radius:50%; background:#4ade80; animation:pulse 1.6s ease-out infinite; }
+@keyframes pulse{ 100%{ transform:scale(2.6); opacity:0; } }
+.phone-scene .pillA{ top:9%; right:calc(50% - 290px); animation:pillFloat 5.5s ease-in-out infinite; }
+.phone-scene .pillB{ bottom:14%; left:calc(50% - 300px); animation:pillFloat 6.3s ease-in-out infinite .8s; }
+.phone-scene .pillC{ top:38%; left:calc(50% - 330px); animation:pillFloat 5s ease-in-out infinite .4s; }
+@keyframes pillFloat{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-9px);} }
+@media (max-width:900px){.phone-scene .pill{display:none;}}
+.phone-scene .phone{
+    width:340px; height:700px; background:#0b0b0f; border-radius:54px; padding:11px;
+    box-shadow:0 34px 70px rgba(15,23,42,.4), inset 0 0 0 2px #2a2a31;
+    position:relative; z-index:4;
+  }
+.phone-scene .sidebtn{ position:absolute; background:#1c1c22; border-radius:3px; }
+.phone-scene .sb1{ left:-2.5px; top:130px; width:3px; height:34px; }
+.phone-scene .sb2{ left:-2.5px; top:180px; width:3px; height:60px; }
+.phone-scene .sb3{ right:-2.5px; top:165px; width:3px; height:86px; }
+.phone-scene .screen{
+    width:100%; height:100%; background:#fff; border-radius:44px; overflow:hidden; position:relative;
+  }
+.phone-scene .notch{
+    position:absolute; top:10px; left:50%; transform:translateX(-50%);
+    width:112px; height:26px; background:#000; border-radius:20px; z-index:80;
+  }
+.phone-scene .homebar{ position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:110px; height:4px; border-radius:4px; background:rgba(255,255,255,.85); z-index:80; }
+.phone-scene .homebar.dark{ background:rgba(0,0,0,.75); }
+.phone-scene .statusbar{
+    position:absolute; top:0; left:0; right:0; height:44px; z-index:70;
+    display:flex; align-items:center; justify-content:space-between; padding:0 26px;
+    font-size:13px; font-weight:600; pointer-events:none;
+  }
+.phone-scene .app-window{ position:absolute; inset:0; transform-origin:50% 50%; }
+.phone-scene .app-open{ animation:appOpen .55s cubic-bezier(.2,1.3,.4,1) forwards; }
+.phone-scene .app-close{ animation:appClose .45s cubic-bezier(.5,0,.8,.4) forwards; }
+@keyframes appOpen{ from{ transform:scale(.55); opacity:0; border-radius:60px; } to{ transform:scale(1); opacity:1; } }
+@keyframes appClose{ from{ transform:scale(1); opacity:1; } to{ transform:scale(.35); opacity:0; } }
+.phone-scene .scene{ position:absolute; inset:0; opacity:0; visibility:hidden; }
+.phone-scene .scene.active{ opacity:1; visibility:visible; }
+.phone-scene .tg{ background:#9fb8a8; display:flex; flex-direction:column; }
+.phone-scene .tg-header{ background:#f7f7f7; padding:54px 14px 10px; display:flex; align-items:center; gap:10px; border-bottom:1px solid #e2e2e2; }
+.phone-scene .tg-back{ color:#2aabee; font-size:22px; font-weight:600; line-height:1; }
+.phone-scene .tg-avatar{ width:38px; height:38px; border-radius:50%; background:#2aabee; display:flex; align-items:center; justify-content:center; }
+.phone-scene .tg-avatar svg{ width:20px; height:20px; fill:#fff; }
+.phone-scene .tg-name{ font-size:15px; font-weight:600; color:#000; }
+.phone-scene .tg-sub{ font-size:11px; color:#8a8a8e; }
+.phone-scene .tg-dots{ margin-left:auto; color:#8a8a8e; font-size:18px; letter-spacing:2px; }
+.phone-scene .tg-body{ flex:1; padding:14px 10px; position:relative; overflow:hidden; }
+.phone-scene .today-pill{ width:max-content; margin:0 auto 14px; background:rgba(0,0,0,.22); color:#fff; font-size:11px; padding:3px 12px; border-radius:12px; }
+.phone-scene .tg-feed{ position:absolute; bottom:76px; left:0; right:0; display:flex; flex-direction:column; gap:10px; padding:0 10px; }
+.phone-scene .typing{ background:#fff; border-radius:12px; border-bottom-left-radius:4px; padding:12px 14px; width:max-content;
+    display:flex; gap:5px; box-shadow:0 1px 2px rgba(0,0,0,.15); opacity:0; transform:translateY(10px);
+    transition:all .3s ease; }
+.phone-scene .typing.show{ opacity:1; transform:none; }
+.phone-scene .tdot{ width:7px; height:7px; background:#98a4ae; border-radius:50%; animation:tb 1.3s ease-in-out infinite; }
+.phone-scene .tdot:nth-child(2){ animation-delay:.18s; }
+.phone-scene .tdot:nth-child(3){ animation-delay:.36s; }
+@keyframes tb{ 0%,80%,100%{ transform:scale(.6); opacity:.5;} 40%{ transform:scale(1); opacity:1;} }
+.phone-scene .tg-msg{ background:#fff; border-radius:12px; border-bottom-left-radius:4px; padding:10px 12px; max-width:88%;
+    box-shadow:0 1px 3px rgba(0,0,0,.18); opacity:0; transform:translateY(16px) scale(.96); transition:all .5s cubic-bezier(.2,1.4,.4,1); }
+.phone-scene .tg-msg.show{ opacity:1; transform:none; }
+.phone-scene .tg-msg .sender{ color:#2aabee; font-size:12px; font-weight:700; margin-bottom:4px; }
+.phone-scene .tg-msg .text{ color:#000; font-size:13.5px; font-weight:600; line-height:1.5; }
+.phone-scene .tg-msg .text .tgt{ color:#059669; }
+.phone-scene .tg-msg .text .sl{ color:#dc2626; }
+.phone-scene .tg-msg .meta{ display:flex; justify-content:flex-end; align-items:center; gap:4px; color:#8a8a8e; font-size:10px; margin-top:5px; }
+.phone-scene .tg-msg .meta .ticks{ color:#2aabee; font-weight:700; }
+.phone-scene .tg-inputbar{ background:#f7f7f7; padding:10px 14px; display:flex; align-items:center; gap:10px; }
+.phone-scene .tg-inputbar .field{ flex:1; background:#fff; border-radius:20px; padding:9px 14px; color:#b0b0b5; font-size:13px; }
+.phone-scene .trade{ background:#0d1117; color:#e6edf3; display:flex; flex-direction:column; }
+.phone-scene .tr-header{ padding:54px 14px 8px; display:flex; align-items:center; justify-content:space-between; }
+.phone-scene .tr-menu{ display:flex; flex-direction:column; gap:3px; width:18px; }
+.phone-scene .tr-menu span{ height:2px; background:#e6edf3; border-radius:2px; }
+.phone-scene .tr-menu span:nth-child(2){ width:12px; }
+.phone-scene .tr-title{ font-size:15px; font-weight:700; }
+.phone-scene .tr-bell{ font-size:15px; position:relative; }
+.phone-scene .tr-bell::after{ content:""; position:absolute; top:-2px; right:-4px; width:7px; height:7px; background:#ef4444; border-radius:50%; }
+.phone-scene .tr-chip{ margin:8px 12px 2px; background:#161b22; border:1px solid #21262d; border-radius:10px; padding:9px 12px; display:flex; justify-content:space-between; align-items:center; font-size:11px; animation:fadeDown .5s ease both; }
+.phone-scene .tr-chip .sym{ font-weight:800; color:#4ade80; letter-spacing:.4px; }
+.phone-scene .tr-chip .cmp{ color:#8b949e; font-size:10px; }
+.phone-scene .tr-chip .live{ display:flex; align-items:center; gap:4px; color:#4ade80; font-size:9px; font-weight:700; }
+@keyframes fadeDown{ from{ opacity:0; transform:translateY(-10px);} to{ opacity:1; transform:none;} }
+.phone-scene .candles{ height:148px; margin:4px 6px; position:relative; }
+.phone-scene .candles .cl{ position:absolute; border-radius:2px; opacity:0; transform:translateY(12px); transition:all .4s ease; }
+.phone-scene .candles .cl.show{ opacity:1; transform:none; }
+.phone-scene .priceaxis{ position:absolute; right:8px; top:0; bottom:0; display:flex; flex-direction:column; justify-content:space-between; font-size:8.5px; color:#8b949e; padding:6px 0; }
+.phone-scene .tabs{ display:flex; margin:2px 14px 0; border-bottom:1px solid #21262d; }
+.phone-scene .tabs div{ flex:1; text-align:center; padding:8px 0; font-size:12px; color:#8b949e; }
+.phone-scene .tabs div.on{ color:#e6edf3; border-bottom:2px solid #4ade80; font-weight:700; }
+.phone-scene .form{ padding:6px 16px; }
+.phone-scene .frow{ display:flex; justify-content:space-between; align-items:center; padding:9px 0; font-size:12.5px; border-bottom:1px solid #161b22; opacity:0; transform:translateX(-14px); transition:all .45s ease; }
+.phone-scene .frow.show{ opacity:1; transform:none; }
+.phone-scene .frow .k{ color:#8b949e; }
+.phone-scene .frow .v{ font-weight:600; display:flex; align-items:center; gap:8px; }
+.phone-scene .caret{ width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #8b949e; }
+.phone-scene .bigbtn{ margin:12px 16px 0; border-radius:12px; padding:14px 0; text-align:center; font-size:16px; font-weight:800; letter-spacing:4px; position:relative; overflow:hidden;
+    opacity:0; transform:translateY(14px); transition:all .45s ease; }
+.phone-scene .bigbtn.show{ opacity:1; transform:none; }
+.phone-scene .bigbtn.buy{ background:linear-gradient(135deg,#16a34a,#22c55e); color:#fff; box-shadow:0 6px 22px rgba(34,197,94,.4); }
+.phone-scene .bigbtn.sell{ background:linear-gradient(135deg,#dc2626,#ef4444); color:#fff; box-shadow:0 6px 22px rgba(239,68,68,.45); }
+.phone-scene .ripple{ position:absolute; border-radius:50%; background:rgba(255,255,255,.55); transform:scale(0); animation:rip .6s ease-out forwards; }
+@keyframes rip{ to{ transform:scale(5); opacity:0; } }
+.phone-scene .toast{ position:absolute; top:56px; left:12px; right:12px; z-index:60; background:linear-gradient(135deg,#16a34a,#15803d);
+    color:#fff; border-radius:10px; padding:11px 14px; display:flex; align-items:center; gap:10px; font-size:12px;
+    transform:translateY(-150%); opacity:0; transition:all .45s cubic-bezier(.2,1.3,.4,1); box-shadow:0 8px 24px rgba(0,0,0,.4); }
+.phone-scene .toast.show{ transform:none; opacity:1; }
+.phone-scene .toast .ck{ width:24px; height:24px; border:2px solid #fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; }
+.phone-scene .toast b{ display:block; font-size:12.5px; }
+.phone-scene .toast span{ font-size:11px; opacity:.9; }
+.phone-scene .toast .x{ margin-left:auto; opacity:.85; }
+.phone-scene .pos-body{ flex:1; padding:10px 16px 0; }
+.phone-scene .pnl-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2px; }
+.phone-scene .pnl-label{ font-size:12px; color:#8b949e; }
+.phone-scene .pnl-val{ font-size:15px; font-weight:800; transition:color .2s; }
+.phone-scene .price-big{ font-size:32px; font-weight:900; margin:8px 0 3px; transition:color .15s; }
+.phone-scene .price-big.up{ color:#4ade80; }
+.phone-scene .price-big.down{ color:#f87171; }
+.phone-scene .price-big.bump{ animation:bump .28s; }
+@keyframes bump{ 0%{ transform:scale(1.1);} 100%{ transform:scale(1);} }
+.phone-scene .avg{ font-size:11px; color:#8b949e; }
+.phone-scene .chartbox{ margin:10px 12px 0; height:132px; position:relative; background:#10151c; border:1px solid #1c2330; border-radius:12px; overflow:hidden; }
+.phone-scene .chartbox svg{ width:100%; height:100%; display:block; }
+.phone-scene .ctag{ position:absolute; font-size:9px; background:#15803d; color:#fff; padding:2px 6px; border-radius:6px; font-weight:800; transition:all .15s; }
+.phone-scene .ctag.neg{ background:#b91c1c; }
+.phone-scene .cline{ stroke-dasharray:6 5; stroke:#334155; stroke-width:1; }
+.phone-scene .axis{ position:absolute; right:6px; top:8px; bottom:8px; display:flex; flex-direction:column; justify-content:space-between; font-size:8px; color:#8b949e; }
+.phone-scene .flash{ position:absolute; inset:0; background:radial-gradient(circle,rgba(74,222,128,.4),transparent 70%); opacity:0; pointer-events:none; z-index:65; }
+.phone-scene .flash.go{ animation:flashGo .9s ease; }
+@keyframes flashGo{ 0%{opacity:0;} 25%{opacity:1;} 100%{opacity:0;} }
+.phone-scene .targetbanner{
+    position:absolute; top:44%; left:50%; transform:translate(-50%,-50%) scale(.6); z-index:66; opacity:0;
+    background:linear-gradient(135deg,#16a34a,#059669); color:#fff; font-weight:900; font-size:14px; letter-spacing:1px;
+    padding:12px 22px; border-radius:14px; box-shadow:0 10px 40px rgba(22,163,74,.5); white-space:nowrap;
+  }
+.phone-scene .targetbanner.go{ animation:tbIn .55s cubic-bezier(.2,1.6,.4,1) forwards; }
+@keyframes tbIn{ to{ opacity:1; transform:translate(-50%,-50%) scale(1);} }
+.phone-scene .bottomnav{ height:60px; background:#0a0d12; border-top:1px solid #1c2330; display:flex; align-items:center; justify-content:space-around; padding-bottom:6px; }
+.phone-scene .bni{ display:flex; flex-direction:column; align-items:center; gap:2px; font-size:9px; color:#5b6875; }
+.phone-scene .bni.on{ color:#4ade80; }
+.phone-scene .bni svg{ width:17px; height:17px; fill:currentColor; }
+.phone-scene .centerfab{ width:42px; height:42px; border-radius:50%; background:#2aabee; display:flex; align-items:center; justify-content:center; margin-top:-24px; box-shadow:0 5px 14px rgba(0,0,0,.5); }
+.phone-scene .centerfab svg{ width:19px; height:19px; fill:#fff; }
+.phone-scene .done{ background:#0d1117; display:flex; flex-direction:column; align-items:center; padding-top:84px; color:#e6edf3; }
+.phone-scene .bigck{ width:84px; height:84px; border-radius:50%; background:linear-gradient(135deg,#16a34a,#22c55e);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+    box-shadow:0 0 0 12px rgba(34,197,94,.14), 0 0 44px rgba(34,197,94,.4);
+    transform:scale(0); }
+.phone-scene .bigck.pop{ animation:pop .6s cubic-bezier(.2,1.7,.4,1) forwards; }
+@keyframes pop{ to{ transform:scale(1);} }
+.phone-scene .bigck svg{ width:42px; height:42px; stroke:#fff; stroke-width:4.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.phone-scene .bigck svg path{ stroke-dasharray:40; stroke-dashoffset:40; }
+.phone-scene .bigck.pop svg path{ animation:draw .45s .3s forwards; }
+@keyframes draw{ to{ stroke-dashoffset:0;} }
+.phone-scene .done h2{ font-size:19px; letter-spacing:4px; font-weight:900; margin-bottom:18px; opacity:0; transform:translateY(12px); transition:all .5s ease .25s; }
+.phone-scene .done h2.show{ opacity:1; transform:none; }
+.phone-scene .dcard{ width:80%; background:#10151c; border:1px solid #1c2330; border-radius:16px; padding:16px; opacity:0; transform:translateY(14px); transition:all .5s ease .4s; }
+.phone-scene .dcard.show{ opacity:1; transform:none; }
+.phone-scene .drow{ display:flex; justify-content:space-between; padding:6px 0; font-size:12.5px; }
+.phone-scene .drow .k{ color:#8b949e; }
+.phone-scene .drow .v{ font-weight:700; }
+.phone-scene .profitline{ text-align:center; color:#4ade80; font-size:12px; font-weight:800; margin:10px 0 2px; }
+
+/* =========================================================
+   OptionNeeti v4: no frames, no external animation library.
+   Phone styles above are scoped to .phone-scene.
+   ========================================================= */
+.hero-scroll {height:auto!important;min-height:100svh;position:relative;background:#fff;overflow:clip}
+.hero-pin {position:relative!important;top:auto!important;height:auto!important;min-height:760px!important;overflow:visible!important;padding:145px 0 85px!important}
+.hero-grid {height:auto!important;grid-template-columns:minmax(0,.89fr) minmax(0,1.11fr);gap:clamp(26px,4.2vw,78px);align-items:center}
+.hero-phone {height:auto!important;min-height:0!important;display:flex;align-items:center;justify-content:center;position:relative;padding:15px 0 0;background:transparent!important}
+.hero-phone::before {content:none}
+.phone-scene {--phone-scale:.91;width:calc(340px * var(--phone-scale));height:calc(700px * var(--phone-scale));position:relative;z-index:1;flex-shrink:0;transform:translateY(var(--phone-y,0px));will-change:transform}
+.phone-scene .phone {position:absolute!important;top:0;left:0;transform:scale(var(--phone-scale));transform-origin:top left;max-width:none}
+.phone-scene .phone .screen {isolation:isolate}
+
+.phone-label {position:absolute;bottom:-33px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:10px;letter-spacing:.11em;color:#487b86;font-weight:850;text-align:center}
+.phone-replay {position:absolute;bottom:-69px;left:50%;transform:translateX(-50%);border:1px solid #b1dce0;background:#f9ffff;border-radius:50px;padding:8px 17px;color:#175e77;font-weight:800;white-space:nowrap;font-size:11px;cursor:pointer}
+.phone-replay:hover{background:#e8f6f8}
+.hero-copy{padding-bottom:20px}
+.hero-scroll-cue{display:none!important}
+/* Keep rounded floating header, logo only. */
+.brand{border-radius:15px;flex-shrink:0}
+.brand img{max-width:190px}
+/* Scroll-linked card entrances, stagger and slight perspective. */
+.service-card,.step,.plan,.benefit,.closing{will-change:transform,opacity;backface-visibility:hidden}
+.service-card{transform:perspective(950px) translate3d(0,88px,0) rotateZ(-4deg) rotateX(10deg) scale(.94);opacity:0;transition:transform 850ms cubic-bezier(.17,1,.29,1),opacity 850ms ease,box-shadow .25s,border-radius .25s}
+.service-card:nth-child(2n){transform:perspective(950px) translate3d(0,88px,0) rotateZ(4deg) rotateX(10deg) scale(.94)}
+.service-card.is-visible{transform:perspective(950px) translate3d(0,0,0) rotateZ(0) rotateX(0) scale(1);opacity:1}
+.service-card.is-visible:hover{transform:perspective(950px) translate3d(0,-11px,0) rotateY(var(--tilt-y,0deg)) rotateX(var(--tilt-x,0deg));box-shadow:0 23px 50px #276b7226}
+.plan{opacity:0;transform:perspective(1000px) translate3d(0,104px,0) rotateX(12deg) rotateZ(var(--entry-rotate,-2deg)) scale(.94);transition:opacity .9s ease,transform .9s cubic-bezier(.17,1,.3,1),box-shadow .3s}
+.plan:nth-child(2){--entry-rotate:0deg}.plan:nth-child(3){--entry-rotate:2deg}
+.plan.is-visible{opacity:1;transform:perspective(1000px) translate3d(0,0,0) rotateX(0deg) rotateZ(0deg) scale(1)}
+.plan.is-visible:hover{transform:perspective(1000px) translate3d(0,-10px,0) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));box-shadow:0 28px 55px #3a7e8640}
+.benefit{opacity:0;transform:translate3d(65px,38px,0) rotate(3deg) scale(.95);transition:opacity .8s ease,transform .8s cubic-bezier(.18,1,.3,1)}
+.benefit:nth-child(2n){transform:translate3d(-55px,38px,0) rotate(-3deg) scale(.95)}
+.benefit.is-visible{opacity:1;transform:translate3d(0,0,0) rotate(0) scale(1)}
+.step{opacity:0;transform:perspective(900px) translate3d(0,58px,0) rotateX(12deg);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+.step.is-visible{opacity:1;transform:perspective(900px) translate3d(0,0,0) rotateX(0)}
+.reveal{opacity:0;transform:translate3d(0,38px,0);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.is-visible{opacity:1;transform:none}
+.closing{opacity:0;transform:translateY(65px) scale(.94) rotate(-1deg);transition:opacity .9s ease,transform .9s cubic-bezier(.17,1,.3,1)}
+.closing.is-visible{opacity:1;transform:none}
+/* Remove all remaining phone-frame-specific styles from layout. */
+.hero-phone img,.hero-phone canvas{position:static!important;inset:auto!important;width:auto!important;height:auto!important}
+html{overflow-x:clip}.benefits-section{overflow-x:clip}.service-grid,.plans-grid{min-width:0}
+@media(max-width:1100px){.phone-scene{--phone-scale:.83}.hero-pin{min-height:700px!important}}
+@media(max-width:800px){.hero-scroll{height:auto!important;min-height:0!important}.hero-pin{height:auto!important;min-height:0!important;padding:110px 0 82px!important}.hero-grid{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto!important;gap:85px!important}.hero-phone{max-height:none!important;height:auto!important;order:1}.hero-copy{order:2;max-width:710px}.phone-scene{--phone-scale:.88}.hero-copy h1{font-size:clamp(44px,8.5vw,66px)}.phone-label{font-size:9px}}
+@media(max-width:520px){.hero-pin{padding:103px 0 70px!important}.hero-grid{gap:79px!important}.hero-phone{max-height:none!important}.phone-scene{--phone-scale:.78}.hero-copy h1{font-size:clamp(40px,10vw,54px)}.hero-copy p{font-size:14px;line-height:1.65}.phone-replay{bottom:-66px}.phone-label{bottom:-31px;font-size:8px}.service-card,.plan,.step,.benefit{transition-duration:.7s}}
+@media(max-width:375px){.phone-scene{--phone-scale:.68}.hero-grid{gap:75px!important}}
+@media(prefers-reduced-motion:reduce){.phone-scene{transform:none!important}.phone-scene *, .phone-scene *::before,.phone-scene *::after{animation:none!important;transition:none!important}.service-card,.step,.plan,.benefit,.reveal,.closing{opacity:1!important;transform:none!important}}
+
+</style>
 </head>
+<body class="loading">
+<!-- Animated candles while the page initializes -->
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader-content">
+    <div class="candle-loading" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <h2 class="loader-title">Preparing OptionNeeti</h2>
+    <p class="loader-sub">Loading your interactive research experience</p>
+    <div class="loading-track"><span id="loadBar"></span></div>
+    <div class="loading-count" id="loadPct">0%</div>
+    <button type="button" class="skip-load" id="skipLoad">Open website now</button>
+  </div>
+</div>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Sarvneeti homepage"><img src="logo.png" alt="Sarvneeti logo"></a>
+  <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+    <a href="#services">Services</a><a href="#plans">Pricing</a><a href="#about">About Us</a><a href="#faq">FAQ</a><a href="/contact">Contact</a>
+  </nav>
+  <a class="header-cta" href="/contact">GET RESEARCH DETAILS <b aria-hidden="true">↗</b></a>
+  <button class="menu-btn" id="menuBtn" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Open menu">☰</button>
+</header>
+<main>
+  <!-- HERO: Original animated HTML phone, no frame images and no surrounding card. -->
+  <section class="hero-scroll" id="home" aria-label="OptionNeeti introduction">
+    <div class="hero-pin"><div class="container hero-grid">
+      <div class="hero-phone" aria-label="Illustrative phone animation showing a research alert and simulated trade screens">
+        <div class="phone-scene" id="phoneScene">
+<div class="phone">
+  <div class="sidebtn sb1"></div><div class="sidebtn sb2"></div><div class="sidebtn sb3"></div>
+  <div class="screen">
 
-<body>
-
-  <!-- Background Grid -->
-  <div class="grid-bg" aria-hidden="true"></div>
-
-  <div class="shell">
-
-    <!-- Header -->
-    <header>
-
-      <!-- Logo from logo.png -->
-      <a
-        class="brand"
-        href="./"
-        aria-label="Serveneeti Home"
-      >
-        <img
-          src="logo.png"
-          alt="Serveneeti"
-          class="brand-logo"
-        />
-      </a>
-
-      <div class="header-tag">
-        <span class="pulse" aria-hidden="true"></span>
-        In Development
+    <!-- ======== APP 1 : TELEGRAM ======== -->
+    <div class="app-window app-open" id="appTg">
+      <div class="scene tg active">
+        <div class="statusbar" style="color:#000"><span>9:41</span><span>📶&nbsp;📡&nbsp;🔋</span></div>
+        <div class="tg-header">
+          <div class="tg-back">‹</div>
+          <div class="tg-avatar"><svg viewBox="0 0 24 24"><path d="M9.04 15.31l-.38 5.32c.54 0 .78-.23 1.07-.51l2.57-2.46 5.32 3.9c.98.54 1.67.26 1.93-.9L22.9 3.9c.31-1.44-.52-2-1.47-1.65L2.6 8.6c-1.4.54-1.38 1.32-.24 1.67l4.8 1.5L18.5 5.7c.6-.4 1.14-.18.7.22z"/></svg></div>
+          <div><div class="tg-name">Option Neeti 🔍</div><div class="tg-sub">Illustrative research channel</div></div>
+          <div class="tg-dots">⋮</div>
+        </div>
+        <div class="tg-body">
+          <div style="padding-top:2px"><div class="today-pill">Today</div></div>
+          <div class="tg-feed">
+            <div class="typing" id="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>
+            <div class="tg-msg" id="tgMsg">
+              <div class="sender">Option Neeti</div>
+              <div class="text">⚡ SAMPLE RESEARCH ALERT<br>BUY 25,100 CALL @ ₹150<br><span class="tgt">TARGET: ₹200</span> | <span class="sl">SL: ₹130</span></div>
+              <div class="meta">2:18 PM <span class="ticks">✓✓</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tg-inputbar"><div class="field">✎&nbsp; Message</div><span style="color:#8a8a8e">🎙️</span></div>
       </div>
+      <div class="homebar dark"></div>
+    </div>
 
-    </header>
-
-    <!-- Main Content -->
-    <main>
-
-      <!-- Left Content -->
-      <section aria-labelledby="headline">
-
-        <p class="eyebrow">
-          Something new is on the way
-        </p>
-
-        <h1 id="headline">
-          Coming
-          <span>soon.</span>
-        </h1>
-
-        <p class="sub">
-          Smarter tools. Simpler workflows. Stronger businesses.
-          We're building a connected digital experience to help
-          teams work better, move faster, and grow further.
-        </p>
-
-        <!-- Services -->
-        <div class="services" aria-label="Our Focus Areas">
-
-          <span>Business Software</span>
-
-          <span>Automation</span>
-
-          <span>Digital Solutions</span>
-
-          <span>AI-Powered Tools</span>
-
+    <!-- ======== APP 2 : TRADING (ORDER) ======== -->
+    <div class="app-window" id="appOrder" style="opacity:0; visibility:hidden;">
+      <div class="scene trade active">
+        <div class="statusbar"><span>9:41</span><span>📶&nbsp;📡&nbsp;🔋</span></div>
+        <div class="tr-header">
+          <div class="tr-menu"><span></span><span></span><span></span></div>
+          <div class="tr-title">Trading App</div>
+          <div class="tr-bell">🔔</div>
         </div>
-
-        <!-- Status -->
-        <div class="status">
-
-          <span class="status-icon" aria-hidden="true">
-            ↗
-          </span>
-
-          Our new website is taking shape. Stay tuned.
-
+        <div class="tr-chip" style="animation-delay:.15s">
+          <span class="sym">OPTION TRADE: 25,100 CALL</span>
+          <span class="live"><span class="dot" style="width:6px;height:6px;background:#4ade80;border-radius:50%;"></span>DEMO</span>
+          <span class="cmp">SAMPLE ₹150</span>
         </div>
-
-      </section>
-
-      <!-- Right Animation -->
-      <div class="art" aria-hidden="true">
-
-        <div class="glow"></div>
-
-        <div class="orbit"></div>
-
-        <div class="orbit two"></div>
-
-        <!-- Animated S -->
-        <div class="core">
-
-          <div class="core-letter">
-            S
-          </div>
-
+        <div class="candles" id="candles">
+          <div class="priceaxis"><span>210</span><span>195</span><span>180</span><span>165</span><span>150</span></div>
         </div>
-
-        <!-- Top Floating Card -->
-        <div class="small-card card-top">
-
-          <span class="card-icon">
-            ✦
-          </span>
-
-          <div>
-            <b>Built for what's next</b>
-            <em>Modern digital experiences</em>
-          </div>
-
+        <div class="tabs"><div class="on">Orders</div><div>Bids</div></div>
+        <div class="form">
+          <div class="frow" style="transition-delay:.55s"><span class="k">Order Type</span><span class="v">BUY <span class="caret"></span></span></div>
+          <div class="frow" style="transition-delay:.68s"><span class="k">Qty</span><span class="v">1 Lot <span class="caret"></span></span></div>
+          <div class="frow" style="transition-delay:.81s"><span class="k">Price</span><span class="v">₹150.00</span></div>
         </div>
-
-        <!-- Bottom Floating Card -->
-        <div class="small-card card-bottom">
-
-          <span class="card-icon">
-            ⌁
-          </span>
-
-          <div>
-            <b>Work smarter</b>
-            <em>Connected business tools</em>
-          </div>
-
+        <div class="bigbtn buy" id="buyBtn" style="transition-delay:.95s">BUY</div>
+        <div style="flex:1"></div>
+        <div class="bottomnav">
+          <div class="bni on"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</div>
+          <div class="bni"><svg viewBox="0 0 24 24"><path d="M3 13h4v8H3zM9 9h4v12H9zM15 5h4v16h-5z"/></svg>Orders</div>
+          <div class="centerfab"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div>
+          <div class="bni"><svg viewBox="0 0 24 24"><path d="M20 6h-2.2c-.1-.7-.4-1.3-.8-1.9l1.5-1.5-1.4-1.4-1.5 1.5c-.6-.4-1.2-.7-1.9-.8V0h-2v2.5c-.7.1-1.3.4-1.9.8L7.3 1.8 5.9 3.2l1.5 1.5c-.4.6-.7 1.2-.8 1.9H4v2h2.2c.1.7.4 1.3.8 1.9l-1.5 1.5 1.4 1.4 1.5-1.5c.6.4 1.2.7 1.9.8V22h2v-2.5c.7-.1 1.3-.4 1.9-.8l1.5 1.5 1.4-1.4-1.5-1.5c.4-.6.7-1.2.8-1.9H20zM12 16a4 4 0 110-8 4 4 0 010 8z"/></svg>Positions</div>
+          <div class="bni"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4 0-10 2-10 5v3h20v-3c0-3-6-5-10-5z"/></svg>Profile</div>
         </div>
-
       </div>
+      <div class="homebar"></div>
+    </div>
 
-    </main>
+    <!-- ======== APP 3 : POSITION / LIVE PRICE ======== -->
+    <div class="app-window" id="appPos" style="opacity:0; visibility:hidden;">
+      <div class="scene trade active">
+        <div class="statusbar"><span>9:41</span><span>📶&nbsp;📡&nbsp;🔋</span></div>
+        <div class="tr-header">
+          <div class="tr-menu"><span></span><span></span><span></span></div>
+          <div class="tr-title">Position • 25,100 CALL</div>
+          <div class="tr-bell">🔔</div>
+        </div>
 
-    <!-- Footer -->
-    <footer>
+        <div class="toast" id="toast">
+          <div class="ck">✓</div>
+          <div><b>DEMO ORDER PLACED</b><span>SIMULATED BUY @ ₹150</span></div>
+          <div class="x">✕</div>
+        </div>
 
-      <span>
-        © <span id="year">2026</span>
-        Serveneeti. All rights reserved.
-      </span>
+        <div class="pos-body">
+          <div class="pnl-row"><span class="pnl-label">PnL:</span><span class="pnl-val" id="pnlVal" style="color:#4ade80">+0.00 RS</span></div>
+          <div class="pnl-row"><span class="pnl-label">Invested:</span><span class="pnl-val" style="font-size:12px;color:#8b949e">₹150.00</span></div>
+          <div class="price-big up" id="priceBig">150.00 <span style="font-size:14px">RS</span></div>
+          <div class="avg">Current Price: <b id="curPrice" style="color:#e6edf3">₹150.00</b> • Target ₹200 • SL ₹130</div>
+        </div>
 
-      <span class="foot-right">
-        Creating what's next.
-      </span>
+        <div class="chartbox">
+          <div class="axis"><span>210</span><span>195</span><span>180</span><span>165</span><span>150</span></div>
+          <div class="ctag" id="ctag" style="right:34px;">150.00</div>
+          <svg viewBox="0 0 300 132" preserveAspectRatio="none">
+            <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#22c55e" stop-opacity=".4"/><stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+            </linearGradient></defs>
+            <line class="cline" x1="0" y1="20" x2="300" y2="20"/>
+            <line class="cline" x1="0" y1="108" x2="300" y2="108"/>
+            <path id="areaPath" fill="url(#grad)" d=""/>
+            <path id="linePath" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d=""/>
+            <circle id="dotEnd" r="4.5" fill="#4ade80" opacity="0"/>
+          </svg>
+        </div>
 
-    </footer>
+        <div class="bigbtn sell" id="sellBtn" style="margin-top:12px">SELL</div>
+        <div style="flex:1"></div>
+        <div class="bottomnav">
+          <div class="bni on"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</div>
+          <div class="bni"><svg viewBox="0 0 24 24"><path d="M3 13h4v8H3zM9 9h4v12H9zM15 5h4v16h-5z"/></svg>Orders</div>
+          <div class="centerfab"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div>
+          <div class="bni"><svg viewBox="0 0 24 24"><path d="M20 6h-2.2c-.1-.7-.4-1.3-.8-1.9l1.5-1.5-1.4-1.4-1.5 1.5c-.6-.4-1.2-.7-1.9-.8V0h-2v2.5c-.7.1-1.3.4-1.9.8L7.3 1.8 5.9 3.2l1.5 1.5c-.4.6-.7 1.2-.8 1.9H4v2h2.2c.1.7.4 1.3.8 1.9l-1.5 1.5 1.4 1.4 1.5-1.5c.6.4 1.2.7 1.9.8V22h2v-2.5c.7-.1 1.3-.4 1.9-.8l1.5 1.5 1.4-1.4-1.5-1.5c.4-.6.7-1.2.8-1.9H20zM12 16a4 4 0 110-8 4 4 0 010 8z"/></svg>Positions</div>
+          <div class="bni"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4 0-10 2-10 5v3h20v-3c0-3-6-5-10-5z"/></svg>Profile</div>
+        </div>
+
+        <div class="flash" id="flash"></div>
+        <div class="targetbanner" id="tbanner">🎯 DEMO TARGET REACHED</div>
+      </div>
+      <div class="homebar"></div>
+    </div>
+
+    <!-- ======== APP 4 : DEMO COMPLETE ======== -->
+    <div class="app-window" id="appDone" style="opacity:0; visibility:hidden;">
+      <div class="scene done active">
+        <div class="statusbar"><span>9:41</span><span>📶&nbsp;📡&nbsp;🔋</span></div>
+        <div class="bigck" id="bigck"><svg viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></div>
+        <h2 id="doneTitle">DEMO COMPLETE</h2>
+        <div class="dcard" id="dcard">
+          <div class="drow"><span class="k">Bought At</span><span class="v">₹150.00</span></div>
+          <div class="drow"><span class="k">Sold At</span><span class="v" style="color:#4ade80">₹200.00</span></div>
+          <div class="profitline">Illustrative price move: ₹150 → ₹200</div>
+          <div class="drow"><span class="k">Status</span><span class="v" style="color:#4ade80">Closed</span></div>
+          <div class="drow"><span class="k">Order Type</span><span class="v">BUY → SELL</span></div>
+          <div class="drow"><span class="k">Qty</span><span class="v">Example only</span></div>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div>
 
   </div>
+  <div class="notch"></div>
+</div>
 
-  <!-- JavaScript -->
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
 
+        </div>
+        <span class="phone-label">SIMULATED SCREENS · NOT REAL TRADES OR PERFORMANCE</span>
+        <button class="phone-replay" id="phoneReplay" type="button" aria-label="Replay phone demonstration">↻ REPLAY DEMO</button>
+      </div>
+      <div class="hero-copy reveal">
+        <span class="eyebrow">SEBI REGISTERED RESEARCH ANALYST</span>
+        <h1>Options research.<br><span>Built around</span><br>discipline.</h1>
+        <p>Daily intraday and BTST index options research for <strong>Nifty, Bank Nifty and Sensex</strong> — with structured entries, targets, stop-loss levels, market context and premium research channel alerts.</p>
+        <div class="pills"><span>NIFTY</span><span>BANK NIFTY</span><span>SENSEX</span><span>INTRADAY + BTST</span></div>
+        <div class="hero-actions"><a href="/contact" class="btn-coral">CONNECT WITH ADVISORY DESK <b aria-hidden="true">↗</b></a><a href="#plans" class="btn-ghost">VIEW PLANS ↓</a></div>
+        <div class="hero-reg"><strong>✳</strong><span><b>Owner &amp; Research Analyst: Amit Kori</b> · SEBI RA INH000016533<br>Research recommendations only. No guaranteed returns or account management. Phone sequence is a demonstration, not a record of actual trades.</span></div>
+      </div>
+    </div></div>
+  </section>
+  <!-- Animated ribbon -->
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">
+    <div class="ticker-set"><span>NIFTY 50</span><i>✦</i><span>BANK NIFTY</span><i>✦</i><span>SENSEX</span><i>✦</i><span>INTRADAY RESEARCH</span><i>✦</i><span>BTST SETUPS</span><i>✦</i><span>RISK MANAGEMENT</span><i>✦</i></div>
+    <div class="ticker-set"><span>NIFTY 50</span><i>✦</i><span>BANK NIFTY</span><i>✦</i><span>SENSEX</span><i>✦</i><span>INTRADAY RESEARCH</span><i>✦</i><span>BTST SETUPS</span><i>✦</i><span>RISK MANAGEMENT</span><i>✦</i></div>
+  </div></div>
+  <!-- Services -->
+  <section class="section services-section" id="services"><div class="container">
+    <div class="section-heading reveal"><div><span class="eyebrow">01 / WHAT WE OFFER</span><h2>Research with<br><span class="ink-accent">a clearer direction.</span></h2></div><p>Understand the research thesis, the levels that matter, and the risks before deciding whether to trade.</p></div>
+    <div class="service-grid">
+      <article class="service-card"><span class="service-icon">⌁</span><span class="service-no">01</span><h3>Intraday options<br>setups</h3><p>Research-led index option setups with entry zones, target levels and stop-loss frameworks.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">↗</span><span class="service-no">02</span><h3>BTST opportunity<br>research</h3><p>Short-term setups when conditions warrant, including overnight gap and premium-decay risk notes.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">✈</span><span class="service-no">03</span><h3>Premium Telegram<br>channel</h3><p>Plan-based research alerts, key level updates and market commentary after onboarding.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">◇</span><span class="service-no">04</span><h3>Daily risk<br>management</h3><p>Guidance on sizing discipline, stop-loss planning, drawdowns and avoiding overtrading.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">◷</span><span class="service-no">05</span><h3>Expiry &amp; volatility<br>research</h3><p>Structured observations on option premiums, key index levels and expiry-related conditions.</p><span class="card-arrow">↗</span></article>
+      <article class="service-card"><span class="service-icon">◎</span><span class="service-no">06</span><h3>Trader learning<br>&amp; reviews</h3><p>Educational explanations of setups, market psychology and the importance of a repeatable process.</p><span class="card-arrow">↗</span></article>
+    </div>
+  </div></section>
+  <!-- How it works -->
+  <section class="section process-section" id="process"><div class="container process-grid">
+    <div class="process-copy reveal"><span class="eyebrow">02 / OUR PROCESS</span><h2>From market noise<br>to a structured<br>research plan.</h2><p>Understand how research ideas move from market observation to communication, with defined risk considerations at every stage.</p><a href="/contact" class="btn-ghost" style="margin-top:20px">TALK TO OUR DESK ↗</a></div>
+    <div class="step-list">
+      <article class="step"><span class="step-number">01</span><div><b>Choose an advisory plan</b><p>Review coverage, fees, duration, disclosure documents and onboarding steps.</p></div></article>
+      <article class="step"><span class="step-number">02</span><div><b>Get premium channel access</b><p>Receive the applicable Telegram research channel details after activation.</p></div></article>
+      <article class="step"><span class="step-number">03</span><div><b>Review each research setup</b><p>Evaluate the entry zone, thesis, target, stop-loss and invalidation level.</p></div></article>
+      <article class="step"><span class="step-number">04</span><div><b>Execute independently</b><p>Use research alongside your own assessment; trading decisions remain yours.</p></div></article>
+    </div>
+  </div></section>
+  <!-- Plans -->
+  <section class="section pricing-section" id="plans"><div class="container">
+    <div class="section-heading reveal"><div><span class="eyebrow">03 / RESEARCH PLANS</span><h2>Find your<br><span class="ink-accent">trading rhythm.</span></h2></div><p>Choose research coverage suited to your market experience and ability to manage options risk. Plans do not guarantee results.</p></div>
+    <div class="plans-grid">
+      <article class="plan"><span class="tier">OPTIONNEETI / 01</span><h3>Core<em>.</em></h3><p class="for">For structured learners</p><p class="desc">A focused starting point for traders learning to review defined index option setups.</p><ul><li>Up to 1 research setup per trading day</li><li>Nifty and selected index options</li><li>Clear entry, target and stop-loss levels</li><li>Basic intraday index commentary</li><li>Market-hour research support</li><li>Educational trade rationale</li></ul><div class="plan-risk"><span>Risk profile</span><b>HIGH</b></div><a href="/contact" class="btn-ghost">ENQUIRE ABOUT CORE ↗</a></article>
+      <article class="plan"><span class="plan-badge">POPULAR PLAN</span><span class="tier">OPTIONNEETI / 02</span><h3>Pro<em>.</em></h3><p class="for">For active options traders</p><p class="desc">Broader research coverage and alerts for disciplined, active participants.</p><ul><li>Up to 2 research setups per trading day</li><li>Nifty, Bank Nifty and selected indices</li><li>Intraday and selected BTST opportunities</li><li>Defined entry, exit and risk levels</li><li>Expiry and volatility-related research</li><li>Premium Telegram alerts and updates</li><li>Priority market-hour support</li></ul><div class="plan-risk"><span>Risk profile</span><b>HIGH TO VERY HIGH</b></div><a href="/contact" class="btn-coral">ENQUIRE ABOUT PRO ↗</a></article>
+      <article class="plan"><span class="tier">OPTIONNEETI / 03</span><h3>Elite<em>.</em></h3><p class="for">For experienced participants</p><p class="desc">Expanded index coverage with volatility and expiry-focused research scenarios.</p><ul><li>Up to 3 research setups per trading day</li><li>Nifty, Bank Nifty, Sensex and selected indices</li><li>Intraday, BTST and expiry research</li><li>Advanced volatility and levels commentary</li><li>Premium Telegram research updates</li><li>Priority desk support</li><li>Trading psychology and risk-exposure notes</li></ul><div class="plan-risk"><span>Risk profile</span><b>HIGH TO VERY HIGH</b></div><a href="/contact" class="btn-ghost">ENQUIRE ABOUT ELITE ↗</a></article>
+    </div>
+    <p class="plan-note">Current prices, subscription terms, applicable taxes and cancellation policies are supplied during onboarding. Trade-setup counts are maximums, not commitments to issue calls every day. Options can result in a rapid loss of the entire premium.</p>
+  </div></section>
+  <!-- About/benefits -->
+  <section class="section benefits-section" id="about"><div class="container benefits-grid">
+    <div class="benefits-copy reveal"><span class="eyebrow">04 / OUR APPROACH</span><h2 class="big-title">Good research.<br><span class="ink-accent">Clearer decisions.</span></h2><p>OptionNeeti focuses on research structure and risk-aware communication rather than excitement, target chasing or promises of accuracy.</p><p>Index options carry substantial risk and may not suit every investor. Research does not remove uncertainty or guarantee a profitable outcome.</p><a href="/contact" class="btn-coral" style="margin-top:14px">CONNECT WITH US ↗</a></div>
+    <div class="benefit-list">
+      <article class="benefit"><span>01</span><div><h3>Know what invalidates a setup</h3><p>Consider the level or market condition at which the research thesis no longer applies.</p></div></article>
+      <article class="benefit"><span>02</span><div><h3>Volatility-aware commentary</h3><p>Expiry, time decay and changing implied volatility can materially affect option prices.</p></div></article>
+      <article class="benefit"><span>03</span><div><h3>Learn the research logic</h3><p>Educational context helps you understand the idea rather than just receiving a number.</p></div></article>
+      <article class="benefit"><span>04</span><div><h3>Keep control of your own account</h3><p>No order execution, client-fund custody, discretionary trading or assured returns.</p></div></article>
+    </div>
+  </div></section>
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq"><div class="container faq-layout">
+    <div class="reveal"><span class="eyebrow">05 / QUESTIONS ANSWERED</span><h2 class="big-title">Before you<br><span class="ink-accent">get started.</span></h2><p class="muted" style="line-height:1.8">Speak with our advisory desk to understand services, fees, risk disclosures and onboarding requirements.</p></div>
+    <div class="faq-list reveal">
+      <details><summary>Which index options are covered?</summary><p>Research focuses on Nifty and Bank Nifty, with Sensex and selected indices included depending on the chosen plan and market conditions.</p></details>
+      <details><summary>Will I receive a call every day?</summary><p>Not necessarily. Each plan states an upper limit on setups, and some sessions may not produce a qualifying opportunity.</p></details>
+      <details><summary>How is Telegram access provided?</summary><p>Access to the applicable advisory channel is shared once the relevant subscription and onboarding process is completed.</p></details>
+      <details><summary>What are the risks of BTST options?</summary><p>Holding options overnight involves gap risk, time decay and changes in implied volatility; option premiums can fall sharply.</p></details>
+      <details><summary>Do you guarantee profits or accuracy?</summary><p>No. SEBI registration or NISM certification does not guarantee performance or any returns, and index options can cause substantial losses.</p></details>
+      <details><summary>Do you manage my trading account?</summary><p>No. This is a research and recommendations service. You independently decide whether to trade and retain control of your account.</p></details>
+      <details><summary>How can I find out the plan fees?</summary><p>Contact our desk to review the current fees, subscription terms, taxes, disclosures and applicable policies before subscribing.</p></details>
+    </div>
+  </div></section>
+  <!-- Closing CTA -->
+  <section class="container"><div class="closing"><div><h2>Clarity starts<br>with a conversation.</h2><p>Learn about index options research coverage, premium alerts, subscription terms and risk disclosures.</p></div><a href="/contact" class="btn-coral">GET RESEARCH DETAILS ↗</a></div></section>
+</main>
+<!-- Footer: Sarvneeti branding only. IMPORTANT: publish all /legal/* docs and verify phone/address/email before launch. -->
+<footer class="footer" id="disclaimer"><div class="container footer-main">
+  <div><a href="/" class="footer-logo-wrap" aria-label="Sarvneeti homepage"><img class="footer-logo" src="logo.png" alt="Sarvneeti logo"></a><div class="footer-name">Sarvneeti · OptionNeeti</div><p>Research-based index options advisory for Nifty, Bank Nifty and Sensex, covering intraday and BTST setups, levels, risk commentary and educational market notes.</p></div>
+  <div><h3>Quick Links</h3><ul><li><a href="#services">Services</a></li><li><a href="#plans">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#disclaimer">Disclaimer</a></li><li><a href="/contact">Contact</a></li></ul></div>
+  <div><h3>Contact Us</h3><ul><li><a href="/contact">Contact the Sarvneeti advisory desk</a></li><li><a href="/contact">Contact through Sarvneeti enquiry page</a></li><li>Advisory channel access shared after onboarding</li><li>Mon – Sat, 9:00 AM – 6:00 PM</li></ul></div>
+  <div><h3>Legal &amp; Policy</h3><ul>
+    <!-- Publish the corresponding policies on sarvneeti.com before using these links in production. -->
+    <li><a href="/legal/disclaimer.html">Disclaimer</a></li>
+    <li><a href="/legal/disclosure.pdf">Disclosure</a></li>
+    <li><a href="/legal/investor-charter.pdf">Investor Charter</a></li>
+    <li><a href="/legal/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+    <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="/legal/grievance-redressal.html">Grievance Redressal</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/legal/complaints.html">Complaints</a></li>
+  </ul></div>
+</div>
+<div class="container footer-legal">
+  <p><strong>Disclaimer:</strong> Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.</p>
+  <p><strong>Illustration disclaimer:</strong> The securities quoted (if any) on our website and advertisements are for illustration only and are not recommendatory. The animated phone screens and fictional prices are illustrative, not live research, actual client trades, executed orders, verified trade results or performance claims.</p>
+  <p><strong>Standard warning:</strong> Investment in securities market are subject to market risks. Read all the related documents carefully before investing.</p>
+  <p><strong>Mandatory notice:</strong> Clients shall be requested to go through Do's and Don'ts while dealing with RA as specified in SEBI master circular no. SEBI/HO/MIRSD-POD-1/P/CIR/2024/49 dated May 21, 2024 or as may be specified by SEBI from time to time.</p>
+</div>
+<div class="container registration"><div><h3>SEBI Registered Research Analyst Details</h3><p><strong>Registered Name / Owner:</strong> Amit Kori</p><p><strong>Registration Type:</strong> Individual</p><p><strong>Registration No.:</strong> INH000016533</p><p><strong>Validity:</strong> November 22, 2027</p></div><div><h3>Nearest SEBI Office Address</h3><p>SEBI Bhavan BKC, Plot No. C4-A, 'G' Block, Bandra-Kurla Complex, Bandra (East), Mumbai – 400051, Maharashtra, India.</p></div></div>
+<div class="container footer-bottom"><span>© <span id="year">2026</span> Sarvneeti · OptionNeeti. All Rights Reserved.</span><span>Research recommendations only · <a href="/contact">Contact the advisory desk ↗</a></span></div>
+</footer>
+<script>
+
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const loader=$('loader'), bar=$('loadBar'),pct=$('loadPct');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const menu=$('menuBtn'),nav=$('navLinks');
+  menu.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded',String(open));
+    menu.setAttribute('aria-label',open?'Close menu':'Open menu');
+    menu.textContent=open?'×':'☰';
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';
+  }));
+  $('year').textContent=new Date().getFullYear();
+
+  // Reveal each card exactly when it enters the viewport; stagger within each section.
+  const targets=document.querySelectorAll('.reveal,.service-card,.step,.plan,.benefit,.closing');
+  targets.forEach(el=>{
+    const siblings=[...el.parentElement.children].filter(e=>e.matches('.reveal,.service-card,.step,.plan,.benefit'));
+    const index=Math.max(0,siblings.indexOf(el));
+    el.style.transitionDelay=(Math.min(index,5)*110)+'ms';
+  });
+  if(reduced||!('IntersectionObserver' in window)) targets.forEach(e=>e.classList.add('is-visible'));
+  else {
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
+    }),{threshold:.09,rootMargin:'0px 0px -25px 0px'});
+    targets.forEach(el=>observer.observe(el));
+  }
+
+  // Light 3D hover interaction for cards (pointer devices only).
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced){
+    document.querySelectorAll('.service-card,.plan').forEach(card=>{
+      card.addEventListener('pointermove',e=>{
+        const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        card.style.setProperty('--tilt-y',(x*6).toFixed(2)+'deg');
+        card.style.setProperty('--tilt-x',(-y*6).toFixed(2)+'deg');
+      },{passive:true});
+      card.addEventListener('pointerleave',()=>{card.style.setProperty('--tilt-y','0deg');card.style.setProperty('--tilt-x','0deg');});
+    });
+  }
+  // Tiny depth-shift during scroll; never bind heavy frame downloads or forced layouts.
+  let ticking=false;
+  function onScroll(){
+    if(ticking||reduced)return;
+    ticking=true;
+    requestAnimationFrame(()=>{
+      const scene=$('phoneScene');
+      if(scene && matchMedia('(min-width:801px)').matches){
+        const y=window.scrollY;
+        scene.style.setProperty('--phone-y',Math.min(17,y*.035)+'px');
+      }
+      ticking=false;
+    });
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+
+  // Candle loader: no need to prefetch the removed 222-frame folder.
+  // Short deliberate entrance, never blocks navigation on failed assets.
+  let done=false;
+  function reveal(){
+    if(done)return;done=true;
+    bar.style.width='100%';pct.textContent='100%';
+    setTimeout(()=>{
+      loader.classList.add('is-done');document.body.classList.remove('loading');
+      setTimeout(()=>loader.hidden=true,650);
+    },180);
+  }
+  let progress=0;
+  const iv=setInterval(()=>{
+    progress=Math.min(progress+12,92);
+    bar.style.width=progress+'%';pct.textContent=progress+'%';
+    if(done)clearInterval(iv);
+  },110);
+  if(document.readyState==='complete') setTimeout(reveal,reduced?100:850);
+  else addEventListener('load',()=>setTimeout(reveal,reduced?100:700),{once:true});
+  setTimeout(reveal,2500);
+  $('skipLoad').addEventListener('click',reveal);
+})();
+
+// Original supplied simulated phone sequence, integrated in the hero.
+(() => {
+
+const $ = id => document.getElementById(id);
+const apps = { tg: $('appTg'), order: $('appOrder'), pos: $('appPos'), done: $('appDone') };
+let timers = [];
+function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+function clearTimers(){ timers.forEach(t => clearTimeout(t)); timers = []; }
+
+function showApp(name){
+  Object.values(apps).forEach(a => { a.style.visibility='hidden'; a.style.opacity=0; a.classList.remove('app-open','app-close'); });
+  const el = apps[name];
+  el.style.visibility='visible'; el.style.opacity=1;
+  el.classList.add('app-open');
+}
+
+function ripple(btn){
+  const r = document.createElement('span'); r.className='ripple';
+  const rect = btn.getBoundingClientRect(), s = Math.max(rect.width, rect.height);
+  r.style.width = r.style.height = s+'px';
+  r.style.left = (rect.width/2 - s/2)+'px'; r.style.top = (rect.height/2 - s/2)+'px';
+  btn.appendChild(r); setTimeout(()=>r.remove(), 700);
+}
+
+/* candles */
+(function(){
+  const data = [[60,80,1],[52,72,0],[62,90,1],[55,70,0],[64,92,1],[58,78,0],[66,98,1],[70,104,1],[60,82,0],[72,108,1],[62,86,0],[76,112,1]];
+  const box = $('candles'); let html = '';
+  data.forEach((d,i)=>{
+    const x = 16 + i*23, up = d[2], col = up ? '#22c55e' : '#ef4444';
+    const top = 10 + (115-d[1])*1.05, h = Math.max(10,(d[1]-d[0])*1.05);
+    html += `<div class="cl" style="left:${x}px;top:${top-6}px;width:2px;height:${h+12}px;background:${col};transform:translateX(-50%);transition-delay:${i*60}ms"></div>`;
+    html += `<div class="cl" style="left:${x}px;top:${top}px;width:11px;height:${h}px;background:${col};transform:translateX(-50%);transition-delay:${i*60}ms"></div>`;
+  });
+  box.insertAdjacentHTML('afterbegin', html);
+})();
+
+/* fluctuating price path: up AND down like a real market, ends at target 200 */
+const prices = [150,152,149,154,151,157,153,160,156,163,158,166,162,170,165,172,168,176,171,179,174,182,178,186,181,189,185,192,188,196,193,200];
+const W=300, H=132, yMin=142, yMax=212;
+const yOf = p => H - ((p - yMin)/(yMax - yMin)) * (H-16) - 8;
+const xOf = i => 10 + i * ((W-30)/(prices.length-1));
+let drawn = 0;
+
+function tick(){
+  if (drawn >= prices.length) return true;
+  drawn++;
+  const pts = prices.slice(0,drawn).map((p,i)=>[xOf(i),yOf(p)]);
+  let d = `M ${pts[0][0]} ${pts[0][1]}`;
+  for (let i=1;i<pts.length;i++) d += ` L ${pts[i][0]} ${pts[i][1]}`;
+  $('linePath').setAttribute('d', d);
+  $('areaPath').setAttribute('d', d + ` L ${pts[pts.length-1][0]} ${H} L ${pts[0][0]} ${H} Z`);
+  const last = pts[pts.length-1];
+  const dot = $('dotEnd'); dot.setAttribute('cx',last[0]); dot.setAttribute('cy',last[1]); dot.setAttribute('opacity',1);
+  const p = prices[drawn-1], prev = prices[drawn-2] ?? p;
+  const up = p >= prev;
+  const tag = $('ctag');
+  tag.textContent = p.toFixed(2);
+  tag.style.top = (last[1]-8)+'px';
+  tag.style.right = (34 - last[0]*0 + (W - last[0] - 44)) + 'px';
+  tag.classList.toggle('neg', !up);
+  dot.setAttribute('fill', up ? '#4ade80' : '#f87171');
+  const big = $('priceBig');
+  big.innerHTML = '₹'+p.toFixed(2);
+  big.classList.remove('up','down','bump'); void big.offsetWidth;
+  big.classList.add(up?'up':'down','bump');
+  $('curPrice').textContent = '₹'+p.toFixed(2);
+  const pnl = p - 150;
+  const pnlEl = $('pnlVal');
+  pnlEl.textContent = (pnl>=0?'+':'')+'₹'+pnl.toFixed(2);
+  pnlEl.style.color = pnl>=0 ? '#4ade80' : '#f87171';
+  
+  return drawn >= prices.length;
+}
+
+function resetState(){
+  clearTimers(); drawn = 0;
+  $('linePath').setAttribute('d',''); $('areaPath').setAttribute('d',''); $('dotEnd').setAttribute('opacity',0);
+  $('toast').classList.remove('show');
+  $('typing').classList.remove('show'); $('tgMsg').classList.remove('show');
+  document.querySelectorAll('#candles .cl').forEach(c=>c.classList.remove('show'));
+  document.querySelectorAll('#appOrder .frow, #appOrder .bigbtn').forEach(e=>e.classList.remove('show'));
+  $('flash').classList.remove('go'); $('tbanner').classList.remove('go');
+  $('bigck').classList.remove('pop'); $('doneTitle').classList.remove('show'); $('dcard').classList.remove('show');
+  
+  const big = $('priceBig'); big.innerHTML='₹150.00'; big.classList.remove('down'); big.classList.add('up');
+  $('pnlVal').textContent='+₹0.00'; $('pnlVal').style.color='#4ade80';
+  $('ctag').textContent='₹150.00'; $('ctag').classList.remove('neg');
+}
+
+function play(){
+  resetState();
+  showApp('tg');
+
+  /* telegram: typing then alert */
+  later(()=> $('typing').classList.add('show'), 900);
+  later(()=>{ $('typing').classList.remove('show'); $('tgMsg').classList.add('show'); }, 2400);
+
+  /* close telegram, open trading app */
+  later(()=>{ apps.tg.classList.add('app-close'); }, 4800);
+  later(()=>{ showApp('order'); }, 5250);
+  later(()=> document.querySelectorAll('#candles .cl').forEach(c=>c.classList.add('show')), 5600);
+  later(()=> document.querySelectorAll('#appOrder .frow, #appOrder .bigbtn').forEach(e=>e.classList.add('show')), 5800);
+
+  /* tap BUY */
+  later(()=> ripple($('buyBtn')), 7300);
+
+  /* order executed -> position screen */
+  later(()=>{ showApp('pos'); }, 7900);
+  later(()=> $('toast').classList.add('show'), 8300);
+
+  /* price fluctuates up & down */
+  later(()=>{
+    
+    const iv = setInterval(()=>{
+      if (tick()) {
+        clearInterval(iv);
+        /* TARGET HIT moment */
+        $('flash').classList.add('go');
+        $('tbanner').classList.add('go');
+        ripple($('sellBtn'));
+        later(()=> $('toast').classList.remove('show'), 600);
+      }
+    }, 210);
+    timers.push(iv);
+  }, 9200);
+
+  /* trade complete */
+  later(()=>{ showApp('done'); }, 16200);
+  later(()=> $('bigck').classList.add('pop'), 16600);
+  later(()=>{ $('doneTitle').classList.add('show'); $('dcard').classList.add('show'); }, 16900);
+
+  /* loop */
+  later(()=> {if(demoActive && !document.hidden) play();}, 21200);
+}
+
+
+function restart(){ if(!document.hidden) play(); }
+const stage = document.getElementById('phoneScene');
+let demoActive = false;
+const playObserver = new IntersectionObserver(entries => {
+  const shouldPlay = entries[0]?.isIntersecting && !document.hidden;
+  if (shouldPlay && !demoActive) { demoActive = true; play(); }
+  else if (!shouldPlay && demoActive) {demoActive = false; clearTimers();}
+}, {threshold: .15});
+playObserver.observe(stage);
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden){demoActive=false;clearTimers();}
+  else if(stage.getBoundingClientRect().bottom>0 && stage.getBoundingClientRect().top < innerHeight){demoActive=true;play();}
+});
+document.getElementById('phoneReplay').addEventListener('click',()=>{demoActive=true;play();});
+
+
+})();
+</script>
 </body>
 </html>
