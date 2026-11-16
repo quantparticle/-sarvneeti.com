@@ -1,0 +1,2368 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<title>Research Subscription Payment | Sarvneeti</title>
+<meta name="description" content="Sarvneeti research subscription payment information, bank transfer details, QR code and payment verification.">
+<link rel="icon" type="image/png" href="fevicon.png">
+
+<style>
+/* ========================================
+   SARVNEETI PAYMENT DESIGN SYSTEM
+======================================== */
+
+:root{
+  --navy:#123b48;
+  --deep:#126479;
+  --teal:#1997a6;
+  --coral:#fc624e;
+  --muted:#617d87;
+  --line:#d8e9ec;
+  --blue:#e9f6f7;
+  --peach:#fff4ee;
+  --white:#fff;
+  --max:1220px;
+}
+
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:115px;
+}
+
+body{
+  margin:0;
+  background:#fff;
+  color:var(--navy);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.container{
+  width:min(var(--max),calc(100% - 48px));
+  margin:auto;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+  outline:3px solid var(--teal);
+  outline-offset:3px;
+}
+
+/* ========================================
+   SCROLL PROGRESS
+======================================== */
+
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0;
+  background:linear-gradient(
+    90deg,var(--teal),var(--coral)
+  );
+  z-index:999;
+}
+
+/* ========================================
+   FLOATING HEADER
+======================================== */
+
+.header{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1450px,calc(100% - 40px));
+  min-height:78px;
+  padding:10px 20px 10px 26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  background:rgba(255,255,255,.97);
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:0 14px 45px rgba(24,94,107,.10);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  z-index:900;
+  transition:top .3s,box-shadow .3s;
+}
+
+.header.scrolled{
+  top:9px;
+  box-shadow:0 9px 28px rgba(24,94,107,.15);
+}
+
+.logo img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-height:53px;
+  max-width:200px;
+  object-fit:contain;
+}
+
+.header-right{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+.header-right a:not(.btn){
+  color:#3c6570;
+  font-size:12px;
+  font-weight:800;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:48px;
+  padding:14px 21px;
+  border:0;
+  border-radius:12px;
+  background:var(--coral);
+  color:white;
+  font-size:11px;
+  font-weight:850;
+  text-align:center;
+  transition:
+    background .3s,
+    transform .3s,
+    box-shadow .3s;
+}
+
+.btn:hover{
+  background:#eb523e;
+  transform:translateY(-3px);
+  box-shadow:0 13px 28px #fc624e30;
+}
+
+.btn-outline{
+  background:#fff;
+  color:var(--deep);
+  border:1px solid #bddbdf;
+}
+
+.btn-outline:hover{
+  background:#ecf8f9;
+  color:var(--deep);
+  box-shadow:none;
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero{
+  position:relative;
+  padding:160px 0 75px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  right:-220px;
+  top:-270px;
+  width:650px;
+  height:650px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,#d9f2f3 0,
+    transparent 71%
+  );
+  pointer-events:none;
+}
+
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:60px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--teal);
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  font-weight:850;
+}
+
+.eyebrow::before{
+  content:"";
+  width:24px;
+  height:2px;
+  background:currentColor;
+}
+
+.hero h1{
+  font-size:clamp(49px,6.3vw,83px);
+  line-height:1.06;
+  letter-spacing:-.075em;
+  margin:24px 0;
+}
+
+.gradient{
+  display:inline-block;
+  color:transparent;
+  background:linear-gradient(
+    105deg,#168ba3,#5bc7be,
+    #ef8c74,#168ba3
+  );
+  background-size:300% 100%;
+  background-clip:text;
+  -webkit-background-clip:text;
+  animation:gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove{
+  to{background-position:300% 0}
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.9;
+  max-width:570px;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:27px;
+}
+
+.hero-reg{
+  margin-top:30px;
+  padding-top:19px;
+  border-top:1px solid var(--line);
+  color:#718b94;
+  font-size:11px;
+  line-height:1.8;
+}
+
+/* Hero illustration */
+
+.hero-art{
+  position:relative;
+  min-height:385px;
+  display:grid;
+  place-items:center;
+}
+
+.art-ring{
+  position:absolute;
+  width:86%;
+  aspect-ratio:1;
+  border:1px solid #cde6e9;
+  border-radius:50%;
+  transform:rotate(-25deg) scaleY(.7);
+}
+
+.art-ring.second{
+  width:108%;
+  transform:rotate(35deg) scaleY(.7);
+}
+
+.art-card{
+  width:79%;
+  max-width:335px;
+  padding:27px;
+  position:relative;
+  background:linear-gradient(145deg,#fff,#eaf7f8);
+  border:1px solid #d5e8eb;
+  border-radius:27px;
+  box-shadow:0 29px 65px #216c7d26;
+  animation:artFloat 7s ease-in-out infinite;
+}
+
+@keyframes artFloat{
+  0%,100%{transform:translateY(0) rotate(-5deg)}
+  50%{transform:translateY(-13px) rotate(-3deg)}
+}
+
+.art-label{
+  display:flex;
+  justify-content:space-between;
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.09em;
+  border-bottom:1px solid #d6e8eb;
+  padding-bottom:17px;
+}
+
+.art-card h3{
+  font-size:23px;
+  letter-spacing:-.05em;
+  margin:22px 0 18px;
+}
+
+.art-row{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-top:11px;
+  padding:14px;
+  border:1px solid #dcebee;
+  border-radius:12px;
+  background:white;
+  font-size:12px;
+  font-weight:800;
+}
+
+.art-row span{
+  display:grid;
+  place-items:center;
+  width:29px;
+  height:29px;
+  flex-shrink:0;
+  border-radius:9px;
+  color:var(--teal);
+  background:#e6f6f7;
+}
+
+.art-float{
+  position:absolute;
+  z-index:3;
+  background:white;
+  border:1px solid #d9e8ea;
+  border-radius:15px;
+  padding:13px 17px;
+  font-size:11px;
+  font-weight:850;
+  box-shadow:0 16px 32px #1d687f1b;
+  animation:smallFloat 6s ease-in-out infinite;
+}
+
+.art-float.top{top:12%;right:0}
+.art-float.bottom{
+  bottom:10%;
+  left:0;
+  animation-delay:-3s;
+}
+
+@keyframes smallFloat{
+  50%{transform:translateY(-12px)}
+}
+
+/* ========================================
+   RIBBON
+======================================== */
+
+.ribbon{
+  overflow:hidden;
+  color:white;
+  background:linear-gradient(
+    90deg,#248ca2,#70bec7,#9bcfd0
+  );
+  border-radius:0 0 45px 45px;
+}
+
+.ribbon-track{
+  display:flex;
+  width:max-content;
+  animation:marquee 31s linear infinite;
+}
+
+.ribbon-group{
+  display:flex;
+  align-items:center;
+  gap:36px;
+  white-space:nowrap;
+  padding:21px 17px;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.13em;
+}
+
+.ribbon-group i{
+  color:#ffe7d9;
+  font-style:normal;
+  font-size:17px;
+}
+
+@keyframes marquee{
+  to{transform:translateX(-50%)}
+}
+
+/* ========================================
+   PAGE SECTIONS
+======================================== */
+
+.section{
+  padding:80px 0;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:25px;
+  margin-bottom:35px;
+}
+
+.section-head h2{
+  font-size:clamp(34px,4.3vw,55px);
+  line-height:1.1;
+  letter-spacing:-.065em;
+  margin:15px 0 0;
+}
+
+.section-head p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+  max-width:420px;
+}
+
+.accent{color:var(--teal)}
+
+.payment-section{
+  background:var(--blue);
+  border-radius:45px 45px 0 0;
+}
+
+.verify-section{
+  background:var(--peach);
+}
+
+/* ========================================
+   PAYMENT ALERT
+======================================== */
+
+.warning{
+  display:flex;
+  align-items:flex-start;
+  gap:15px;
+  background:#fff8ed;
+  border:1px solid #efd7b5;
+  color:#795829;
+  border-radius:16px;
+  padding:18px 21px;
+  font-size:12px;
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+.warning-icon{
+  display:grid;
+  place-items:center;
+  width:29px;
+  height:29px;
+  flex-shrink:0;
+  border-radius:9px;
+  background:#fff;
+  color:#bb7847;
+  font-weight:900;
+}
+
+.warning strong{color:#76461f}
+
+/* ========================================
+   PLAN SELECTOR
+======================================== */
+
+.plan-selector{
+  background:white;
+  border:1px solid #d8e9eb;
+  border-radius:23px;
+  padding:27px;
+  margin-bottom:19px;
+}
+
+.plan-selector h3{
+  font-size:21px;
+  letter-spacing:-.04em;
+  margin:0 0 9px;
+}
+
+.plan-selector>p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.75;
+  margin:0 0 22px;
+}
+
+.plan-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:11px;
+}
+
+.plan-option{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  text-align:left;
+  background:#f7fbfc;
+  border:1.5px solid #dbe8eb;
+  border-radius:15px;
+  padding:17px 14px;
+  color:var(--navy);
+  min-height:145px;
+  transition:
+    background .25s,
+    border-color .25s,
+    transform .25s;
+}
+
+.plan-option:hover{
+  transform:translateY(-3px);
+  border-color:#83c8cd;
+}
+
+.plan-option.selected{
+  background:#ddf4f2;
+  border-color:var(--teal);
+  box-shadow:0 0 0 2px #1997a619;
+}
+
+.plan-option small{
+  color:#71939c;
+  font-size:9px;
+  font-weight:850;
+  letter-spacing:.1em;
+}
+
+.plan-option b{
+  font-size:18px;
+  letter-spacing:-.045em;
+}
+
+.plan-option strong{
+  font-size:21px;
+  letter-spacing:-.045em;
+  margin-top:auto;
+}
+
+.plan-option em{
+  font-size:10px;
+  color:#708b94;
+  font-style:normal;
+}
+
+/* ========================================
+   PAYMENT DETAIL LAYOUT
+======================================== */
+
+.payment-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.13fr)
+    minmax(0,.87fr);
+  gap:19px;
+  align-items:stretch;
+}
+
+.card{
+  min-width:0;
+  padding:29px;
+  background:white;
+  border:1px solid #d7e8eb;
+  border-radius:24px;
+  box-shadow:0 13px 35px #2071840b;
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding-bottom:22px;
+  margin-bottom:19px;
+  border-bottom:1px solid var(--line);
+}
+
+.card-head h3{
+  margin:0 0 7px;
+  font-size:21px;
+  letter-spacing:-.045em;
+}
+
+.card-head p{
+  margin:0;
+  color:#77909a;
+  font-size:11px;
+}
+
+.sbi-symbol{
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:53px;
+  height:53px;
+  background:#00a5db;
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+.sbi-symbol::before{
+  content:"";
+  position:absolute;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:white;
+}
+
+.sbi-symbol::after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:17px;
+  bottom:3px;
+  background:#00a5db;
+}
+
+/* Amount summary */
+
+.amount-box{
+  background:linear-gradient(125deg,#e8f8f8,#f5fbfc);
+  border:1px solid #d4e9eb;
+  border-radius:17px;
+  padding:21px;
+  margin-bottom:19px;
+}
+
+.amount-label{
+  font-size:10px;
+  color:#5c7c88;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+.amount-value{
+  display:block;
+  font-size:clamp(36px,4vw,49px);
+  font-weight:850;
+  letter-spacing:-.065em;
+  margin:9px 0 5px;
+}
+
+.amount-plan{
+  font-size:12px;
+  font-weight:800;
+  color:#376a75;
+}
+
+.amount-hint{
+  font-size:11px;
+  color:#688590;
+  line-height:1.8;
+  margin:12px 0 0;
+}
+
+.bank-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:16px 0;
+  border-bottom:1px solid #e8eff1;
+}
+
+.bank-row:last-child{border-bottom:0}
+
+.bank-row small{
+  display:block;
+  color:#7b959c;
+  font-size:10px;
+  font-weight:750;
+  margin-bottom:7px;
+}
+
+.bank-row strong{
+  display:block;
+  color:#2d5a67;
+  font-size:14px;
+  letter-spacing:.01em;
+  overflow-wrap:anywhere;
+}
+
+.copy-btn{
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:9px 11px;
+  border:1px solid #d2e6e9;
+  background:#f3fbfc;
+  color:var(--deep);
+  border-radius:9px;
+  font-size:10px;
+  font-weight:850;
+  transition:background .2s;
+}
+
+.copy-btn:hover{background:#dff3f4}
+
+.copy-feedback{
+  min-height:20px;
+  margin:13px 0 0;
+  font-size:11px;
+  color:var(--teal);
+  font-weight:800;
+}
+
+/* QR */
+
+.qr-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.qr-title{
+  color:#698791;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.13em;
+  margin-bottom:8px;
+}
+
+.qr-card h3{
+  font-size:25px;
+  letter-spacing:-.055em;
+  margin:7px 0 12px;
+}
+
+.qr-card>p{
+  font-size:12px;
+  line-height:1.8;
+  color:var(--muted);
+  max-width:330px;
+  margin:0 0 21px;
+}
+
+.qr-frame{
+  display:grid;
+  place-items:center;
+  width:min(100%,320px);
+  aspect-ratio:1;
+  background:#fff;
+  padding:15px;
+  border:1px solid #d7e8eb;
+  border-radius:21px;
+}
+
+.qr-frame img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.qr-fallback{
+  display:none;
+  color:#b66b47;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.qr-frame.error .qr-fallback{
+  display:block;
+}
+
+.qr-frame.error img{
+  display:none;
+}
+
+.qr-reminder{
+  margin-top:20px;
+  font-size:11px;
+  line-height:1.8;
+  color:#6c8790;
+  max-width:340px;
+}
+
+/* ========================================
+   VERIFICATION
+======================================== */
+
+.verify-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:43px;
+  align-items:center;
+}
+
+.verify-intro h2{
+  font-size:clamp(35px,4.3vw,58px);
+  line-height:1.1;
+  letter-spacing:-.065em;
+  margin:17px 0 20px;
+}
+
+.verify-intro p{
+  font-size:13px;
+  line-height:1.9;
+  color:var(--muted);
+}
+
+.verify-step{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+  padding:18px;
+  background:rgba(255,255,255,.75);
+  border:1px solid #eddfd9;
+  border-radius:15px;
+  margin-top:13px;
+}
+
+.verify-step span{
+  color:var(--teal);
+  font-size:12px;
+  font-weight:900;
+}
+
+.verify-step b{
+  font-size:13px;
+}
+
+.verify-step p{
+  font-size:11px;
+  margin:6px 0 0;
+}
+
+.verify-card{
+  padding:33px;
+  background:white;
+  border:1px solid #ecdcd5;
+  border-radius:25px;
+  box-shadow:0 16px 40px #8b6c5e0c;
+}
+
+.verify-card h3{
+  font-size:26px;
+  letter-spacing:-.045em;
+  margin:0 0 11px;
+}
+
+.verify-card>p{
+  color:#69828b;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  margin-top:19px;
+}
+
+.field label{
+  font-size:11px;
+  font-weight:850;
+  color:#3c6370;
+}
+
+.field input,
+.field select{
+  width:100%;
+  min-height:50px;
+  padding:14px 15px;
+  background:#f8fbfc;
+  border:1px solid #d6e6e9;
+  border-radius:12px;
+  color:var(--navy);
+  font-size:13px;
+}
+
+.field input:focus,
+.field select:focus{
+  outline:none;
+  border-color:var(--teal);
+  box-shadow:0 0 0 4px #1997a615;
+}
+
+.field input::placeholder{
+  color:#9db0b6;
+}
+
+.verify-card .btn{
+  width:100%;
+  margin-top:24px;
+}
+
+.verify-note{
+  font-size:11px;
+  line-height:1.8;
+  color:#748a94;
+  margin:18px 0 0;
+}
+
+.risk-strip{
+  background:#edf9f9;
+  padding:24px;
+  border-radius:18px;
+  border:1px solid #d8ebec;
+  margin-top:25px;
+  font-size:12px;
+  line-height:1.8;
+  color:#5e7c86;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer{
+  background:#103745;
+  color:#e7f5f6;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
+  gap:40px;
+  padding:62px 0 44px;
+}
+
+.footer-logo-wrap{
+  display:inline-flex;
+  background:white;
+  padding:9px 14px;
+  border-radius:11px;
+  margin-bottom:13px;
+}
+
+.footer-logo{
+  display:block;
+  max-width:160px;
+  max-height:50px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.footer-name{
+  font-size:17px;
+  font-weight:850;
+}
+
+.footer h3{
+  font-size:13px;
+  margin:6px 0 18px;
+}
+
+.footer p,.footer li{
+  color:#bfd5dc;
+  font-size:11px;
+  line-height:1.85;
+}
+
+.footer ul{
+  display:grid;
+  gap:10px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.footer a:hover{color:#9ce6e4}
+.footer strong{color:#fff}
+
+.footer-legal{
+  padding:27px 0;
+  border-top:1px solid #ffffff24;
+}
+
+.footer-legal p{margin:0 0 11px}
+
+.reg-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  padding:30px 0;
+  border-top:1px solid #ffffff24;
+}
+
+.reg-details p{margin:6px 0}
+
+.copyright{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  padding:25px 0;
+  color:#bfd5dc;
+  font-size:11px;
+  border-top:1px solid #ffffff24;
+}
+
+/* ========================================
+   REVEAL ANIMATIONS
+======================================== */
+
+.reveal{
+  opacity:1;
+  transform:none;
+}
+
+.js-motion .reveal{
+  transition:
+    opacity .8s ease,
+    transform .9s cubic-bezier(.17,1,.3,1);
+}
+
+.js-motion .reveal:not(.visible){
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.js-motion .reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media(max-width:1000px){
+  .hero-grid{gap:25px}
+  .plan-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:800px){
+  .header{
+    top:12px;
+    min-height:69px;
+    width:calc(100% - 24px);
+    padding:9px 13px;
+    border-radius:21px;
+  }
+
+  .logo img{
+    max-height:45px;
+    max-width:155px;
+  }
+
+  .hero{
+    padding:135px 0 65px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  .hero-art{
+    width:100%;
+    max-width:520px;
+    margin:auto;
+  }
+
+  .payment-grid,
+  .verify-grid{
+    grid-template-columns:1fr;
+  }
+
+  .verify-grid{gap:30px}
+
+  .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media(max-width:560px){
+  .container{width:calc(100% - 32px)}
+
+  .header{
+    width:calc(100% - 16px);
+    padding:8px;
+  }
+
+  .logo img{
+    max-width:125px;
+    max-height:39px;
+  }
+
+  .header-right{gap:8px}
+
+  .header-right a:not(.btn){
+    display:none;
+  }
+
+  .header .btn{
+    min-height:39px;
+    padding:10px 12px;
+    font-size:9px;
+  }
+
+  .hero{
+    padding:115px 0 45px;
+  }
+
+  .hero h1{
+    font-size:clamp(43px,10.5vw,60px);
+  }
+
+  .hero p{font-size:13px}
+
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .hero-actions a{width:100%}
+
+  .hero-art{min-height:290px}
+
+  .art-card{
+    padding:18px;
+    width:83%;
+  }
+
+  .art-card h3{font-size:19px}
+  .art-row{padding:10px;font-size:10px}
+  .art-float{font-size:9px;padding:10px}
+
+  .ribbon{border-radius:0 0 28px 28px}
+  .payment-section{border-radius:28px 28px 0 0}
+
+  .section{padding:60px 0}
+
+  .section-head h2,
+  .verify-intro h2{
+    font-size:clamp(33px,8.3vw,46px);
+  }
+
+  .plan-grid{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .plan-option{
+    padding:13px 10px;
+    min-height:140px;
+  }
+
+  .plan-option b{font-size:15px}
+  .plan-option strong{font-size:17px}
+
+  .card,.plan-selector,.verify-card{
+    padding:21px 17px;
+  }
+
+  .bank-row strong{
+    font-size:12px;
+  }
+
+  .copy-btn{
+    font-size:9px;
+    padding:9px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:29px;
+    padding:43px 0;
+  }
+
+  .reg-details{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+
+  .js-motion .reveal{
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ========================================
+   HEADER
+======================================== -->
+
+<header class="header" id="header">
+  <a href="./" class="logo"
+    aria-label="Sarvneeti homepage">
+    <img src="logo.png" alt="Sarvneeti">
+  </a>
+
+  <nav class="header-right">
+    <a href="./">HOME</a>
+    <a href="#payment" class="btn">
+      PAYMENT DETAILS ↗
+    </a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ========================================
+   HERO
+======================================== -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div class="reveal">
+
+      <span class="eyebrow">
+        SARVNEETI / RESEARCH SUBSCRIPTION
+      </span>
+
+      <h1>
+        Simple payment.<br>
+        <span class="gradient">
+          Clear next steps.
+        </span>
+      </h1>
+
+      <p>
+        Review your research subscription,
+        confirm the official payment details,
+        complete the permitted payment
+        and share your transaction proof
+        for verification and activation.
+      </p>
+
+      <div class="hero-actions">
+
+        <a href="#payment" class="btn">
+          VIEW PAYMENT DETAILS ↗
+        </a>
+
+        <a href="#verification" class="btn btn-outline">
+          HOW TO VERIFY ↓
+        </a>
+
+      </div>
+
+      <div class="hero-reg">
+        SEBI Registered Research Analyst<br>
+        <strong>Registration No. INH000016533</strong><br>
+        Please review your agreement and disclosures
+        before making a subscription payment.
+      </div>
+
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+
+      <div class="art-ring"></div>
+      <div class="art-ring second"></div>
+
+      <div class="art-card">
+
+        <div class="art-label">
+          <span>PAYMENT PROCESS</span>
+          <span>◇</span>
+        </div>
+
+        <h3>Two simple steps.</h3>
+
+        <div class="art-row">
+          <span>01</span>
+          Review bank and QR details
+        </div>
+
+        <div class="art-row">
+          <span>02</span>
+          Share payment confirmation
+        </div>
+
+        <div class="art-row">
+          <span>✓</span>
+          Verification before activation
+        </div>
+
+      </div>
+
+      <div class="art-float top">
+        ✦ Bank Transfer / QR
+      </div>
+
+      <div class="art-float bottom">
+        ✓ WhatsApp Verification
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================================
+   RIBBON
+======================================== -->
+
+<div class="ribbon" aria-hidden="true">
+
+  <div class="ribbon-track">
+
+    <div class="ribbon-group">
+      <span>RESEARCH SUBSCRIPTION</span><i>✦</i>
+      <span>BANK TRANSFER</span><i>✦</i>
+      <span>QR PAYMENT</span><i>✦</i>
+      <span>TRANSACTION VERIFICATION</span><i>✦</i>
+      <span>RISK AWARENESS</span><i>✦</i>
+    </div>
+
+    <div class="ribbon-group">
+      <span>RESEARCH SUBSCRIPTION</span><i>✦</i>
+      <span>BANK TRANSFER</span><i>✦</i>
+      <span>QR PAYMENT</span><i>✦</i>
+      <span>TRANSACTION VERIFICATION</span><i>✦</i>
+      <span>RISK AWARENESS</span><i>✦</i>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========================================
+   STEP 1 - PAYMENT
+======================================== -->
+
+<section class="section payment-section" id="payment">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div>
+
+        <span class="eyebrow">
+          STEP 01 / MAKE PAYMENT
+        </span>
+
+        <h2>
+          Complete your<br>
+          <span class="accent">subscription payment.</span>
+        </h2>
+
+      </div>
+
+      <p>
+        Select your research plan,
+        review the initial payable amount
+        and use the authorized payment
+        details confirmed during onboarding.
+      </p>
+
+    </div>
+
+    <!-- IMPORTANT BANK NAME NOTICE -->
+
+    <div class="warning reveal">
+
+      <span class="warning-icon">!</span>
+
+      <div>
+        <strong>
+          Verify the beneficiary before paying
+        </strong>
+
+        <div>
+          The bank account details supplied for this page
+          list <b>NIIVESHNEETI</b> as the beneficiary,
+          which differs from the Sarvneeti website name.
+          Do not transfer funds until the Research Analyst
+          confirms the correct authorized fee collection
+          account, account-holder identity and QR recipient.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PLAN SELECTION -->
+
+    <div class="plan-selector reveal">
+
+      <h3>Select your research plan</h3>
+
+      <p>
+        Choose your subscribed plan to display
+        the corresponding initial payment amount.
+        Final payment terms must match the
+        executed client agreement.
+      </p>
+
+      <div class="plan-grid" id="planGrid">
+
+        <button
+          type="button"
+          class="plan-option selected"
+          data-plan="essential"
+          aria-pressed="true"
+        >
+          <small>MONTHLY</small>
+          <b>Essential</b>
+          <strong>₹12,500</strong>
+          <em>1-month plan</em>
+        </button>
+
+        <button
+          type="button"
+          class="plan-option"
+          data-plan="momentum"
+          aria-pressed="false"
+        >
+          <small>QUARTERLY</small>
+          <b>Momentum</b>
+          <strong>₹37,500</strong>
+          <em>3-month plan</em>
+        </button>
+
+        <button
+          type="button"
+          class="plan-option"
+          data-plan="prime"
+          aria-pressed="false"
+        >
+          <small>HALF-YEARLY</small>
+          <b>Prime</b>
+          <strong>₹75,000</strong>
+          <em>6-month plan</em>
+        </button>
+
+        <button
+          type="button"
+          class="plan-option"
+          data-plan="elite"
+          aria-pressed="false"
+        >
+          <small>YEARLY</small>
+          <b>Elite</b>
+          <strong>₹1,51,000</strong>
+          <em>12-month plan</em>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- BANK + QR -->
+
+    <div class="payment-grid">
+
+      <!-- BANK INFORMATION -->
+
+      <div class="card reveal">
+
+        <div class="card-head">
+
+          <div>
+            <h3>Bank Account Details</h3>
+            <p>Preferred Bank · State Bank of India</p>
+          </div>
+
+          <!-- Decorative SBI-style mark;
+               not an official image asset -->
+          <span class="sbi-symbol"
+                aria-label="SBI-style graphic"></span>
+
+        </div>
+
+        <!-- SELECTED PLAN AMOUNT -->
+
+        <div class="amount-box">
+
+          <span class="amount-label">
+            INITIAL PAYMENT AMOUNT
+          </span>
+
+          <strong class="amount-value"
+                  id="paymentAmount">
+            ₹12,500
+          </strong>
+
+          <div class="amount-plan"
+               id="paymentPlan">
+            Essential · Monthly
+          </div>
+
+          <p class="amount-hint"
+             id="paymentHint">
+            Up to one month of research fees,
+            subject to your agreement.
+            Applicable statutory charges
+            are additional.
+          </p>
+
+          <button
+            type="button"
+            class="copy-btn"
+            data-copy-target="amount"
+            style="margin-top:12px"
+          >
+            ⧉ COPY AMOUNT
+          </button>
+
+        </div>
+
+        <!-- ACCOUNT NAME -->
+
+        <div class="bank-row">
+          <div>
+            <small>ACCOUNT NAME</small>
+            <strong>NIIVESHNEETI</strong>
+          </div>
+
+          <button
+            type="button"
+            class="copy-btn"
+            data-copy="NIIVESHNEETI"
+          >
+            ⧉ COPY
+          </button>
+        </div>
+
+        <!-- ACCOUNT NUMBER -->
+
+        <div class="bank-row">
+          <div>
+            <small>ACCOUNT NUMBER</small>
+            <strong>44137222807</strong>
+          </div>
+
+          <button
+            type="button"
+            class="copy-btn"
+            data-copy="44137222807"
+          >
+            ⧉ COPY
+          </button>
+        </div>
+
+        <!-- IFSC -->
+
+        <div class="bank-row">
+          <div>
+            <small>IFSC CODE</small>
+            <strong>SBIN0015474</strong>
+          </div>
+
+          <button
+            type="button"
+            class="copy-btn"
+            data-copy="SBIN0015474"
+          >
+            ⧉ COPY
+          </button>
+        </div>
+
+        <!-- MICR -->
+
+        <div class="bank-row">
+          <div>
+            <small>MICR NUMBER</small>
+            <strong>400002314</strong>
+          </div>
+
+          <button
+            type="button"
+            class="copy-btn"
+            data-copy="400002314"
+          >
+            ⧉ COPY
+          </button>
+        </div>
+
+        <div class="bank-row">
+          <div>
+            <small>BANK NAME</small>
+            <strong>State Bank of India</strong>
+          </div>
+        </div>
+
+        <p class="copy-feedback"
+           id="copyFeedback"
+           aria-live="polite"></p>
+
+      </div>
+
+      <!-- QR -->
+
+      <div class="card qr-card reveal">
+
+        <span class="qr-title">
+          SCAN &amp; PAY
+        </span>
+
+        <h3>QR Payment</h3>
+
+        <p>
+          Use your UPI or supported banking app
+          to scan the QR. Verify the displayed
+          recipient with the authorized payment
+          details before approving the transfer.
+        </p>
+
+        <div class="qr-frame" id="qrFrame">
+
+          <img
+            src="qr.jpeg"
+            alt="Research subscription payment QR code"
+            id="qrImage"
+            loading="lazy"
+          >
+
+          <p class="qr-fallback">
+            The QR image could not be loaded.
+            Confirm that qr.jpeg exists in
+            the same directory as payment.html.
+          </p>
+
+        </div>
+
+        <p class="qr-reminder">
+          The QR image may contain its own
+          payment recipient and does not
+          automatically change when you
+          select a plan. Enter the amount
+          agreed for your subscription
+          and verify the payee before confirming.
+        </p>
+
+        <a href="qr.jpeg"
+           class="btn btn-outline"
+           id="qrOpenLink"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="margin-top:20px">
+          OPEN QR IMAGE ↗
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="risk-strip reveal">
+
+      <strong>Payment terms:</strong>
+      Full plan prices describe the applicable subscription
+      period. Advance collection is limited by current SEBI
+      requirements, presently not exceeding one quarter.
+      Payment is not an investment deposit and no
+      trading return is guaranteed. Review statutory
+      charges, payment conditions and proportionate
+      refund rights before paying.
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================================
+   STEP 2 - VERIFICATION
+======================================== -->
+
+<section class="section verify-section" id="verification">
+
+  <div class="container verify-grid">
+
+    <!-- LEFT -->
+
+    <div class="verify-intro reveal">
+
+      <span class="eyebrow">
+        STEP 02 / VERIFICATION
+      </span>
+
+      <h2>
+        Activate<br>
+        <span class="accent">your plan.</span>
+      </h2>
+
+      <p>
+        After completing payment, share your
+        transaction screenshot with the
+        research desk on WhatsApp.
+        Include your name and selected plan
+        so the team can review the payment
+        and proceed with applicable activation.
+      </p>
+
+      <div class="verify-step">
+
+        <span>01</span>
+
+        <div>
+          <b>Complete your payment</b>
+          <p>
+            Verify the recipient, transaction
+            amount and payment status.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="verify-step">
+
+        <span>02</span>
+
+        <div>
+          <b>Prepare your screenshot</b>
+          <p>
+            Keep a payment confirmation screenshot
+            and transaction/reference number ready.
+            Hide unrelated sensitive information.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="verify-step">
+
+        <span>03</span>
+
+        <div>
+          <b>Send verification on WhatsApp</b>
+          <p>
+            Share your name, plan and
+            transaction proof. Activation is
+            subject to payment verification
+            and completed onboarding.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="verify-card reveal">
+
+      <h3>Payment Verification</h3>
+
+      <p>
+        Fill in your details. The button below
+        opens WhatsApp with a prepared message
+        to the supplied support number.
+      </p>
+
+      <div class="field">
+        <label for="clientName">
+          YOUR FULL NAME *
+        </label>
+
+        <input
+          id="clientName"
+          type="text"
+          placeholder="Enter your full name"
+          autocomplete="name"
+          maxlength="100"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label for="verifyPlan">
+          SELECTED PLAN
+        </label>
+
+        <select id="verifyPlan">
+          <option value="essential">
+            Essential — Monthly
+          </option>
+
+          <option value="momentum">
+            Momentum — Quarterly
+          </option>
+
+          <option value="prime">
+            Prime — Half-Yearly
+          </option>
+
+          <option value="elite">
+            Elite — Yearly
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="transactionId">
+          TRANSACTION ID / UTR
+        </label>
+
+        <input
+          id="transactionId"
+          type="text"
+          placeholder="Enter payment reference"
+          maxlength="100"
+        >
+      </div>
+
+      <button
+        type="button"
+        class="btn"
+        id="whatsappBtn"
+      >
+        SEND SCREENSHOT TO VERIFY ↗
+      </button>
+
+      <p class="verify-note">
+        WhatsApp opens with a prepared message.
+        Please attach your payment screenshot
+        manually before sending it.
+        This website does not verify payments
+        automatically.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- ========================================
+   FOOTER
+======================================== -->
+
+<footer class="footer">
+
+  <div class="container footer-grid">
+
+    <div>
+
+      <a href="./" class="footer-logo-wrap">
+        <img src="logo.png"
+          class="footer-logo"
+          alt="Sarvneeti">
+      </a>
+
+      <div class="footer-name">
+        Sarvneeti
+      </div>
+
+      <p>
+        SEBI registered research analyst
+        services focused on equity and options
+        research, market insights and
+        risk-aware analysis.
+      </p>
+
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="./#services">Services</a></li>
+        <li><a href="./#about">About Us</a></li>
+        <li><a href="./#contact">Contact</a></li>
+        <li><a href="#payment">Payment</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contact Us</h3>
+
+      <ul>
+        <li>
+          <a href="./#contact">
+            Sarvneeti Research Desk
+          </a>
+        </li>
+
+        <li>
+          <a href="tel:+919137932216">
+            +91 91379 32216
+          </a>
+        </li>
+
+        <li>
+          <a href="legal/complaints.html">
+            Submit a Complaint
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Legal &amp; Policy</h3>
+
+      <ul>
+        <li>
+          <a href="legal/disclaimer.html">
+            Disclaimer
+          </a>
+        </li>
+
+        <li>
+          <a href="legal/disclosure.pdf">
+            Disclosure
+          </a>
+        </li>
+
+        <li>
+          <a href="legal/investor-charter.pdf">
+            Investor Charter
+          </a>
+        </li>
+
+        <li>
+          <a href="legal/terms-and-conditions.html">
+            Terms &amp; Conditions
+          </a>
+        </li>
+
+        <li>
+          <a href="legal/privacy-policy.html">
+            Privacy Policy
+          </a>
+        </li>
+
+        <li>
+          <a href="legal/grievance-redressal.html">
+            Grievance Redressal
+          </a>
+        </li>
+
+        <li>
+          <a href="legal/complaints.html">
+            Complaints
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="container footer-legal">
+
+    <p>
+      <strong>Disclaimer:</strong>
+      Registration granted by SEBI
+      and certification from NISM
+      in no way guarantee performance
+      of the intermediary or provide
+      any assurance of returns to investors.
+    </p>
+
+    <p>
+      <strong>Standard Warning:</strong>
+      Investment in securities market
+      are subject to market risks.
+      Read all the related documents
+      carefully before investing.
+    </p>
+
+    <p>
+      <strong>Subscription Fees:</strong>
+      Applicable fees, permissible advance
+      collection and refunds are subject
+      to SEBI/RAASB requirements and
+      the applicable client agreement.
+    </p>
+
+  </div>
+
+  <div class="container reg-details">
+
+    <div>
+      <h3>
+        SEBI Registered Research Analyst Details
+      </h3>
+
+      <p>
+        <strong>Registered Name / Owner:</strong>
+        Amit Kori
+      </p>
+
+      <p>
+        <strong>Registration Type:</strong>
+        Individual
+      </p>
+
+      <p>
+        <strong>Registration Number:</strong>
+        INH000016533
+      </p>
+
+      <p>
+        <strong>Validity:</strong>
+        November 22, 2027
+      </p>
+    </div>
+
+    <div>
+      <h3>Nearest SEBI Office Address</h3>
+
+      <p>
+        SEBI Bhavan BKC, Plot No. C4-A,
+        'G' Block, Bandra-Kurla Complex,
+        Bandra (East), Mumbai – 400051,
+        Maharashtra, India.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="container copyright">
+
+    <span>
+      © <span id="year">2026</span>
+      Sarvneeti. All Rights Reserved.
+    </span>
+
+    <span>
+      <a href="./#contact">
+        Contact Us ↗
+      </a>
+    </span>
+
+  </div>
+
+</footer>
+
+<!-- ========================================
+   JAVASCRIPT
+======================================== -->
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = selector => document.querySelector(selector);
+
+  /* ====================================
+     PLAN CONFIGURATION
+
+     fullPrice = listed subscription price
+     initialPay = maximum initial period
+     before applicable statutory charges
+
+     Actual payable amount must match
+     the client's agreement/invoice.
+  ==================================== */
+
+  const plans = {
+    essential:{
+      name:"Essential",
+      duration:"Monthly",
+      fullPrice:12500,
+      initialPay:12500,
+      hint:"Up to one month of research fees, subject to your agreement. Applicable statutory charges are additional."
+    },
+
+    momentum:{
+      name:"Momentum",
+      duration:"Quarterly",
+      fullPrice:37500,
+      initialPay:37500,
+      hint:"Up to three months of research fees, subject to your agreement. Applicable statutory charges are additional."
+    },
+
+    prime:{
+      name:"Prime",
+      duration:"Half-Yearly",
+      fullPrice:75000,
+      initialPay:37500,
+      hint:"The full six-month plan is ₹75,000. This screen shows an initial three-month instalment of ₹37,500, subject to your agreement. Applicable statutory charges are additional."
+    },
+
+    elite:{
+      name:"Elite",
+      duration:"Yearly",
+      fullPrice:151000,
+      initialPay:37750,
+      hint:"The full 12-month plan is ₹1,51,000. This screen shows an initial three-month instalment of ₹37,750, subject to your agreement. Applicable statutory charges are additional."
+    }
+  };
+
+  const money = amount =>
+    new Intl.NumberFormat("en-IN",{
+      style:"currency",
+      currency:"INR",
+      maximumFractionDigits:0
+    }).format(amount);
+
+  let selectedPlan = "essential";
+
+  /* ====================================
+     PLAN SELECTION
+  ==================================== */
+
+  const planButtons = [
+    ...document.querySelectorAll(".plan-option")
+  ];
+
+  function setPlan(key){
+    if(!plans[key]) return;
+
+    selectedPlan = key;
+    const plan = plans[key];
+
+    $("#paymentAmount").textContent =
+      money(plan.initialPay);
+
+    $("#paymentPlan").textContent =
+      `${plan.name} · ${plan.duration}`;
+
+    $("#paymentHint").textContent =
+      plan.hint;
+
+    $("#verifyPlan").value = key;
+
+    planButtons.forEach(button => {
+      const active = button.dataset.plan === key;
+
+      button.classList.toggle("selected",active);
+      button.setAttribute("aria-pressed",String(active));
+    });
+  }
+
+  planButtons.forEach(button => {
+    button.addEventListener("click",() => {
+      setPlan(button.dataset.plan);
+    });
+  });
+
+  $("#verifyPlan").addEventListener("change",event => {
+    setPlan(event.target.value);
+  });
+
+  /* ====================================
+     URL PLAN SELECTION
+
+     payment.html?plan=essential
+     payment.html?plan=momentum
+     payment.html?plan=prime
+     payment.html?plan=elite
+  ==================================== */
+
+  const queryPlan = new URLSearchParams(
+    location.search
+  ).get("plan");
+
+  if(queryPlan){
+    setPlan(queryPlan.toLowerCase());
+  }
+
+  /* ====================================
+     COPY BUTTONS
+  ==================================== */
+
+  async function copyText(value){
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+
+    const input = document.createElement("textarea");
+
+    input.value = value;
+    input.style.position = "fixed";
+    input.style.opacity = "0";
+
+    document.body.appendChild(input);
+    input.select();
+
+    const success = document.execCommand("copy");
+
+    input.remove();
+
+    if(!success){
+      throw new Error("Copy unavailable");
+    }
+  }
+
+  document.querySelectorAll("[data-copy], [data-copy-target]")
+    .forEach(button => {
+
+      button.addEventListener("click",async () => {
+        const value = button.dataset.copyTarget === "amount"
+          ? String(plans[selectedPlan].initialPay)
+          : button.dataset.copy;
+
+        try{
+          await copyText(value);
+
+          $("#copyFeedback").textContent =
+            "Copied to clipboard.";
+        }catch(error){
+          $("#copyFeedback").textContent =
+            "Unable to copy automatically. Please select and copy the value manually.";
+        }
+      });
+
+    });
+
+  /* ====================================
+     QR ERROR
+  ==================================== */
+
+  const qr = $("#qrImage");
+
+  qr.addEventListener("error",() => {
+    $("#qrFrame").classList.add("error");
+  });
+
+  if(qr.complete && qr.naturalWidth === 0){
+    $("#qrFrame").classList.add("error");
+  }
+
+  /* ====================================
+     WHATSAPP VERIFICATION
+  ==================================== */
+
+  $("#whatsappBtn").addEventListener("click",() => {
+    const name = $("#clientName").value.trim();
+    const transactionId = $("#transactionId").value.trim();
+
+    if(!name){
+      $("#clientName").reportValidity();
+      $("#clientName").focus();
+      return;
+    }
+
+    const plan = plans[selectedPlan];
+
+    const message = [
+      "Hi Sarvneeti Team,",
+      "",
+      "I have made a payment towards my research subscription.",
+      "",
+      `Name: ${name}`,
+      `Selected Plan: ${plan.name} (${plan.duration})`,
+      `Payment Amount: ${money(plan.initialPay)}`,
+      `Transaction ID / UTR: ${transactionId || "To be provided"}`,
+      "",
+      "I will attach my payment screenshot here.",
+      "",
+      "Please verify my payment and confirm the next steps for activating my subscription."
+    ].join("\n");
+
+    const url =
+      "https://wa.me/919137932216?text=" +
+      encodeURIComponent(message);
+
+    window.open(url,"_blank","noopener,noreferrer");
+  });
+
+  /* ====================================
+     SCROLL ANIMATIONS
+  ==================================== */
+
+  const reduced = matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if(!reduced && "IntersectionObserver" in window){
+    document.documentElement.classList.add("js-motion");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },{
+      threshold:.06
+    });
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  /* ====================================
+     HEADER + SCROLL PROGRESS
+  ==================================== */
+
+  let pending = false;
+
+  function updateScroll(){
+    pending = false;
+
+    const y = scrollY;
+    const max = Math.max(
+      1,
+      document.documentElement.scrollHeight - innerHeight
+    );
+
+    $("#header").classList.toggle("scrolled",y>60);
+
+    $("#scrollProgress").style.width =
+      `${Math.min(100,y/max*100)}%`;
+  }
+
+  window.addEventListener("scroll",() => {
+    if(!pending){
+      pending = true;
+      requestAnimationFrame(updateScroll);
+    }
+  },{passive:true});
+
+  updateScroll();
+
+  $("#year").textContent =
+    new Date().getFullYear();
+
+})();
+</script>
+
+</body>
+</html>
