@@ -3,856 +3,645 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 
-<title>OptionNeeti | Sarvneeti Index Options Research</title>
+<title>OptionNeeti | Index Options Research by Sarvneeti</title>
 
-<meta name="description" content="Sarvneeti OptionNeeti provides research-based intraday and BTST index options setups covering Nifty, Bank Nifty and Sensex.">
+<meta name="description"
+content="OptionNeeti by Sarvneeti. Research-based intraday and BTST index options setups for Nifty, Bank Nifty and Sensex. Explore our research plans.">
 
 <link rel="icon" type="image/png" href="fevicon.png">
 
 <style>
-
-/* =========================================
-   GLOBAL DESIGN VARIABLES
-========================================= */
+/* =====================================
+   GLOBAL
+===================================== */
 
 :root {
-  --navy: #123b48;
-  --deep: #126479;
-  --teal: #1997a6;
-  --aqua: #79ccd0;
-  --coral: #fc624e;
-  --muted: #617d87;
-  --line: #d8e9ec;
-  --bluebg: #e9f6f7;
-  --peach: #fff3ec;
-  --white: #ffffff;
-  --max: 1250px;
+  --navy:#123b48;
+  --deep:#126479;
+  --teal:#1997a6;
+  --aqua:#79ccd0;
+  --coral:#fc624e;
+  --muted:#617d87;
+  --line:#d8e9ec;
+  --bluebg:#e9f6f7;
+  --peach:#fff5ef;
+  --white:#ffffff;
+  --max:1280px;
 }
 
-* {
-  box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing:border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 115px;
+  scroll-behavior:smooth;
+  scroll-padding-top:115px;
 }
 
 body {
-  margin: 0;
-  background: #ffffff;
-  color: var(--navy);
-
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  margin:0;
+  background:#fff;
+  color:var(--navy);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Arial,sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 
 body.loading {
-  overflow: hidden;
+  overflow:hidden;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color:inherit;
+  text-decoration:none;
 }
 
 button {
-  font: inherit;
-  cursor: pointer;
+  font:inherit;
+  cursor:pointer;
 }
 
 .container {
-  width: min(var(--max), calc(100% - 64px));
-  margin: auto;
+  width:min(var(--max),calc(100% - 64px));
+  margin:auto;
 }
 
 ::selection {
-  background: #ace5e8;
-  color: #133b49;
+  background:#b9e7e8;
+  color:var(--navy);
 }
 
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--teal);
-  outline-offset: 4px;
+  outline:3px solid var(--teal);
+  outline-offset:4px;
 }
 
-/* =========================================
-   CANDLESTICK LOADING SCREEN
-========================================= */
+/* =====================================
+   CANDLESTICK PRELOADER
+===================================== */
 
 .loader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-
-  display: grid;
-  place-items: center;
-
-  background: linear-gradient(
-    130deg,
-    #ffffff,
-    #e6f6f7,
-    #d9eff0
-  );
-
-  transition:
-    opacity .65s ease,
-    visibility .65s ease;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(130deg,#fff,#e6f6f7,#d9eff0);
+  transition:opacity .65s,visibility .65s;
 }
 
 .loader.hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
 }
 
 .loader-inner {
-  text-align: center;
-  padding: 25px;
+  text-align:center;
+  padding:25px;
 }
 
 .loader h2 {
-  font-size: 27px;
-  letter-spacing: -1px;
-  margin: 20px 0 7px;
+  font-size:27px;
+  letter-spacing:-1px;
+  margin:20px 0 7px;
 }
 
 .loader p {
-  font-size: 12px;
-  color: #66858c;
+  font-size:12px;
+  color:#66858c;
 }
 
 .loader-candles {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  height: 105px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  height:105px;
 }
 
 .loader-candles i {
-  position: relative;
-  width: 18px;
-  height: 50px;
-  background: #1fa795;
-  border-radius: 2px;
-
-  animation:
-    loadCandle 1s ease-in-out infinite alternate;
+  position:relative;
+  display:block;
+  width:18px;
+  height:50px;
+  border-radius:2px;
+  background:#1fa795;
+  animation:loadCandle 1s ease-in-out infinite alternate;
 }
 
 .loader-candles i::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: -14px;
-  height: calc(100% + 28px);
-  width: 2px;
-  background: #146f79;
-  z-index: -1;
+  content:"";
+  position:absolute;
+  left:8px;
+  top:-14px;
+  height:calc(100% + 28px);
+  width:2px;
+  background:#146f79;
+  z-index:-1;
 }
 
 .loader-candles i:nth-child(2) {
-  height: 70px;
-  background: #f58d7a;
-  animation-delay: .16s;
+  height:70px;
+  background:#f58d7a;
+  animation-delay:.16s;
 }
 
 .loader-candles i:nth-child(3) {
-  height: 37px;
-  animation-delay: .3s;
+  height:37px;
+  animation-delay:.3s;
 }
 
 .loader-candles i:nth-child(4) {
-  height: 64px;
-  background: #f58d7a;
-  animation-delay: .45s;
+  height:64px;
+  background:#f58d7a;
+  animation-delay:.45s;
 }
 
 .loader-candles i:nth-child(5) {
-  height: 82px;
-  animation-delay: .6s;
+  height:82px;
+  animation-delay:.6s;
 }
 
 @keyframes loadCandle {
   from {
-    transform: translateY(11px) scaleY(.87);
+    transform:translateY(11px) scaleY(.87);
   }
-
   to {
-    transform: translateY(-12px) scaleY(1.05);
+    transform:translateY(-12px) scaleY(1.05);
   }
 }
 
 .loading-bar {
-  width: 260px;
-  height: 5px;
-  margin: 23px auto 0;
-  background: #cce5e8;
-  border-radius: 20px;
-  overflow: hidden;
+  width:260px;
+  height:5px;
+  margin:23px auto 0;
+  background:#cce5e8;
+  border-radius:20px;
+  overflow:hidden;
 }
 
 .loading-bar span {
-  display: block;
-  width: 35%;
-  height: 100%;
-
-  background: linear-gradient(
-    90deg,
-    #1486a0,
-    #72d3c9
-  );
-
-  animation:
-    barMove 1.3s infinite alternate ease-in-out;
+  display:block;
+  width:35%;
+  height:100%;
+  background:linear-gradient(90deg,#1486a0,#72d3c9);
+  animation:barMove 1.3s infinite alternate ease-in-out;
 }
 
 @keyframes barMove {
-  from {
-    transform: translateX(-100%);
-  }
-
-  to {
-    transform: translateX(300%);
-  }
+  from { transform:translateX(-100%); }
+  to { transform:translateX(300%); }
 }
 
 .skip-load {
-  display: none;
-  margin: 20px auto 0;
-  border: 0;
-  background: none;
-  color: var(--deep);
-  font-size: 12px;
-  text-decoration: underline;
+  display:none;
+  margin:20px auto 0;
+  border:0;
+  background:none;
+  color:var(--deep);
+  font-size:12px;
+  text-decoration:underline;
 }
 
 .skip-load.visible {
-  display: block;
+  display:block;
 }
 
-/* =========================================
-   SCROLL PROGRESS BAR
-========================================= */
+/* =====================================
+   SCROLL PROGRESS
+===================================== */
 
 .scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0;
-
-  background: linear-gradient(
-    90deg,
-    var(--teal),
-    var(--coral)
-  );
-
-  z-index: 999;
-  pointer-events: none;
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0;
+  background:linear-gradient(90deg,var(--teal),var(--coral));
+  z-index:999;
+  pointer-events:none;
 }
 
-/* =========================================
-   FLOATING ROUNDED HEADER
-========================================= */
+/* =====================================
+   FLOATING HEADER
+===================================== */
 
 .site-header {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: min(1450px, calc(100% - 40px));
-  min-height: 82px;
-
-  padding: 11px 19px 11px 27px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 22px;
-
-  z-index: 900;
-
-  border-radius: 27px;
-  border: 1px solid rgba(26,83,97,.14);
-
-  background: rgba(255,255,255,.96);
-
-  box-shadow:
-    0 15px 50px rgba(24,94,107,.1);
-
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-
-  transition:
-    min-height .35s,
-    box-shadow .35s,
-    top .35s;
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1450px,calc(100% - 40px));
+  min-height:82px;
+  padding:11px 19px 11px 27px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  z-index:900;
+  border-radius:27px;
+  border:1px solid rgba(26,83,97,.14);
+  background:rgba(255,255,255,.97);
+  box-shadow:0 15px 50px rgba(24,94,107,.1);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  transition:top .35s,min-height .35s,box-shadow .35s;
 }
 
 .site-header.scrolled {
-  top: 10px;
-  min-height: 68px;
-
-  box-shadow:
-    0 10px 35px rgba(24,94,107,.16);
+  top:10px;
+  min-height:68px;
+  box-shadow:0 10px 35px rgba(24,94,107,.16);
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
 }
 
 .logo img {
-  display: block;
-  height: auto;
-  max-height: 53px;
-  max-width: 205px;
-  object-fit: contain;
+  display:block;
+  max-height:53px;
+  max-width:205px;
+  height:auto;
+  width:auto;
+  object-fit:contain;
 }
 
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 29px;
+  display:flex;
+  align-items:center;
+  gap:28px;
 }
 
 .nav-links a {
-  font-size: 13px;
-  font-weight: 750;
-  color: #315b66;
-
-  transition: color .25s ease;
+  font-size:13px;
+  font-weight:750;
+  color:#315b66;
+  transition:color .25s;
 }
 
 .nav-links a:hover {
-  color: var(--teal);
+  color:var(--teal);
 }
 
 .header-btn,
 .btn-primary {
-  border: 0;
-  border-radius: 12px;
-  min-height: 48px;
-  padding: 14px 22px;
-
-  background: var(--coral);
-  color: #ffffff;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
-  font-weight: 850;
-  font-size: 11px;
-
-  transition:
-    transform .3s,
-    box-shadow .3s,
-    background .3s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  min-height:48px;
+  padding:14px 21px;
+  border:0;
+  border-radius:12px;
+  background:var(--coral);
+  color:white;
+  font-size:11px;
+  font-weight:850;
+  transition:transform .3s,background .3s,box-shadow .3s;
 }
 
 .header-btn {
-  white-space: nowrap;
+  white-space:nowrap;
 }
 
 .header-btn:hover,
 .btn-primary:hover {
-  transform: translateY(-4px);
-  background: #ed503c;
-
-  box-shadow:
-    0 12px 26px rgba(252,98,78,.23);
+  transform:translateY(-4px);
+  background:#ed503c;
+  box-shadow:0 12px 26px rgba(252,98,78,.23);
 }
 
 .btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 48px;
-  gap: 10px;
-  padding: 13px 21px;
-
-  border: 1px solid #bcd8dc;
-  border-radius: 12px;
-
-  background: #ffffff;
-  color: #235867;
-
-  font-size: 11px;
-  font-weight: 850;
-
-  transition:
-    transform .3s,
-    background .3s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:48px;
+  padding:13px 21px;
+  border:1px solid #bcd8dc;
+  border-radius:12px;
+  background:white;
+  color:#235867;
+  font-size:11px;
+  font-weight:850;
+  transition:transform .3s,background .3s;
 }
 
 .btn-outline:hover {
-  transform: translateY(-3px);
-  background: #e9f8fa;
+  transform:translateY(-3px);
+  background:#e9f8fa;
 }
 
 .menu-button {
-  display: none;
-  width: 44px;
-  height: 43px;
-
-  background: #e8f7f8;
-  border: 1px solid var(--line);
-
-  border-radius: 11px;
-  font-size: 22px;
-  color: var(--navy);
+  display:none;
+  width:44px;
+  height:43px;
+  background:#e8f7f8;
+  border:1px solid var(--line);
+  border-radius:11px;
+  color:var(--navy);
+  font-size:22px;
 }
 
-/* =========================================
-   HERO - PURE WHITE BACKGROUND
+.header-btn .short-label {
+  display:none;
+}
 
-   TEXT LEFT
-   VIDEO RIGHT
-
-   NO GRADIENT / NO GLOW
-   NO VIDEO BACKGROUND CARD
-========================================= */
+/* =====================================
+   HERO - PURE WHITE
+===================================== */
 
 .hero {
-  min-height: 100svh;
-
-  padding: 145px 0 90px;
-
-  background: #ffffff !important;
-
-  display: flex;
-  align-items: center;
-
-  position: relative;
-  overflow: hidden;
-
-  border: none;
-  box-shadow: none;
+  min-height:100svh;
+  padding:145px 0 90px;
+  background:#ffffff;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
 }
-
-/* Remove the earlier blue glow */
-
-.hero::before,
-.hero::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Layout */
 
 .hero-grid {
-  position: relative;
-  z-index: 1;
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    minmax(0, 1fr);
-
-  align-items: center;
-  gap: 55px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:center;
+  gap:50px;
 }
-
-/* Hero text on left */
 
 .hero-content {
-  grid-column: 1;
-  grid-row: 1;
-
-  position: relative;
-  z-index: 2;
+  grid-column:1;
+  grid-row:1;
+  position:relative;
+  z-index:2;
 }
-
-/* =========================================
-   HERO VIDEO: PURE WHITE MERGE
-========================================= */
 
 .hero-visual {
-  grid-column: 2;
-  grid-row: 1;
-
-  position: relative;
-  min-width: 0;
-
-  height: min(600px,54vw);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #ffffff !important;
-
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-
-  overflow: hidden;
-
-  isolation: isolate;
+  grid-column:2;
+  grid-row:1;
+  position:relative;
+  min-width:0;
+  height:min(600px,54vw);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  overflow:hidden;
+  border:0;
+  box-shadow:none;
 }
-
-/* Completely remove background glow */
-
-.hero-visual::before,
-.hero-visual::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Actual MP4 video */
 
 .hero-video {
-  display: block;
-
-  position: relative;
-  z-index: 1;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-  object-position: center;
-
-  background: #ffffff !important;
-
-  border: none !important;
-  border-radius: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
-
-  pointer-events: none;
-
-  /* No blending that changes white colors */
-  mix-blend-mode: normal !important;
-
-  /* Remove prior radial masks */
-  -webkit-mask-image: none !important;
-  mask-image: none !important;
-
-  opacity: 1;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  position:relative;
+  background:#ffffff;
+  border:0;
+  box-shadow:none;
+  pointer-events:none;
+  mix-blend-mode:normal;
+  -webkit-mask-image:none;
+  mask-image:none;
 }
 
-/* If the video cannot load */
-
 .video-fallback {
-  display: none;
-
-  position: absolute;
-  inset: 0;
-
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background: #ffffff;
-  color: var(--teal);
+  display:none;
+  position:absolute;
+  inset:0;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:var(--teal);
+  background:#fff;
 }
 
 .video-error .video-fallback {
-  display: flex;
+  display:flex;
 }
 
 .video-error video {
-  display: none;
+  display:none;
 }
-
-/* Small illustrative disclaimer */
 
 .video-caption {
-  position: absolute;
-  z-index: 2;
-
-  bottom: 3px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  font-size: 9px;
-  letter-spacing: .12em;
-
-  color: #8ca5ab;
-  font-weight: 800;
-
-  white-space: nowrap;
+  position:absolute;
+  bottom:3px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#8ca5ab;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  white-space:nowrap;
 }
 
-/* =========================================
-   HERO TEXT
-========================================= */
-
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  text-transform: uppercase;
-
-  font-size: 10px;
-  color: var(--teal);
-
-  letter-spacing: .15em;
-  font-weight: 850;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.15em;
+  text-transform:uppercase;
 }
 
 .eyebrow::before {
-  content: "";
-
-  width: 23px;
-  height: 2px;
-
-  background: currentColor;
+  content:"";
+  display:block;
+  width:23px;
+  height:2px;
+  background:currentColor;
 }
 
 .hero h1 {
-  font-size: clamp(48px,5.4vw,78px);
-  line-height: 1.07;
-
-  letter-spacing: -.07em;
-  font-weight: 820;
-
-  margin: 25px 0 20px;
+  font-size:clamp(48px,5.4vw,78px);
+  line-height:1.07;
+  letter-spacing:-.07em;
+  font-weight:820;
+  margin:25px 0 20px;
 }
 
-/* Animated rotating words */
-
 .animated-word {
-  display: inline-block;
-
-  background: linear-gradient(
-    100deg,
-    #168ba3,
-    #52c5b9,
-    #f38b72,
-    #168ba3
+  display:inline-block;
+  background:linear-gradient(
+    100deg,#168ba3,#52c5b9,#f38b72,#168ba3
   );
-
-  background-size: 300% 100%;
-
-  color: transparent;
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  animation:
-    wordColor 5s infinite linear;
-
-  transition:
-    opacity .3s,
-    transform .3s;
+  background-size:300% 100%;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation:wordColor 5s infinite linear;
+  transition:opacity .3s,transform .3s;
 }
 
 .animated-word.changing {
-  opacity: 0;
-  transform: translateY(14px);
+  opacity:0;
+  transform:translateY(14px);
 }
 
 @keyframes wordColor {
-  to {
-    background-position: 300% 0;
-  }
+  to { background-position:300% 0; }
 }
 
 .hero-content > p {
-  max-width: 560px;
-
-  color: #607c85;
-  font-size: 16px;
-
-  line-height: 1.85;
+  max-width:560px;
+  color:#607c85;
+  font-size:16px;
+  line-height:1.85;
 }
 
 .hero-content > p strong {
-  color: #295c6a;
+  color:#295c6a;
 }
 
-/* Index tags */
-
 .hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 8px;
-  margin: 26px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:26px 0;
 }
 
 .hero-tags span {
-  border: 1px solid #cfe4e8;
-  background: #f7fdfd;
-
-  color: #3b7180;
-  border-radius: 50px;
-
-  padding: 9px 12px;
-
-  font-size: 10px;
-  font-weight: 800;
+  border:1px solid #cfe4e8;
+  background:#f7fdfd;
+  color:#3b7180;
+  border-radius:50px;
+  padding:9px 12px;
+  font-size:10px;
+  font-weight:800;
 }
-
-/* Buttons */
 
 .hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 11px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:11px;
 }
 
-/* Registration note */
-
 .registration-note {
-  display: flex;
-  gap: 12px;
-
-  margin-top: 28px;
-  padding-top: 19px;
-
-  border-top: 1px solid var(--line);
-
-  font-size: 11px;
-  line-height: 1.7;
-
-  color: #708b93;
+  display:flex;
+  gap:12px;
+  margin-top:28px;
+  padding-top:19px;
+  border-top:1px solid var(--line);
+  color:#708b93;
+  font-size:11px;
+  line-height:1.7;
 }
 
 .registration-note b {
-  color: #315e69;
+  color:#315e69;
 }
 
 .registration-note .check {
-  font-size: 20px;
-  color: var(--teal);
+  color:var(--teal);
+  font-size:20px;
 }
 
 .scroll-hint {
-  position: absolute;
-  right: 5%;
-  bottom: 23px;
-
-  font-size: 10px;
-  letter-spacing: .14em;
-
-  color: #819ea6;
-  font-weight: 800;
+  position:absolute;
+  right:5%;
+  bottom:23px;
+  color:#819ea6;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
 }
 
-/* =========================================
-   CURVED MOVING RIBBON
-========================================= */
+/* =====================================
+   CURVED MARKET RIBBON
+===================================== */
 
 .ticker {
-  position: relative;
-  z-index: 3;
-
-  overflow: hidden;
-
-  color: #ffffff;
-
-  background: linear-gradient(
-    100deg,
-    #248ca2,
-    #70bec7,
-    #9bcfd0
+  position:relative;
+  z-index:3;
+  overflow:hidden;
+  color:white;
+  background:linear-gradient(
+    100deg,#248ca2,#70bec7,#9bcfd0
   );
-
-  border-radius: 0 0 48px 48px;
+  border-radius:0 0 48px 48px;
 }
 
 .ticker-track {
-  display: flex;
-  width: max-content;
-
-  animation:
-    tickerMove 32s linear infinite;
+  display:flex;
+  width:max-content;
+  animation:tickerMove 32s linear infinite;
 }
 
 .ticker-group {
-  display: flex;
-  align-items: center;
-  gap: 37px;
-
-  white-space: nowrap;
-  padding: 21px 18px;
-
-  font-size: 11px;
-  font-weight: 850;
-  letter-spacing: .14em;
+  display:flex;
+  align-items:center;
+  gap:37px;
+  white-space:nowrap;
+  padding:21px 18px;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.14em;
 }
 
 .ticker-group i {
-  color: #ffe6d8;
-  font-size: 17px;
-  font-style: normal;
+  color:#ffe6d8;
+  font-size:17px;
+  font-style:normal;
 }
 
 @keyframes tickerMove {
-  to {
-    transform: translateX(-50%);
-  }
+  to { transform:translateX(-50%); }
 }
 
-/* =========================================
-   COMMON SECTIONS
-========================================= */
+/* =====================================
+   SECTIONS
+===================================== */
 
 .section {
-  padding: 94px 0;
+  padding:90px 0;
 }
 
 .section-header {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: end;
-
-  gap: 35px;
-  margin-bottom: 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:35px;
+  margin-bottom:38px;
 }
 
 .section-header h2,
 .large-heading {
-  font-size: clamp(36px,4.4vw,60px);
-  line-height: 1.1;
-
-  letter-spacing: -.065em;
-  margin: 15px 0 0;
+  font-size:clamp(36px,4.4vw,60px);
+  line-height:1.1;
+  letter-spacing:-.065em;
+  margin:15px 0 0;
 }
 
 .section-header p {
-  max-width: 420px;
-
-  font-size: 13px;
-  color: var(--muted);
-
-  line-height: 1.8;
+  max-width:420px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
 }
 
 .accent {
-  color: var(--teal);
+  color:var(--teal);
 }
 
-/* =========================================
-   SCROLL REVEAL FOR HEADINGS
-========================================= */
+/* =====================================
+   SCROLL REVEAL
+===================================== */
 
 .reveal {
   transition:
@@ -861,64 +650,49 @@ summary:focus-visible {
 }
 
 .js-motion .reveal:not(.visible) {
-  opacity: 0;
-  transform: translateY(35px);
+  opacity:0;
+  transform:translateY(35px);
 }
 
 .js-motion .reveal.visible {
-  opacity: 1;
-  transform: none;
+  opacity:1;
+  transform:none;
 }
 
-/* =========================================
-   ADVANCED 3D CARD SCROLL ANIMATION
-
-   Cards rise from below
-   Scale into position
-   Rotate slightly
-   Blur-to-sharp reveal
-   Staggered entrances
-========================================= */
+/* =====================================
+   STAGGERED 3D CARD ANIMATIONS
+===================================== */
 
 .motion-slot {
-  perspective: 1400px;
-  min-width: 0;
+  perspective:1400px;
+  min-width:0;
 }
 
 .motion-card {
-  height: 100%;
-
+  height:100%;
+  transform-origin:center 78%;
+  backface-visibility:hidden;
   transition:
     transform 1s cubic-bezier(.18,1,.26,1),
     opacity .8s ease,
     filter .9s ease;
-
-  transition-delay:
-    var(--delay,0ms);
-
-  transform-origin: center 78%;
-
-  backface-visibility: hidden;
+  transition-delay:var(--delay,0ms);
 }
 
 .js-motion .motion-slot:not(.arrived) .motion-card {
-  opacity: 0;
-
-  filter: blur(7px);
-
+  opacity:0;
+  filter:blur(7px);
   transform:
     perspective(1400px)
-    translate3d(var(--from-x,0px),110px,0)
+    translate3d(var(--from-x,0px),105px,0)
     rotateX(14deg)
     rotateY(var(--from-ry,0deg))
-    scale(.86);
+    scale(.87);
 }
 
 .js-motion .motion-slot.arrived .motion-card {
-  opacity: 1;
-
-  filter: blur(0);
-
+  opacity:1;
+  filter:blur(0);
   transform:
     translate3d(0,0,0)
     rotateX(0)
@@ -930,1056 +704,944 @@ summary:focus-visible {
 .process,
 .pricing,
 .about {
-  overflow-x: clip;
+  overflow-x:clip;
 }
 
-/* =========================================
-   SERVICE CARDS
-========================================= */
+/* =====================================
+   SERVICES
+===================================== */
 
 .services {
-  background: var(--bluebg);
-  border-radius: 48px 48px 0 0;
+  background:var(--bluebg);
+  border-radius:48px 48px 0 0;
 }
 
 .service-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-
-  gap: 18px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
 }
 
 .service-card {
-  min-height: 240px;
-
-  position: relative;
-  overflow: hidden;
-
-  padding: 29px;
-
-  background: #ffffff;
-
-  border: 1px solid #d9e9eb;
-
-  border-radius:
-    25px 25px 48px 25px;
-
-  box-shadow:
-    0 8px 24px rgba(23,78,92,.04);
-
-  transition: box-shadow .3s ease;
+  min-height:240px;
+  position:relative;
+  overflow:hidden;
+  padding:29px;
+  background:white;
+  border:1px solid #d9e9eb;
+  border-radius:25px 25px 48px 25px;
+  box-shadow:0 8px 24px rgba(23,78,92,.04);
+  transition:box-shadow .3s;
 }
 
 .service-grid .motion-slot:nth-child(2n) .service-card {
-  background: #d7f0f1;
+  background:#d7f0f1;
 }
 
 .service-grid .motion-slot:nth-child(3n) .service-card {
-  background: #fff1e9;
+  background:#fff1e9;
 }
 
 .service-card:hover {
-  box-shadow:
-    0 22px 48px rgba(37,108,128,.15);
+  box-shadow:0 22px 48px rgba(37,108,128,.15);
 }
 
 .service-icon {
-  width: 46px;
-  height: 46px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 13px;
-
-  background: #e4f6f7;
-  color: var(--teal);
-
-  font-size: 24px;
-  margin-bottom: 22px;
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#e4f6f7;
+  color:var(--teal);
+  font-size:24px;
+  margin-bottom:22px;
 }
 
 .service-number {
-  position: absolute;
-  top: 29px;
-  right: 28px;
-
-  color: #88a6ad;
-  font-size: 11px;
-  font-weight: 800;
+  position:absolute;
+  top:29px;
+  right:28px;
+  color:#88a6ad;
+  font-size:11px;
+  font-weight:800;
 }
 
 .service-card h3 {
-  font-size: 22px;
-  letter-spacing: -.045em;
-
-  line-height: 1.2;
-  margin: 0 0 11px;
+  font-size:22px;
+  letter-spacing:-.045em;
+  line-height:1.2;
+  margin:0 0 11px;
 }
 
 .service-card p {
-  font-size: 12px;
-  line-height: 1.8;
-
-  color: #587982;
-  margin: 0;
-
-  max-width: 315px;
+  color:#587982;
+  font-size:12px;
+  line-height:1.8;
+  margin:0;
+  max-width:315px;
 }
 
 .card-arrow {
-  position: absolute;
-  right: 25px;
-  bottom: 19px;
-
-  color: var(--teal);
-  font-size: 22px;
+  position:absolute;
+  right:25px;
+  bottom:19px;
+  color:var(--teal);
+  font-size:22px;
 }
 
-/* =========================================
+/* =====================================
    HOW IT WORKS
-========================================= */
+===================================== */
 
 .process {
-  background: #ffffff;
+  background:white;
 }
 
 .process-grid {
-  display: grid;
-
-  grid-template-columns:
-    .9fr 1.1fr;
-
-  gap: 65px;
-  align-items: center;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:65px;
+  align-items:center;
 }
 
 .process-copy p {
-  max-width: 470px;
-
-  color: var(--muted);
-  font-size: 13px;
-
-  line-height: 1.85;
+  max-width:470px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
 }
 
 .process-steps {
-  display: grid;
-  gap: 13px;
+  display:grid;
+  gap:13px;
 }
 
 .step {
-  display: flex;
-  gap: 20px;
-
-  padding: 23px 24px;
-
-  background: #f0f9fa;
-
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  display:flex;
+  gap:20px;
+  padding:23px 24px;
+  background:#f0f9fa;
+  border:1px solid var(--line);
+  border-radius:18px;
 }
 
 .step-number {
-  font-size: 16px;
-  color: var(--teal);
-  font-weight: 900;
+  color:var(--teal);
+  font-size:16px;
+  font-weight:900;
 }
 
 .step b {
-  font-size: 14px;
+  font-size:14px;
 }
 
 .step p {
-  margin: 7px 0 0;
-
-  color: var(--muted);
-  font-size: 12px;
-
-  line-height: 1.7;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+  margin:7px 0 0;
 }
 
-/* =========================================
-   PRICING
-========================================= */
+/* =====================================
+   FOUR PRICING CARDS
+===================================== */
 
 .pricing {
-  background: #fff8f3;
-  padding: 78px 0;
+  background:#fff8f3;
+  padding:65px 0 70px;
 }
 
 .pricing .section-header {
-  margin-bottom: 30px;
+  margin-bottom:27px;
 }
 
 .pricing .section-header h2 {
-  font-size: clamp(35px,4vw,53px);
+  font-size:clamp(35px,3.8vw,51px);
 }
 
 .plans-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-
-  align-items: stretch;
-  gap: 18px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  align-items:stretch;
 }
+
+/* Base plan card */
 
 .plan-card {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 25px 23px 20px;
-
-  background: #ffffff;
-
-  border: 1px solid #d9e9eb;
-  border-radius: 24px;
-
-  box-shadow:
-    0 10px 29px rgba(22,91,112,.055);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:23px 20px 19px;
+  background:white;
+  border:1px solid #d9e9eb;
+  border-radius:23px;
+  box-shadow:0 10px 29px rgba(22,91,112,.055);
+  isolation:isolate;
 }
 
+/* Popular card */
+
 .plans-grid .motion-slot:nth-child(2) .plan-card {
-  background: #ddf5f3;
-  border-color: #8dcfcb;
+  background:#dcf4f2;
+  border-color:#83cac8;
+  box-shadow:0 15px 35px rgba(34,151,160,.11);
+}
+
+/* Premium card */
+
+.plans-grid .motion-slot:nth-child(3) .plan-card {
+  background:#fff;
+}
+
+/* Elite card */
+
+.plans-grid .motion-slot:nth-child(4) .plan-card {
+  background:#e9f4fc;
+  border-color:#b6d6e6;
 }
 
 .plan-label {
-  color: #7295a0;
-
-  font-size: 9px;
-  font-weight: 850;
-
-  letter-spacing: .13em;
+  color:#73949e;
+  font-size:9px;
+  font-weight:850;
+  letter-spacing:.13em;
 }
 
 .plan-badge {
-  position: absolute;
-
-  top: 16px;
-  right: 17px;
-
-  background: var(--coral);
-  color: #ffffff;
-
-  border-radius: 25px;
-  padding: 7px 10px;
-
-  font-size: 9px;
-  font-weight: 850;
+  position:absolute;
+  top:13px;
+  right:13px;
+  padding:6px 9px;
+  border-radius:25px;
+  background:var(--coral);
+  color:white;
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:.02em;
 }
 
 .plan-card h3 {
-  font-size: 40px;
-  letter-spacing: -.065em;
-
-  line-height: 1;
-  margin: 17px 0 6px;
+  font-size:clamp(26px,2.25vw,34px);
+  line-height:1.08;
+  letter-spacing:-.055em;
+  margin:17px 0 11px;
 }
 
 .plan-card h3 span {
-  color: var(--teal);
+  color:var(--teal);
+}
+
+.plan-price {
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  margin-bottom:13px;
+}
+
+.plan-price strong {
+  color:var(--navy);
+  font-size:clamp(27px,2.4vw,37px);
+  font-weight:850;
+  letter-spacing:-.055em;
+  line-height:1.1;
+  white-space:nowrap;
+}
+
+.plan-price small {
+  color:#6c8994;
+  font-size:11px;
+  font-weight:750;
 }
 
 .plan-for {
-  color: #305c68;
-
-  font-size: 12px;
-  font-weight: 850;
-
-  margin: 0 0 9px;
-}
-
-.plan-description {
-  color: #62808a;
-
-  font-size: 11px;
-  line-height: 1.65;
-
-  margin: 0 0 13px;
+  color:#315f6c;
+  font-size:11px;
+  font-weight:800;
+  line-height:1.5;
+  margin:0 0 17px;
+  min-height:32px;
 }
 
 .plan-card ul {
-  list-style: none;
-
-  display: grid;
-  gap: 9px;
-
-  flex: 1;
-
-  padding: 14px 0 0;
-  margin: 0 0 15px;
-
-  border-top: 1px solid #d4e7e9;
+  display:grid;
+  gap:11px;
+  flex:1;
+  list-style:none;
+  padding:16px 0 0;
+  margin:0 0 17px;
+  border-top:1px solid #d5e7e9;
 }
 
 .plan-card li {
-  display: flex;
-  gap: 9px;
-
-  font-size: 11px;
-  line-height: 1.5;
-
-  color: #52717b;
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  color:#52727b;
+  font-size:11px;
+  line-height:1.55;
 }
 
 .plan-card li::before {
-  content: "✓";
-
-  color: var(--teal);
-  font-weight: 900;
-
-  flex-shrink: 0;
+  content:"✓";
+  color:var(--teal);
+  font-weight:900;
+  flex-shrink:0;
 }
 
 .plan-risk {
-  display: flex;
-  justify-content: space-between;
-
-  gap: 12px;
-  padding: 13px 0;
-
-  border-top: 1px solid #d4e7e9;
-
-  font-size: 10px;
-  color: #6b8790;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  padding:13px 0;
+  border-top:1px solid #d5e7e9;
+  color:#6e8991;
+  font-size:10px;
 }
 
 .plan-risk b {
-  color: #b66e48;
+  color:#b56c42;
+  font-size:10px;
+  white-space:nowrap;
 }
 
 .plan-card .btn-primary,
 .plan-card .btn-outline {
-  width: 100%;
-  min-height: 43px;
-
-  padding: 10px;
-  font-size: 10px;
+  width:100%;
+  min-height:44px;
+  padding:11px 8px;
+  font-size:10px;
+  white-space:nowrap;
 }
 
 .plan-note {
-  font-size: 11px;
-
-  color: #738c94;
-  line-height: 1.8;
-
-  margin: 22px 0 0;
+  color:#718b93;
+  font-size:11px;
+  line-height:1.8;
+  margin:23px 0 0;
 }
 
-/* =========================================
-   ABOUT US
-========================================= */
+/* =====================================
+   ABOUT
+===================================== */
 
 .about {
-  background: #e3f3f4;
+  background:#e3f3f4;
 }
 
 .about-grid {
-  display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap: 65px;
-  align-items: center;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:65px;
+  align-items:center;
 }
 
 .about-copy p {
-  font-size: 13px;
-  line-height: 1.85;
-
-  color: var(--muted);
-  max-width: 510px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+  max-width:510px;
 }
 
 .benefit-list {
-  display: grid;
-  gap: 14px;
+  display:grid;
+  gap:14px;
 }
 
 .benefit-card {
-  display: flex;
-  gap: 20px;
-
-  padding: 25px 27px;
-
-  background: #ffffff;
-
-  border: 1px solid var(--line);
-  border-radius: 20px;
+  display:flex;
+  gap:20px;
+  padding:25px 27px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
 }
 
 .benefit-card > span {
-  color: var(--teal);
-
-  font-size: 13px;
-  font-weight: 900;
+  color:var(--teal);
+  font-size:13px;
+  font-weight:900;
 }
 
 .benefit-card h3 {
-  font-size: 16px;
-  margin: 0 0 8px;
+  font-size:16px;
+  margin:0 0 8px;
 }
 
 .benefit-card p {
-  color: var(--muted);
-
-  font-size: 12px;
-  line-height: 1.7;
-
-  margin: 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+  margin:0;
 }
 
-/* =========================================
+/* =====================================
    FAQ
-========================================= */
+===================================== */
 
 .faq {
-  background: #ffffff;
+  background:white;
 }
 
 .faq-grid {
-  display: grid;
-
-  grid-template-columns:
-    .9fr 1.1fr;
-
-  gap: 60px;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:60px;
 }
 
 .faq-list {
-  display: grid;
-  gap: 11px;
+  display:grid;
+  gap:11px;
 }
 
 .faq-list details {
-  background: #f4fbfc;
-
-  border: 1px solid var(--line);
-  border-radius: 15px;
-
-  padding: 19px 22px;
+  background:#f4fbfc;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:19px 22px;
 }
 
 .faq-list summary {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  font-size: 13px;
-  font-weight: 800;
-
-  gap: 15px;
-
-  cursor: pointer;
-  list-style: none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+  list-style:none;
 }
 
 .faq-list summary::-webkit-details-marker {
-  display: none;
+  display:none;
 }
 
 .faq-list summary::after {
-  content: "+";
-
-  font-size: 22px;
-  color: var(--teal);
+  content:"+";
+  font-size:22px;
+  color:var(--teal);
 }
 
 .faq-list details[open] summary::after {
-  content: "−";
+  content:"−";
 }
 
 .faq-list details p {
-  color: var(--muted);
-
-  font-size: 12px;
-  line-height: 1.8;
-
-  margin: 12px 0 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+  margin:12px 0 0;
 }
 
-/* =========================================
-   FINAL CTA
-========================================= */
+/* =====================================
+   CTA
+===================================== */
 
 .final-cta {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 35px;
-
-  margin-bottom: 75px;
-  padding: 50px 55px;
-
-  border-radius: 29px;
-
-  color: #ffffff;
-
-  background: linear-gradient(
-    115deg,
-    #176b82,
-    #70c0c6
-  );
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:35px;
+  padding:50px 55px;
+  margin-bottom:75px;
+  border-radius:29px;
+  background:linear-gradient(115deg,#176b82,#70c0c6);
+  color:white;
 }
 
 .final-cta h2 {
-  font-size: clamp(30px,3.8vw,50px);
-  letter-spacing: -.06em;
-
-  line-height: 1.1;
-  margin: 0 0 13px;
+  font-size:clamp(30px,3.8vw,50px);
+  letter-spacing:-.06em;
+  line-height:1.1;
+  margin:0 0 13px;
 }
 
 .final-cta p {
-  color: #eaffff;
-
-  font-size: 12px;
-  line-height: 1.8;
-
-  max-width: 630px;
+  color:#eaffff;
+  font-size:12px;
+  line-height:1.8;
+  max-width:630px;
 }
 
 .final-cta .btn-primary {
-  flex-shrink: 0;
+  flex-shrink:0;
 }
 
-/* =========================================
+/* =====================================
    FOOTER
-========================================= */
+===================================== */
 
 .footer {
-  background: #103745;
-  color: #e7f5f6;
+  background:#103745;
+  color:#e7f5f6;
 }
 
 .footer-grid {
-  display: grid;
-
-  grid-template-columns:
-    1.4fr .75fr 1.1fr 1.3fr;
-
-  gap: 40px;
-  padding: 62px 0 44px;
+  display:grid;
+  grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
+  gap:40px;
+  padding:62px 0 44px;
 }
 
 .footer-logo-wrap {
-  display: inline-flex;
-
-  background: #ffffff;
-
-  padding: 9px 14px;
-  border-radius: 11px;
-
-  margin-bottom: 13px;
+  display:inline-flex;
+  background:white;
+  padding:9px 14px;
+  border-radius:11px;
+  margin-bottom:13px;
 }
 
 .footer-logo {
-  max-height: 50px;
-  max-width: 160px;
-  object-fit: contain;
+  display:block;
+  max-height:50px;
+  max-width:160px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
 }
 
 .footer-name {
-  font-size: 17px;
-  font-weight: 850;
+  font-size:17px;
+  font-weight:850;
 }
 
 .footer h3 {
-  font-size: 13px;
-  margin: 6px 0 18px;
+  font-size:13px;
+  margin:6px 0 18px;
 }
 
 .footer p,
 .footer li {
-  font-size: 11px;
-  line-height: 1.85;
-
-  color: #bfd5dc;
+  color:#bfd5dc;
+  font-size:11px;
+  line-height:1.85;
 }
 
 .footer ul {
-  list-style: none;
-
-  margin: 0;
-  padding: 0;
-
-  display: grid;
-  gap: 10px;
+  display:grid;
+  gap:10px;
+  list-style:none;
+  margin:0;
+  padding:0;
 }
 
 .footer a:hover {
-  color: #9ce6e4;
+  color:#9ce6e4;
 }
 
 .footer strong {
-  color: #ffffff;
+  color:white;
 }
 
 .footer-legal {
-  border-top: 1px solid rgba(255,255,255,.14);
-  padding: 27px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:27px 0;
 }
 
 .footer-legal p {
-  margin: 0 0 11px;
+  margin:0 0 11px;
 }
 
 .reg-details {
-  border-top: 1px solid rgba(255,255,255,.14);
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  gap: 35px;
-  padding: 30px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:30px 0;
 }
 
 .reg-details p {
-  margin: 6px 0;
+  margin:6px 0;
 }
 
 .copyright {
-  display: flex;
-  justify-content: space-between;
-
-  flex-wrap: wrap;
-  gap: 15px;
-
-  padding: 25px 0;
-
-  border-top: 1px solid rgba(255,255,255,.14);
-
-  font-size: 11px;
-  color: #bfd5dc;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  padding:25px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+  color:#bfd5dc;
+  font-size:11px;
 }
 
-/* =========================================
-   TABLET RESPONSIVE
-========================================= */
+/* =====================================
+   LARGE TABLET
+===================================== */
 
-@media (max-width: 1050px) {
+@media (max-width:1100px) {
+  .plans-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .plan-card h3 {
+    font-size:34px;
+  }
+
+  .plan-price strong {
+    font-size:36px;
+  }
+
+  .plan-for {
+    min-height:0;
+  }
 
   .container {
-    width: calc(100% - 48px);
+    width:calc(100% - 48px);
   }
 
   .nav-links {
-    gap: 16px;
+    gap:16px;
   }
 
   .hero-grid {
-    gap: 28px;
-  }
-
-  .hero-visual {
-    height: 510px;
+    gap:28px;
   }
 
   .footer-grid {
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns:1fr 1fr;
   }
-
 }
 
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
+/* =====================================
+   TABLET / MOBILE NAV
+===================================== */
 
-@media (max-width: 850px) {
-
+@media (max-width:850px) {
   .site-header {
-    top: 12px;
-    width: calc(100% - 26px);
-
-    min-height: 71px;
-
-    padding: 10px 13px;
-    border-radius: 22px;
+    top:12px;
+    width:calc(100% - 26px);
+    min-height:71px;
+    padding:10px 13px;
+    border-radius:22px;
   }
 
   .logo img {
-    max-height: 44px;
-    max-width: 150px;
+    max-height:44px;
+    max-width:150px;
   }
 
   .menu-button {
-    display: block;
+    display:block;
   }
 
   .nav-links {
-    position: absolute;
-
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-
-    background: rgba(255,255,255,.98);
-    border: 1px solid var(--line);
-
-    padding: 13px;
-    border-radius: 19px;
-    gap: 0;
-
-    box-shadow:
-      0 15px 40px rgba(22,78,98,.14);
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    right:0;
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:13px;
+    border:1px solid var(--line);
+    border-radius:19px;
+    background:rgba(255,255,255,.98);
+    box-shadow:0 15px 40px rgba(22,78,98,.14);
   }
 
   .nav-links.open {
-    display: flex;
+    display:flex;
   }
 
   .nav-links a {
-    padding: 13px 16px;
+    padding:13px 16px;
   }
 
   .header-btn {
-    margin-left: auto;
-
-    font-size: 10px;
-    padding: 12px 15px;
-
-    min-height: 43px;
+    margin-left:auto;
+    padding:12px 15px;
+    min-height:43px;
+    font-size:10px;
   }
 
-  /* Mobile hero remains pure white */
-
   .hero {
-    min-height: auto;
-    padding: 135px 0 75px;
-
-    background: #ffffff !important;
+    min-height:auto;
+    padding:135px 0 75px;
+    background:white;
   }
 
   .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
+    grid-template-columns:1fr;
+    gap:15px;
   }
 
   .hero-content {
-    grid-column: 1;
-    grid-row: 1;
+    grid-column:1;
+    grid-row:1;
   }
 
   .hero-visual {
-    grid-column: 1;
-    grid-row: 2;
-
-    width: 100%;
-    max-width: 660px;
-
-    height: 470px;
-    margin: auto;
-
-    background: #ffffff !important;
+    grid-column:1;
+    grid-row:2;
+    width:100%;
+    max-width:660px;
+    height:470px;
+    margin:auto;
+    background:white;
   }
 
   .hero h1 {
-    font-size: clamp(46px,8vw,70px);
+    font-size:clamp(46px,8vw,70px);
   }
 
   .scroll-hint {
-    display: none;
+    display:none;
   }
 
   .service-grid {
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-  }
-
-  .plans-grid {
-    grid-template-columns: 1fr;
-
-    max-width: 590px;
-    margin: auto;
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
   .process-grid,
   .about-grid,
   .faq-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    grid-template-columns:1fr;
+    gap:36px;
   }
 
   .section-header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction:column;
+    align-items:flex-start;
   }
 
   .final-cta {
-    padding: 39px;
+    padding:39px;
   }
 
   .section {
-    padding: 78px 0;
+    padding:78px 0;
   }
-
 }
 
-/* =========================================
-   SMALL MOBILE RESPONSIVE
-========================================= */
+/* =====================================
+   MOBILE
+===================================== */
 
-@media (max-width: 540px) {
-
+@media (max-width:600px) {
   .container {
-    width: calc(100% - 34px);
+    width:calc(100% - 34px);
   }
 
-  .site-header {
-    width: calc(100% - 18px);
-    padding: 8px;
-    gap: 7px;
+  .plans-grid {
+    grid-template-columns:1fr;
+    max-width:450px;
+    margin:auto;
   }
 
-  .logo img {
-    max-height: 37px;
-    max-width: 110px;
+  .plan-card {
+    padding:25px;
   }
 
-  .header-btn {
-    font-size: 9px;
-    padding: 10px;
-
-    min-height: 39px;
-    gap: 5px;
+  .plan-card h3 {
+    font-size:36px;
   }
 
-  .header-btn .arrow {
-    display: none;
+  .plan-price strong {
+    font-size:38px;
   }
 
-  .menu-button {
-    width: 40px;
-    height: 39px;
+  .plan-card li {
+    font-size:12px;
   }
 
-  .hero {
-    padding: 113px 0 48px;
-
-    background: #ffffff !important;
+  .plan-card .btn-primary,
+  .plan-card .btn-outline {
+    font-size:11px;
   }
 
-  .hero h1 {
-    font-size: clamp(40px,10.4vw,55px);
+  .service-grid {
+    grid-template-columns:1fr;
   }
 
-  .hero-content > p {
-    font-size: 14px;
+  .service-card {
+    min-height:215px;
   }
 
-  .hero-visual {
-    height: 350px;
-    background: #ffffff !important;
+  .services {
+    border-radius:28px 28px 0 0;
   }
 
-  .hero-video {
-    background: #ffffff !important;
+  .ticker {
+    border-radius:0 0 28px 28px;
   }
 
-  .video-caption {
-    font-size: 7px;
-  }
-
-  .hero-buttons {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .hero-buttons a {
-    width: 100%;
-  }
-
-  .hero-tags span {
-    font-size: 9px;
-  }
-
-  .section {
-    padding: 66px 0;
+  .pricing {
+    padding:62px 0;
   }
 
   .section-header h2,
   .large-heading {
-    font-size: clamp(34px,8vw,47px);
-  }
-
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-card {
-    min-height: 215px;
-  }
-
-  .services {
-    border-radius: 28px 28px 0 0;
-  }
-
-  .ticker {
-    border-radius: 0 0 28px 28px;
-  }
-
-  .pricing {
-    padding: 62px 0;
-  }
-
-  .plan-card {
-    padding: 22px;
+    font-size:clamp(34px,8vw,47px);
   }
 
   .final-cta {
-    display: block;
-
-    padding: 31px 25px;
-    margin-bottom: 52px;
+    display:block;
+    padding:31px 25px;
+    margin-bottom:52px;
   }
 
   .final-cta .btn-primary {
-    width: 100%;
-    margin-top: 18px;
+    width:100%;
+    margin-top:18px;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
-
-    gap: 29px;
-    padding: 43px 0;
+    grid-template-columns:1fr;
+    gap:29px;
+    padding:43px 0;
   }
 
   .reg-details {
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
   }
-
-  /* Lighter card animation on mobile */
-
-  .js-motion .motion-slot:not(.arrived) .motion-card {
-    transform:
-      translate3d(0,65px,0)
-      scale(.94);
-  }
-
 }
 
-/* =========================================
-   ACCESSIBILITY: REDUCED MOTION
-========================================= */
+@media (max-width:540px) {
+  .site-header {
+    width:calc(100% - 18px);
+    padding:8px;
+    gap:7px;
+  }
 
-@media (prefers-reduced-motion: reduce) {
+  .logo img {
+    max-height:37px;
+    max-width:120px;
+  }
 
+  .header-btn {
+    min-height:39px;
+    padding:10px 12px;
+    font-size:9px;
+  }
+
+  .header-btn .full-label {
+    display:none;
+  }
+
+  .header-btn .short-label {
+    display:inline;
+  }
+
+  .menu-button {
+    width:40px;
+    height:39px;
+  }
+
+  .hero {
+    padding:113px 0 48px;
+  }
+
+  .hero h1 {
+    font-size:clamp(40px,10.4vw,55px);
+  }
+
+  .hero-content > p {
+    font-size:14px;
+  }
+
+  .hero-visual {
+    height:350px;
+  }
+
+  .video-caption {
+    font-size:7px;
+  }
+
+  .hero-buttons {
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .hero-buttons a {
+    width:100%;
+  }
+
+  .hero-tags span {
+    font-size:9px;
+  }
+
+  .section {
+    padding:66px 0;
+  }
+
+  .js-motion .motion-slot:not(.arrived) .motion-card {
+    transform:translate3d(0,65px,0) scale(.94);
+  }
+}
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion:reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
   }
 
   .js-motion .motion-card,
   .js-motion .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
   }
-
 }
-
 </style>
 </head>
 
 <body class="loading">
 
-<!-- =====================================
-     SCROLL PROGRESS
-===================================== -->
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<div
-  class="scroll-progress"
-  id="scrollProgress"
-></div>
-
-<!-- =====================================
-     CANDLESTICK LOADER
-===================================== -->
-
+<!-- PRELOADER -->
 <div class="loader" id="loader">
-
   <div class="loader-inner">
-
     <div class="loader-candles" aria-hidden="true">
-      <i></i>
-      <i></i>
-      <i></i>
-      <i></i>
-      <i></i>
+      <i></i><i></i><i></i><i></i><i></i>
     </div>
 
     <h2>Preparing OptionNeeti</h2>
-
     <p>Loading your research experience</p>
 
     <div class="loading-bar">
       <span></span>
     </div>
 
-    <button
-      class="skip-load"
-      id="skipLoad"
-      type="button"
-    >
+    <button class="skip-load" id="skipLoad" type="button">
       Open website now
     </button>
-
   </div>
-
 </div>
 
-<!-- =====================================
-     HEADER
-===================================== -->
-
+<!-- HEADER -->
 <header class="site-header" id="siteHeader">
 
-  <a
-    href="/"
-    class="logo"
-    aria-label="Sarvneeti homepage"
-  >
+  <a href="/" class="logo" aria-label="Sarvneeti homepage">
     <img src="logo.png" alt="Sarvneeti">
   </a>
 
   <nav class="nav-links" id="navLinks">
-
     <a href="#services">Services</a>
-
     <a href="#plans">Pricing</a>
-
     <a href="#about">About Us</a>
-
     <a href="#faq">FAQ</a>
-
     <a href="/contact">Contact</a>
-
   </nav>
 
   <a href="/contact" class="header-btn">
-    GET RESEARCH DETAILS
-    <span class="arrow">↗</span>
+    <span class="full-label">GET RESEARCH DETAILS</span>
+    <span class="short-label">ENQUIRE</span>
+    <span aria-hidden="true">↗</span>
   </a>
 
   <button
@@ -1989,25 +1651,18 @@ summary:focus-visible {
     aria-label="Open menu"
     aria-controls="navLinks"
     aria-expanded="false"
-  >
-    ☰
-  </button>
+  >☰</button>
 
 </header>
 
 <main>
 
 <!-- =====================================
-     HERO
-     PURE WHITE BACKGROUND
-     TEXT LEFT / VIDEO RIGHT
+   HERO - TEXT LEFT / VIDEO RIGHT
 ===================================== -->
 
 <section class="hero" id="home">
-
   <div class="container hero-grid">
-
-    <!-- LEFT TEXT -->
 
     <div class="hero-content">
 
@@ -2018,38 +1673,27 @@ summary:focus-visible {
       <h1>
         Options research.<br>
         Built for
-        <span
-          class="animated-word"
-          id="animatedWord"
-        >
+        <span class="animated-word" id="animatedWord">
           clarity.
         </span>
       </h1>
 
       <p>
         Daily intraday and BTST index options research for
-        <strong>
-          Nifty, Bank Nifty and Sensex
-        </strong>
+        <strong>Nifty, Bank Nifty and Sensex</strong>
         — with structured entries, potential targets,
-        stop-loss levels, market context and premium
-        research channel updates.
+        stop-loss levels, market context and
+        premium research channel updates.
       </p>
 
       <div class="hero-tags">
-
         <span>NIFTY</span>
-
         <span>BANK NIFTY</span>
-
         <span>SENSEX</span>
-
         <span>INTRADAY + BTST</span>
-
       </div>
 
       <div class="hero-buttons">
-
         <a href="/contact" class="btn-primary">
           CONNECT WITH RESEARCH DESK ↗
         </a>
@@ -2057,30 +1701,22 @@ summary:focus-visible {
         <a href="#plans" class="btn-outline">
           EXPLORE PLANS ↓
         </a>
-
       </div>
 
       <div class="registration-note">
-
         <span class="check">✓</span>
 
         <span>
-          <b>
-            Research Analyst / Owner: Amit Kori
-          </b>
-          <br>
-          SEBI Registration No.: INH000016533
-          <br>
+          <b>SEBI Registered Research Analyst</b><br>
+          Registration No.: INH000016533<br>
           Research does not guarantee returns.
           Trading decisions remain yours.
         </span>
-
       </div>
 
     </div>
 
-    <!-- RIGHT VIDEO -->
-
+    <!-- PHONE VIDEO -->
     <div class="hero-visual" id="heroVisual">
 
       <video
@@ -2096,24 +1732,12 @@ summary:focus-visible {
         controlslist="nodownload noplaybackrate nofullscreen"
         aria-hidden="true"
       >
-
-        <source
-          src="hero.mp4"
-          type="video/mp4"
-        >
-
+        <source src="hero.mp4" type="video/mp4">
       </video>
 
-      <div class="video-fallback">
-
-        <div style="font-size:85px">
-          ⌁
-        </div>
-
-        <strong>
-          Research · Levels · Risk
-        </strong>
-
+      <div class="video-fallback" aria-hidden="true">
+        <div style="font-size:85px">⌁</div>
+        <strong>Research · Levels · Risk</strong>
       </div>
 
       <span class="video-caption">
@@ -2127,76 +1751,50 @@ summary:focus-visible {
   <div class="scroll-hint">
     SCROLL TO EXPLORE ↓
   </div>
-
 </section>
 
 <!-- =====================================
-     CURVED MOVING RIBBON
+   CURVED RIBBON
 ===================================== -->
 
 <div class="ticker" aria-hidden="true">
-
   <div class="ticker-track">
 
     <div class="ticker-group">
-
       <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
-
       <span>NIFTY</span><i>✦</i>
-
       <span>BANK NIFTY</span><i>✦</i>
-
       <span>SENSEX</span><i>✦</i>
-
       <span>INTRADAY + BTST</span><i>✦</i>
-
       <span>RISK FIRST</span><i>✦</i>
-
     </div>
 
     <div class="ticker-group">
-
       <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
-
       <span>NIFTY</span><i>✦</i>
-
       <span>BANK NIFTY</span><i>✦</i>
-
       <span>SENSEX</span><i>✦</i>
-
       <span>INTRADAY + BTST</span><i>✦</i>
-
       <span>RISK FIRST</span><i>✦</i>
-
     </div>
 
   </div>
-
 </div>
 
 <!-- =====================================
-     SERVICES
+   SERVICES
 ===================================== -->
 
 <section class="section services" id="services">
-
   <div class="container">
 
     <div class="section-header reveal">
-
       <div>
-
-        <span class="eyebrow">
-          01 / WHAT WE OFFER
-        </span>
-
+        <span class="eyebrow">01 / WHAT WE OFFER</span>
         <h2>
           Research with<br>
-          <span class="accent">
-            a clearer direction.
-          </span>
+          <span class="accent">a clearer direction.</span>
         </h2>
-
       </div>
 
       <p>
@@ -2204,193 +1802,107 @@ summary:focus-visible {
         and associated risks before making your own
         trading decisions.
       </p>
-
     </div>
 
     <div class="service-grid">
 
-      <!-- SERVICE 1 -->
-
       <div class="motion-slot">
-
         <article class="service-card motion-card">
-
           <span class="service-icon">⌁</span>
           <span class="service-number">01</span>
-
-          <h3>
-            Intraday options<br>
-            setups
-          </h3>
-
+          <h3>Intraday options<br>setups</h3>
           <p>
-            Research-led index options setups with
-            entry zones, target levels and
-            stop-loss frameworks.
+            Research-led index options setups with entry zones,
+            target levels and stop-loss frameworks.
           </p>
-
           <span class="card-arrow">↗</span>
-
         </article>
-
       </div>
 
-      <!-- SERVICE 2 -->
-
       <div class="motion-slot">
-
         <article class="service-card motion-card">
-
           <span class="service-icon">↗</span>
           <span class="service-number">02</span>
-
-          <h3>
-            BTST opportunity<br>
-            research
-          </h3>
-
+          <h3>BTST opportunity<br>research</h3>
           <p>
             Short-term setups when conditions warrant,
             including overnight gap risk and
             premium-decay considerations.
           </p>
-
           <span class="card-arrow">↗</span>
-
         </article>
-
       </div>
 
-      <!-- SERVICE 3 -->
-
       <div class="motion-slot">
-
         <article class="service-card motion-card">
-
           <span class="service-icon">✈</span>
           <span class="service-number">03</span>
-
-          <h3>
-            Premium Telegram<br>
-            channel
-          </h3>
-
+          <h3>Premium Telegram<br>channel</h3>
           <p>
-            Plan-based research alerts,
-            key level updates and market
-            commentary after onboarding.
+            Plan-based research alerts, key level updates
+            and market commentary after onboarding.
           </p>
-
           <span class="card-arrow">↗</span>
-
         </article>
-
       </div>
 
-      <!-- SERVICE 4 -->
-
       <div class="motion-slot">
-
         <article class="service-card motion-card">
-
           <span class="service-icon">◇</span>
           <span class="service-number">04</span>
-
-          <h3>
-            Daily risk<br>
-            management
-          </h3>
-
+          <h3>Daily risk<br>management</h3>
           <p>
-            Notes on position sizing,
-            stop-loss discipline, drawdown
-            control and avoiding overtrading.
+            Notes on position sizing, stop-loss discipline,
+            drawdown control and avoiding overtrading.
           </p>
-
           <span class="card-arrow">↗</span>
-
         </article>
-
       </div>
 
-      <!-- SERVICE 5 -->
-
       <div class="motion-slot">
-
         <article class="service-card motion-card">
-
           <span class="service-icon">◷</span>
           <span class="service-number">05</span>
-
-          <h3>
-            Expiry &amp; volatility<br>
-            research
-          </h3>
-
+          <h3>Expiry &amp; volatility<br>research</h3>
           <p>
-            Observations on index levels,
-            option premiums, expiry conditions
-            and volatility risk.
+            Observations on index levels, option premiums,
+            expiry conditions and volatility risk.
           </p>
-
           <span class="card-arrow">↗</span>
-
         </article>
-
       </div>
 
-      <!-- SERVICE 6 -->
-
       <div class="motion-slot">
-
         <article class="service-card motion-card">
-
           <span class="service-icon">◎</span>
           <span class="service-number">06</span>
-
-          <h3>
-            Trader learning<br>
-            &amp; reviews
-          </h3>
-
+          <h3>Trader learning<br>&amp; reviews</h3>
           <p>
-            Educational explanations of research
-            setups, market psychology and
-            disciplined processes.
+            Educational explanations of research setups,
+            market psychology and disciplined processes.
           </p>
-
           <span class="card-arrow">↗</span>
-
         </article>
-
       </div>
 
     </div>
-
   </div>
-
 </section>
 
 <!-- =====================================
-     PROCESS
+   PROCESS
 ===================================== -->
 
 <section class="section process" id="process">
-
   <div class="container process-grid">
 
     <div class="process-copy reveal">
-
-      <span class="eyebrow">
-        02 / OUR PROCESS
-      </span>
+      <span class="eyebrow">02 / OUR PROCESS</span>
 
       <h2 class="large-heading">
         From market noise<br>
         to a structured<br>
-        <span class="accent">
-          research plan.
-        </span>
+        <span class="accent">research plan.</span>
       </h2>
 
       <p>
@@ -2399,148 +1911,99 @@ summary:focus-visible {
         considerations at every stage.
       </p>
 
-      <a
-        href="/contact"
-        class="btn-outline"
-        style="margin-top:20px"
-      >
+      <a href="/contact" class="btn-outline"
+         style="margin-top:20px">
         TALK TO OUR DESK ↗
       </a>
-
     </div>
 
     <div class="process-steps">
 
       <div class="motion-slot">
-
         <article class="step motion-card">
-
           <span class="step-number">01</span>
-
           <div>
-
             <b>Choose a research plan</b>
-
             <p>
-              Review research coverage,
-              fees, duration, disclosures
-              and onboarding.
+              Review research coverage, fees, duration,
+              disclosures and onboarding.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
       <div class="motion-slot">
-
         <article class="step motion-card">
-
           <span class="step-number">02</span>
-
           <div>
-
             <b>Get premium channel access</b>
-
             <p>
-              Receive Telegram research channel
-              access after the applicable
-              subscription process.
+              Receive research channel access
+              after the applicable subscription process.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
       <div class="motion-slot">
-
         <article class="step motion-card">
-
           <span class="step-number">03</span>
-
           <div>
-
             <b>Review each research setup</b>
-
             <p>
-              Evaluate the entry zone,
-              target levels, stop-loss
-              and invalidation point.
+              Evaluate the entry zone, target levels,
+              stop-loss and invalidation point.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
       <div class="motion-slot">
-
         <article class="step motion-card">
-
           <span class="step-number">04</span>
-
           <div>
-
             <b>Execute independently</b>
-
             <p>
-              Use research alongside your own
-              assessment. Trading decisions
-              remain yours.
+              Use research alongside your own assessment.
+              Trading decisions remain yours.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
     </div>
-
   </div>
-
 </section>
 
 <!-- =====================================
-     PRICING
+   PRICING: FOUR NEW PLANS
 ===================================== -->
 
 <section class="section pricing" id="plans">
-
   <div class="container">
 
     <div class="section-header reveal">
-
       <div>
-
-        <span class="eyebrow">
-          03 / RESEARCH PLANS
-        </span>
-
+        <span class="eyebrow">03 / RESEARCH PLANS</span>
         <h2>
-          Find your<br>
-          <span class="accent">
-            trading rhythm.
-          </span>
+          Choose your<br>
+          <span class="accent">research advantage.</span>
         </h2>
-
       </div>
 
       <p>
-        Choose research coverage based on market
-        experience, trading approach and your
-        ability to manage options risk.
+        Four structured research packages designed for
+        different trading experience levels.
+        Explore the coverage and choose the duration
+        that suits your needs.
       </p>
-
     </div>
 
     <div class="plans-grid">
 
-      <!-- CORE PLAN -->
+      <!-- =========================
+           PLAN 1 - ESSENTIAL
+      ========================= -->
 
       <div class="motion-slot">
 
@@ -2550,113 +2013,87 @@ summary:focus-visible {
             OPTIONNEETI / 01
           </span>
 
-          <h3>
-            Core<span>.</span>
-          </h3>
+          <h3>Essential<span>.</span></h3>
+
+          <div class="plan-price">
+            <strong>₹12,500</strong>
+            <small>/ Monthly</small>
+          </div>
 
           <p class="plan-for">
-            For structured learners
-          </p>
-
-          <p class="plan-description">
-            A focused starting point for reviewing
-            research-led index option setups.
+            For beginners exploring options trading.
           </p>
 
           <ul>
-
-            <li>Up to 1 research setup per trading day</li>
-
-            <li>Nifty and selected index options</li>
-
-            <li>Entry, target and stop-loss levels</li>
-
-            <li>Basic intraday market commentary</li>
-
-            <li>Market-hour research support</li>
-
-            <li>Educational setup explanations</li>
-
+            <li>Short-term research guidance</li>
+            <li>Actionable insights &amp; basic support</li>
+            <li>Analysis via Mail / WhatsApp</li>
+            <li>Researched target &amp; stop-loss levels</li>
           </ul>
 
           <div class="plan-risk">
-
-            <span>Risk profile</span>
-
-            <b>HIGH</b>
-
+            <span>Risk level</span>
+            <b>HIGH RISK</b>
           </div>
 
           <a href="/contact" class="btn-outline">
-            ENQUIRE ABOUT CORE ↗
+            GET STARTED ↗
           </a>
 
         </article>
 
       </div>
 
-      <!-- PRO PLAN -->
+      <!-- =========================
+           PLAN 2 - MOMENTUM
+      ========================= -->
 
       <div class="motion-slot">
 
         <article class="plan-card motion-card">
 
           <span class="plan-badge">
-            POPULAR PLAN
+            MOST POPULAR
           </span>
 
           <span class="plan-label">
             OPTIONNEETI / 02
           </span>
 
-          <h3>
-            Pro<span>.</span>
-          </h3>
+          <h3>Momentum<span>.</span></h3>
+
+          <div class="plan-price">
+            <strong>₹37,500</strong>
+            <small>/ Quarterly</small>
+          </div>
 
           <p class="plan-for">
-            For active options traders
-          </p>
-
-          <p class="plan-description">
-            Broader research coverage and premium
-            alerts for active market participants.
+            For traders seeking deeper market research.
           </p>
 
           <ul>
-
-            <li>Up to 2 research setups per trading day</li>
-
-            <li>Nifty, Bank Nifty and selected indices</li>
-
-            <li>Intraday and selected BTST opportunities</li>
-
-            <li>Defined entry, exit and risk levels</li>
-
-            <li>Expiry and volatility-related research</li>
-
-            <li>Premium Telegram alerts and updates</li>
-
-            <li>Priority market-hour research support</li>
-
+            <li>1–2 analyses per relevant market movement</li>
+            <li>In-depth analysis for informed decisions</li>
+            <li>Comprehensive support &amp; updates</li>
+            <li>Researched target &amp; stop-loss levels</li>
           </ul>
 
           <div class="plan-risk">
-
-            <span>Risk profile</span>
-
-            <b>HIGH TO VERY HIGH</b>
-
+            <span>Risk level</span>
+            <b>HIGH RISK</b>
           </div>
 
           <a href="/contact" class="btn-primary">
-            ENQUIRE ABOUT PRO ↗
+            CHOOSE MOMENTUM ↗
           </a>
 
         </article>
 
       </div>
 
-      <!-- ELITE PLAN -->
+      <!-- =========================
+           PLAN 3 - PRIME
+      ========================= -->
 
       <div class="motion-slot">
 
@@ -2666,47 +2103,74 @@ summary:focus-visible {
             OPTIONNEETI / 03
           </span>
 
-          <h3>
-            Elite<span>.</span>
-          </h3>
+          <h3>Prime<span>.</span></h3>
+
+          <div class="plan-price">
+            <strong>₹75,000</strong>
+            <small>/ Half-Yearly</small>
+          </div>
 
           <p class="plan-for">
-            For experienced participants
-          </p>
-
-          <p class="plan-description">
-            Expanded index coverage with volatility
-            and expiry-focused research scenarios.
+            For experienced traders seeking advanced research.
           </p>
 
           <ul>
-
-            <li>Up to 3 research setups per trading day</li>
-
-            <li>Nifty, Bank Nifty, Sensex and selected indices</li>
-
-            <li>Intraday, BTST and expiry research</li>
-
-            <li>Advanced volatility and levels commentary</li>
-
-            <li>Premium Telegram research updates</li>
-
-            <li>Priority research desk support</li>
-
-            <li>Trading psychology and risk notes</li>
-
+            <li>2–3 analyses per relevant market movement</li>
+            <li>In-depth analysis for informed decisions</li>
+            <li>Comprehensive support &amp; updates</li>
+            <li>Researched target &amp; stop-loss levels</li>
           </ul>
 
           <div class="plan-risk">
-
-            <span>Risk profile</span>
-
-            <b>HIGH TO VERY HIGH</b>
-
+            <span>Risk level</span>
+            <b>HIGH RISK</b>
           </div>
 
           <a href="/contact" class="btn-outline">
-            ENQUIRE ABOUT ELITE ↗
+            GET STARTED ↗
+          </a>
+
+        </article>
+
+      </div>
+
+      <!-- =========================
+           PLAN 4 - ELITE
+      ========================= -->
+
+      <div class="motion-slot">
+
+        <article class="plan-card motion-card">
+
+          <span class="plan-label">
+            OPTIONNEETI / 04
+          </span>
+
+          <h3>Elite<span>.</span></h3>
+
+          <div class="plan-price">
+            <strong>₹1,51,000</strong>
+            <small>/ Yearly</small>
+          </div>
+
+          <p class="plan-for">
+            Full-year research coverage with dedicated support.
+          </p>
+
+          <ul>
+            <li>Up to 3 analyses per relevant market movement</li>
+            <li>Dedicated RM for real-time research support</li>
+            <li>Comprehensive support &amp; updates</li>
+            <li>Researched target &amp; stop-loss levels</li>
+          </ul>
+
+          <div class="plan-risk">
+            <span>Risk level</span>
+            <b>HIGH RISK</b>
+          </div>
+
+          <a href="/contact" class="btn-outline">
+            GET STARTED ↗
           </a>
 
         </article>
@@ -2716,36 +2180,36 @@ summary:focus-visible {
     </div>
 
     <p class="plan-note">
-      Plan prices, duration, taxes, terms and cancellation
-      policies are provided before onboarding.
-      Setup counts are maximums, not guarantees
-      of daily opportunities. Index options may
-      result in rapid or total loss of invested premium.
+      Research services are subject to market conditions.
+      Analysis counts describe maximum coverage and do not
+      guarantee opportunities on every market movement.
+      Fees are shown before applicable statutory charges.
+      For individual and HUF clients, total research fees
+      are subject to the applicable SEBI/RAASB annual
+      family-level fee limit, currently ₹1,51,000 excluding
+      statutory charges. Terms, service scope,
+      payment and refund conditions are disclosed before
+      onboarding. Index options involve high risk and
+      may result in substantial losses.
     </p>
 
   </div>
-
 </section>
 
 <!-- =====================================
-     ABOUT
+   ABOUT
 ===================================== -->
 
 <section class="section about" id="about">
-
   <div class="container about-grid">
 
     <div class="about-copy reveal">
 
-      <span class="eyebrow">
-        04 / OUR APPROACH
-      </span>
+      <span class="eyebrow">04 / OUR APPROACH</span>
 
       <h2 class="large-heading">
         Good research.<br>
-        <span class="accent">
-          Clearer decisions.
-        </span>
+        <span class="accent">Clearer decisions.</span>
       </h2>
 
       <p>
@@ -2756,266 +2220,184 @@ summary:focus-visible {
       </p>
 
       <p>
-        Index options involve significant risk
-        and may not suit every investor.
-        No recommendation can eliminate uncertainty
-        or guarantee a profitable result.
+        Index options involve significant risk and may
+        not suit every investor. No recommendation can
+        eliminate uncertainty or guarantee a
+        profitable result.
       </p>
 
-      <a
-        href="/contact"
-        class="btn-primary"
-        style="margin-top:16px"
-      >
+      <a href="/contact" class="btn-primary"
+         style="margin-top:16px">
         CONNECT WITH US ↗
       </a>
-
     </div>
 
     <div class="benefit-list">
 
       <div class="motion-slot">
-
         <article class="benefit-card motion-card">
-
           <span>01</span>
-
           <div>
-
             <h3>Defined setup invalidation</h3>
-
             <p>
-              Understand when the research
-              thesis may no longer hold.
+              Understand when the research thesis
+              may no longer hold.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
       <div class="motion-slot">
-
         <article class="benefit-card motion-card">
-
           <span>02</span>
-
           <div>
-
             <h3>Volatility-aware commentary</h3>
-
             <p>
-              Consider expiry, time decay
-              and implied volatility
-              when evaluating options.
+              Consider expiry, time decay and implied
+              volatility when evaluating options.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
       <div class="motion-slot">
-
         <article class="benefit-card motion-card">
-
           <span>03</span>
-
           <div>
-
             <h3>Educational research logic</h3>
-
             <p>
-              Understand the setup rather
-              than simply receiving
-              an entry number.
+              Understand the setup rather than
+              simply receiving an entry number.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
       <div class="motion-slot">
-
         <article class="benefit-card motion-card">
-
           <span>04</span>
-
           <div>
-
             <h3>Control over your account</h3>
-
             <p>
-              Research only.
-              No client-fund custody,
-              account management
-              or assured returns.
+              Research only. No client-fund custody,
+              account management or assured returns.
             </p>
-
           </div>
-
         </article>
-
       </div>
 
     </div>
-
   </div>
-
 </section>
 
 <!-- =====================================
-     FAQ
+   FAQ
 ===================================== -->
 
 <section class="section faq" id="faq">
-
   <div class="container faq-grid">
 
     <div class="reveal">
-
-      <span class="eyebrow">
-        05 / QUESTIONS ANSWERED
-      </span>
+      <span class="eyebrow">05 / QUESTIONS ANSWERED</span>
 
       <h2 class="large-heading">
         Before you<br>
-        <span class="accent">
-          get started.
-        </span>
+        <span class="accent">get started.</span>
       </h2>
 
-      <p style="
-        font-size:13px;
-        line-height:1.8;
-        color:#607b85;
-      ">
-        Understand services, fees, disclosures,
-        risk considerations and
-        onboarding requirements.
+      <p style="font-size:13px;line-height:1.8;color:#607b85">
+        Understand research services, plan fees,
+        disclosures, risks and onboarding requirements.
       </p>
-
     </div>
 
     <div class="faq-list reveal">
 
       <details>
-
-        <summary>
-          Which index options are covered?
-        </summary>
-
+        <summary>Which index options are covered?</summary>
         <p>
-          Nifty and Bank Nifty are primary areas.
-          Sensex and selected indices are covered
-          depending on plan and market conditions.
+          Research primarily covers Nifty and Bank Nifty.
+          Sensex and selected indices may also be covered
+          depending on the plan and market conditions.
         </p>
-
       </details>
 
       <details>
-
-        <summary>
-          Will I receive a call every day?
-        </summary>
-
+        <summary>How many analyses will I receive?</summary>
         <p>
-          Not necessarily. Each plan specifies
-          the maximum. Some sessions may
-          not produce qualifying setups.
+          Coverage depends on the selected plan and
+          market conditions. The number of analyses
+          indicated is not a guarantee that qualifying
+          research setups will arise.
         </p>
-
       </details>
 
       <details>
-
-        <summary>
-          How do I access premium Telegram?
-        </summary>
-
+        <summary>How do I receive research updates?</summary>
         <p>
-          Channel access is shared after
-          the applicable onboarding
-          and plan activation.
+          Communication may include email, WhatsApp
+          or relevant research channels, depending
+          on your selected plan and onboarding.
         </p>
-
       </details>
 
       <details>
-
-        <summary>
-          What are the risks of BTST options?
-        </summary>
-
+        <summary>What are the risks of BTST options?</summary>
         <p>
-          Overnight gaps, premium decay
-          and changes in volatility can
-          cause rapid and substantial losses.
+          Overnight gaps, premium decay and changes
+          in volatility can cause rapid and
+          substantial losses.
         </p>
-
       </details>
 
       <details>
-
-        <summary>
-          Are profits or accuracy guaranteed?
-        </summary>
-
+        <summary>Are profits or accuracy guaranteed?</summary>
         <p>
           No. SEBI registration or NISM certification
           does not guarantee performance or returns.
         </p>
-
       </details>
 
       <details>
-
-        <summary>
-          Do you manage trading accounts?
-        </summary>
-
+        <summary>Do you manage trading accounts?</summary>
         <p>
-          No. Research and recommendations
-          are provided. Clients independently
-          make trading decisions.
+          No. Research and recommendations are provided.
+          Clients independently make their trading
+          and execution decisions.
         </p>
-
       </details>
 
       <details>
-
-        <summary>
-          Where can I get plan fees?
-        </summary>
-
+        <summary>Are taxes included in plan prices?</summary>
         <p>
-          Contact the research desk
-          for subscription charges,
-          taxes, terms and applicable policies.
+          The displayed prices exclude applicable
+          statutory charges. Full fees, payment terms
+          and refund conditions are shared before onboarding.
         </p>
+      </details>
 
+      <details>
+        <summary>How do I subscribe?</summary>
+        <p>
+          Select a research plan and contact our desk.
+          The applicable disclosures, agreement and
+          payment process will be explained before
+          your subscription is activated.
+        </p>
       </details>
 
     </div>
-
   </div>
-
 </section>
 
 <!-- =====================================
-     FINAL CTA
+   FINAL CTA
 ===================================== -->
 
 <section class="container">
 
   <div class="final-cta reveal">
-
     <div>
-
       <h2>
         Clarity starts<br>
         with a conversation.
@@ -3023,16 +2405,14 @@ summary:focus-visible {
 
       <p>
         Understand index options research coverage,
-        premium alerts, subscription terms
-        and disclosures.
+        subscription plans, research updates,
+        terms and risk disclosures.
       </p>
-
     </div>
 
     <a href="/contact" class="btn-primary">
       GET RESEARCH DETAILS ↗
     </a>
-
   </div>
 
 </section>
@@ -3040,7 +2420,7 @@ summary:focus-visible {
 </main>
 
 <!-- =====================================
-     FOOTER
+   FOOTER
 ===================================== -->
 
 <footer class="footer" id="disclaimer">
@@ -3048,17 +2428,10 @@ summary:focus-visible {
   <div class="container footer-grid">
 
     <!-- BRAND -->
-
     <div>
-
       <a href="/" class="footer-logo-wrap">
-
-        <img
-          src="logo.png"
-          class="footer-logo"
-          alt="Sarvneeti"
-        >
-
+        <img src="logo.png" class="footer-logo"
+             alt="Sarvneeti">
       </a>
 
       <div class="footer-name">
@@ -3071,142 +2444,86 @@ summary:focus-visible {
         Intraday and BTST setups, research levels,
         risk commentary and educational insights.
       </p>
-
     </div>
 
-    <!-- QUICK LINKS -->
-
+    <!-- LINKS -->
     <div>
-
       <h3>Quick Links</h3>
-
       <ul>
-
-        <li>
-          <a href="#services">Services</a>
-        </li>
-
-        <li>
-          <a href="#plans">Pricing</a>
-        </li>
-
-        <li>
-          <a href="#about">About Us</a>
-        </li>
-
-        <li>
-          <a href="#faq">FAQ</a>
-        </li>
-
-        <li>
-          <a href="#disclaimer">Disclaimer</a>
-        </li>
-
-        <li>
-          <a href="/contact">Contact</a>
-        </li>
-
+        <li><a href="#services">Services</a></li>
+        <li><a href="#plans">Pricing</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
-
     </div>
 
     <!-- CONTACT -->
-
     <div>
-
       <h3>Contact Us</h3>
-
       <ul>
-
         <li>
-          <a href="/contact">
-            Sarvneeti research desk
-          </a>
+          <a href="/contact">Sarvneeti research desk</a>
         </li>
-
-        <li>
-          Research channel access
-          after onboarding
-        </li>
-
+        <li>Research channel access after onboarding</li>
         <li>Monday – Saturday</li>
-
         <li>9:00 AM – 6:00 PM</li>
-
       </ul>
-
     </div>
 
-    <!-- LEGAL LINKS -->
-
+    <!-- LEGAL -->
     <div>
-
       <h3>Legal &amp; Policy</h3>
-
       <ul>
-
         <li>
-          <a href="/legal/disclaimer.html">
-            Disclaimer
-          </a>
+          <a href="/legal/disclaimer.html">Disclaimer</a>
         </li>
-
         <li>
-          <a href="/legal/disclosure.pdf">
-            Disclosure
-          </a>
+          <a href="/legal/disclosure.pdf">Disclosure</a>
         </li>
-
         <li>
           <a href="/legal/investor-charter.pdf">
             Investor Charter
           </a>
         </li>
-
         <li>
           <a href="/legal/terms-and-conditions.html">
             Terms &amp; Conditions
           </a>
         </li>
-
         <li>
           <a href="/legal/privacy-policy.html">
             Privacy Policy
           </a>
         </li>
-
         <li>
           <a href="/legal/grievance-redressal.html">
             Grievance Redressal
           </a>
         </li>
-
         <li>
           <a href="/legal/complaints.html">
             Complaints
           </a>
         </li>
-
         <li>
           <a href="/contact">Contact</a>
         </li>
-
       </ul>
-
     </div>
 
   </div>
 
-  <!-- DISCLAIMERS -->
-
+  <!-- REGULATORY NOTICES -->
   <div class="container footer-legal">
 
     <p>
       <strong>Disclaimer:</strong>
-      Registration granted by SEBI and certification
-      from NISM in no way guarantee performance
-      of the intermediary or provide any assurance
-      of returns to investors.
+      Registration granted by SEBI and certification from
+      NISM in no way guarantee performance of the
+      intermediary or provide any assurance of
+      returns to investors.
     </p>
 
     <p>
@@ -3218,32 +2535,36 @@ summary:focus-visible {
 
     <p>
       <strong>Standard warning:</strong>
-      Investment in securities market are subject
-      to market risks. Read all the related documents
+      Investment in securities market are subject to
+      market risks. Read all the related documents
       carefully before investing.
     </p>
 
     <p>
       <strong>Mandatory notice:</strong>
       Clients shall be requested to go through
-      Do's and Don'ts while dealing with RA
-      as specified in SEBI master circular no.
-      SEBI/HO/MIRSD-POD-1/P/CIR/2024/49
-      dated May 21, 2024 or as may be
-      specified by SEBI from time to time.
+      Do's and Don'ts while dealing with RA as specified
+      in SEBI master circular no.
+      SEBI/HO/MIRSD-POD-1/P/CIR/2024/49 dated
+      May 21, 2024 or as may be specified by
+      SEBI from time to time.
+    </p>
+
+    <p>
+      <strong>Research fees:</strong>
+      For individual and HUF clients, applicable research
+      fees are subject to the maximum annual fee per family
+      prescribed by SEBI/RAASB, currently ₹1,51,000
+      excluding statutory charges.
     </p>
 
   </div>
 
-  <!-- RESEARCH ANALYST DETAILS -->
-
+  <!-- REGISTERED ANALYST DETAILS -->
   <div class="container reg-details">
 
     <div>
-
-      <h3>
-        SEBI Registered Research Analyst Details
-      </h3>
+      <h3>SEBI Registered Research Analyst Details</h3>
 
       <p>
         <strong>Registered Name / Owner:</strong>
@@ -3264,167 +2585,132 @@ summary:focus-visible {
         <strong>Validity:</strong>
         November 22, 2027
       </p>
-
     </div>
 
     <div>
-
-      <h3>
-        Nearest SEBI Office Address
-      </h3>
-
+      <h3>Nearest SEBI Office Address</h3>
       <p>
-        SEBI Bhavan BKC,
-        Plot No. C4-A, 'G' Block,
-        Bandra-Kurla Complex,
-        Bandra (East),
-        Mumbai – 400051,
-        Maharashtra, India.
+        SEBI Bhavan BKC, Plot No. C4-A, 'G' Block,
+        Bandra-Kurla Complex, Bandra (East),
+        Mumbai – 400051, Maharashtra, India.
       </p>
-
     </div>
 
   </div>
 
   <!-- COPYRIGHT -->
-
   <div class="container copyright">
-
     <span>
       © <span id="year">2026</span>
-      Sarvneeti · OptionNeeti.
-      All Rights Reserved.
+      Sarvneeti · OptionNeeti. All Rights Reserved.
     </span>
 
     <span>
       Research recommendations only ·
-      <a href="/contact">
-        Contact the research desk ↗
-      </a>
+      <a href="/contact">Contact the research desk ↗</a>
     </span>
-
   </div>
 
 </footer>
 
 <!-- =====================================
-     JAVASCRIPT
+   JAVASCRIPT
 ===================================== -->
 
 <script>
-
 (() => {
-
   "use strict";
 
-  const $ = selector =>
-    document.querySelector(selector);
+  const $ = selector => document.querySelector(selector);
 
   const reduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
+  const supportsObserver =
+    "IntersectionObserver" in window;
+
   /* ===================================
-     VIDEO LOADER
+     VIDEO PRELOADER
   =================================== */
 
   const loader = $("#loader");
-
   const video = $("#heroVideo");
-
   const skip = $("#skipLoad");
-
   const visual = $("#heroVisual");
 
   let ready = false;
 
   function openSite() {
-
     if (ready) return;
 
     ready = true;
 
     loader.classList.add("hide");
-
     document.body.classList.remove("loading");
 
     if (video && video.readyState >= 2) {
-
       video.play().catch(() => {});
-
     }
-
   }
 
   if (video) {
-
     video.muted = true;
-
     video.defaultMuted = true;
-
     video.volume = 0;
 
     video.addEventListener(
       "loadeddata",
       openSite,
-      { once: true }
+      { once:true }
     );
 
     video.addEventListener(
       "canplay",
       openSite,
-      { once: true }
+      { once:true }
     );
 
     video.addEventListener(
       "error",
       () => {
-
         visual.classList.add("video-error");
-
         openSite();
-
       },
-      { once: true }
+      { once:true }
     );
 
-    if (video.readyState >= 2) {
+    const source = video.querySelector("source");
 
-      openSite();
-
-    } else {
-
-      video.load();
-
+    if (source) {
+      source.addEventListener("error", () => {
+        visual.classList.add("video-error");
+        openSite();
+      }, { once:true });
     }
 
+    if (video.readyState >= 2) {
+      openSite();
+    } else {
+      video.load();
+    }
   } else {
-
     openSite();
-
   }
 
-  /* Offer manual skip for slow connections */
-
   setTimeout(() => {
-
     if (!ready) {
       skip.classList.add("visible");
     }
-
   }, 3200);
 
-  /* Avoid infinite loading */
-
+  // No infinite loading on slow connections.
   setTimeout(openSite, 8000);
 
-  skip.addEventListener(
-    "click",
-    openSite
-  );
+  skip.addEventListener("click", openSite);
 
   /* ===================================
-     HERO WORD ANIMATION
+     ANIMATED HERO HEADLINE
   =================================== */
 
   const words = [
@@ -3435,28 +2721,20 @@ summary:focus-visible {
   ];
 
   const word = $("#animatedWord");
-
   let wordIndex = 0;
 
   if (!reduced) {
-
     setInterval(() => {
-
       word.classList.add("changing");
 
       setTimeout(() => {
-
-        wordIndex =
-          (wordIndex + 1) % words.length;
+        wordIndex = (wordIndex + 1) % words.length;
 
         word.textContent = words[wordIndex];
 
         word.classList.remove("changing");
-
       }, 300);
-
     }, 3400);
-
   }
 
   /* ===================================
@@ -3464,205 +2742,123 @@ summary:focus-visible {
   =================================== */
 
   const menu = $("#menuButton");
-
   const links = $("#navLinks");
 
   menu.addEventListener("click", () => {
+    const shown = links.classList.toggle("open");
 
-    const shown =
-      links.classList.toggle("open");
-
-    menu.textContent =
-      shown ? "✕" : "☰";
-
+    menu.textContent = shown ? "✕" : "☰";
+    menu.setAttribute("aria-expanded", String(shown));
     menu.setAttribute(
-      "aria-expanded",
-      String(shown)
+      "aria-label",
+      shown ? "Close menu" : "Open menu"
     );
-
   });
 
   links.querySelectorAll("a").forEach(link => {
-
     link.addEventListener("click", () => {
-
       links.classList.remove("open");
 
       menu.textContent = "☰";
-
-      menu.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
+      menu.setAttribute("aria-expanded", "false");
     });
-
   });
 
   /* ===================================
-     REVEAL SECTION HEADINGS
+     SECTION TITLE REVEALS
   =================================== */
 
-  const hasObserver =
-    "IntersectionObserver" in window;
+  if (!reduced && supportsObserver) {
+    document.documentElement.classList.add("js-motion");
 
-  if (!reduced && hasObserver) {
-
-    document.documentElement.classList.add(
-      "js-motion"
-    );
-
-    const titleObserver =
-      new IntersectionObserver(entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add(
-              "visible"
-            );
-
-            titleObserver.unobserve(
-              entry.target
-            );
-
-          }
-
-        });
-
-      }, {
-        threshold: .08
+    const titleObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          titleObserver.unobserve(entry.target);
+        }
       });
+    }, {
+      threshold:.08
+    });
 
-    document
-      .querySelectorAll(".reveal")
-      .forEach(node => {
-
-        titleObserver.observe(node);
-
-      });
-
+    document.querySelectorAll(".reveal").forEach(node => {
+      titleObserver.observe(node);
+    });
   }
 
   /* ===================================
-     STAGGERED 3D CARD ANIMATIONS
+     STAGGERED CARD ANIMATIONS
+     SERVICES + PROCESS + PRICING + ABOUT
   =================================== */
 
   const slots = [
-    ...document.querySelectorAll(
-      ".motion-slot"
-    )
+    ...document.querySelectorAll(".motion-slot")
   ];
 
   function initializeCards() {
-
     const width = window.innerWidth;
 
     slots.forEach(slot => {
-
       const parent = slot.parentElement;
-
-      const siblings = [
-        ...parent.children
-      ];
-
-      const index =
-        siblings.indexOf(slot);
+      const siblings = [...parent.children];
+      const index = siblings.indexOf(slot);
 
       let columns = 1;
 
-      if (
-        parent.matches(".service-grid")
-      ) {
-
-        columns =
-          width > 850
-            ? 3
-            : width > 540
-              ? 2
-              : 1;
-
-      } else if (
-        parent.matches(".plans-grid")
-      ) {
-
-        columns =
-          width > 850 ? 3 : 1;
-
+      if (parent.matches(".service-grid")) {
+        columns = width > 850 ? 3 :
+          width > 600 ? 2 : 1;
       }
 
-      const column =
-        index % columns;
+      if (parent.matches(".plans-grid")) {
+        columns = width > 1100 ? 4 :
+          width > 600 ? 2 : 1;
+      }
 
-      const side =
-        index % 2 === 0 ? -1 : 1;
+      const column = index % columns;
+      const side = index % 2 === 0 ? -1 : 1;
 
+      // Cards arrive one after another.
       slot.style.setProperty(
         "--delay",
-        `${column * 180}ms`
+        `${column * 160}ms`
       );
 
       slot.style.setProperty(
         "--from-x",
-        `${side * 45}px`
+        `${side * 38}px`
       );
 
       slot.style.setProperty(
         "--from-ry",
-        `${side * 8}deg`
+        `${side * 7}deg`
       );
-
     });
-
   }
 
   initializeCards();
 
-  if (!reduced && hasObserver) {
-
-    const cardObserver =
-      new IntersectionObserver(entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add(
-              "arrived"
-            );
-
-            cardObserver.unobserve(
-              entry.target
-            );
-
-          }
-
-        });
-
-      }, {
-
-        threshold: .10,
-
-        rootMargin:
-          "0px 0px -4% 0px"
-
+  if (!reduced && supportsObserver) {
+    const cardObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("arrived");
+          cardObserver.unobserve(entry.target);
+        }
       });
+    }, {
+      threshold:.08,
+      rootMargin:"0px 0px -4% 0px"
+    });
 
     slots.forEach(slot => {
-
       cardObserver.observe(slot);
-
     });
-
   } else {
-
     slots.forEach(slot => {
-
       slot.classList.add("arrived");
-
     });
-
   }
 
   /* ===================================
@@ -3670,108 +2866,68 @@ summary:focus-visible {
   =================================== */
 
   const header = $("#siteHeader");
-
   const progress = $("#scrollProgress");
 
   let scrollPending = false;
 
   function updateScroll() {
-
     scrollPending = false;
 
     const y = window.scrollY;
 
     const max = Math.max(
       1,
-
       document.documentElement.scrollHeight -
       window.innerHeight
     );
 
-    header.classList.toggle(
-      "scrolled",
-      y > 70
-    );
+    header.classList.toggle("scrolled", y > 70);
 
     progress.style.width =
-      `${Math.min(100, y / max * 100)}%`;
-
+      `${Math.min(100,(y / max) * 100)}%`;
   }
 
-  window.addEventListener(
-    "scroll",
-    () => {
+  window.addEventListener("scroll", () => {
+    if (!scrollPending) {
+      scrollPending = true;
+      requestAnimationFrame(updateScroll);
+    }
+  }, { passive:true });
 
-      if (!scrollPending) {
-
-        scrollPending = true;
-
-        requestAnimationFrame(
-          updateScroll
-        );
-
-      }
-
-    },
-    { passive: true }
-  );
-
-  window.addEventListener(
-    "resize",
-    () => {
-
-      initializeCards();
-
-      requestAnimationFrame(
-        updateScroll
-      );
-
-    },
-    { passive: true }
-  );
+  window.addEventListener("resize", () => {
+    initializeCards();
+    requestAnimationFrame(updateScroll);
+  }, { passive:true });
 
   updateScroll();
 
   /* ===================================
-     PAUSE VIDEO WHEN OUT OF VIEW
+     VIDEO VISIBILITY OPTIMIZATION
   =================================== */
 
-  if (video && hasObserver) {
+  if (video && supportsObserver) {
+    const videoObserver = new IntersectionObserver(entries => {
+      if (!ready) return;
 
-    const videoObserver =
-      new IntersectionObserver(entries => {
-
-        if (!ready) return;
-
-        if (entries[0].isIntersecting) {
-
-          video.play().catch(() => {});
-
-        } else {
-
-          video.pause();
-
-        }
-
-      }, {
-
-        threshold: .03
-
-      });
+      if (entries[0].isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }, {
+      threshold:.03
+    });
 
     videoObserver.observe(video);
-
   }
 
   /* ===================================
      FOOTER YEAR
   =================================== */
 
-  $("#year").textContent =
-    new Date().getFullYear();
+  $("#year").textContent = new Date().getFullYear();
 
 })();
-
 </script>
 
 </body>
