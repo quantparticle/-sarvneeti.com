@@ -1,0 +1,1920 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<title>Complaints & Disclosure | Sarvneeti</title>
+
+<meta name="description"
+content="Sarvneeti complaints disclosure, monthly and annual complaint statistics, and client complaint submission form.">
+
+<link rel="icon" type="image/png" href="../fevicon.png">
+
+<style>
+/* ========== GLOBAL ========== */
+
+:root{
+  --navy:#123b48;
+  --deep:#126479;
+  --teal:#1997a6;
+  --coral:#fc624e;
+  --muted:#617d87;
+  --line:#d8e9ec;
+  --blue:#e9f6f7;
+  --peach:#fff4ee;
+  --white:#fff;
+  --max:1250px;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:115px;
+}
+
+body{
+  margin:0;
+  background:white;
+  color:var(--navy);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Arial,sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+
+.container{
+  width:min(var(--max),calc(100% - 52px));
+  margin:auto;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible{
+  outline:2px solid var(--teal);
+  outline-offset:3px;
+}
+
+/* ========== HEADER ========== */
+
+.header{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1450px,calc(100% - 36px));
+  min-height:80px;
+  padding:12px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  z-index:900;
+  background:rgba(255,255,255,.96);
+  border:1px solid #d9e8eb;
+  border-radius:27px;
+  box-shadow:0 15px 45px rgba(24,94,107,.10);
+  backdrop-filter:blur(20px);
+  transition:top .3s,box-shadow .3s;
+}
+
+.header.scrolled{
+  top:9px;
+  box-shadow:0 9px 28px rgba(24,94,107,.15);
+}
+
+.logo img{
+  display:block;
+  max-height:53px;
+  max-width:205px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.header-links{
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.header-links a{
+  color:#315b66;
+  font-size:13px;
+  font-weight:750;
+}
+
+.header-links a:hover{color:var(--teal)}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:none;
+  border-radius:12px;
+  min-height:48px;
+  padding:14px 22px;
+  background:var(--coral);
+  color:white;
+  font-size:12px;
+  font-weight:850;
+  transition:transform .25s,background .25s,box-shadow .25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  background:#ee523e;
+  box-shadow:0 12px 25px #fc624e30;
+}
+
+.btn-outline{
+  background:#fff;
+  color:var(--deep);
+  border:1px solid #bddbdf;
+}
+
+.btn-outline:hover{
+  background:#e9f7f8;
+  color:var(--deep);
+  box-shadow:none;
+}
+
+.menu-btn{
+  display:none;
+  border:1px solid var(--line);
+  background:#eef8f9;
+  color:var(--navy);
+  border-radius:11px;
+  width:43px;
+  height:43px;
+  font-size:21px;
+}
+
+.progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--coral));
+  z-index:999;
+}
+
+/* ========== HERO ========== */
+
+.hero{
+  background:white;
+  padding:175px 0 100px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:650px;
+  height:650px;
+  border-radius:50%;
+  background:radial-gradient(circle,#e4f5f7,transparent 72%);
+  right:-240px;
+  top:-250px;
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:60px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+}
+
+.eyebrow::before{
+  content:"";
+  width:24px;
+  height:2px;
+  background:currentColor;
+}
+
+.hero h1{
+  font-size:clamp(51px,6.5vw,91px);
+  line-height:1.05;
+  letter-spacing:-.075em;
+  margin:25px 0;
+}
+
+.gradient{
+  background:linear-gradient(110deg,#168ba3,#58c6be,#f38e75,#168ba3);
+  background-size:300% 100%;
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+  animation:gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove{
+  to{background-position:300% 0}
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.85;
+  max-width:610px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:29px;
+}
+
+.reg-line{
+  color:#728c94;
+  font-size:11px;
+  border-top:1px solid var(--line);
+  margin-top:32px;
+  padding-top:20px;
+  line-height:1.8;
+}
+
+/* Hero graphic */
+
+.hero-graphic{
+  position:relative;
+  height:390px;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
+
+.hero-graphic::before{
+  content:"";
+  position:absolute;
+  width:90%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle,#c7edf0b0,transparent 72%);
+  z-index:-1;
+  animation:breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe{
+  50%{transform:scale(1.13);opacity:.65}
+}
+
+.graphic-ring{
+  position:absolute;
+  width:84%;
+  aspect-ratio:1;
+  border:1px solid #cbe7e9;
+  border-radius:50%;
+  transform:rotate(-24deg) scaleY(.65);
+}
+
+.graphic-ring.two{
+  width:106%;
+  transform:rotate(34deg) scaleY(.65);
+}
+
+.hero-symbol{
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:230px;
+  height:230px;
+  background:linear-gradient(145deg,#fff,#e5f6f7);
+  border:1px solid #d3e8eb;
+  border-radius:32%;
+  box-shadow:0 28px 75px #1e788c22;
+  animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-14px) rotate(4deg)}
+}
+
+.hero-symbol svg{
+  width:110px;
+  height:110px;
+  color:var(--teal);
+}
+
+.small-float{
+  position:absolute;
+  padding:14px 19px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 16px 35px #235c6a20;
+  font-size:12px;
+  font-weight:800;
+  animation:float 6s ease-in-out infinite;
+}
+
+.small-float.one{top:13%;right:0}
+.small-float.two{bottom:12%;left:0;animation-delay:-3s}
+
+/* ========== RIBBON ========== */
+
+.ribbon{
+  overflow:hidden;
+  background:linear-gradient(90deg,#238ba1,#76c4c9,#a1d2d2);
+  border-radius:0 0 43px 43px;
+  color:white;
+}
+
+.ribbon-track{
+  display:flex;
+  width:max-content;
+  animation:marquee 31s linear infinite;
+}
+
+.ribbon-group{
+  display:flex;
+  align-items:center;
+  gap:35px;
+  white-space:nowrap;
+  padding:21px 18px;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.14em;
+}
+
+.ribbon-group span:nth-child(even){color:#ffe2d6}
+
+@keyframes marquee{
+  to{transform:translateX(-50%)}
+}
+
+/* ========== SECTIONS ========== */
+
+.section{padding:85px 0}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:32px;
+}
+
+.section-head h2{
+  font-size:clamp(34px,4.2vw,56px);
+  letter-spacing:-.06em;
+  line-height:1.1;
+  margin:13px 0 0;
+}
+
+.section-head p{
+  max-width:425px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.blue-section{
+  background:var(--blue);
+  border-radius:45px 45px 0 0;
+}
+
+.white-section{background:white}
+.peach-section{background:var(--peach)}
+
+.accent{color:var(--teal)}
+
+/* ========== SUMMARY METRICS ========== */
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+  margin-bottom:27px;
+}
+
+.metric{
+  background:white;
+  border:1px solid #d9e9eb;
+  border-radius:21px;
+  padding:24px 25px;
+  min-width:0;
+}
+
+.metric:nth-child(2){background:#ddf3f1}
+.metric:nth-child(4){background:#fff1e8}
+
+.metric small{
+  display:block;
+  color:#718d96;
+  font-size:11px;
+  font-weight:750;
+  margin-bottom:12px;
+}
+
+.metric strong{
+  display:block;
+  font-size:43px;
+  letter-spacing:-.06em;
+  line-height:1.1;
+}
+
+.metric p{
+  font-size:10px;
+  color:#748d95;
+  margin:9px 0 0;
+}
+
+/* ========== TABLES ========== */
+
+.table-card{
+  background:white;
+  border:1px solid #d5e8eb;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 10px 35px #1b71800a;
+}
+
+.table-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:23px 25px;
+  border-bottom:1px solid var(--line);
+}
+
+.table-top h3{
+  margin:0 0 6px;
+  font-size:18px;
+  letter-spacing:-.03em;
+}
+
+.table-top p{
+  color:#78929b;
+  font-size:11px;
+  margin:0;
+}
+
+.period{
+  border-radius:30px;
+  background:#e2f6f5;
+  color:#197f8c;
+  font-size:10px;
+  font-weight:850;
+  padding:9px 13px;
+  white-space:nowrap;
+}
+
+.table-scroll{
+  overflow-x:auto;
+  width:100%;
+  -webkit-overflow-scrolling:touch;
+}
+
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  text-align:left;
+  font-size:12px;
+  min-width:780px;
+}
+
+.data-table.wide{min-width:1080px}
+.data-table.compact{min-width:690px}
+
+.data-table th{
+  background:#ecf7f8;
+  padding:16px 13px;
+  color:#2a6472;
+  font-size:11px;
+  font-weight:850;
+  line-height:1.5;
+  white-space:normal;
+  border-bottom:1px solid #d3e8ea;
+}
+
+.data-table td{
+  padding:14px 13px;
+  border-bottom:1px solid #e6eff1;
+  color:#52717c;
+  line-height:1.6;
+}
+
+.data-table tbody tr:nth-child(even){
+  background:#f9fcfd;
+}
+
+.data-table tbody tr:hover{
+  background:#eff8f9;
+}
+
+.data-table td.number{
+  font-variant-numeric:tabular-nums;
+}
+
+.data-table tr.total td{
+  font-weight:850;
+  color:var(--navy);
+  background:#e3f4f2;
+  border-bottom:none;
+}
+
+.data-table th:first-child,
+.data-table td:first-child{
+  padding-left:25px;
+}
+
+.data-table th:last-child,
+.data-table td:last-child{
+  padding-right:25px;
+}
+
+.data-note{
+  padding:17px 25px;
+  background:#f9fcfd;
+  color:#778e97;
+  font-size:11px;
+  line-height:1.8;
+  border-top:1px solid #e5eff1;
+}
+
+/* ========== SCROLL ANIMATION ========== */
+
+.reveal{
+  transition:opacity .8s ease,
+    transform .85s cubic-bezier(.18,1,.3,1);
+}
+
+.js-motion .reveal:not(.visible){
+  opacity:0;
+  transform:translateY(38px);
+}
+
+.js-motion .reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+.motion-slot{perspective:1300px;min-width:0}
+
+.motion-card{
+  transition:
+    opacity .75s ease,
+    filter .8s ease,
+    transform .95s cubic-bezier(.18,1,.3,1);
+  transition-delay:var(--delay,0ms);
+  transform-origin:center bottom;
+}
+
+.js-motion .motion-slot:not(.arrived) .motion-card{
+  opacity:0;
+  filter:blur(5px);
+  transform:translateY(76px) rotateX(10deg) scale(.93);
+}
+
+.js-motion .motion-slot.arrived .motion-card{
+  opacity:1;
+  filter:none;
+  transform:none;
+}
+
+/* ========== FORM ========== */
+
+.form-layout{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:35px;
+  align-items:start;
+}
+
+.complaint-intro h2{
+  font-size:clamp(36px,4vw,54px);
+  letter-spacing:-.06em;
+  line-height:1.13;
+  margin:18px 0;
+}
+
+.complaint-intro>p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+}
+
+.info-box{
+  background:white;
+  border:1px solid #e8e2dc;
+  border-radius:20px;
+  padding:24px;
+  margin-top:16px;
+}
+
+.info-box h3{
+  margin:0 0 13px;
+  font-size:15px;
+}
+
+.info-box p,
+.info-box li{
+  color:#68838c;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.info-box ul{
+  margin:0;
+  padding-left:20px;
+}
+
+.form-card{
+  background:white;
+  border:1px solid #e8dfda;
+  border-radius:27px;
+  padding:35px;
+  box-shadow:0 18px 45px #9c706012;
+}
+
+.form-card h3{
+  font-size:30px;
+  margin:0 0 10px;
+  letter-spacing:-.05em;
+}
+
+.form-card>p{
+  font-size:12px;
+  line-height:1.7;
+  color:var(--muted);
+  margin:0 0 26px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:19px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  min-width:0;
+}
+
+.field.full{grid-column:1/-1}
+
+.field label{
+  font-size:11px;
+  font-weight:850;
+  color:#355e69;
+}
+
+.field input,
+.field textarea{
+  width:100%;
+  min-height:50px;
+  padding:14px 15px;
+  border:1px solid #d7e7e9;
+  background:#f8fcfc;
+  border-radius:12px;
+  color:var(--navy);
+  font-size:13px;
+}
+
+.field input:focus,
+.field textarea:focus{
+  outline:none;
+  border-color:var(--teal);
+  box-shadow:0 0 0 4px #1997a615;
+  background:white;
+}
+
+.field textarea{
+  resize:vertical;
+  min-height:145px;
+  line-height:1.7;
+}
+
+.field input::placeholder,
+.field textarea::placeholder{color:#9aacb3}
+
+.consent{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  font-size:11px;
+  line-height:1.7;
+  color:#69838b;
+  margin:22px 0;
+}
+
+.consent input{
+  margin-top:2px;
+  width:16px;
+  height:16px;
+  accent-color:var(--teal);
+  flex-shrink:0;
+}
+
+.submit{
+  width:100%;
+  background:var(--coral);
+  color:white;
+  border:none;
+  border-radius:12px;
+  padding:17px;
+  font-size:12px;
+  font-weight:850;
+  transition:transform .25s,background .25s;
+}
+
+.submit:hover{
+  background:#ef5541;
+  transform:translateY(-3px);
+}
+
+.form-message{
+  display:none;
+  padding:14px;
+  background:#fff7e9;
+  border:1px solid #ead3ab;
+  border-radius:11px;
+  color:#805e2b;
+  line-height:1.7;
+  font-size:12px;
+  margin-top:17px;
+}
+
+.form-message.show{display:block}
+
+.form-fineprint{
+  color:#8398a0;
+  font-size:10px;
+  line-height:1.8;
+  margin:17px 0 0;
+}
+
+/* ========== FOOTER ========== */
+
+.footer{
+  background:#103745;
+  color:#e7f5f6;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
+  gap:40px;
+  padding:60px 0 43px;
+}
+
+.footer-logo-wrap{
+  display:inline-flex;
+  background:white;
+  padding:9px 14px;
+  border-radius:11px;
+  margin-bottom:13px;
+}
+
+.footer-logo{
+  display:block;
+  max-width:160px;
+  max-height:50px;
+  object-fit:contain;
+}
+
+.footer-name{font-size:17px;font-weight:850}
+.footer h3{font-size:13px;margin:6px 0 18px}
+
+.footer p,.footer li{
+  font-size:11px;
+  line-height:1.85;
+  color:#bfd5dc;
+}
+
+.footer ul{
+  display:grid;
+  gap:10px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.footer a:hover{color:#9ce6e4}
+.footer strong{color:white}
+
+.footer-legal{
+  border-top:1px solid #ffffff24;
+  padding:27px 0;
+}
+
+.footer-legal p{margin:0 0 11px}
+
+.reg-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  padding:29px 0;
+  border-top:1px solid #ffffff24;
+}
+
+.reg-details p{margin:6px 0}
+
+.copyright{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  border-top:1px solid #ffffff24;
+  padding:24px 0;
+  font-size:11px;
+  color:#bfd5dc;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media(max-width:1100px){
+  .container{width:calc(100% - 44px)}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+  .header-links{gap:17px}
+}
+
+@media(max-width:850px){
+  .header{
+    top:12px;
+    min-height:70px;
+    width:calc(100% - 24px);
+    padding:10px 13px;
+    border-radius:22px;
+  }
+
+  .logo img{max-height:44px;max-width:150px}
+
+  .menu-btn{display:block}
+
+  .header-links{
+    display:none;
+    position:absolute;
+    left:0;right:0;
+    top:calc(100% + 8px);
+    padding:13px;
+    border-radius:18px;
+    border:1px solid var(--line);
+    background:white;
+    box-shadow:0 15px 35px #20576920;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+  }
+
+  .header-links.open{display:flex}
+
+  .header-links a{padding:12px}
+
+  .header-cta{
+    margin-left:auto;
+    font-size:10px;
+    padding:12px;
+    min-height:43px;
+  }
+
+  .hero{padding:137px 0 75px}
+  .hero-inner{grid-template-columns:1fr;gap:20px}
+  .hero-graphic{max-width:500px;width:100%;margin:auto}
+  .form-layout{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:570px){
+  .container{width:calc(100% - 32px)}
+
+  .header{
+    width:calc(100% - 16px);
+    padding:8px;
+    gap:7px;
+  }
+
+  .logo img{max-height:36px;max-width:115px}
+  .header-cta{font-size:9px;padding:10px}
+  .menu-btn{width:39px;height:39px}
+
+  .hero{padding:115px 0 50px}
+  .hero h1{font-size:clamp(45px,11vw,60px)}
+  .hero p{font-size:13px}
+  .hero-actions{display:grid;grid-template-columns:1fr}
+  .hero-actions a{width:100%}
+
+  .hero-graphic{height:290px}
+  .hero-symbol{width:175px;height:175px}
+  .hero-symbol svg{width:90px;height:90px}
+  .small-float{padding:10px;font-size:10px}
+
+  .ribbon{border-radius:0 0 26px 26px}
+  .section{padding:62px 0}
+  .blue-section{border-radius:28px 28px 0 0}
+
+  .section-head h2{font-size:clamp(32px,8vw,45px)}
+
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .metric{padding:18px 15px}
+  .metric strong{font-size:34px}
+  .metric small{font-size:10px}
+
+  .table-top{align-items:flex-start;flex-direction:column}
+  .table-top h3{font-size:16px}
+  .form-card{padding:24px 17px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .footer-grid{grid-template-columns:1fr}
+  .reg-details{grid-template-columns:1fr}
+}
+
+/* ========== REDUCED MOTION ========== */
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+  .js-motion .reveal,
+  .js-motion .motion-card{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- HEADER -->
+
+<header class="header" id="header">
+  <a href="../" class="logo" aria-label="Sarvneeti Home">
+    <img src="../logo.png" alt="Sarvneeti">
+  </a>
+
+  <nav class="header-links" id="navLinks">
+    <a href="../">Home</a>
+    <a href="#status">Complaint Status</a>
+    <a href="#monthly">Monthly Trend</a>
+    <a href="#annual">Annual Trend</a>
+  </nav>
+
+  <a class="btn header-cta" href="#complaint-form">
+    SUBMIT COMPLAINT ↗
+  </a>
+
+  <button
+    class="menu-btn"
+    id="menuBtn"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="navLinks"
+    type="button"
+  >☰</button>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="container hero-inner">
+
+    <div class="reveal">
+      <span class="eyebrow">
+        SARVNEETI / INVESTOR SUPPORT
+      </span>
+
+      <h1>
+        Complaints &<br>
+        <span class="gradient">Disclosure.</span>
+      </h1>
+
+      <p>
+        This page presents complaint-related disclosure
+        information, including monthly and annual complaint
+        statistics. Clients and visitors can also raise a
+        complaint or concern through the form below.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#complaint-form" class="btn">
+          SUBMIT A COMPLAINT ↗
+        </a>
+
+        <a href="#status" class="btn btn-outline">
+          VIEW DISCLOSURES ↓
+        </a>
+      </div>
+
+      <div class="reg-line">
+        SEBI Registered Research Analyst<br>
+        <strong>Registration No. INH000016533</strong>
+      </div>
+    </div>
+
+    <div class="hero-graphic" aria-hidden="true">
+      <div class="graphic-ring"></div>
+      <div class="graphic-ring two"></div>
+
+      <div class="hero-symbol">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path
+            d="M50 8L83 20V46C83 68 69 84 50 92C31 84 17 68 17 46V20L50 8Z"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M34 50L45 61L68 38"
+            stroke="currentColor"
+            stroke-width="6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <div class="small-float one">
+        ◇ Transparent reporting
+      </div>
+
+      <div class="small-float two">
+        ✓ Investor support
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RIBBON -->
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+
+    <div class="ribbon-group">
+      <span>COMPLAINT DISCLOSURE</span><span>✦</span>
+      <span>MONTHLY REPORTING</span><span>✦</span>
+      <span>INVESTOR SUPPORT</span><span>✦</span>
+      <span>GRIEVANCE REDRESSAL</span><span>✦</span>
+    </div>
+
+    <div class="ribbon-group">
+      <span>COMPLAINT DISCLOSURE</span><span>✦</span>
+      <span>MONTHLY REPORTING</span><span>✦</span>
+      <span>INVESTOR SUPPORT</span><span>✦</span>
+      <span>GRIEVANCE REDRESSAL</span><span>✦</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- MONTH END STATUS -->
+
+<section class="section blue-section" id="status">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">
+          01 / NUMBER OF CLIENT COMPLAINTS
+        </span>
+
+        <h2>
+          Complaint<br>
+          <span class="accent">status overview.</span>
+        </h2>
+      </div>
+
+      <p>
+        Complaint Status – Data for the Month Ending
+        September 2026, reproduced from the supplied
+        disclosure data.
+      </p>
+    </div>
+
+    <div class="metrics">
+      <div class="motion-slot">
+        <div class="metric motion-card">
+          <small>Previous Month Pending</small>
+          <strong>2</strong>
+          <p>Across listed complaint sources</p>
+        </div>
+      </div>
+
+      <div class="motion-slot">
+        <div class="metric motion-card">
+          <small>Received in September</small>
+          <strong>0</strong>
+          <p>New complaints recorded</p>
+        </div>
+      </div>
+
+      <div class="motion-slot">
+        <div class="metric motion-card">
+          <small>Resolved in September</small>
+          <strong>0</strong>
+          <p>Complaints disposed</p>
+        </div>
+      </div>
+
+      <div class="motion-slot">
+        <div class="metric motion-card">
+          <small>Pending at Month-End</small>
+          <strong>2</strong>
+          <p>As reported under Other Sources</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="motion-slot">
+      <div class="table-card motion-card">
+
+        <div class="table-top">
+          <div>
+            <h3>Complaint Status by Source</h3>
+            <p>Number of Client's Complaints</p>
+          </div>
+          <span class="period">SEPT 2026</span>
+        </div>
+
+        <div class="table-scroll" role="region"
+          aria-label="September 2026 complaint status"
+          tabindex="0">
+
+          <table class="data-table wide">
+            <thead>
+              <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Received From</th>
+                <th scope="col">Pending at the End of Last Month</th>
+                <th scope="col">Received</th>
+                <th scope="col">Resolved</th>
+                <th scope="col">Total Pending</th>
+                <th scope="col">Pending Complaints &gt; 3 Months</th>
+                <th scope="col">Average Resolution Time (Days)</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Directly from Investors</td>
+                <td>0</td><td>0</td><td>0</td>
+                <td>0</td><td>0</td><td>0</td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td>SEBI (SCORES)</td>
+                <td>0</td><td>0</td><td>0</td>
+                <td>0</td><td>0</td><td>0</td>
+              </tr>
+
+              <tr>
+                <td>3</td>
+                <td>Other Sources (if any)</td>
+                <td>2</td><td>0</td><td>0</td>
+                <td>2</td><td>0</td><td>0</td>
+              </tr>
+
+              <tr class="total">
+                <td colspan="2">Grand Total</td>
+                <td>Nil</td>
+                <td>Nil</td>
+                <td>Nil</td>
+                <td>Nil</td>
+                <td>Nil</td>
+                <td>Na</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="data-note">
+          Figures are displayed as supplied. The reported
+          Grand Total row does not reconcile with the two
+          pending complaints under Other Sources and
+          should be verified before publication.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MONTHLY TREND -->
+
+<section class="section white-section" id="monthly">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">
+          02 / MONTHLY REPORTING
+        </span>
+
+        <h2>
+          Monthly disposal<br>
+          <span class="accent">of complaints.</span>
+        </h2>
+      </div>
+
+      <p>
+        Monthly complaint information from October
+        2025 through September 2026.
+      </p>
+    </div>
+
+    <div class="motion-slot">
+      <div class="table-card motion-card">
+
+        <div class="table-top">
+          <div>
+            <h3>Trend of Monthly Disposal of Complaints</h3>
+            <p>October 2025 – September 2026</p>
+          </div>
+          <span class="period">12 MONTHS</span>
+        </div>
+
+        <div class="table-scroll" role="region"
+          aria-label="Monthly complaint disposal trend"
+          tabindex="0">
+
+          <table class="data-table compact">
+            <thead>
+              <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Month</th>
+                <th scope="col">Carried Forward from Previous Month</th>
+                <th scope="col">Received</th>
+                <th scope="col">Resolved</th>
+                <th scope="col">Pending</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr><td>1</td><td>Oct 2025</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>2</td><td>Nov 2025</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>3</td><td>Dec 2025</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>4</td><td>Jan 2026</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>5</td><td>Feb 2026</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>6</td><td>March 2026</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><td>7</td><td>April 2026</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>8</td><td>May 2026</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>9</td><td>Jun 2026</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>10</td><td>July 2026</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>11</td><td>Aug 2026</td><td>1</td><td>1</td><td>0</td><td>2</td></tr>
+              <tr><td>12</td><td>Sept 2026</td><td>2</td><td>0</td><td>0</td><td>2</td></tr>
+
+              <tr class="total">
+                <td colspan="2">Grand Total</td>
+                <td>2</td>
+                <td>2</td>
+                <td>0</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="data-note">
+          Monthly figures reproduced as provided.
+          March 2026 and the Grand Total row require
+          reconciliation with the underlying register.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ANNUAL TREND -->
+
+<section class="section blue-section" id="annual">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">
+          03 / ANNUAL REPORTING
+        </span>
+
+        <h2>
+          Annual disposal<br>
+          <span class="accent">of complaints.</span>
+        </h2>
+      </div>
+
+      <p>
+        Financial-year-wise historical complaint
+        information from 2022–23 through 2025–26.
+      </p>
+    </div>
+
+    <div class="motion-slot">
+      <div class="table-card motion-card">
+
+        <div class="table-top">
+          <div>
+            <h3>Trend of Annual Disposal of Complaints</h3>
+            <p>Financial year complaint disclosure</p>
+          </div>
+          <span class="period">FY 2022–26</span>
+        </div>
+
+        <div class="table-scroll" role="region"
+          aria-label="Annual complaint disposal trend"
+          tabindex="0">
+
+          <table class="data-table compact">
+            <thead>
+              <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Year</th>
+                <th scope="col">Carried Forward from Previous Month</th>
+                <th scope="col">Received</th>
+                <th scope="col">Resolved</th>
+                <th scope="col">Pending</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>1</td><td>2022-23</td>
+                <td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td>
+              </tr>
+
+              <tr>
+                <td>2</td><td>2023-24</td>
+                <td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td>
+              </tr>
+
+              <tr>
+                <td>3</td><td>2024-25</td>
+                <td>Nil</td><td>Nil</td><td>Nil</td><td>Nil</td>
+              </tr>
+
+              <tr>
+                <td>4</td><td>2025-26</td>
+                <td>Nil</td><td>1</td><td>1</td><td>Nil</td>
+              </tr>
+
+              <tr class="total">
+                <td colspan="2">Grand Total</td>
+                <td>Nil</td><td>Nil</td>
+                <td>Nil</td><td>Nil</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="data-note">
+          Data reproduced from the supplied annual table.
+          Please verify the Grand Total figures before
+          publishing this regulatory disclosure.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPLAINT FORM -->
+
+<section class="section peach-section" id="complaint-form">
+  <div class="container form-layout">
+
+    <div class="complaint-intro reveal">
+
+      <span class="eyebrow">
+        04 / CLIENT COMPLAINT FORM
+      </span>
+
+      <h2>
+        Raise your<br>
+        <span class="accent">concern.</span>
+      </h2>
+
+      <p>
+        Use the form to share a complaint or issue
+        relating to Sarvneeti's research services,
+        support or communications.
+      </p>
+
+      <div class="info-box">
+        <h3>Submission Details</h3>
+        <p>
+          The intended record includes your full name,
+          email address, contact number and complaint
+          message for internal follow-up.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3>Use this form for</h3>
+        <ul>
+          <li>Service-related complaints</li>
+          <li>Support delays</li>
+          <li>Communication issues</li>
+          <li>General complaint follow-up</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="motion-slot">
+      <div class="form-card motion-card">
+
+        <h3>Complaint Form</h3>
+
+        <p>
+          Complete the details below to prepare
+          your complaint for submission.
+        </p>
+
+        <form id="complaintForm" method="POST"
+          accept-charset="UTF-8">
+
+          <!-- Routing fields for your existing Apps Script -->
+          <input type="hidden" name="type" value="complaint">
+          <input type="hidden" name="source" value="sarvneeti.com">
+          <input type="hidden" name="formType" value="complaint">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="fullName">Full Name *</label>
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                maxlength="100"
+                autocomplete="name"
+                placeholder="Enter your full name"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                maxlength="150"
+                autocomplete="email"
+                placeholder="Enter your email address"
+                required
+              >
+            </div>
+
+            <div class="field full">
+              <label for="contactNumber">Contact Number *</label>
+              <input
+                id="contactNumber"
+                name="contactNumber"
+                type="tel"
+                maxlength="20"
+                pattern="[+0-9() -]{7,20}"
+                autocomplete="tel"
+                placeholder="Enter your mobile number"
+                required
+              >
+            </div>
+
+            <div class="field full">
+              <label for="complaintMessage">Complaint Message *</label>
+              <textarea
+                id="complaintMessage"
+                name="complaintMessage"
+                rows="6"
+                minlength="10"
+                maxlength="5000"
+                placeholder="Write your complaint here..."
+                required
+              ></textarea>
+            </div>
+
+          </div>
+
+          <label class="consent">
+            <input
+              type="checkbox"
+              id="consent"
+              required
+            >
+            <span>
+              I consent to Sarvneeti processing the
+              details entered above for reviewing
+              and responding to my complaint.
+            </span>
+          </label>
+
+          <button type="submit" class="submit">
+            SUBMIT COMPLAINT ↗
+          </button>
+
+          <div
+            class="form-message"
+            id="formMessage"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+          <p class="form-fineprint">
+            Please do not include passwords, OTPs,
+            trading credentials or other secrets.
+            The form requires a configured Google Apps
+            Script service before it can accept submissions.
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer" id="disclaimer">
+  <div class="container footer-grid">
+
+    <div>
+      <a class="footer-logo-wrap" href="../">
+        <img class="footer-logo"
+          src="../logo.png" alt="Sarvneeti">
+      </a>
+
+      <div class="footer-name">Sarvneeti</div>
+
+      <p>
+        SEBI registered research analyst services
+        focused on equity and options research,
+        market insights and risk-aware analysis.
+      </p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="../">Home</a></li>
+        <li><a href="../#services">Services</a></li>
+        <li><a href="../#about">About Us</a></li>
+        <li><a href="../#contact">Contact</a></li>
+        <li><a href="#status">Complaints</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contact Us</h3>
+      <ul>
+        <li><a href="../#contact">Research Desk</a></li>
+        <li>Monday – Saturday</li>
+        <li>9:00 AM – 6:00 PM IST</li>
+        <li><a href="#complaint-form">Raise a Complaint</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Legal &amp; Policy</h3>
+      <ul>
+        <li>
+          <a href="disclaimer.html">Disclaimer</a>
+        </li>
+        <li>
+          <a href="disclosure.pdf">Disclosure</a>
+        </li>
+        <li>
+          <a href="investor-charter.pdf">Investor Charter</a>
+        </li>
+        <li>
+          <a href="terms-and-conditions.html">
+            Terms &amp; Conditions
+          </a>
+        </li>
+        <li>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="grievance-redressal.html">
+            Grievance Redressal
+          </a>
+        </li>
+        <li>
+          <a href="complaints.html" aria-current="page">
+            Complaints
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="container footer-legal">
+
+    <p>
+      <strong>Disclaimer:</strong>
+      Registration granted by SEBI and certification
+      from NISM in no way guarantee performance of
+      the intermediary or provide any assurance
+      of returns to investors.
+    </p>
+
+    <p>
+      <strong>Illustrative content:</strong>
+      Securities, index levels and market visuals,
+      if any, are for illustration only and are not
+      live recommendations or verified performance records.
+    </p>
+
+    <p>
+      <strong>Standard warning:</strong>
+      Investment in securities market are subject to
+      market risks. Read all the related documents
+      carefully before investing.
+    </p>
+
+    <p>
+      <strong>Mandatory notice:</strong>
+      Clients shall be requested to go through
+      Do's and Don'ts while dealing with RA as
+      specified in SEBI master circular no.
+      SEBI/HO/MIRSD-POD-1/P/CIR/2024/49 dated
+      May 21, 2024 or as may be specified by
+      SEBI from time to time.
+    </p>
+
+  </div>
+
+  <div class="container reg-details">
+    <div>
+      <h3>SEBI Registered Research Analyst Details</h3>
+      <p><strong>Registered Name / Owner:</strong> Amit Kori</p>
+      <p><strong>Registration Type:</strong> Individual</p>
+      <p><strong>Registration No.:</strong> INH000016533</p>
+      <p><strong>Validity:</strong> November 22, 2027</p>
+    </div>
+
+    <div>
+      <h3>Nearest SEBI Office Address</h3>
+      <p>
+        SEBI Bhavan BKC, Plot No. C4-A, 'G' Block,
+        Bandra-Kurla Complex, Bandra (East),
+        Mumbai – 400051, Maharashtra, India.
+      </p>
+    </div>
+  </div>
+
+  <div class="container copyright">
+    <span>© <span id="year">2026</span>
+      Sarvneeti. All Rights Reserved.</span>
+    <span>
+      <a href="#complaint-form">Submit a Complaint ↗</a>
+    </span>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+(() => {
+  "use strict";
+
+  /*
+    GOOGLE SHEET INTEGRATION
+
+    Replace the empty value below with the
+    existing deployed Apps Script /exec URL.
+
+    Your existing doPost handler must recognize
+    type="complaint" and append fields to the
+    correct complaints tab in the same spreadsheet.
+
+    Never publish the Google Sheet's private URL
+    or API credentials in this HTML.
+  */
+
+  const GOOGLE_SCRIPT_URL = "";
+
+  const $ = s => document.querySelector(s);
+
+  const reduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const supportsObserver =
+    "IntersectionObserver" in window;
+
+  /* MOBILE NAVIGATION */
+
+  const menu = $("#menuBtn");
+  const nav = $("#navLinks");
+
+  menu.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menu.textContent = open ? "✕" : "☰";
+    menu.setAttribute("aria-expanded", String(open));
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menu.textContent = "☰";
+      menu.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  /* SCROLL ANIMATIONS */
+
+  if (!reduced && supportsObserver) {
+    document.documentElement.classList.add("js-motion");
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.08});
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    const slots = [...document.querySelectorAll(".motion-slot")];
+
+    slots.forEach((slot,index) => {
+      slot.style.setProperty(
+        "--delay", `${(index % 4) * 120}ms`
+      );
+    });
+
+    const cardObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("arrived");
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold:0.07,
+      rootMargin:"0px 0px -4% 0px"
+    });
+
+    slots.forEach(el => cardObserver.observe(el));
+  }
+
+  /* COMPLAINT FORM */
+
+  const form = $("#complaintForm");
+  const formMessage = $("#formMessage");
+
+  function showMessage(message) {
+    formMessage.textContent = message;
+    formMessage.classList.add("show");
+  }
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    formMessage.classList.remove("show");
+    formMessage.textContent = "";
+
+    if (!form.reportValidity()) return;
+
+    if (!GOOGLE_SCRIPT_URL) {
+      showMessage(
+        "Complaint submission is not yet configured. " +
+        "Please contact Sarvneeti through its official " +
+        "published contact or grievance-redressal channels."
+      );
+      return;
+    }
+
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/
+      .test(GOOGLE_SCRIPT_URL)) {
+      showMessage(
+        "Complaint service configuration is invalid. " +
+        "Please contact the research desk."
+      );
+      return;
+    }
+
+    /*
+      A normal HTML form POST is used because Google
+      Apps Script web apps may redirect responses.
+
+      The receiving script must validate and store
+      the complaint and return its own acknowledgement.
+
+      Opening the processing endpoint does not itself
+      prove the complaint has been stored.
+    */
+
+    const submitWindow = window.open(
+      "about:blank",
+      "_blank"
+    );
+
+    if (!submitWindow) {
+      showMessage(
+        "Your browser blocked the submission window. " +
+        "Please allow pop-ups for this website and retry."
+      );
+      return;
+    }
+
+    const targetName =
+      "sarvneetiComplaintSubmission";
+
+    submitWindow.name = targetName;
+
+    form.action = GOOGLE_SCRIPT_URL;
+    form.method = "POST";
+    form.target = targetName;
+
+    showMessage(
+      "The complaint processing window has opened. " +
+      "Please check that window for an acknowledgement. " +
+      "This page cannot independently confirm receipt."
+    );
+
+    form.submit();
+  });
+
+  /* HEADER + PROGRESS */
+
+  const header = $("#header");
+  const progress = $("#progress");
+  let pending = false;
+
+  function updateScroll() {
+    pending = false;
+
+    const y = window.scrollY;
+    const max = Math.max(
+      1,
+      document.documentElement.scrollHeight -
+      window.innerHeight
+    );
+
+    header.classList.toggle("scrolled", y > 65);
+    progress.style.width =
+      `${Math.min(100,(y / max) * 100)}%`;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!pending) {
+      pending = true;
+      requestAnimationFrame(updateScroll);
+    }
+  }, {passive:true});
+
+  updateScroll();
+
+  $("#year").textContent = new Date().getFullYear();
+
+})();
+</script>
+
+</body>
+</html>
