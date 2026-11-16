@@ -2,788 +2,2708 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#070b17" />
-
-  <meta
-    name="description"
-    content="Serveneeti — smarter systems for ambitious businesses. Our new digital experience is coming soon."
-  />
-
-  <title>Serveneeti — Coming Soon</title>
-
-  <link rel="icon" type="image/png" href="logo.png" />
-
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #070b17;
-      --text: #f6f8ff;
-      --muted: #9ca9c1;
-      --line: rgba(255, 255, 255, 0.12);
-      --accent: #8b85ff;
-      --cyan: #57e4dc;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100svh;
-      background: var(--bg);
-      color: var(--text);
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(
-          ellipse 50% 48% at 72% 38%,
-          rgba(74, 68, 178, 0.25),
-          transparent 78%
-        ),
-        radial-gradient(
-          ellipse 45% 44% at 18% 80%,
-          rgba(31, 135, 154, 0.14),
-          transparent 80%
-        );
-      z-index: -2;
-    }
-
-    /* Background grid */
-
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-
-      background-image:
-        linear-gradient(
-          rgba(255, 255, 255, 0.026) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.026) 1px,
-          transparent 1px
-        );
-
-      background-size: 64px 64px;
-
-      mask-image:
-        linear-gradient(to bottom, black, transparent 96%);
-    }
-
-    .shell {
-      max-width: 1240px;
-      margin: auto;
-      padding: 0 48px;
-      min-height: 100svh;
-
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Header */
-
-    header {
-      height: 106px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    /* Logo image */
-
-    .brand-logo {
-      height: 48px;
-      width: auto;
-      max-width: 230px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .header-tag {
-      font-size: 12px;
-      color: #c0c9dc;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .pulse {
-      height: 7px;
-      width: 7px;
-      border-radius: 50%;
-      background: #69eacb;
-      box-shadow: 0 0 0 5px rgba(105, 234, 203, 0.1);
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-
-    /* Main */
-
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 34px;
-      padding: 80px 0 95px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #c6caff;
-      letter-spacing: 0.17em;
-      font-size: 11px;
-      font-weight: 750;
-      text-transform: uppercase;
-      margin: 0 0 25px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 23px;
-      height: 1px;
-      background: #a7a4ff;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 720px;
-      line-height: 1.055;
-      font-size: clamp(64px, 7.6vw, 110px);
-      font-weight: 770;
-      letter-spacing: -0.078em;
-    }
-
-    h1 span {
-      display: block;
-      background:
-        linear-gradient(
-          110deg,
-          #f8f9ff 7%,
-          #a8a4ff 50%,
-          #69e9e2 99%
-        );
-
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .sub {
-      max-width: 540px;
-      color: var(--muted);
-      line-height: 1.78;
-      font-size: clamp(16px, 1.4vw, 19px);
-      margin: 28px 0 0;
-    }
-
-    /* Services */
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 31px;
-    }
-
-    .services span {
-      font-size: 12px;
-      padding: 10px 13px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: #cbd3e5;
-      background: rgba(255, 255, 255, 0.025);
-      transition: 0.3s ease;
-    }
-
-    .services span:hover {
-      border-color: rgba(139, 133, 255, 0.5);
-      background: rgba(139, 133, 255, 0.08);
-      transform: translateY(-3px);
-    }
-
-    /* Status */
-
-    .status {
-      margin-top: 46px;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      font-size: 13px;
-      color: #aebbd1;
-    }
-
-    .status-icon {
-      height: 32px;
-      width: 32px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 1px solid rgba(111, 231, 217, 0.34);
-      color: var(--cyan);
-      font-size: 15px;
-    }
-
-    /* Right side animation */
-
-    .art {
-      position: relative;
-      height: min(520px, 50vw);
-      min-height: 390px;
-      display: grid;
-      place-items: center;
-      isolation: isolate;
-    }
-
-    .glow {
-      position: absolute;
-      width: 80%;
-      aspect-ratio: 1;
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(99, 91, 239, 0.24),
-          rgba(53, 176, 199, 0.08) 48%,
-          transparent 68%
-        );
-
-      filter: blur(13px);
-      animation: breathe 7s ease-in-out infinite;
-    }
-
-    /* Orbit rings */
-
-    .orbit {
-      position: absolute;
-      border: 1px solid rgba(166, 176, 255, 0.15);
-      border-radius: 50%;
-      width: 89%;
-      aspect-ratio: 1;
-      transform: rotate(-27deg) scaleY(0.62);
-    }
-
-    .orbit.two {
-      width: 108%;
-      transform: rotate(35deg) scaleY(0.63);
-      border-color: rgba(104, 225, 223, 0.12);
-    }
-
-    .orbit::after {
-      content: "";
-      position: absolute;
-      left: 11%;
-      top: 13%;
-      width: 8px;
-      height: 8px;
-      background: #74ebe6;
-      border-radius: 50%;
-      box-shadow: 0 0 24px #73eae1;
-    }
-
-    .orbit.two::after {
-      background: #b1a8ff;
-      box-shadow: 0 0 22px #a5a1ff;
-      left: auto;
-      right: 16%;
-      top: 15%;
-    }
-
-    /* Animated 3D-style core */
-
-    .core {
-      width: 64%;
-      max-width: 330px;
-      aspect-ratio: 1;
-      border-radius: 30%;
-
-      position: relative;
-      display: grid;
-      place-items: center;
-
-      transform: rotate(-17deg);
-
-      background:
-        linear-gradient(
-          142deg,
-          rgba(157, 149, 255, 0.24),
-          rgba(95, 91, 221, 0.1) 51%,
-          rgba(53, 209, 215, 0.2)
-        );
-
-      border: 1px solid rgba(190, 197, 255, 0.38);
-
-      box-shadow:
-        inset 0 1px 45px rgba(177, 177, 255, 0.13),
-        0 35px 120px rgba(31, 29, 91, 0.48);
-
-      animation: float 7s ease-in-out infinite;
-    }
-
-    .core::before {
-      content: "";
-      position: absolute;
-      inset: 17px;
-      border-radius: 27%;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-    }
-
-    .core-letter {
-      font-size: clamp(130px, 18vw, 235px);
-      line-height: 1;
-      font-weight: 850;
-      letter-spacing: -0.13em;
-      padding-right: 0.16em;
-
-      transform: rotate(17deg);
-
-      background:
-        linear-gradient(
-          160deg,
-          #ffffff,
-          #b0aaff 53%,
-          #6ff1ed
-        );
-
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-
-      text-shadow:
-        0 10px 55px rgba(147, 151, 255, 0.15);
-    }
-
-    /* Floating cards */
-
-    .small-card {
-      position: absolute;
-      border: 1px solid rgba(215, 220, 255, 0.17);
-
-      background: rgba(19, 25, 48, 0.76);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-
-      border-radius: 15px;
-      padding: 14px 17px;
-
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      color: #d8e4f4;
-      font-size: 12px;
-
-      box-shadow:
-        0 10px 38px rgba(0, 0, 0, 0.18);
-    }
-
-    .small-card b {
-      display: block;
-      color: white;
-      margin-bottom: 3px;
-      font-size: 12px;
-    }
-
-    .small-card em {
-      font-style: normal;
-      color: #a9b8ce;
-      font-size: 11px;
-    }
-
-    .card-top {
-      top: 12%;
-      right: -1%;
-      animation: cardFloat 6s ease-in-out infinite;
-    }
-
-    .card-bottom {
-      bottom: 12%;
-      left: 0;
-      animation: cardFloat 7s ease-in-out infinite reverse;
-    }
-
-    .card-icon {
-      width: 31px;
-      height: 31px;
-      display: grid;
-      place-items: center;
-
-      background: rgba(106, 227, 215, 0.12);
-      color: #75ebe0;
-
-      border-radius: 9px;
-      font-size: 17px;
-    }
-
-    /* Footer */
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-
-      min-height: 80px;
-      border-top: 1px solid var(--line);
-
-      color: #7f8ca5;
-      font-size: 12px;
-    }
-
-    footer .foot-right {
-      color: #9dabbe;
-    }
-
-    /* Animations */
-
-    @keyframes float {
-      0%, 100% {
-        translate: 0 0;
-      }
-
-      50% {
-        translate: 0 -14px;
-      }
-    }
-
-    @keyframes breathe {
-      0%, 100% {
-        scale: 1;
-        opacity: 0.75;
-      }
-
-      50% {
-        scale: 1.14;
-        opacity: 1;
-      }
-    }
-
-    @keyframes cardFloat {
-      0%, 100% {
-        translate: 0 0;
-      }
-
-      50% {
-        translate: 0 -9px;
-      }
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% {
-        box-shadow: 0 0 0 5px rgba(105, 234, 203, 0.1);
-      }
-
-      50% {
-        box-shadow: 0 0 0 9px rgba(105, 234, 203, 0.03);
-      }
-    }
-
-    /* Tablet */
-
-    @media (max-width: 850px) {
-      .shell {
-        padding: 0 24px;
-      }
-
-      main {
-        grid-template-columns: 1fr;
-        padding: 70px 0 42px;
-        gap: 24px;
-      }
-
-      .art {
-        height: 410px;
-        min-height: 0;
-        max-width: 530px;
-        width: 100%;
-        margin: auto;
-      }
-
-      .card-top {
-        right: 4%;
-      }
-
-      .card-bottom {
-        left: 4%;
-      }
-
-      h1 {
-        font-size: clamp(62px, 11vw, 88px);
-      }
-
-      .sub {
-        max-width: 650px;
-      }
-    }
-
-    /* Mobile */
-
-    @media (max-width: 480px) {
-      .shell {
-        padding: 0 20px;
-      }
-
-      header {
-        height: 83px;
-      }
-
-      .brand-logo {
-        height: 36px;
-        max-width: 155px;
-      }
-
-      .header-tag {
-        font-size: 9px;
-        letter-spacing: 0.08em;
-      }
-
-      main {
-        padding: 60px 0 25px;
-      }
-
-      h1 {
-        font-size: clamp(58px, 14vw, 75px);
-      }
-
-      .sub {
-        font-size: 16px;
-      }
-
-      .art {
-        height: 310px;
-      }
-
-      .core {
-        width: 61%;
-      }
-
-      .core-letter {
-        font-size: 125px;
-      }
-
-      .small-card {
-        padding: 9px 10px;
-        font-size: 10px;
-      }
-
-      .small-card b {
-        font-size: 10px;
-      }
-
-      .small-card em {
-        font-size: 9px;
-      }
-
-      .card-icon {
-        width: 27px;
-        height: 27px;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 7px;
-        padding: 18px 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<title>Sarvneeti | Equity & Options Research</title>
+
+<meta name="description"
+content="Sarvneeti provides research-based equity and options market insights, trading levels, risk management guidance and financial market analysis.">
+
+<link rel="icon" type="image/png" href="fevicon.png">
+
+<style>
+/* ======================================
+   GLOBAL
+====================================== */
+
+:root {
+  --navy:#123b48;
+  --deep:#126479;
+  --teal:#1997a6;
+  --aqua:#79ccd0;
+  --coral:#fc624e;
+  --muted:#617d87;
+  --line:#d8e9ec;
+  --bluebg:#e9f6f7;
+  --peach:#fff4ee;
+  --white:#ffffff;
+  --max:1250px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:115px;
+}
+
+body {
+  margin:0;
+  background:white;
+  color:var(--navy);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+a {
+  text-decoration:none;
+  color:inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+.container {
+  width:min(var(--max),calc(100% - 64px));
+  margin:auto;
+}
+
+::selection {
+  background:#bde9e9;
+  color:var(--navy);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline:2px solid var(--teal);
+  outline-offset:3px;
+}
+
+/* ======================================
+   SCROLL PROGRESS
+====================================== */
+
+.scroll-progress {
+  position:fixed;
+  top:0;
+  left:0;
+  width:0;
+  height:3px;
+  z-index:999;
+  background:linear-gradient(
+    90deg,var(--teal),var(--coral)
+  );
+}
+
+/* ======================================
+   FLOATING HEADER
+====================================== */
+
+.site-header {
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:min(1450px,calc(100% - 40px));
+  min-height:83px;
+  padding:12px 20px 12px 28px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  z-index:900;
+
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(26,83,97,.13);
+  border-radius:28px;
+
+  box-shadow:0 15px 50px rgba(24,94,107,.1);
+
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  transition:
+    top .35s,
+    min-height .35s,
+    box-shadow .35s;
+}
+
+.site-header.scrolled {
+  top:10px;
+  min-height:69px;
+  box-shadow:0 10px 35px rgba(24,94,107,.15);
+}
+
+.logo {
+  display:inline-flex;
+  align-items:center;
+}
+
+.logo img {
+  display:block;
+  max-height:54px;
+  max-width:210px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.header-contact,
+.btn-primary {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:13px;
+
+  padding:15px 23px;
+  min-height:49px;
+
+  border:none;
+  border-radius:12px;
+
+  background:var(--coral);
+  color:white;
+
+  font-size:12px;
+  font-weight:850;
+
+  transition:
+    transform .3s,
+    background .3s,
+    box-shadow .3s;
+}
+
+.header-contact:hover,
+.btn-primary:hover {
+  background:#ed503c;
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(252,98,78,.23);
+}
+
+.btn-outline {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:49px;
+  padding:14px 22px;
+  border-radius:12px;
+  border:1px solid #bbd8dd;
+  background:#fff;
+  color:#245b69;
+  font-size:12px;
+  font-weight:850;
+  transition:transform .3s,background .3s;
+}
+
+.btn-outline:hover {
+  transform:translateY(-3px);
+  background:#eef9fa;
+}
+
+/* ======================================
+   SCROLL ANIMATION SYSTEM
+====================================== */
+
+.reveal {
+  opacity:1;
+  transform:none;
+}
+
+.js-motion .reveal:not(.visible) {
+  opacity:0;
+  transform:translateY(45px);
+}
+
+.js-motion .reveal {
+  transition:
+    opacity .85s ease,
+    transform .9s cubic-bezier(.16,1,.3,1);
+}
+
+.js-motion .reveal.visible {
+  opacity:1;
+  transform:none;
+}
+
+.motion-slot {
+  min-width:0;
+  perspective:1300px;
+}
+
+.motion-card {
+  height:100%;
+  transform-origin:center 75%;
+  backface-visibility:hidden;
+  transition:
+    transform .95s cubic-bezier(.17,1,.3,1),
+    opacity .8s ease,
+    filter .8s ease;
+  transition-delay:var(--delay,0ms);
+}
+
+.js-motion .motion-slot:not(.arrived) .motion-card {
+  opacity:0;
+  filter:blur(7px);
+  transform:
+    translate3d(var(--from-x,0px),100px,0)
+    rotateX(12deg)
+    scale(.89);
+}
+
+.js-motion .motion-slot.arrived .motion-card {
+  opacity:1;
+  filter:blur(0);
+  transform:none;
+}
+
+/* ======================================
+   HERO
+====================================== */
+
+.hero {
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  background:#fff;
+  padding:160px 0 110px;
+  overflow:hidden;
+}
+
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.06fr .94fr;
+  align-items:center;
+  gap:65px;
+}
+
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--teal);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:850;
+}
+
+.eyebrow::before {
+  content:"";
+  display:block;
+  width:24px;
+  height:2px;
+  background:currentColor;
+}
+
+.hero h1 {
+  font-size:clamp(55px,6vw,88px);
+  line-height:1.045;
+  letter-spacing:-.075em;
+  margin:28px 0 24px;
+  font-weight:850;
+}
+
+.gradient-word {
+  display:inline-block;
+  background:linear-gradient(
+    100deg,
+    #168ba3,
+    #50bfb9,
+    #f38a72,
+    #168ba3
+  );
+  background-size:300% 100%;
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+  animation:gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+  to {
+    background-position:300% 0;
+  }
+}
+
+.hero-description {
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+  max-width:570px;
+}
+
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:32px;
+}
+
+.hero-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:29px;
+}
+
+.hero-tags span {
+  padding:10px 14px;
+  border-radius:50px;
+  background:#f5fbfc;
+  border:1px solid #d2e9ec;
+  font-size:10px;
+  font-weight:850;
+  color:#4e7983;
+}
+
+.hero-reg {
+  display:flex;
+  align-items:flex-start;
+  gap:13px;
+  margin-top:34px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  color:#6e8790;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.reg-icon {
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  border:1px solid #b9dddf;
+  color:var(--teal);
+  font-weight:900;
+}
+
+.hero-reg strong {
+  color:#335b68;
+}
+
+/* ======================================
+   HERO ANIMATED VISUAL
+====================================== */
+
+.hero-art {
+  position:relative;
+  height:540px;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
+
+.hero-art::before {
+  content:"";
+  position:absolute;
+  width:90%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(125,211,215,.25),
+    rgba(227,246,247,.16) 55%,
+    transparent 73%
+  );
+  filter:blur(10px);
+  animation:glowPulse 7s ease-in-out infinite;
+  z-index:-1;
+}
+
+@keyframes glowPulse {
+  50% {
+    transform:scale(1.13);
+    opacity:.7;
+  }
+}
+
+.visual-ring {
+  position:absolute;
+  width:88%;
+  aspect-ratio:1;
+  border:1px solid #d9ebed;
+  border-radius:50%;
+  transform:rotate(-24deg) scaleY(.68);
+}
+
+.visual-ring.two {
+  width:110%;
+  border-color:#e6eff1;
+  transform:rotate(35deg) scaleY(.65);
+}
+
+.visual-ring::after {
+  content:"";
+  position:absolute;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--coral);
+  left:18%;
+  top:12%;
+  box-shadow:0 0 0 9px rgba(252,98,78,.08);
+}
+
+.visual-ring.two::after {
+  background:var(--teal);
+  left:auto;
+  right:22%;
+  top:78%;
+  box-shadow:0 0 0 9px rgba(25,151,166,.08);
+}
+
+/* Main analytics illustration */
+
+.analytics-card {
+  position:relative;
+  width:83%;
+  max-width:440px;
+  background:#ffffff;
+  border:1px solid #cfe5e9;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 32px 90px rgba(29,105,122,.16);
+  transform:rotate(-5deg);
+  animation:visualFloat 7s ease-in-out infinite;
+}
+
+@keyframes visualFloat {
+  0%,100% {
+    transform:rotate(-5deg) translateY(0);
+  }
+  50% {
+    transform:rotate(-3deg) translateY(-15px);
+  }
+}
+
+.analytics-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 22px;
+  border-bottom:1px solid #e3eff1;
+}
+
+.analytics-header span {
+  font-size:10px;
+  font-weight:850;
+  color:#688a93;
+  letter-spacing:.12em;
+}
+
+.analytics-header b {
+  font-size:11px;
+  color:#149d91;
+}
+
+.chart-wrap {
+  padding:20px;
+}
+
+.chart-wrap svg {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.chart-line {
+  stroke-dasharray:700;
+  stroke-dashoffset:700;
+  animation:drawChart 3.5s .5s ease forwards;
+}
+
+@keyframes drawChart {
+  to {
+    stroke-dashoffset:0;
+  }
+}
+
+.analytics-footer {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  padding:0 20px 20px;
+}
+
+.analytics-metric {
+  background:#f0f8f9;
+  border-radius:11px;
+  padding:12px 10px;
+}
+
+.analytics-metric small {
+  display:block;
+  color:#7e9aa3;
+  font-size:9px;
+  margin-bottom:6px;
+}
+
+.analytics-metric strong {
+  color:#2f5f6b;
+  font-size:11px;
+}
+
+.float-card {
+  position:absolute;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:15px 18px;
+  border:1px solid #d6e8eb;
+  border-radius:16px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 18px 42px rgba(27,93,111,.13);
+  animation:smallFloat 6s ease-in-out infinite;
+  z-index:3;
+}
+
+.float-card.top {
+  top:10%;
+  right:-1%;
+}
+
+.float-card.bottom {
+  bottom:9%;
+  left:-2%;
+  animation-delay:-3s;
+}
+
+@keyframes smallFloat {
+  50% {
+    transform:translateY(-12px);
+  }
+}
+
+.float-icon {
+  width:37px;
+  height:37px;
+  display:grid;
+  place-items:center;
+  background:#e4f7f7;
+  color:var(--teal);
+  border-radius:12px;
+  font-size:20px;
+}
+
+.float-card b {
+  display:block;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.float-card small {
+  font-size:10px;
+  color:#829aa2;
+}
+
+.visual-caption {
+  position:absolute;
+  bottom:-8px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  letter-spacing:.13em;
+  color:#8da5ac;
+  font-weight:850;
+  white-space:nowrap;
+}
+
+/* ======================================
+   CURVED MOVING RIBBON
+====================================== */
+
+.ticker {
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(
+    100deg,#248ca2,#70bec7,#9bcfd0
+  );
+  color:#fff;
+  border-radius:0 0 48px 48px;
+}
+
+.ticker-track {
+  display:flex;
+  width:max-content;
+  animation:tickerMove 32s linear infinite;
+}
+
+.ticker-group {
+  display:flex;
+  align-items:center;
+  gap:38px;
+  padding:22px 18px;
+  white-space:nowrap;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.14em;
+}
+
+.ticker-group i {
+  font-size:18px;
+  color:#ffe6d8;
+  font-style:normal;
+}
+
+@keyframes tickerMove {
+  to {
+    transform:translateX(-50%);
+  }
+}
+
+/* ======================================
+   SECTION HEADINGS
+====================================== */
+
+.section {
+  padding:95px 0;
+}
+
+.section-header {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:41px;
+}
+
+.section-header h2,
+.large-heading {
+  font-size:clamp(36px,4.5vw,61px);
+  line-height:1.1;
+  letter-spacing:-.065em;
+  margin:16px 0 0;
+}
+
+.section-header p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+  max-width:430px;
+}
+
+.accent {
+  color:var(--teal);
+}
+
+/* ======================================
+   SERVICES
+====================================== */
+
+.services {
+  background:var(--bluebg);
+  border-radius:48px 48px 0 0;
+  overflow-x:clip;
+}
+
+.service-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.service-card {
+  position:relative;
+  min-height:255px;
+  padding:30px;
+  background:white;
+  border:1px solid #d8e8eb;
+  border-radius:25px 25px 48px 25px;
+  box-shadow:0 8px 24px rgba(23,78,92,.04);
+  overflow:hidden;
+}
+
+.service-grid .motion-slot:nth-child(2n) .service-card {
+  background:#d8f0f1;
+}
+
+.service-grid .motion-slot:nth-child(3n) .service-card {
+  background:#fff1e9;
+}
+
+.service-icon {
+  display:grid;
+  place-items:center;
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:#e5f7f7;
+  color:var(--teal);
+  font-size:24px;
+  margin-bottom:25px;
+}
+
+.service-card h3 {
+  font-size:21px;
+  letter-spacing:-.04em;
+  margin:0 0 12px;
+}
+
+.service-card p {
+  color:#617e86;
+  font-size:12px;
+  line-height:1.85;
+  margin:0;
+}
+
+.service-number {
+  position:absolute;
+  top:28px;
+  right:27px;
+  font-size:11px;
+  font-weight:850;
+  color:#8da7ae;
+}
+
+.service-arrow {
+  position:absolute;
+  bottom:18px;
+  right:25px;
+  color:var(--teal);
+  font-size:23px;
+}
+
+/* ======================================
+   ABOUT
+====================================== */
+
+.about {
+  background:white;
+  overflow-x:clip;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:75px;
+  align-items:center;
+}
+
+.about-copy p {
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.9;
+  max-width:500px;
+}
+
+.benefit-list {
+  display:grid;
+  gap:14px;
+}
+
+.benefit-card {
+  display:flex;
+  gap:20px;
+  padding:25px 27px;
+  background:#f1f9fa;
+  border:1px solid #d9e9eb;
+  border-radius:20px;
+}
+
+.benefit-card span {
+  color:var(--teal);
+  font-size:13px;
+  font-weight:900;
+}
+
+.benefit-card h3 {
+  font-size:16px;
+  margin:0 0 8px;
+}
+
+.benefit-card p {
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.75;
+  margin:0;
+}
+
+/* ======================================
+   CONTACT - BEFORE FOOTER
+====================================== */
+
+.contact-section {
+  background:#e7f5f6;
+  border-radius:48px 48px 0 0;
+  overflow-x:clip;
+}
+
+.contact-layout {
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:40px;
+  align-items:start;
+}
+
+.contact-copy h2 {
+  font-size:clamp(38px,4.5vw,61px);
+  letter-spacing:-.065em;
+  line-height:1.1;
+  margin:17px 0 23px;
+}
+
+.contact-copy > p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.9;
+  max-width:480px;
+}
+
+.contact-points {
+  display:grid;
+  gap:13px;
+  margin-top:30px;
+}
+
+.contact-point {
+  display:flex;
+  align-items:flex-start;
+  gap:15px;
+  padding:19px;
+  border:1px solid #d6e8ea;
+  border-radius:17px;
+  background:rgba(255,255,255,.7);
+}
+
+.contact-point > span {
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:39px;
+  height:39px;
+  background:#e3f5f6;
+  border-radius:11px;
+  color:var(--teal);
+  font-size:20px;
+}
+
+.contact-point b {
+  display:block;
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.contact-point p {
+  margin:0;
+  color:#6b8790;
+  font-size:11px;
+  line-height:1.7;
+}
+
+/* FORM */
+
+.contact-form-card {
+  padding:35px;
+  background:white;
+  border:1px solid #d8e9eb;
+  border-radius:27px;
+  box-shadow:0 22px 60px rgba(23,103,117,.08);
+}
+
+.contact-form-card h3 {
+  margin:0 0 10px;
+  font-size:30px;
+  letter-spacing:-.05em;
+}
+
+.form-description {
+  font-size:12px;
+  line-height:1.75;
+  color:var(--muted);
+  margin:0 0 25px;
+}
+
+.form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.field {
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  min-width:0;
+}
+
+.field.full {
+  grid-column:1/-1;
+}
+
+.field label {
+  font-size:11px;
+  font-weight:850;
+  color:#375f69;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width:100%;
+  padding:15px;
+  min-height:51px;
+  border:1px solid #d7e7eb;
+  border-radius:12px;
+  outline:none;
+  background:#f7fbfc;
+  color:#1a434f;
+  font-size:13px;
+  transition:border-color .25s,box-shadow .25s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color:var(--teal);
+  box-shadow:0 0 0 4px rgba(25,151,166,.1);
+  background:white;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color:#96acb3;
+}
+
+.field textarea {
+  min-height:125px;
+  resize:vertical;
+  line-height:1.7;
+}
+
+.field select {
+  cursor:pointer;
+}
+
+.consent {
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+  margin:22px 0;
+  color:#6d8890;
+  font-size:11px;
+  line-height:1.75;
+}
+
+.consent input {
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+  margin-top:2px;
+  accent-color:var(--teal);
+}
+
+.submit-btn {
+  width:100%;
+  border:0;
+  border-radius:12px;
+  min-height:51px;
+  background:var(--coral);
+  color:white;
+  font-size:12px;
+  font-weight:850;
+  transition:transform .3s,background .3s;
+}
+
+.submit-btn:hover {
+  background:#ec523e;
+  transform:translateY(-3px);
+}
+
+.form-note {
+  color:#829aa2;
+  font-size:10px;
+  line-height:1.8;
+  text-align:center;
+  margin:17px 0 0;
+}
+
+.form-status {
+  display:none;
+  margin:17px 0 0;
+  background:#fff8eb;
+  border:1px solid #efd5b3;
+  color:#82602a;
+  padding:13px;
+  font-size:12px;
+  line-height:1.75;
+  border-radius:11px;
+}
+
+.form-status.show {
+  display:block;
+}
+
+/* ======================================
+   FOOTER
+====================================== */
+
+.footer {
+  background:#103745;
+  color:#e7f5f6;
+}
+
+.footer-grid {
+  display:grid;
+  grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
+  gap:40px;
+  padding:62px 0 44px;
+}
+
+.footer-logo-wrap {
+  display:inline-flex;
+  background:white;
+  padding:9px 14px;
+  border-radius:11px;
+  margin-bottom:13px;
+}
+
+.footer-logo {
+  display:block;
+  max-height:50px;
+  max-width:160px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.footer-name {
+  font-size:17px;
+  font-weight:850;
+}
+
+.footer h3 {
+  font-size:13px;
+  margin:6px 0 18px;
+}
+
+.footer p,
+.footer li {
+  font-size:11px;
+  line-height:1.85;
+  color:#bfd5dc;
+}
+
+.footer ul {
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:10px;
+}
+
+.footer a:hover {
+  color:#9ce6e4;
+}
+
+.footer strong {
+  color:white;
+}
+
+.footer-legal {
+  padding:27px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+
+.footer-legal p {
+  margin:0 0 11px;
+}
+
+.reg-details {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  padding:30px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+
+.reg-details p {
+  margin:6px 0;
+}
+
+.copyright {
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  padding:25px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+  color:#bfd5dc;
+  font-size:11px;
+}
+
+/* ======================================
+   TABLET
+====================================== */
+
+@media(max-width:1050px) {
+  .container {
+    width:calc(100% - 48px);
+  }
+
+  .hero-grid {
+    gap:30px;
+  }
+
+  .hero-art {
+    height:460px;
+  }
+
+  .service-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:850px) {
+  .site-header {
+    top:12px;
+    width:calc(100% - 26px);
+    min-height:72px;
+    padding:10px 14px;
+    border-radius:23px;
+  }
+
+  .logo img {
+    max-height:44px;
+    max-width:155px;
+  }
+
+  .hero {
+    min-height:auto;
+    padding:143px 0 65px;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .contact-layout {
+    grid-template-columns:1fr;
+  }
+
+  .hero-grid {
+    gap:10px;
+  }
+
+  .hero-art {
+    max-width:560px;
+    width:100%;
+    height:440px;
+    margin:auto;
+  }
+
+  .hero h1 {
+    font-size:clamp(53px,8vw,75px);
+  }
+
+  .section {
+    padding:75px 0;
+  }
+
+  .section-header {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media(max-width:540px) {
+  .container {
+    width:calc(100% - 34px);
+  }
+
+  .site-header {
+    width:calc(100% - 18px);
+    padding:8px;
+    min-height:64px;
+  }
+
+  .logo img {
+    max-height:41px;
+    max-width:148px;
+  }
+
+  .header-contact {
+    padding:12px 15px;
+    min-height:40px;
+    font-size:10px;
+  }
+
+  .hero {
+    padding:117px 0 40px;
+  }
+
+  .hero h1 {
+    font-size:clamp(45px,11vw,62px);
+  }
+
+  .hero-description {
+    font-size:14px;
+  }
+
+  .hero-actions {
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .hero-actions a {
+    width:100%;
+  }
+
+  .hero-art {
+    height:325px;
+  }
+
+  .analytics-card {
+    width:83%;
+    border-radius:17px;
+  }
+
+  .analytics-header {
+    padding:13px;
+  }
+
+  .analytics-header span {
+    font-size:8px;
+  }
+
+  .analytics-header b {
+    font-size:9px;
+  }
+
+  .chart-wrap {
+    padding:12px;
+  }
+
+  .analytics-footer {
+    padding:0 11px 12px;
+    gap:5px;
+  }
+
+  .analytics-metric {
+    padding:8px 6px;
+  }
+
+  .analytics-metric strong {
+    font-size:8px;
+  }
+
+  .analytics-metric small {
+    font-size:7px;
+  }
+
+  .float-card {
+    padding:9px;
+    gap:6px;
+  }
+
+  .float-card b {
+    font-size:9px;
+  }
+
+  .float-card small {
+    font-size:8px;
+  }
+
+  .float-icon {
+    width:27px;
+    height:27px;
+    font-size:16px;
+  }
+
+  .visual-caption {
+    font-size:7px;
+  }
+
+  .ticker {
+    border-radius:0 0 28px 28px;
+  }
+
+  .services,
+  .contact-section {
+    border-radius:28px 28px 0 0;
+  }
+
+  .section {
+    padding:65px 0;
+  }
+
+  .section-header h2,
+  .large-heading {
+    font-size:clamp(34px,8vw,46px);
+  }
+
+  .service-grid {
+    grid-template-columns:1fr;
+  }
+
+  .service-card {
+    min-height:225px;
+  }
+
+  .contact-form-card {
+    padding:23px 18px;
+  }
+
+  .form-grid {
+    grid-template-columns:1fr;
+  }
+
+  .field.full {
+    grid-column:auto;
+  }
+
+  .footer-grid {
+    grid-template-columns:1fr;
+    gap:29px;
+    padding:43px 0;
+  }
+
+  .reg-details {
+    grid-template-columns:1fr;
+  }
+
+  .js-motion .motion-slot:not(.arrived) .motion-card {
+    transform:translateY(55px) scale(.95);
+  }
+}
+
+/* ======================================
+   ACCESSIBILITY
+====================================== */
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+
+  .js-motion .reveal,
+  .js-motion .motion-card {
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- Background Grid -->
-  <div class="grid-bg" aria-hidden="true"></div>
+<!-- SCROLL BAR -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-  <div class="shell">
+<!-- ======================================
+   SIMPLE HEADER
+====================================== -->
 
-    <!-- Header -->
-    <header>
+<header class="site-header" id="siteHeader">
 
-      <!-- Logo from logo.png -->
-      <a
-        class="brand"
-        href="./"
-        aria-label="Serveneeti Home"
-      >
-        <img
-          src="logo.png"
-          alt="Serveneeti"
-          class="brand-logo"
-        />
-      </a>
+  <a class="logo" href="/" aria-label="Sarvneeti Home">
+    <img src="logo.png" alt="Sarvneeti">
+  </a>
 
-      <div class="header-tag">
-        <span class="pulse" aria-hidden="true"></span>
-        In Development
-      </div>
+  <a href="#contact" class="header-contact">
+    CONTACT US
+    <span aria-hidden="true">↗</span>
+  </a>
 
-    </header>
+</header>
 
-    <!-- Main Content -->
-    <main>
+<main>
 
-      <!-- Left Content -->
-      <section aria-labelledby="headline">
+<!-- ======================================
+   HERO
+====================================== -->
 
-        <p class="eyebrow">
-          Something new is on the way
-        </p>
+<section class="hero" id="home">
 
-        <h1 id="headline">
-          Coming
-          <span>soon.</span>
-        </h1>
+  <div class="container hero-grid">
 
-        <p class="sub">
-          Smarter tools. Simpler workflows. Stronger businesses.
-          We're building a connected digital experience to help
-          teams work better, move faster, and grow further.
-        </p>
+    <!-- LEFT CONTENT -->
 
-        <!-- Services -->
-        <div class="services" aria-label="Our Focus Areas">
+    <div class="hero-content">
 
-          <span>Business Software</span>
+      <span class="eyebrow">
+        SEBI REGISTERED RESEARCH ANALYST
+        · INH000016533
+      </span>
 
-          <span>Automation</span>
+      <h1>
+        Research.<br>
+        Insight.<br>
+        <span class="gradient-word">
+          Better decisions.
+        </span>
+      </h1>
 
-          <span>Digital Solutions</span>
+      <p class="hero-description">
+        Research-driven equity and options market insights,
+        structured trading levels and risk-aware guidance.
+        Helping market participants evaluate opportunities
+        with clearer research and a disciplined approach.
+      </p>
 
-          <span>AI-Powered Tools</span>
+      <div class="hero-actions">
 
-        </div>
+        <a href="#contact" class="btn-primary">
+          CONNECT WITH OUR RESEARCH DESK
+          <span aria-hidden="true">↗</span>
+        </a>
 
-        <!-- Status -->
-        <div class="status">
-
-          <span class="status-icon" aria-hidden="true">
-            ↗
-          </span>
-
-          Our new website is taking shape. Stay tuned.
-
-        </div>
-
-      </section>
-
-      <!-- Right Animation -->
-      <div class="art" aria-hidden="true">
-
-        <div class="glow"></div>
-
-        <div class="orbit"></div>
-
-        <div class="orbit two"></div>
-
-        <!-- Animated S -->
-        <div class="core">
-
-          <div class="core-letter">
-            S
-          </div>
-
-        </div>
-
-        <!-- Top Floating Card -->
-        <div class="small-card card-top">
-
-          <span class="card-icon">
-            ✦
-          </span>
-
-          <div>
-            <b>Built for what's next</b>
-            <em>Modern digital experiences</em>
-          </div>
-
-        </div>
-
-        <!-- Bottom Floating Card -->
-        <div class="small-card card-bottom">
-
-          <span class="card-icon">
-            ⌁
-          </span>
-
-          <div>
-            <b>Work smarter</b>
-            <em>Connected business tools</em>
-          </div>
-
-        </div>
+        <a href="#services" class="btn-outline">
+          EXPLORE OUR SERVICES
+          <span aria-hidden="true">↓</span>
+        </a>
 
       </div>
 
-    </main>
+      <div class="hero-tags">
+        <span>EQUITY RESEARCH</span>
+        <span>OPTIONS RESEARCH</span>
+        <span>MARKET INSIGHTS</span>
+        <span>RISK MANAGEMENT</span>
+      </div>
 
-    <!-- Footer -->
-    <footer>
+      <div class="hero-reg">
 
-      <span>
-        © <span id="year">2026</span>
-        Serveneeti. All rights reserved.
+        <span class="reg-icon">✓</span>
+
+        <span>
+          <strong>SEBI Registered Research Analyst</strong><br>
+          Registration No.: INH000016533<br>
+          Research does not guarantee returns.
+          Market investments involve risk.
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT ANIMATED VISUAL -->
+
+    <div class="hero-art" aria-hidden="true">
+
+      <div class="visual-ring"></div>
+      <div class="visual-ring two"></div>
+
+      <div class="analytics-card">
+
+        <div class="analytics-header">
+          <span>MARKET RESEARCH / OVERVIEW</span>
+          <b>● RESEARCH VIEW</b>
+        </div>
+
+        <div class="chart-wrap">
+
+          <svg viewBox="0 0 430 210">
+
+            <defs>
+              <linearGradient
+                id="chartFill"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#67c6bf"
+                  stop-opacity=".27"
+                />
+                <stop
+                  offset="1"
+                  stop-color="#67c6bf"
+                  stop-opacity="0"
+                />
+              </linearGradient>
+            </defs>
+
+            <!-- GRID -->
+
+            <g
+              stroke="#dcecef"
+              stroke-width="1"
+            >
+              <path d="M0 40H430"/>
+              <path d="M0 85H430"/>
+              <path d="M0 130H430"/>
+              <path d="M0 175H430"/>
+
+              <path d="M60 0V205"/>
+              <path d="M150 0V205"/>
+              <path d="M240 0V205"/>
+              <path d="M330 0V205"/>
+            </g>
+
+            <!-- AREA -->
+
+            <path
+              d="
+                M0 170
+                L28 160
+                L55 169
+                L82 140
+                L110 150
+                L140 116
+                L170 128
+                L200 98
+                L231 108
+                L260 75
+                L290 90
+                L320 58
+                L351 67
+                L382 39
+                L420 22
+                L430 22
+                L430 205
+                L0 205 Z
+              "
+              fill="url(#chartFill)"
+            />
+
+            <!-- LINE -->
+
+            <path
+              class="chart-line"
+              d="
+                M0 170
+                L28 160
+                L55 169
+                L82 140
+                L110 150
+                L140 116
+                L170 128
+                L200 98
+                L231 108
+                L260 75
+                L290 90
+                L320 58
+                L351 67
+                L382 39
+                L420 22
+              "
+              stroke="#229d9f"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+
+            <circle
+              cx="420"
+              cy="22"
+              r="6"
+              fill="#fc624e"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="analytics-footer">
+
+          <div class="analytics-metric">
+            <small>RESEARCH</small>
+            <strong>Market levels</strong>
+          </div>
+
+          <div class="analytics-metric">
+            <small>FRAMEWORK</small>
+            <strong>Trade planning</strong>
+          </div>
+
+          <div class="analytics-metric">
+            <small>PRIORITY</small>
+            <strong>Risk controls</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="float-card top">
+
+        <span class="float-icon">✦</span>
+
+        <div>
+          <b>Research-led insights</b>
+          <small>Market analysis</small>
+        </div>
+
+      </div>
+
+      <div class="float-card bottom">
+
+        <span class="float-icon">◇</span>
+
+        <div>
+          <b>Risk-aware approach</b>
+          <small>Structured market levels</small>
+        </div>
+
+      </div>
+
+      <span class="visual-caption">
+        ILLUSTRATIVE MARKET GRAPHIC · NOT LIVE DATA
       </span>
 
-      <span class="foot-right">
-        Creating what's next.
-      </span>
-
-    </footer>
+    </div>
 
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+</section>
+
+<!-- ======================================
+   CURVED RIBBON
+====================================== -->
+
+<div class="ticker" aria-hidden="true">
+
+  <div class="ticker-track">
+
+    <div class="ticker-group">
+      <span>EQUITY RESEARCH</span><i>✦</i>
+      <span>OPTIONS RESEARCH</span><i>✦</i>
+      <span>MARKET INSIGHTS</span><i>✦</i>
+      <span>RISK MANAGEMENT</span><i>✦</i>
+      <span>STRUCTURED RESEARCH</span><i>✦</i>
+    </div>
+
+    <div class="ticker-group">
+      <span>EQUITY RESEARCH</span><i>✦</i>
+      <span>OPTIONS RESEARCH</span><i>✦</i>
+      <span>MARKET INSIGHTS</span><i>✦</i>
+      <span>RISK MANAGEMENT</span><i>✦</i>
+      <span>STRUCTURED RESEARCH</span><i>✦</i>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ======================================
+   SERVICES
+====================================== -->
+
+<section class="section services" id="services">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+
+      <div>
+
+        <span class="eyebrow">
+          01 / WHAT WE DO
+        </span>
+
+        <h2>
+          Financial research<br>
+          <span class="accent">
+            with purpose.
+          </span>
+        </h2>
+
+      </div>
+
+      <p>
+        Our research focuses on helping market
+        participants understand market opportunities,
+        price levels and relevant risk factors.
+      </p>
+
+    </div>
+
+    <div class="service-grid">
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+
+          <span class="service-icon">↗</span>
+          <span class="service-number">01</span>
+
+          <h3>Equity Research</h3>
+
+          <p>
+            Research-based market observations,
+            company analysis, key price levels and
+            potential trading or investment scenarios.
+          </p>
+
+          <span class="service-arrow">↗</span>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+
+          <span class="service-icon">⌁</span>
+          <span class="service-number">02</span>
+
+          <h3>Options Research</h3>
+
+          <p>
+            Index and equity options research,
+            market structure, volatility observations
+            and clearly explained trading scenarios.
+          </p>
+
+          <span class="service-arrow">↗</span>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+
+          <span class="service-icon">◇</span>
+          <span class="service-number">03</span>
+
+          <h3>Risk Management</h3>
+
+          <p>
+            Research commentary on stop-loss levels,
+            trade invalidation, market volatility
+            and disciplined risk assessment.
+          </p>
+
+          <span class="service-arrow">↗</span>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+
+          <span class="service-icon">◷</span>
+          <span class="service-number">04</span>
+
+          <h3>Market Insights</h3>
+
+          <p>
+            Research on market developments, index
+            movements and important factors that
+            may influence price action.
+          </p>
+
+          <span class="service-arrow">↗</span>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+
+          <span class="service-icon">◎</span>
+          <span class="service-number">05</span>
+
+          <h3>Research Frameworks</h3>
+
+          <p>
+            Structured analysis with supporting
+            rationale, market context and defined
+            levels for evaluating research ideas.
+          </p>
+
+          <span class="service-arrow">↗</span>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+
+          <span class="service-icon">✦</span>
+          <span class="service-number">06</span>
+
+          <h3>Investor Education</h3>
+
+          <p>
+            Clear explanations of research methods,
+            market concepts and financial risk
+            to support informed decisions.
+          </p>
+
+          <span class="service-arrow">↗</span>
+
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ======================================
+   ABOUT / BENEFITS
+====================================== -->
+
+<section class="section about" id="about">
+
+  <div class="container about-grid">
+
+    <div class="about-copy reveal">
+
+      <span class="eyebrow">
+        02 / OUR APPROACH
+      </span>
+
+      <h2 class="large-heading">
+        Insight beyond<br>
+        <span class="accent">
+          the numbers.
+        </span>
+      </h2>
+
+      <p>
+        Sarvneeti focuses on research-backed
+        market observations and risk-aware
+        communication. Our approach is built around
+        understanding what the market is doing,
+        the rationale behind a research view
+        and the conditions that could change it.
+      </p>
+
+      <p>
+        Our objective is to support informed,
+        independent financial decisions with
+        structured information and transparent
+        risk considerations.
+      </p>
+
+      <a
+        href="#contact"
+        class="btn-primary"
+        style="margin-top:17px"
+      >
+        CONNECT WITH US ↗
+      </a>
+
+    </div>
+
+    <div class="benefit-list">
+
+      <div class="motion-slot">
+        <article class="benefit-card motion-card">
+
+          <span>01</span>
+
+          <div>
+            <h3>Research-first thinking</h3>
+            <p>
+              Market observations supported by
+              research logic and context.
+            </p>
+          </div>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="benefit-card motion-card">
+
+          <span>02</span>
+
+          <div>
+            <h3>Risk-aware communication</h3>
+            <p>
+              Clear discussion of market uncertainty,
+              invalidation levels and relevant risks.
+            </p>
+          </div>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="benefit-card motion-card">
+
+          <span>03</span>
+
+          <div>
+            <h3>Clear market perspectives</h3>
+            <p>
+              Easy-to-understand research observations
+              across equity and options markets.
+            </p>
+          </div>
+
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="benefit-card motion-card">
+
+          <span>04</span>
+
+          <div>
+            <h3>Independent decision-making</h3>
+            <p>
+              Research and recommendations to evaluate;
+              all investment decisions remain yours.
+            </p>
+          </div>
+
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ======================================
+   CONTACT SECTION
+   DIRECTLY ABOVE FOOTER
+====================================== -->
+
+<section class="section contact-section" id="contact">
+
+  <div class="container">
+
+    <div class="contact-layout">
+
+      <!-- LEFT CONTENT -->
+
+      <div class="contact-copy reveal">
+
+        <span class="eyebrow">
+          03 / CONNECT WITH US
+        </span>
+
+        <h2>
+          Let's talk<br>
+          <span class="accent">
+            financial research.
+          </span>
+        </h2>
+
+        <p>
+          Interested in learning more about Sarvneeti's
+          equity and options research services?
+          Send an enquiry and connect with our
+          research desk.
+        </p>
+
+        <div class="contact-points">
+
+          <div class="motion-slot">
+            <div class="contact-point motion-card">
+
+              <span>✦</span>
+
+              <div>
+                <b>Equity &amp; Options Research</b>
+                <p>
+                  Learn about our research coverage
+                  and financial market insights.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="motion-slot">
+            <div class="contact-point motion-card">
+
+              <span>◷</span>
+
+              <div>
+                <b>Research Desk Hours</b>
+                <p>
+                  Monday – Saturday<br>
+                  9:00 AM – 6:00 PM IST
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="motion-slot">
+            <div class="contact-point motion-card">
+
+              <span>✓</span>
+
+              <div>
+                <b>SEBI Registered Research Analyst</b>
+                <p>
+                  Registration No. INH000016533
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT FORM -->
+
+      <div class="motion-slot">
+
+        <div class="contact-form-card motion-card">
+
+          <h3>Send an enquiry.</h3>
+
+          <p class="form-description">
+            Share your contact details and tell us
+            what you would like to know about
+            our research services.
+          </p>
+
+          <form id="contactForm">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="name">
+                  Full Name *
+                </label>
+
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  autocomplete="name"
+                  maxlength="100"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="email">
+                  Email Address *
+                </label>
+
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  autocomplete="email"
+                  maxlength="150"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="phone">
+                  Mobile Number
+                </label>
+
+                <input
+                  id="phone"
+                  type="tel"
+                  placeholder="+91 XXXXX XXXXX"
+                  autocomplete="tel"
+                  maxlength="20"
+                >
+              </div>
+
+              <div class="field">
+                <label for="interest">
+                  Interested In *
+                </label>
+
+                <select
+                  id="interest"
+                  required
+                >
+
+                  <option value="" selected disabled>
+                    Select service
+                  </option>
+
+                  <option value="Equity Research">
+                    Equity Research
+                  </option>
+
+                  <option value="Options Research">
+                    Options Research
+                  </option>
+
+                  <option value="Market Insights">
+                    Market Insights
+                  </option>
+
+                  <option value="General Enquiry">
+                    General Enquiry
+                  </option>
+
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="message">
+                  Your Message *
+                </label>
+
+                <textarea
+                  id="message"
+                  placeholder="Tell us how we can help..."
+                  maxlength="2500"
+                  required
+                ></textarea>
+              </div>
+
+            </div>
+
+            <label class="consent">
+
+              <input
+                type="checkbox"
+                id="consent"
+                required
+              >
+
+              <span>
+                I agree to provide the entered
+                details for the purpose of receiving
+                a response to my enquiry.
+                I understand that securities markets
+                involve risk and returns are not guaranteed.
+              </span>
+
+            </label>
+
+            <button
+              type="submit"
+              class="submit-btn"
+            >
+              PREPARE ENQUIRY ↗
+            </button>
+
+            <p
+              class="form-status"
+              id="formStatus"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+            <p class="form-note">
+              This website does not automatically
+              submit enquiries. Once the official
+              contact email is configured, your email
+              application opens with the prepared message.
+            </p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- ======================================
+   FOOTER
+====================================== -->
+
+<footer class="footer" id="disclaimer">
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+
+    <div>
+
+      <a href="/" class="footer-logo-wrap">
+
+        <img
+          src="logo.png"
+          class="footer-logo"
+          alt="Sarvneeti"
+        >
+
+      </a>
+
+      <div class="footer-name">
+        Sarvneeti
+      </div>
+
+      <p>
+        SEBI registered research analyst services
+        focused on equity and options research,
+        market insights, risk-aware analysis and
+        financial market education.
+      </p>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+
+    <div>
+
+      <h3>Quick Links</h3>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+      </ul>
+
+    </div>
+
+    <!-- CONTACT INFORMATION -->
+
+    <div>
+
+      <h3>Contact Us</h3>
+
+      <ul>
+        <li>
+          <a href="#contact">
+            Connect with the research desk
+          </a>
+        </li>
+
+        <li>Monday – Saturday</li>
+        <li>9:00 AM – 6:00 PM IST</li>
+        <li>Research enquiries and support</li>
+      </ul>
+
+    </div>
+
+    <!-- LEGAL -->
+
+    <div>
+
+      <h3>Legal &amp; Policy</h3>
+
+      <ul>
+
+        <li>
+          <a href="/legal/disclaimer.html">
+            Disclaimer
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/disclosure.pdf">
+            Disclosure
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/investor-charter.pdf">
+            Investor Charter
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/terms-and-conditions.html">
+            Terms &amp; Conditions
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/privacy-policy.html">
+            Privacy Policy
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/grievance-redressal.html">
+            Grievance Redressal
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/complaints.html">
+            Complaints
+          </a>
+        </li>
+
+        <li>
+          <a href="#contact">
+            Contact
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+
+  <div class="container footer-legal">
+
+    <p>
+      <strong>Disclaimer:</strong>
+      Registration granted by SEBI and certification
+      from NISM in no way guarantee performance of
+      the intermediary or provide any assurance
+      of returns to investors.
+    </p>
+
+    <p>
+      <strong>Illustrative content:</strong>
+      Securities, charts, index levels and market
+      visuals displayed on this website, if any,
+      are for illustration and are not
+      live recommendations or verified performance.
+    </p>
+
+    <p>
+      <strong>Standard warning:</strong>
+      Investment in securities market are subject
+      to market risks. Read all the related
+      documents carefully before investing.
+    </p>
+
+    <p>
+      <strong>Mandatory notice:</strong>
+      Clients shall be requested to go through
+      Do's and Don'ts while dealing with RA
+      as specified in SEBI master circular no.
+      SEBI/HO/MIRSD-POD-1/P/CIR/2024/49
+      dated May 21, 2024 or as may be
+      specified by SEBI from time to time.
+    </p>
+
+  </div>
+
+  <!-- RESEARCH ANALYST DETAILS -->
+
+  <div class="container reg-details">
+
+    <div>
+
+      <h3>
+        SEBI Registered Research Analyst Details
+      </h3>
+
+      <p>
+        <strong>Registered Name / Owner:</strong>
+        Amit Kori
+      </p>
+
+      <p>
+        <strong>Registration Type:</strong>
+        Individual
+      </p>
+
+      <p>
+        <strong>Registration Number:</strong>
+        INH000016533
+      </p>
+
+      <p>
+        <strong>Validity:</strong>
+        November 22, 2027
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>Nearest SEBI Office Address</h3>
+
+      <p>
+        SEBI Bhavan BKC, Plot No. C4-A,
+        'G' Block, Bandra-Kurla Complex,
+        Bandra (East), Mumbai – 400051,
+        Maharashtra, India.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+
+  <div class="container copyright">
+
+    <span>
+      © <span id="year">2026</span>
+      Sarvneeti. All Rights Reserved.
+    </span>
+
+    <span>
+      Research recommendations only ·
+      <a href="#contact">Contact Us ↗</a>
+    </span>
+
+  </div>
+
+</footer>
+
+<!-- ======================================
+   JAVASCRIPT
+====================================== -->
+
+<script>
+(() => {
+  "use strict";
+
+  /* ===================================
+     CONFIGURATION
+
+     Add your official Sarvneeti email.
+
+     Example:
+     const CONTACT_EMAIL = "hello@yourdomain.com";
+
+     Do not use an unconfirmed address.
+  =================================== */
+
+  const CONTACT_EMAIL = "";
+
+  const $ = selector => document.querySelector(selector);
+
+  const reduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const hasObserver =
+    "IntersectionObserver" in window;
+
+  /* ===================================
+     REVEAL HEADINGS
+  =================================== */
+
+  if (!reduced && hasObserver) {
+    document.documentElement.classList.add("js-motion");
+
+    const revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold:.08,
+        rootMargin:"0px 0px -5% 0px"
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      revealObserver.observe(el);
+    });
+  }
+
+  /* ===================================
+     STAGGERED CARD ANIMATION
+  =================================== */
+
+  const slots = [
+    ...document.querySelectorAll(".motion-slot")
+  ];
+
+  function setupCards() {
+    const width = window.innerWidth;
+
+    slots.forEach(slot => {
+      const parent = slot.parentElement;
+      const index = [...parent.children].indexOf(slot);
+
+      let columns = 1;
+
+      if (parent.matches(".service-grid")) {
+        columns = width > 1050 ? 3 :
+          width > 540 ? 2 : 1;
+      }
+
+      const column = index % columns;
+      const side = index % 2 === 0 ? -1 : 1;
+
+      slot.style.setProperty(
+        "--delay",
+        `${column * 175}ms`
+      );
+
+      slot.style.setProperty(
+        "--from-x",
+        `${side * 40}px`
+      );
+    });
+  }
+
+  setupCards();
+
+  if (!reduced && hasObserver) {
+    const cardObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("arrived");
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold:.08,
+        rootMargin:"0px 0px -5% 0px"
+      }
+    );
+
+    slots.forEach(slot => cardObserver.observe(slot));
+  } else {
+    slots.forEach(slot => slot.classList.add("arrived"));
+  }
+
+  /* ===================================
+     HOMEPAGE CONTACT FORM
+
+     Static GitHub Pages cannot receive
+     submissions on its own.
+
+     This opens an email draft once
+     CONTACT_EMAIL is configured.
+  =================================== */
+
+  const form = $("#contactForm");
+  const status = $("#formStatus");
+
+  function showStatus(message) {
+    status.textContent = message;
+    status.classList.add("show");
+  }
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    status.classList.remove("show");
+    status.textContent = "";
+
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    if (!CONTACT_EMAIL) {
+      showStatus(
+        "The official Sarvneeti contact email has not been configured yet. Please use the published official contact details to reach the research desk."
+      );
+      return;
+    }
+
+    const name = $("#name").value.trim();
+    const email = $("#email").value.trim();
+    const phone = $("#phone").value.trim();
+    const interest = $("#interest").value;
+    const message = $("#message").value.trim();
+
+    const subject =
+      `Sarvneeti Research Enquiry - ${interest}`;
+
+    const body = [
+      "Sarvneeti Research Enquiry",
+      "",
+      `Full Name: ${name}`,
+      `Email: ${email}`,
+      `Mobile: ${phone || "Not provided"}`,
+      `Interested In: ${interest}`,
+      "",
+      "Message:",
+      message,
+      "",
+      "Sent from the Sarvneeti homepage."
+    ].join("\n");
+
+    const mailtoURL =
+      `mailto:${CONTACT_EMAIL}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    showStatus(
+      "Your email app will open with the prepared enquiry. Please review it and press Send. This website has not sent it automatically."
+    );
+
+    window.location.href = mailtoURL;
+  });
+
+  /* ===================================
+     HEADER + SCROLL PROGRESS
+  =================================== */
+
+  const header = $("#siteHeader");
+  const progress = $("#scrollProgress");
+
+  let pending = false;
+
+  function updateScroll() {
+    pending = false;
+
+    const y = window.scrollY;
+
+    const max = Math.max(
+      1,
+      document.documentElement.scrollHeight -
+      window.innerHeight
+    );
+
+    header.classList.toggle("scrolled", y > 65);
+
+    progress.style.width =
+      `${Math.min(100,(y / max) * 100)}%`;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!pending) {
+      pending = true;
+      requestAnimationFrame(updateScroll);
+    }
+  }, { passive:true });
+
+  window.addEventListener("resize", () => {
+    setupCards();
+    requestAnimationFrame(updateScroll);
+  }, { passive:true });
+
+  updateScroll();
+
+  /* ===================================
+     COPYRIGHT YEAR
+  =================================== */
+
+  $("#year").textContent = new Date().getFullYear();
+
+})();
+</script>
 
 </body>
 </html>
