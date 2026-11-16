@@ -1,0 +1,2587 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<title>Disclaimer | Sarvneeti</title>
+
+<meta name="description"
+content="Important disclaimers, market risk warnings, investor responsibility statements and regulatory information for Sarvneeti research services.">
+
+<link rel="icon" type="image/png" href="../fevicon.png">
+
+<style>
+/* ==========================================
+   SARVNEETI DESIGN SYSTEM
+========================================== */
+
+:root {
+  --navy:#123b48;
+  --deep:#126479;
+  --teal:#1997a6;
+  --aqua:#79ccd0;
+  --coral:#fc624e;
+  --muted:#617d87;
+  --line:#d8e9ec;
+  --bluebg:#e9f6f7;
+  --peach:#fff4ee;
+  --white:#ffffff;
+  --max:1250px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:115px;
+}
+
+body {
+  margin:0;
+  background:#ffffff;
+  color:var(--navy);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button {
+  font:inherit;
+  cursor:pointer;
+}
+
+.container {
+  width:min(var(--max),calc(100% - 52px));
+  margin:auto;
+}
+
+::selection {
+  background:#bde9e9;
+  color:var(--navy);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline:3px solid var(--teal);
+  outline-offset:4px;
+}
+
+/* ==========================================
+   SCROLL PROGRESS
+========================================== */
+
+.scroll-progress {
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0;
+  z-index:999;
+  background:linear-gradient(
+    90deg,
+    var(--teal),
+    var(--coral)
+  );
+}
+
+/* ==========================================
+   FLOATING HEADER
+========================================== */
+
+.site-header {
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:min(1450px,calc(100% - 40px));
+  min-height:82px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+
+  padding:12px 22px 12px 27px;
+
+  z-index:900;
+
+  background:rgba(255,255,255,.96);
+  border:1px solid #d9e8eb;
+  border-radius:27px;
+
+  box-shadow:
+    0 15px 45px rgba(24,94,107,.10);
+
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  transition:
+    top .3s,
+    min-height .3s,
+    box-shadow .3s;
+}
+
+.site-header.scrolled {
+  top:9px;
+  min-height:68px;
+
+  box-shadow:
+    0 9px 28px rgba(24,94,107,.15);
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+}
+
+.logo img {
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:205px;
+  max-height:53px;
+  object-fit:contain;
+}
+
+.header-links {
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.header-links a {
+  font-size:13px;
+  font-weight:750;
+  color:#315b66;
+  transition:color .25s;
+}
+
+.header-links a:hover {
+  color:var(--teal);
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  min-height:48px;
+  padding:14px 22px;
+  border:0;
+  border-radius:12px;
+
+  background:var(--coral);
+  color:#ffffff;
+
+  font-size:11px;
+  font-weight:850;
+
+  transition:
+    transform .3s,
+    background .3s,
+    box-shadow .3s;
+}
+
+.btn:hover {
+  transform:translateY(-3px);
+  background:#ed523f;
+  box-shadow:0 12px 27px rgba(252,98,78,.22);
+}
+
+.btn-outline {
+  background:white;
+  color:var(--deep);
+  border:1px solid #bddbdf;
+}
+
+.btn-outline:hover {
+  background:#e9f7f8;
+  color:var(--deep);
+  box-shadow:none;
+}
+
+.menu-button {
+  display:none;
+  width:43px;
+  height:43px;
+  background:#eef8f9;
+  border:1px solid var(--line);
+  border-radius:11px;
+  font-size:21px;
+  color:var(--navy);
+}
+
+/* ==========================================
+   SCROLL ANIMATIONS
+========================================== */
+
+.reveal {
+  opacity:1;
+  transform:none;
+}
+
+.js-motion .reveal:not(.visible) {
+  opacity:0;
+  transform:translateY(42px);
+}
+
+.js-motion .reveal {
+  transition:
+    opacity .8s ease,
+    transform .9s cubic-bezier(.17,1,.3,1);
+}
+
+.js-motion .reveal.visible {
+  opacity:1;
+  transform:none;
+}
+
+.motion-slot {
+  min-width:0;
+  perspective:1300px;
+}
+
+.motion-card {
+  height:100%;
+  transform-origin:center 80%;
+  backface-visibility:hidden;
+
+  transition:
+    transform .95s cubic-bezier(.17,1,.3,1),
+    opacity .8s ease,
+    filter .8s ease;
+
+  transition-delay:var(--delay,0ms);
+}
+
+.js-motion .motion-slot:not(.arrived) .motion-card {
+  opacity:0;
+  filter:blur(6px);
+
+  transform:
+    translate3d(var(--from-x,0px),90px,0)
+    rotateX(11deg)
+    scale(.9);
+}
+
+.js-motion .motion-slot.arrived .motion-card {
+  opacity:1;
+  filter:none;
+  transform:none;
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero {
+  position:relative;
+  background:#ffffff;
+  padding:165px 0 95px;
+  overflow:hidden;
+}
+
+.hero::before {
+  content:"";
+  position:absolute;
+
+  width:650px;
+  height:650px;
+  top:-270px;
+  right:-250px;
+
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(207,239,241,.7),
+    transparent 73%
+  );
+
+  pointer-events:none;
+}
+
+.hero-grid {
+  position:relative;
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  align-items:center;
+  gap:65px;
+}
+
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.eyebrow::before {
+  content:"";
+  width:24px;
+  height:2px;
+  background:currentColor;
+}
+
+.hero-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  padding:11px 16px;
+  margin-bottom:24px;
+
+  color:#b65e37;
+  background:#fff0e7;
+
+  border:1px solid #f6d6c4;
+  border-radius:40px;
+
+  font-size:11px;
+  font-weight:850;
+}
+
+.pulse-dot {
+  position:relative;
+  display:inline-block;
+  flex-shrink:0;
+
+  width:9px;
+  height:9px;
+
+  background:var(--coral);
+  border-radius:50%;
+}
+
+.pulse-dot::after {
+  content:"";
+  position:absolute;
+  inset:0;
+
+  border-radius:50%;
+  background:var(--coral);
+
+  animation:pulseDot 1.8s ease-out infinite;
+}
+
+@keyframes pulseDot {
+  to {
+    transform:scale(2.6);
+    opacity:0;
+  }
+}
+
+.hero h1 {
+  margin:0 0 25px;
+
+  font-size:clamp(52px,5.8vw,82px);
+  line-height:1.065;
+
+  font-weight:850;
+  letter-spacing:-.073em;
+}
+
+.gradient-text {
+  display:inline-block;
+
+  background:linear-gradient(
+    110deg,
+    #168ba3,
+    #5bc7be,
+    #f18b74,
+    #168ba3
+  );
+
+  background-size:300% 100%;
+
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  animation:gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+  to {
+    background-position:300% 0;
+  }
+}
+
+.hero-description {
+  max-width:610px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.9;
+}
+
+.hero-actions {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:29px;
+}
+
+.hero-registration {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+
+  margin-top:34px;
+  padding-top:21px;
+
+  border-top:1px solid var(--line);
+
+  color:#6b858e;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.registration-symbol {
+  display:grid;
+  place-items:center;
+
+  width:31px;
+  height:31px;
+  flex-shrink:0;
+
+  border:1px solid #b9dddf;
+  border-radius:50%;
+
+  color:var(--teal);
+  font-weight:900;
+}
+
+.hero-registration strong {
+  color:#305e69;
+}
+
+/* ==========================================
+   HERO ILLUSTRATION
+========================================== */
+
+.hero-art {
+  position:relative;
+  min-height:470px;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
+
+.hero-art::before {
+  content:"";
+  position:absolute;
+  width:92%;
+  aspect-ratio:1;
+
+  background:radial-gradient(
+    circle,
+    rgba(178,232,233,.4),
+    rgba(233,248,249,.2) 60%,
+    transparent 76%
+  );
+
+  border-radius:50%;
+  z-index:-1;
+
+  animation:glowPulse 7s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  50% {
+    transform:scale(1.12);
+    opacity:.65;
+  }
+}
+
+.orbit {
+  position:absolute;
+
+  width:84%;
+  aspect-ratio:1;
+
+  border:1px solid #cce7e9;
+  border-radius:50%;
+
+  transform:rotate(-25deg) scaleY(.66);
+}
+
+.orbit.two {
+  width:107%;
+  border-color:#e1edef;
+  transform:rotate(32deg) scaleY(.66);
+}
+
+.orbit::after {
+  content:"";
+
+  position:absolute;
+  top:9%;
+  left:19%;
+
+  width:11px;
+  height:11px;
+
+  border-radius:50%;
+  background:var(--coral);
+
+  box-shadow:0 0 0 8px rgba(252,98,78,.09);
+}
+
+.orbit.two::after {
+  top:78%;
+  left:73%;
+  background:var(--teal);
+  box-shadow:0 0 0 8px rgba(25,151,166,.09);
+}
+
+.hero-panel {
+  position:relative;
+  width:83%;
+  max-width:385px;
+
+  background:linear-gradient(145deg,#fff,#edf9fa);
+
+  border:1px solid #d3e7e9;
+  border-radius:27px;
+
+  padding:25px;
+
+  box-shadow:0 30px 75px rgba(29,101,115,.15);
+
+  transform:rotate(-5deg);
+  animation:panelFloat 7s ease-in-out infinite;
+}
+
+@keyframes panelFloat {
+  0%,100% {
+    transform:rotate(-5deg) translateY(0);
+  }
+
+  50% {
+    transform:rotate(-3deg) translateY(-15px);
+  }
+}
+
+.panel-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+
+  padding-bottom:18px;
+  border-bottom:1px solid #dcebed;
+}
+
+.panel-label {
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.12em;
+}
+
+.panel-icon {
+  display:grid;
+  place-items:center;
+
+  width:46px;
+  height:46px;
+
+  border-radius:14px;
+  background:#ffe9df;
+  color:var(--coral);
+}
+
+.panel-icon svg {
+  width:25px;
+  height:25px;
+}
+
+.panel-title {
+  font-size:20px;
+  letter-spacing:-.05em;
+  margin:19px 0 18px;
+}
+
+.panel-row {
+  display:flex;
+  align-items:flex-start;
+  gap:13px;
+
+  padding:14px;
+  margin-top:10px;
+
+  border:1px solid #dfecee;
+  border-radius:13px;
+
+  background:#fff;
+}
+
+.panel-row-icon {
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  flex-shrink:0;
+
+  border-radius:10px;
+  color:var(--teal);
+  background:#e5f7f7;
+
+  font-size:18px;
+  font-weight:850;
+}
+
+.panel-row b {
+  display:block;
+  font-size:12px;
+  margin-bottom:5px;
+}
+
+.panel-row p {
+  color:#718b94;
+  font-size:10px;
+  line-height:1.6;
+  margin:0;
+}
+
+.floating-chip {
+  position:absolute;
+  z-index:4;
+
+  display:flex;
+  align-items:center;
+  gap:9px;
+
+  padding:13px 16px;
+
+  background:rgba(255,255,255,.96);
+  border:1px solid #d6e8ea;
+  border-radius:15px;
+
+  box-shadow:0 14px 35px rgba(29,97,112,.12);
+
+  font-size:11px;
+  font-weight:850;
+
+  animation:chipFloat 6s ease-in-out infinite;
+}
+
+.floating-chip.top {
+  top:11%;
+  right:0;
+}
+
+.floating-chip.bottom {
+  bottom:9%;
+  left:0;
+  animation-delay:-3s;
+}
+
+@keyframes chipFloat {
+  50% {
+    transform:translateY(-12px);
+  }
+}
+
+.floating-chip span {
+  color:var(--teal);
+  font-size:18px;
+}
+
+/* ==========================================
+   CURVED RIBBON
+========================================== */
+
+.ticker {
+  position:relative;
+  overflow:hidden;
+
+  background:linear-gradient(
+    100deg,
+    #248ca2,
+    #70bec7,
+    #9bcfd0
+  );
+
+  color:white;
+  border-radius:0 0 46px 46px;
+}
+
+.ticker-track {
+  display:flex;
+  width:max-content;
+  animation:tickerMove 32s linear infinite;
+}
+
+.ticker-group {
+  display:flex;
+  align-items:center;
+  gap:37px;
+
+  white-space:nowrap;
+  padding:21px 18px;
+
+  font-size:11px;
+  letter-spacing:.14em;
+  font-weight:850;
+}
+
+.ticker-group i {
+  color:#ffe6d8;
+  font-size:17px;
+  font-style:normal;
+}
+
+@keyframes tickerMove {
+  to {
+    transform:translateX(-50%);
+  }
+}
+
+/* ==========================================
+   COMMON SECTIONS
+========================================== */
+
+.section {
+  padding:90px 0;
+}
+
+.section-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:38px;
+}
+
+.section-header h2,
+.large-heading {
+  margin:15px 0 0;
+
+  font-size:clamp(35px,4.4vw,59px);
+  line-height:1.1;
+  letter-spacing:-.065em;
+}
+
+.section-header p {
+  max-width:420px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+}
+
+.accent {
+  color:var(--teal);
+}
+
+.blue-section {
+  background:var(--bluebg);
+  border-radius:46px 46px 0 0;
+  overflow-x:clip;
+}
+
+.white-section {
+  background:white;
+  overflow-x:clip;
+}
+
+.peach-section {
+  background:var(--peach);
+  overflow-x:clip;
+}
+
+/* ==========================================
+   MAIN DISCLAIMER STATEMENTS
+========================================== */
+
+.disclaimer-card {
+  background:white;
+  border:1px solid #d9e8eb;
+  border-radius:26px;
+  padding:35px;
+
+  box-shadow:0 15px 42px rgba(23,91,110,.055);
+}
+
+.disclaimer-heading {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding-bottom:24px;
+  margin-bottom:9px;
+  border-bottom:1px solid var(--line);
+}
+
+.disclaimer-heading-icon {
+  display:grid;
+  place-items:center;
+
+  width:50px;
+  height:50px;
+  flex-shrink:0;
+
+  background:#fff0e8;
+  color:var(--coral);
+  border-radius:15px;
+
+  font-size:23px;
+  font-weight:850;
+}
+
+.disclaimer-heading h3 {
+  font-size:22px;
+  letter-spacing:-.045em;
+  margin:0 0 5px;
+}
+
+.disclaimer-heading p {
+  color:#7b969e;
+  font-size:11px;
+  margin:0;
+}
+
+.disclaimer-item {
+  display:flex;
+  align-items:flex-start;
+  gap:15px;
+
+  padding:21px 0;
+  border-bottom:1px solid #edf3f4;
+}
+
+.disclaimer-item:last-child {
+  border-bottom:0;
+  padding-bottom:0;
+}
+
+.disclaimer-number {
+  flex-shrink:0;
+  color:var(--teal);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.1em;
+  margin-top:3px;
+}
+
+.disclaimer-item h4 {
+  margin:0 0 10px;
+  font-size:15px;
+  letter-spacing:-.025em;
+}
+
+.disclaimer-item p {
+  color:#5f7b85;
+  font-size:13px;
+  line-height:1.85;
+  margin:0;
+}
+
+/* ==========================================
+   RISK CARDS
+========================================== */
+
+.risk-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.risk-card {
+  position:relative;
+  overflow:hidden;
+
+  background:white;
+  border:1px solid #d9e8eb;
+  border-radius:24px;
+
+  padding:28px;
+  min-height:230px;
+
+  box-shadow:0 8px 24px rgba(23,78,92,.035);
+}
+
+.risk-grid .motion-slot:nth-child(2) .risk-card {
+  background:#def2f2;
+}
+
+.risk-grid .motion-slot:nth-child(3) .risk-card {
+  background:#fff2ea;
+}
+
+.risk-icon {
+  display:grid;
+  place-items:center;
+
+  width:48px;
+  height:48px;
+
+  background:#e7f7f7;
+  color:var(--teal);
+  border-radius:14px;
+
+  font-size:23px;
+  margin-bottom:24px;
+}
+
+.risk-card h3 {
+  font-size:20px;
+  letter-spacing:-.04em;
+  margin:0 0 11px;
+}
+
+.risk-card p {
+  font-size:12px;
+  line-height:1.85;
+  color:#607b85;
+  margin:0;
+}
+
+/* ==========================================
+   ADDITIONAL RISK NOTICE
+========================================== */
+
+.notice-panel {
+  display:flex;
+  align-items:flex-start;
+  gap:25px;
+
+  padding:30px 35px;
+
+  background:#e6f5f6;
+  border:1px solid #d4e8ea;
+  border-radius:23px;
+
+  margin-top:28px;
+}
+
+.notice-icon {
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+
+  width:48px;
+  height:48px;
+
+  border-radius:14px;
+  background:white;
+  color:var(--coral);
+
+  font-size:23px;
+  font-weight:900;
+}
+
+.notice-panel h3 {
+  font-size:16px;
+  margin:0 0 10px;
+}
+
+.notice-panel p {
+  color:#627f89;
+  font-size:12px;
+  line-height:1.85;
+  margin:0;
+}
+
+/* ==========================================
+   COMPLAINT / HELPFUL LINKS
+========================================== */
+
+.help-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.help-card {
+  background:white;
+  border:1px solid #e9dfda;
+  border-radius:24px;
+  padding:31px;
+  min-height:290px;
+}
+
+.help-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+
+  padding:10px 13px;
+
+  background:#e8f7f7;
+  color:var(--deep);
+  border-radius:30px;
+
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.help-card h3 {
+  margin:23px 0 16px;
+  font-size:23px;
+  letter-spacing:-.045em;
+}
+
+.help-card p {
+  font-size:13px;
+  line-height:1.85;
+  color:#617d87;
+}
+
+.help-links {
+  display:grid;
+  gap:13px;
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.help-links a {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+
+  padding:14px 16px;
+
+  border:1px solid #dce9eb;
+  background:#f8fcfc;
+  border-radius:12px;
+
+  color:#365f6b;
+  font-size:12px;
+  font-weight:800;
+
+  transition:background .25s,transform .25s;
+}
+
+.help-links a:hover {
+  background:#e7f6f7;
+  transform:translateX(4px);
+}
+
+.help-links a span {
+  color:var(--teal);
+  font-size:17px;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer {
+  background:#103745;
+  color:#e7f5f6;
+}
+
+.footer-grid {
+  display:grid;
+  grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
+  gap:40px;
+  padding:62px 0 44px;
+}
+
+.footer-logo-wrap {
+  display:inline-flex;
+  background:white;
+  padding:9px 14px;
+  border-radius:11px;
+  margin-bottom:13px;
+}
+
+.footer-logo {
+  display:block;
+  max-width:160px;
+  max-height:50px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.footer-name {
+  font-size:17px;
+  font-weight:850;
+}
+
+.footer h3 {
+  font-size:13px;
+  margin:6px 0 18px;
+}
+
+.footer p,
+.footer li {
+  color:#bfd5dc;
+  font-size:11px;
+  line-height:1.85;
+}
+
+.footer ul {
+  display:grid;
+  gap:10px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.footer a:hover {
+  color:#9ce6e4;
+}
+
+.footer strong {
+  color:white;
+}
+
+.footer-legal {
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:27px 0;
+}
+
+.footer-legal p {
+  margin:0 0 11px;
+}
+
+.reg-details {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:30px 0;
+}
+
+.reg-details p {
+  margin:6px 0;
+}
+
+.copyright {
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+
+  padding:25px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+
+  color:#bfd5dc;
+  font-size:11px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media(max-width:1100px) {
+  .container {
+    width:calc(100% - 46px);
+  }
+
+  .header-links {
+    gap:16px;
+  }
+
+  .hero-grid {
+    gap:30px;
+  }
+
+  .risk-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:850px) {
+  .site-header {
+    top:12px;
+    width:calc(100% - 25px);
+    min-height:71px;
+    padding:10px 13px;
+    border-radius:22px;
+  }
+
+  .logo img {
+    max-height:44px;
+    max-width:150px;
+  }
+
+  .menu-button {
+    display:block;
+  }
+
+  .header-links {
+    display:none;
+    position:absolute;
+
+    top:calc(100% + 8px);
+    left:0;
+    right:0;
+
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+
+    padding:13px;
+    background:white;
+
+    border:1px solid var(--line);
+    border-radius:18px;
+
+    box-shadow:0 15px 35px rgba(32,87,105,.13);
+  }
+
+  .header-links.open {
+    display:flex;
+  }
+
+  .header-links a {
+    padding:13px 15px;
+  }
+
+  .header-cta {
+    margin-left:auto;
+    min-height:43px;
+    padding:12px 15px;
+    font-size:10px;
+  }
+
+  .hero {
+    padding:139px 0 75px;
+  }
+
+  .hero-grid {
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  .hero-art {
+    width:100%;
+    max-width:510px;
+    margin:auto;
+    min-height:440px;
+  }
+
+  .section {
+    padding:75px 0;
+  }
+
+  .section-header {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .help-grid {
+    grid-template-columns:1fr;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:570px) {
+  .container {
+    width:calc(100% - 32px);
+  }
+
+  .site-header {
+    width:calc(100% - 16px);
+    padding:8px;
+    gap:7px;
+  }
+
+  .logo img {
+    max-height:37px;
+    max-width:117px;
+  }
+
+  .header-cta {
+    padding:10px;
+    font-size:9px;
+    min-height:39px;
+  }
+
+  .menu-button {
+    width:39px;
+    height:39px;
+  }
+
+  .hero {
+    padding:116px 0 50px;
+  }
+
+  .hero h1 {
+    font-size:clamp(42px,10.8vw,61px);
+  }
+
+  .hero-description {
+    font-size:13px;
+  }
+
+  .hero-actions {
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .hero-actions a {
+    width:100%;
+  }
+
+  .hero-art {
+    min-height:340px;
+  }
+
+  .hero-panel {
+    width:86%;
+    padding:17px;
+  }
+
+  .panel-title {
+    font-size:17px;
+  }
+
+  .panel-row {
+    padding:11px;
+  }
+
+  .panel-row b {
+    font-size:10px;
+  }
+
+  .panel-row p {
+    font-size:9px;
+  }
+
+  .floating-chip {
+    padding:10px;
+    font-size:9px;
+  }
+
+  .ticker {
+    border-radius:0 0 27px 27px;
+  }
+
+  .blue-section {
+    border-radius:28px 28px 0 0;
+  }
+
+  .section {
+    padding:63px 0;
+  }
+
+  .section-header h2,
+  .large-heading {
+    font-size:clamp(33px,8vw,46px);
+  }
+
+  .disclaimer-card {
+    padding:22px 19px;
+  }
+
+  .disclaimer-heading h3 {
+    font-size:19px;
+  }
+
+  .disclaimer-item p {
+    font-size:12px;
+  }
+
+  .risk-grid {
+    grid-template-columns:1fr;
+  }
+
+  .risk-card {
+    min-height:205px;
+  }
+
+  .help-card {
+    padding:24px;
+  }
+
+  .notice-panel {
+    padding:24px;
+    gap:15px;
+  }
+
+  .footer-grid {
+    grid-template-columns:1fr;
+    gap:29px;
+    padding:43px 0;
+  }
+
+  .reg-details {
+    grid-template-columns:1fr;
+  }
+
+  .js-motion .motion-slot:not(.arrived) .motion-card {
+    transform:translateY(55px) scale(.94);
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+
+  .js-motion .reveal,
+  .js-motion .motion-card {
+    opacity:1!important;
+    filter:none!important;
+    transform:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header class="site-header" id="siteHeader">
+
+  <a href="../" class="logo"
+     aria-label="Sarvneeti homepage">
+    <img src="../logo.png" alt="Sarvneeti">
+  </a>
+
+  <nav class="header-links" id="headerLinks">
+    <a href="../">Home</a>
+    <a href="#statements">Disclaimers</a>
+    <a href="#risks">Risk Information</a>
+    <a href="#complaint-help">Grievance Help</a>
+  </nav>
+
+  <a href="../#contact" class="btn header-cta">
+    CONTACT US ↗
+  </a>
+
+  <button
+    id="menuButton"
+    class="menu-button"
+    aria-controls="headerLinks"
+    aria-expanded="false"
+    aria-label="Open navigation"
+    type="button"
+  >☰</button>
+
+</header>
+
+<main>
+
+<!-- ==========================================
+     HERO
+========================================== -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div class="reveal">
+
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        MANDATORY RISK &amp; DISCLAIMER NOTICE
+      </div>
+
+      <h1>
+        Important<br>
+        <span class="gradient-text">
+          Disclaimers.
+        </span>
+      </h1>
+
+      <p class="hero-description">
+        This page outlines the important risk warnings,
+        limitations and investor responsibilities relating
+        to the research, securities-market information and
+        educational communication published by Sarvneeti.
+      </p>
+
+      <div class="hero-actions">
+
+        <a href="#statements" class="btn">
+          READ DISCLAIMER ↗
+        </a>
+
+        <a href="#complaint-help" class="btn btn-outline">
+          COMPLAINT HELP ↓
+        </a>
+
+      </div>
+
+      <div class="hero-registration">
+
+        <span class="registration-symbol">✓</span>
+
+        <span>
+          <strong>SEBI Registered Research Analyst</strong><br>
+          Registration No.: INH000016533<br>
+          Registration does not guarantee returns.
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- HERO VISUAL -->
+
+    <div class="hero-art" aria-hidden="true">
+
+      <div class="orbit"></div>
+      <div class="orbit two"></div>
+
+      <div class="hero-panel">
+
+        <div class="panel-header">
+
+          <span class="panel-label">
+            INVESTOR NOTICE
+          </span>
+
+          <span class="panel-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 3L20 7V12C20 17 17 20 12 22C7 20 4 17 4 12V7L12 3Z"
+              />
+              <path d="M12 8V13"/>
+              <path d="M12 17H12.01"/>
+            </svg>
+
+          </span>
+
+        </div>
+
+        <h3 class="panel-title">
+          Core risk considerations
+        </h3>
+
+        <div class="panel-row">
+
+          <span class="panel-row-icon">!</span>
+
+          <div>
+            <b>No guaranteed returns</b>
+            <p>
+              Research cannot eliminate market risk.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="panel-row">
+
+          <span class="panel-row-icon">◇</span>
+
+          <div>
+            <b>Illustrative content</b>
+            <p>
+              Examples are not automatically recommendations.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="panel-row">
+
+          <span class="panel-row-icon">✓</span>
+
+          <div>
+            <b>Independent decisions</b>
+            <p>
+              Investors assess suitability and risk.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="floating-chip top">
+        <span>✦</span> Investor Awareness
+      </div>
+
+      <div class="floating-chip bottom">
+        <span>◇</span> Market Risk Applies
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ==========================================
+     CURVED RIBBON
+========================================== -->
+
+<div class="ticker" aria-hidden="true">
+
+  <div class="ticker-track">
+
+    <div class="ticker-group">
+      <span>INVESTOR AWARENESS</span><i>✦</i>
+      <span>MARKET RISKS</span><i>✦</i>
+      <span>NO ASSURED RETURNS</span><i>✦</i>
+      <span>RESEARCH DISCLOSURE</span><i>✦</i>
+      <span>INFORMED DECISIONS</span><i>✦</i>
+    </div>
+
+    <div class="ticker-group">
+      <span>INVESTOR AWARENESS</span><i>✦</i>
+      <span>MARKET RISKS</span><i>✦</i>
+      <span>NO ASSURED RETURNS</span><i>✦</i>
+      <span>RESEARCH DISCLOSURE</span><i>✦</i>
+      <span>INFORMED DECISIONS</span><i>✦</i>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ==========================================
+     MANDATORY DISCLAIMERS
+========================================== -->
+
+<section class="section blue-section" id="statements">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+
+      <div>
+
+        <span class="eyebrow">
+          01 / MANDATORY STATEMENTS
+        </span>
+
+        <h2>
+          Important disclaimer<br>
+          <span class="accent">statements.</span>
+        </h2>
+
+      </div>
+
+      <p>
+        Please review the following notices before
+        relying on research or other securities-market
+        content provided by Sarvneeti.
+      </p>
+
+    </div>
+
+    <div class="motion-slot">
+
+      <div class="disclaimer-card motion-card">
+
+        <div class="disclaimer-heading">
+
+          <span class="disclaimer-heading-icon">
+            !
+          </span>
+
+          <div>
+            <h3>Mandatory Risk &amp; Disclosure Notice</h3>
+            <p>
+              Key limitations and investor responsibilities
+            </p>
+          </div>
+
+        </div>
+
+        <!-- 01 -->
+
+        <div class="disclaimer-item">
+
+          <span class="disclaimer-number">01</span>
+
+          <div>
+
+            <h4>
+              Registration and Certification
+            </h4>
+
+            <p>
+              Registration granted by SEBI, membership
+              of a SEBI-recognized supervisory body
+              (if any), and certification from NISM
+              in no way guarantee performance of the
+              intermediary or provide any assurance
+              of returns to investors.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- 02 -->
+
+        <div class="disclaimer-item">
+
+          <span class="disclaimer-number">02</span>
+
+          <div>
+
+            <h4>
+              Illustrative Securities
+            </h4>
+
+            <p>
+              The securities quoted, if any, on this
+              website, in research communications or
+              in advertisements are for illustration
+              only and are not recommendatory solely
+              by virtue of being displayed.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- 03 -->
+
+        <div class="disclaimer-item">
+
+          <span class="disclaimer-number">03</span>
+
+          <div>
+
+            <h4>
+              Standard Market Risk Warning
+            </h4>
+
+            <p>
+              Investment in securities market are
+              subject to market risks. Read all the
+              related documents carefully before investing.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- 04 -->
+
+        <div class="disclaimer-item">
+
+          <span class="disclaimer-number">04</span>
+
+          <div>
+
+            <h4>
+              Use of Research Information
+            </h4>
+
+            <p>
+              Research reports, market notes, examples,
+              educational discussions and communications
+              published by Sarvneeti should not be
+              interpreted as promises of profit,
+              certainty of outcome or risk-free opportunities.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- 05 -->
+
+        <div class="disclaimer-item">
+
+          <span class="disclaimer-number">05</span>
+
+          <div>
+
+            <h4>
+              Investor Responsibility
+            </h4>
+
+            <p>
+              Actions taken by users based on research
+              views, educational material or market
+              discussions are at their discretion and risk.
+              Users should independently assess the
+              suitability of an investment, capital
+              allocation, stop-loss discipline and
+              their tolerance for market risk.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- 06 -->
+
+        <div class="disclaimer-item">
+
+          <span class="disclaimer-number">06</span>
+
+          <div>
+
+            <h4>
+              Mandatory Investor Notice
+            </h4>
+
+            <p>
+              Clients should review the Do's and Don'ts
+              while dealing with Research Analysts
+              as specified by SEBI from time to time.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ==========================================
+     INVESTOR RISK GUIDANCE
+========================================== -->
+
+<section class="section white-section" id="risks">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+
+      <div>
+
+        <span class="eyebrow">
+          02 / INVESTOR AWARENESS
+        </span>
+
+        <h2>
+          Understand<br>
+          <span class="accent">the risks.</span>
+        </h2>
+
+      </div>
+
+      <p>
+        Investing and trading involve uncertainty.
+        The following reminders explain important
+        considerations when using research information.
+      </p>
+
+    </div>
+
+    <div class="risk-grid">
+
+      <!-- RISK 1 -->
+
+      <div class="motion-slot">
+
+        <article class="risk-card motion-card">
+
+          <span class="risk-icon">!</span>
+
+          <h3>No Assured Returns</h3>
+
+          <p>
+            No statement on this website should be
+            interpreted as guaranteed profit, fixed
+            accuracy or a risk-free outcome.
+          </p>
+
+        </article>
+
+      </div>
+
+      <!-- RISK 2 -->
+
+      <div class="motion-slot">
+
+        <article class="risk-card motion-card">
+
+          <span class="risk-icon">▤</span>
+
+          <h3>Review Documents Carefully</h3>
+
+          <p>
+            Investors should review all applicable
+            agreements, terms, disclosures and
+            risk information before taking action.
+          </p>
+
+        </article>
+
+      </div>
+
+      <!-- RISK 3 -->
+
+      <div class="motion-slot">
+
+        <article class="risk-card motion-card">
+
+          <span class="risk-icon">◇</span>
+
+          <h3>Risk Awareness First</h3>
+
+          <p>
+            Capital allocation, position sizing,
+            risk tolerance and investment suitability
+            remain important regardless of the
+            market research view.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+    <div class="notice-panel reveal">
+
+      <span class="notice-icon">!</span>
+
+      <div>
+
+        <h3>
+          Additional Caution for Derivatives Trading
+        </h3>
+
+        <p>
+          Equity derivatives and index options may involve
+          significant price volatility, liquidity risk and
+          rapid losses. Option buyers can lose the entire
+          premium paid, while certain other derivative
+          positions may involve losses exceeding the
+          initial margin or amount invested. Research
+          does not eliminate these risks.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ==========================================
+     COMPLAINT ASSISTANCE
+========================================== -->
+
+<section class="section peach-section" id="complaint-help">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+
+      <div>
+
+        <span class="eyebrow">
+          03 / INVESTOR GRIEVANCE ASSISTANCE
+        </span>
+
+        <h2>
+          Need help?<br>
+          <span class="accent">We're here to listen.</span>
+        </h2>
+
+      </div>
+
+      <p>
+        Information about raising service-related
+        concerns and finding applicable grievance
+        escalation channels.
+      </p>
+
+    </div>
+
+    <div class="help-grid">
+
+      <!-- GRIEVANCE HELP -->
+
+      <div class="motion-slot">
+
+        <article class="help-card motion-card">
+
+          <span class="help-badge">
+            ◇ INVESTOR GRIEVANCE HELP
+          </span>
+
+          <h3>If you have a complaint</h3>
+
+          <p>
+            Please first contact Sarvneeti through
+            its official contact or grievance-redressal
+            channel and describe the concern.
+          </p>
+
+          <p>
+            If the issue is not resolved satisfactorily,
+            you may escalate the matter through the
+            applicable SEBI grievance-redressal mechanism.
+          </p>
+
+          <p>
+            You can also refer to the applicable
+            complaint process, including SEBI SCORES,
+            wherever relevant.
+          </p>
+
+          <a href="complaints.html" class="btn"
+             style="margin-top:12px">
+            SUBMIT A COMPLAINT ↗
+          </a>
+
+        </article>
+
+      </div>
+
+      <!-- USEFUL LINKS -->
+
+      <div class="motion-slot">
+
+        <article class="help-card motion-card">
+
+          <span class="help-badge">
+            ↗ USEFUL LINKS
+          </span>
+
+          <h3>Reference Pages</h3>
+
+          <ul class="help-links">
+
+            <li>
+              <a href="disclosure.pdf">
+                Research Disclosure
+                <span>↗</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="investor-charter.pdf">
+                Investor Charter
+                <span>↗</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="grievance-redressal.html">
+                Grievance Redressal
+                <span>↗</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="complaints.html">
+                Complaints &amp; Statistics
+                <span>↗</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://scores.sebi.gov.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SEBI SCORES
+                <span>↗</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="../">
+                Back to Sarvneeti Home
+                <span>↗</span>
+              </a>
+            </li>
+
+          </ul>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- ==========================================
+     MATCHING SARVNEETI FOOTER
+========================================== -->
+
+<footer class="footer" id="footer">
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+
+    <div>
+
+      <a href="../" class="footer-logo-wrap">
+
+        <img
+          src="../logo.png"
+          class="footer-logo"
+          alt="Sarvneeti"
+        >
+
+      </a>
+
+      <div class="footer-name">
+        Sarvneeti
+      </div>
+
+      <p>
+        SEBI registered research analyst services
+        focused on equity and options research,
+        market insights, risk-aware analysis and
+        financial market education.
+      </p>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+
+    <div>
+
+      <h3>Quick Links</h3>
+
+      <ul>
+
+        <li>
+          <a href="../">Home</a>
+        </li>
+
+        <li>
+          <a href="../#services">Services</a>
+        </li>
+
+        <li>
+          <a href="../#about">About Us</a>
+        </li>
+
+        <li>
+          <a href="../#contact">Contact</a>
+        </li>
+
+        <li>
+          <a href="#statements">Disclaimer</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- CONTACT -->
+
+    <div>
+
+      <h3>Contact Us</h3>
+
+      <ul>
+
+        <li>
+          <a href="../#contact">
+            Sarvneeti Research Desk
+          </a>
+        </li>
+
+        <li>Monday – Saturday</li>
+
+        <li>9:00 AM – 6:00 PM IST</li>
+
+        <li>
+          <a href="complaints.html">
+            Submit a Complaint
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- LEGAL -->
+
+    <div>
+
+      <h3>Legal &amp; Policy</h3>
+
+      <ul>
+
+        <li>
+          <a href="disclaimer.html"
+             aria-current="page">
+            Disclaimer
+          </a>
+        </li>
+
+        <li>
+          <a href="disclosure.pdf">
+            Disclosure
+          </a>
+        </li>
+
+        <li>
+          <a href="investor-charter.pdf">
+            Investor Charter
+          </a>
+        </li>
+
+        <li>
+          <a href="terms-and-conditions.html">
+            Terms &amp; Conditions
+          </a>
+        </li>
+
+        <li>
+          <a href="privacy-policy.html">
+            Privacy Policy
+          </a>
+        </li>
+
+        <li>
+          <a href="grievance-redressal.html">
+            Grievance Redressal
+          </a>
+        </li>
+
+        <li>
+          <a href="complaints.html">
+            Complaints
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- REGULATORY DISCLAIMERS -->
+
+  <div class="container footer-legal">
+
+    <p>
+      <strong>Disclaimer:</strong>
+      Registration granted by SEBI, membership of
+      a SEBI-recognized supervisory body (if any),
+      and certification from NISM in no way guarantee
+      performance of the intermediary or provide
+      any assurance of returns to investors.
+    </p>
+
+    <p>
+      <strong>Illustrative Content:</strong>
+      Securities quoted or displayed, if any,
+      are for illustration only and are not
+      recommendatory solely by virtue of display.
+    </p>
+
+    <p>
+      <strong>Standard Warning:</strong>
+      Investment in securities market are subject
+      to market risks. Read all the related
+      documents carefully before investing.
+    </p>
+
+    <p>
+      <strong>Mandatory Notice:</strong>
+      Clients should review the applicable
+      Do's and Don'ts while dealing with
+      Research Analysts, as specified by
+      SEBI from time to time.
+    </p>
+
+  </div>
+
+  <!-- ANALYST REGISTRATION -->
+
+  <div class="container reg-details">
+
+    <div>
+
+      <h3>
+        SEBI Registered Research Analyst Details
+      </h3>
+
+      <p>
+        <strong>Registered Name / Owner:</strong>
+        Amit Kori
+      </p>
+
+      <p>
+        <strong>Registration Type:</strong>
+        Individual
+      </p>
+
+      <p>
+        <strong>Registration Number:</strong>
+        INH000016533
+      </p>
+
+      <p>
+        <strong>Validity:</strong>
+        November 22, 2027
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>
+        Nearest SEBI Office Address
+      </h3>
+
+      <p>
+        SEBI Bhavan BKC, Plot No. C4-A,
+        'G' Block, Bandra-Kurla Complex,
+        Bandra (East), Mumbai – 400051,
+        Maharashtra, India.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+
+  <div class="container copyright">
+
+    <span>
+      © <span id="year">2026</span>
+      Sarvneeti. All Rights Reserved.
+    </span>
+
+    <span>
+      Research recommendations only ·
+      <a href="../#contact">
+        Contact Us ↗
+      </a>
+    </span>
+
+  </div>
+
+</footer>
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = selector => document.querySelector(selector);
+
+  const reduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const hasObserver =
+    "IntersectionObserver" in window;
+
+  /* =====================================
+     MOBILE MENU
+  ===================================== */
+
+  const menu = $("#menuButton");
+  const links = $("#headerLinks");
+
+  menu.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+
+    menu.textContent = open ? "✕" : "☰";
+
+    menu.setAttribute(
+      "aria-expanded",
+      String(open)
+    );
+
+    menu.setAttribute(
+      "aria-label",
+      open ? "Close navigation" : "Open navigation"
+    );
+  });
+
+  links.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      links.classList.remove("open");
+      menu.textContent = "☰";
+      menu.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  /* =====================================
+     SCROLL REVEALS
+  ===================================== */
+
+  if (!reduced && hasObserver) {
+    document.documentElement.classList.add("js-motion");
+
+    const revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold:.07,
+        rootMargin:"0px 0px -4% 0px"
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    const slots = [
+      ...document.querySelectorAll(".motion-slot")
+    ];
+
+    slots.forEach(slot => {
+      const parent = slot.parentElement;
+      const index = [...parent.children].indexOf(slot);
+
+      let columns = 1;
+
+      if (parent.matches(".risk-grid")) {
+        columns = window.innerWidth > 1100 ? 3 :
+          window.innerWidth > 570 ? 2 : 1;
+      }
+
+      if (parent.matches(".help-grid")) {
+        columns = window.innerWidth > 850 ? 2 : 1;
+      }
+
+      const side = index % 2 === 0 ? -1 : 1;
+
+      slot.style.setProperty(
+        "--delay",
+        `${(index % columns) * 175}ms`
+      );
+
+      slot.style.setProperty(
+        "--from-x",
+        `${side * 35}px`
+      );
+    });
+
+    const cardObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("arrived");
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold:.07,
+        rootMargin:"0px 0px -4% 0px"
+      }
+    );
+
+    slots.forEach(slot => {
+      cardObserver.observe(slot);
+    });
+  }
+
+  /* =====================================
+     HEADER AND PAGE PROGRESS
+  ===================================== */
+
+  const header = $("#siteHeader");
+  const progress = $("#scrollProgress");
+
+  let pending = false;
+
+  function updateScroll() {
+    pending = false;
+
+    const y = window.scrollY;
+
+    const max = Math.max(
+      1,
+      document.documentElement.scrollHeight -
+      window.innerHeight
+    );
+
+    header.classList.toggle("scrolled", y > 65);
+
+    progress.style.width =
+      `${Math.min(100,(y / max) * 100)}%`;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!pending) {
+      pending = true;
+      requestAnimationFrame(updateScroll);
+    }
+  }, {passive:true});
+
+  updateScroll();
+
+  /* =====================================
+     COPYRIGHT YEAR
+  ===================================== */
+
+  $("#year").textContent = new Date().getFullYear();
+
+})();
+</script>
+
+</body>
+</html>
