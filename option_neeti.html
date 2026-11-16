@@ -5,327 +5,907 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff">
+
 <title>OptionNeeti | Sarvneeti Index Options Research</title>
+
 <meta name="description" content="Sarvneeti OptionNeeti provides research-based intraday and BTST index options setups covering Nifty, Bank Nifty and Sensex.">
+
 <link rel="icon" type="image/png" href="fevicon.png">
 
 <style>
-:root{
-  --navy:#123b48;
-  --deep:#126479;
-  --teal:#1997a6;
-  --aqua:#79ccd0;
-  --coral:#fc624e;
-  --muted:#617d87;
-  --line:#d8e9ec;
-  --bluebg:#e9f6f7;
-  --peach:#fff3ec;
-  --white:#fff;
-  --max:1250px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:115px}
-body{
-  margin:0;
-  background:#fff;
-  color:var(--navy);
-  font-family:Inter,-apple-system,BlinkMacSystemFont,
-  "Segoe UI",Arial,sans-serif;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-body.loading{overflow:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-.container{width:min(var(--max),calc(100% - 64px));margin:auto}
-::selection{background:#ace5e8;color:#133b49}
-a:focus-visible,button:focus-visible,summary:focus-visible{
-  outline:3px solid var(--teal);
-  outline-offset:4px;
+
+/* =========================================
+   GLOBAL DESIGN VARIABLES
+========================================= */
+
+:root {
+  --navy: #123b48;
+  --deep: #126479;
+  --teal: #1997a6;
+  --aqua: #79ccd0;
+  --coral: #fc624e;
+  --muted: #617d87;
+  --line: #d8e9ec;
+  --bluebg: #e9f6f7;
+  --peach: #fff3ec;
+  --white: #ffffff;
+  --max: 1250px;
 }
 
-/* LOADER */
-.loader{
-  position:fixed;inset:0;z-index:9999;
-  display:grid;place-items:center;
-  background:linear-gradient(130deg,#fff,#e6f6f7,#d9eff0);
-  transition:opacity .65s,visibility .65s;
-}
-.loader.hide{opacity:0;visibility:hidden;pointer-events:none}
-.loader-inner{text-align:center;padding:25px}
-.loader h2{font-size:27px;letter-spacing:-1px;margin:20px 0 7px}
-.loader p{font-size:12px;color:#66858c}
-.loader-candles{
-  display:flex;align-items:center;justify-content:center;
-  gap:14px;height:105px;
-}
-.loader-candles i{
-  position:relative;width:18px;height:50px;
-  background:#1fa795;border-radius:2px;
-  animation:loadCandle 1s ease-in-out infinite alternate;
-}
-.loader-candles i::before{
-  content:"";position:absolute;left:8px;top:-14px;
-  height:calc(100% + 28px);width:2px;background:#146f79;
-  z-index:-1;
-}
-.loader-candles i:nth-child(2){height:70px;background:#f58d7a;animation-delay:.16s}
-.loader-candles i:nth-child(3){height:37px;animation-delay:.3s}
-.loader-candles i:nth-child(4){height:64px;background:#f58d7a;animation-delay:.45s}
-.loader-candles i:nth-child(5){height:82px;animation-delay:.6s}
-@keyframes loadCandle{
-  from{transform:translateY(11px) scaleY(.87)}
-  to{transform:translateY(-12px) scaleY(1.05)}
-}
-.loading-bar{
-  width:260px;height:5px;margin:23px auto 0;
-  background:#cce5e8;border-radius:20px;overflow:hidden;
-}
-.loading-bar span{
-  display:block;width:35%;height:100%;
-  background:linear-gradient(90deg,#1486a0,#72d3c9);
-  animation:barMove 1.3s infinite alternate ease-in-out;
-}
-@keyframes barMove{
-  from{transform:translateX(-100%)}
-  to{transform:translateX(300%)}
-}
-.skip-load{
-  display:none;margin:20px auto 0;
-  border:0;background:none;color:var(--deep);
-  font-size:12px;text-decoration:underline;
-}
-.skip-load.visible{display:block}
-
-/* FLOATING NAVIGATION */
-.site-header{
-  position:fixed;top:18px;left:50%;transform:translateX(-50%);
-  width:min(1450px,calc(100% - 40px));
-  min-height:82px;padding:11px 19px 11px 27px;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:22px;z-index:900;border-radius:27px;
-  border:1px solid rgba(26,83,97,.14);
-  background:rgba(255,255,255,.94);
-  box-shadow:0 15px 50px rgba(24,94,107,.1);
-  backdrop-filter:blur(22px);
-  transition:min-height .35s,box-shadow .35s,top .35s;
-}
-.site-header.scrolled{
-  top:10px;min-height:68px;
-  box-shadow:0 10px 35px rgba(24,94,107,.16);
-}
-.logo{display:flex;align-items:center;flex-shrink:0}
-.logo img{
-  display:block;height:auto;max-height:53px;
-  max-width:205px;object-fit:contain;
-}
-.nav-links{display:flex;align-items:center;gap:29px}
-.nav-links a{
-  font-size:13px;font-weight:750;color:#315b66;
-  transition:color .25s;
-}
-.nav-links a:hover{color:var(--teal)}
-.header-btn,.btn-primary{
-  border:0;border-radius:12px;min-height:48px;
-  padding:14px 22px;background:var(--coral);color:#fff;
-  display:inline-flex;align-items:center;justify-content:center;
-  gap:12px;font-weight:850;font-size:11px;
-  transition:transform .3s,box-shadow .3s,background .3s;
-}
-.header-btn{white-space:nowrap}
-.header-btn:hover,.btn-primary:hover{
-  transform:translateY(-4px);
-  background:#ed503c;box-shadow:0 12px 26px #fc624e39;
-}
-.btn-outline{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:48px;gap:10px;padding:13px 21px;
-  border:1px solid #bcd8dc;border-radius:12px;
-  background:#fff;color:#235867;
-  font-size:11px;font-weight:850;
-  transition:transform .3s,background .3s;
-}
-.btn-outline:hover{transform:translateY(-3px);background:#e9f8fa}
-.menu-button{
-  display:none;width:44px;height:43px;
-  background:#e8f7f8;border:1px solid var(--line);
-  border-radius:11px;font-size:22px;color:var(--navy);
+* {
+  box-sizing: border-box;
 }
 
-/* SCROLL PROGRESS */
-.scroll-progress{
-  position:fixed;top:0;left:0;height:3px;width:0;
-  background:linear-gradient(90deg,var(--teal),var(--coral));
-  z-index:999;pointer-events:none;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 115px;
 }
 
-/* HERO */
-.hero{
-  min-height:100svh;
-  padding:145px 0 90px;
-  background:#fff;
-  display:flex;align-items:center;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:"";position:absolute;right:-14%;top:-24%;
-  width:48vw;height:48vw;pointer-events:none;
-  background:radial-gradient(circle,#e4f5f694,transparent 72%);
-}
-.hero-grid{
-  position:relative;z-index:1;display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;gap:55px;
-}
-.hero-content{grid-column:1;grid-row:1}
-.hero-visual{
-  grid-column:2;grid-row:1;
-  position:relative;min-width:0;
-  height:min(600px,54vw);
-  display:flex;align-items:center;justify-content:center;
-}
-.hero-visual::before{
-  content:"";position:absolute;inset:8%;
-  border-radius:50%;
-  background:radial-gradient(circle,#d9f5f683,transparent 68%);
-  animation:heroBreath 7s infinite ease-in-out;
-}
-@keyframes heroBreath{
-  50%{transform:scale(1.13);opacity:.6}
-}
-.hero-video{
-  display:block;position:relative;
-  width:100%;height:100%;
-  object-fit:contain;border:0;background:transparent;
-  pointer-events:none;
-  mix-blend-mode:multiply;
-  -webkit-mask-image:radial-gradient(ellipse 78% 79% at center,#000 79%,transparent 100%);
-  mask-image:radial-gradient(ellipse 78% 79% at center,#000 79%,transparent 100%);
-}
-.video-fallback{
-  display:none;position:absolute;inset:0;
-  justify-content:center;align-items:center;
-  flex-direction:column;color:var(--teal);
-}
-.video-error .video-fallback{display:flex}
-.video-error video{display:none}
-.video-fallback strong{font-size:20px}
-.video-caption{
-  position:absolute;bottom:3px;left:50%;
-  transform:translateX(-50%);
-  font-size:9px;letter-spacing:.12em;
-  color:#8ca5ab;font-weight:800;white-space:nowrap;
-}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  text-transform:uppercase;font-size:10px;
-  color:var(--teal);letter-spacing:.15em;font-weight:850;
-}
-.eyebrow::before{
-  content:"";width:23px;height:2px;background:currentColor;
-}
-.hero h1{
-  font-size:clamp(48px,5.4vw,78px);
-  line-height:1.07;letter-spacing:-.07em;
-  font-weight:820;margin:25px 0 20px;
-}
-.animated-word{
-  display:inline-block;
-  background:linear-gradient(100deg,#168ba3,#52c5b9,#f38b72,#168ba3);
-  background-size:300% 100%;color:transparent;
-  -webkit-background-clip:text;background-clip:text;
-  animation:wordColor 5s infinite linear;
-  transition:opacity .3s,transform .3s;
-}
-.animated-word.changing{opacity:0;transform:translateY(14px)}
-@keyframes wordColor{to{background-position:300% 0}}
-.hero-content>p{
-  max-width:560px;color:#607c85;
-  font-size:16px;line-height:1.85;
-}
-.hero-content>p strong{color:#295c6a}
-.hero-tags{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin:26px 0;
-}
-.hero-tags span{
-  border:1px solid #cfe4e8;background:#f7fdfd;
-  color:#3b7180;border-radius:50px;
-  padding:9px 12px;font-size:10px;font-weight:800;
-}
-.hero-buttons{display:flex;flex-wrap:wrap;gap:11px}
-.registration-note{
-  display:flex;gap:12px;margin-top:28px;padding-top:19px;
-  border-top:1px solid var(--line);
-  font-size:11px;line-height:1.7;color:#708b93;
-}
-.registration-note b{color:#315e69}
-.registration-note .check{font-size:20px;color:var(--teal)}
-.scroll-hint{
-  position:absolute;right:5%;bottom:23px;
-  font-size:10px;letter-spacing:.14em;color:#819ea6;
-  font-weight:800;
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--navy);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* CURVED RIBBON */
-.ticker{
-  position:relative;z-index:3;overflow:hidden;
-  color:#fff;
-  background:linear-gradient(100deg,#248ca2,#70bec7,#9bcfd0);
-  border-radius:0 0 48px 48px;
+body.loading {
+  overflow: hidden;
 }
-.ticker-track{
-  display:flex;width:max-content;
-  animation:tickerMove 32s linear infinite;
-}
-.ticker-group{
-  display:flex;align-items:center;gap:37px;
-  white-space:nowrap;padding:21px 18px;
-  font-size:11px;font-weight:850;letter-spacing:.14em;
-}
-.ticker-group i{color:#ffe6d8;font-size:17px;font-style:normal}
-@keyframes tickerMove{to{transform:translateX(-50%)}}
 
-/* COMMON */
-.section{padding:94px 0}
-.section-header{
-  display:flex;justify-content:space-between;
-  align-items:end;gap:35px;margin-bottom:40px;
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.section-header h2,.large-heading{
-  font-size:clamp(36px,4.4vw,60px);
-  line-height:1.1;letter-spacing:-.065em;
-  margin:15px 0 0;
+
+button {
+  font: inherit;
+  cursor: pointer;
 }
-.section-header p{
-  max-width:420px;font-size:13px;
-  color:var(--muted);line-height:1.8;
+
+.container {
+  width: min(var(--max), calc(100% - 64px));
+  margin: auto;
 }
-.accent{color:var(--teal)}
-/* Scroll reveal */
-.reveal{
-  transition:opacity .8s ease,transform .8s cubic-bezier(.2,1,.3,1);
+
+::selection {
+  background: #ace5e8;
+  color: #133b49;
 }
-.js-motion .reveal:not(.visible){
-  opacity:0;transform:translateY(35px);
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
 }
-.js-motion .reveal.visible{
-  opacity:1;transform:none;
+
+/* =========================================
+   CANDLESTICK LOADING SCREEN
+========================================= */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+
+  background: linear-gradient(
+    130deg,
+    #ffffff,
+    #e6f6f7,
+    #d9eff0
+  );
+
+  transition:
+    opacity .65s ease,
+    visibility .65s ease;
 }
-.motion-slot{perspective:1400px;min-width:0}
-.motion-card{
-  height:100%;
+
+.loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-inner {
+  text-align: center;
+  padding: 25px;
+}
+
+.loader h2 {
+  font-size: 27px;
+  letter-spacing: -1px;
+  margin: 20px 0 7px;
+}
+
+.loader p {
+  font-size: 12px;
+  color: #66858c;
+}
+
+.loader-candles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 105px;
+}
+
+.loader-candles i {
+  position: relative;
+  width: 18px;
+  height: 50px;
+  background: #1fa795;
+  border-radius: 2px;
+
+  animation:
+    loadCandle 1s ease-in-out infinite alternate;
+}
+
+.loader-candles i::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: -14px;
+  height: calc(100% + 28px);
+  width: 2px;
+  background: #146f79;
+  z-index: -1;
+}
+
+.loader-candles i:nth-child(2) {
+  height: 70px;
+  background: #f58d7a;
+  animation-delay: .16s;
+}
+
+.loader-candles i:nth-child(3) {
+  height: 37px;
+  animation-delay: .3s;
+}
+
+.loader-candles i:nth-child(4) {
+  height: 64px;
+  background: #f58d7a;
+  animation-delay: .45s;
+}
+
+.loader-candles i:nth-child(5) {
+  height: 82px;
+  animation-delay: .6s;
+}
+
+@keyframes loadCandle {
+  from {
+    transform: translateY(11px) scaleY(.87);
+  }
+
+  to {
+    transform: translateY(-12px) scaleY(1.05);
+  }
+}
+
+.loading-bar {
+  width: 260px;
+  height: 5px;
+  margin: 23px auto 0;
+  background: #cce5e8;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.loading-bar span {
+  display: block;
+  width: 35%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #1486a0,
+    #72d3c9
+  );
+
+  animation:
+    barMove 1.3s infinite alternate ease-in-out;
+}
+
+@keyframes barMove {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(300%);
+  }
+}
+
+.skip-load {
+  display: none;
+  margin: 20px auto 0;
+  border: 0;
+  background: none;
+  color: var(--deep);
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.skip-load.visible {
+  display: block;
+}
+
+/* =========================================
+   SCROLL PROGRESS BAR
+========================================= */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+
+  background: linear-gradient(
+    90deg,
+    var(--teal),
+    var(--coral)
+  );
+
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* =========================================
+   FLOATING ROUNDED HEADER
+========================================= */
+
+.site-header {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(1450px, calc(100% - 40px));
+  min-height: 82px;
+
+  padding: 11px 19px 11px 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+
+  z-index: 900;
+
+  border-radius: 27px;
+  border: 1px solid rgba(26,83,97,.14);
+
+  background: rgba(255,255,255,.96);
+
+  box-shadow:
+    0 15px 50px rgba(24,94,107,.1);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  transition:
+    min-height .35s,
+    box-shadow .35s,
+    top .35s;
+}
+
+.site-header.scrolled {
+  top: 10px;
+  min-height: 68px;
+
+  box-shadow:
+    0 10px 35px rgba(24,94,107,.16);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  display: block;
+  height: auto;
+  max-height: 53px;
+  max-width: 205px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 750;
+  color: #315b66;
+
+  transition: color .25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--teal);
+}
+
+.header-btn,
+.btn-primary {
+  border: 0;
+  border-radius: 12px;
+  min-height: 48px;
+  padding: 14px 22px;
+
+  background: var(--coral);
+  color: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  font-weight: 850;
+  font-size: 11px;
+
+  transition:
+    transform .3s,
+    box-shadow .3s,
+    background .3s;
+}
+
+.header-btn {
+  white-space: nowrap;
+}
+
+.header-btn:hover,
+.btn-primary:hover {
+  transform: translateY(-4px);
+  background: #ed503c;
+
+  box-shadow:
+    0 12px 26px rgba(252,98,78,.23);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  gap: 10px;
+  padding: 13px 21px;
+
+  border: 1px solid #bcd8dc;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #235867;
+
+  font-size: 11px;
+  font-weight: 850;
+
+  transition:
+    transform .3s,
+    background .3s;
+}
+
+.btn-outline:hover {
+  transform: translateY(-3px);
+  background: #e9f8fa;
+}
+
+.menu-button {
+  display: none;
+  width: 44px;
+  height: 43px;
+
+  background: #e8f7f8;
+  border: 1px solid var(--line);
+
+  border-radius: 11px;
+  font-size: 22px;
+  color: var(--navy);
+}
+
+/* =========================================
+   HERO - PURE WHITE BACKGROUND
+
+   TEXT LEFT
+   VIDEO RIGHT
+
+   NO GRADIENT / NO GLOW
+   NO VIDEO BACKGROUND CARD
+========================================= */
+
+.hero {
+  min-height: 100svh;
+
+  padding: 145px 0 90px;
+
+  background: #ffffff !important;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+
+  border: none;
+  box-shadow: none;
+}
+
+/* Remove the earlier blue glow */
+
+.hero::before,
+.hero::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Layout */
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  align-items: center;
+  gap: 55px;
+}
+
+/* Hero text on left */
+
+.hero-content {
+  grid-column: 1;
+  grid-row: 1;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   HERO VIDEO: PURE WHITE MERGE
+========================================= */
+
+.hero-visual {
+  grid-column: 2;
+  grid-row: 1;
+
+  position: relative;
+  min-width: 0;
+
+  height: min(600px,54vw);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff !important;
+
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+/* Completely remove background glow */
+
+.hero-visual::before,
+.hero-visual::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Actual MP4 video */
+
+.hero-video {
+  display: block;
+
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  background: #ffffff !important;
+
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  pointer-events: none;
+
+  /* No blending that changes white colors */
+  mix-blend-mode: normal !important;
+
+  /* Remove prior radial masks */
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+
+  opacity: 1;
+}
+
+/* If the video cannot load */
+
+.video-fallback {
+  display: none;
+
+  position: absolute;
+  inset: 0;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: #ffffff;
+  color: var(--teal);
+}
+
+.video-error .video-fallback {
+  display: flex;
+}
+
+.video-error video {
+  display: none;
+}
+
+/* Small illustrative disclaimer */
+
+.video-caption {
+  position: absolute;
+  z-index: 2;
+
+  bottom: 3px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 9px;
+  letter-spacing: .12em;
+
+  color: #8ca5ab;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+/* =========================================
+   HERO TEXT
+========================================= */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  text-transform: uppercase;
+
+  font-size: 10px;
+  color: var(--teal);
+
+  letter-spacing: .15em;
+  font-weight: 850;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 23px;
+  height: 2px;
+
+  background: currentColor;
+}
+
+.hero h1 {
+  font-size: clamp(48px,5.4vw,78px);
+  line-height: 1.07;
+
+  letter-spacing: -.07em;
+  font-weight: 820;
+
+  margin: 25px 0 20px;
+}
+
+/* Animated rotating words */
+
+.animated-word {
+  display: inline-block;
+
+  background: linear-gradient(
+    100deg,
+    #168ba3,
+    #52c5b9,
+    #f38b72,
+    #168ba3
+  );
+
+  background-size: 300% 100%;
+
+  color: transparent;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation:
+    wordColor 5s infinite linear;
+
+  transition:
+    opacity .3s,
+    transform .3s;
+}
+
+.animated-word.changing {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+@keyframes wordColor {
+  to {
+    background-position: 300% 0;
+  }
+}
+
+.hero-content > p {
+  max-width: 560px;
+
+  color: #607c85;
+  font-size: 16px;
+
+  line-height: 1.85;
+}
+
+.hero-content > p strong {
+  color: #295c6a;
+}
+
+/* Index tags */
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+  margin: 26px 0;
+}
+
+.hero-tags span {
+  border: 1px solid #cfe4e8;
+  background: #f7fdfd;
+
+  color: #3b7180;
+  border-radius: 50px;
+
+  padding: 9px 12px;
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Buttons */
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+}
+
+/* Registration note */
+
+.registration-note {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 28px;
+  padding-top: 19px;
+
+  border-top: 1px solid var(--line);
+
+  font-size: 11px;
+  line-height: 1.7;
+
+  color: #708b93;
+}
+
+.registration-note b {
+  color: #315e69;
+}
+
+.registration-note .check {
+  font-size: 20px;
+  color: var(--teal);
+}
+
+.scroll-hint {
+  position: absolute;
+  right: 5%;
+  bottom: 23px;
+
+  font-size: 10px;
+  letter-spacing: .14em;
+
+  color: #819ea6;
+  font-weight: 800;
+}
+
+/* =========================================
+   CURVED MOVING RIBBON
+========================================= */
+
+.ticker {
+  position: relative;
+  z-index: 3;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background: linear-gradient(
+    100deg,
+    #248ca2,
+    #70bec7,
+    #9bcfd0
+  );
+
+  border-radius: 0 0 48px 48px;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+
+  animation:
+    tickerMove 32s linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 37px;
+
+  white-space: nowrap;
+  padding: 21px 18px;
+
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .14em;
+}
+
+.ticker-group i {
+  color: #ffe6d8;
+  font-size: 17px;
+  font-style: normal;
+}
+
+@keyframes tickerMove {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================
+   COMMON SECTIONS
+========================================= */
+
+.section {
+  padding: 94px 0;
+}
+
+.section-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: end;
+
+  gap: 35px;
+  margin-bottom: 40px;
+}
+
+.section-header h2,
+.large-heading {
+  font-size: clamp(36px,4.4vw,60px);
+  line-height: 1.1;
+
+  letter-spacing: -.065em;
+  margin: 15px 0 0;
+}
+
+.section-header p {
+  max-width: 420px;
+
+  font-size: 13px;
+  color: var(--muted);
+
+  line-height: 1.8;
+}
+
+.accent {
+  color: var(--teal);
+}
+
+/* =========================================
+   SCROLL REVEAL FOR HEADINGS
+========================================= */
+
+.reveal {
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.2,1,.3,1);
+}
+
+.js-motion .reveal:not(.visible) {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+.js-motion .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================
+   ADVANCED 3D CARD SCROLL ANIMATION
+
+   Cards rise from below
+   Scale into position
+   Rotate slightly
+   Blur-to-sharp reveal
+   Staggered entrances
+========================================= */
+
+.motion-slot {
+  perspective: 1400px;
+  min-width: 0;
+}
+
+.motion-card {
+  height: 100%;
+
   transition:
     transform 1s cubic-bezier(.18,1,.26,1),
     opacity .8s ease,
     filter .9s ease;
-  transition-delay:var(--delay,0ms);
-  transform-origin:center 78%;
-  backface-visibility:hidden;
+
+  transition-delay:
+    var(--delay,0ms);
+
+  transform-origin: center 78%;
+
+  backface-visibility: hidden;
 }
-.js-motion .motion-slot:not(.arrived) .motion-card{
-  opacity:0;
-  filter:blur(7px);
+
+.js-motion .motion-slot:not(.arrived) .motion-card {
+  opacity: 0;
+
+  filter: blur(7px);
+
   transform:
     perspective(1400px)
     translate3d(var(--from-x,0px),110px,0)
@@ -333,386 +913,1073 @@ a:focus-visible,button:focus-visible,summary:focus-visible{
     rotateY(var(--from-ry,0deg))
     scale(.86);
 }
-.js-motion .motion-slot.arrived .motion-card{
-  opacity:1;filter:blur(0);
-  transform:translate3d(0,0,0) rotateX(0) rotateY(0) scale(1);
-}
-.services,.process,.pricing,.about{overflow-x:clip}
 
-/* SERVICES */
-.services{
-  background:var(--bluebg);
-  border-radius:48px 48px 0 0;
-}
-.service-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-}
-.service-card{
-  min-height:240px;position:relative;overflow:hidden;
-  padding:29px;background:#fff;
-  border:1px solid #d9e9eb;
-  border-radius:25px 25px 48px 25px;
-  box-shadow:0 8px 24px #174e5c0a;
-  transition:box-shadow .3s;
-}
-.service-grid .motion-slot:nth-child(2n) .service-card{background:#d7f0f1}
-.service-grid .motion-slot:nth-child(3n) .service-card{background:#fff1e9}
-.service-card:hover{box-shadow:0 22px 48px #256c8026}
-.service-icon{
-  width:46px;height:46px;display:grid;place-items:center;
-  border-radius:13px;background:#e4f6f7;
-  color:var(--teal);font-size:24px;margin-bottom:22px;
-}
-.service-number{
-  position:absolute;top:29px;right:28px;
-  color:#88a6ad;font-size:11px;font-weight:800;
-}
-.service-card h3{
-  font-size:22px;letter-spacing:-.045em;
-  line-height:1.2;margin:0 0 11px;
-}
-.service-card p{
-  font-size:12px;line-height:1.8;
-  color:#587982;margin:0;max-width:315px;
-}
-.card-arrow{
-  position:absolute;right:25px;bottom:19px;
-  color:var(--teal);font-size:22px;
+.js-motion .motion-slot.arrived .motion-card {
+  opacity: 1;
+
+  filter: blur(0);
+
+  transform:
+    translate3d(0,0,0)
+    rotateX(0)
+    rotateY(0)
+    scale(1);
 }
 
-/* PROCESS */
-.process{background:#fff}
-.process-grid{
-  display:grid;grid-template-columns:.9fr 1.1fr;
-  gap:65px;align-items:center;
-}
-.process-copy p{
-  max-width:470px;color:var(--muted);
-  font-size:13px;line-height:1.85;
-}
-.process-steps{display:grid;gap:13px}
-.step{
-  display:flex;gap:20px;padding:23px 24px;
-  background:#f0f9fa;border:1px solid var(--line);
-  border-radius:18px;
-}
-.step-number{font-size:16px;color:var(--teal);font-weight:900}
-.step b{font-size:14px}
-.step p{
-  margin:7px 0 0;color:var(--muted);
-  font-size:12px;line-height:1.7;
+.services,
+.process,
+.pricing,
+.about {
+  overflow-x: clip;
 }
 
-/* PRICING */
-.pricing{background:#fff8f3;padding:78px 0}
-.pricing .section-header{margin-bottom:30px}
-.pricing .section-header h2{font-size:clamp(35px,4vw,53px)}
-.plans-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  align-items:stretch;gap:18px;
-}
-.plan-card{
-  position:relative;display:flex;flex-direction:column;
-  padding:25px 23px 20px;background:#fff;
-  border:1px solid #d9e9eb;border-radius:24px;
-  box-shadow:0 10px 29px #165b700e;
-}
-.plans-grid .motion-slot:nth-child(2) .plan-card{
-  background:#ddf5f3;border-color:#8dcfcb;
-}
-.plan-label{
-  color:#7295a0;font-size:9px;font-weight:850;letter-spacing:.13em;
-}
-.plan-badge{
-  position:absolute;top:16px;right:17px;
-  background:var(--coral);color:#fff;
-  border-radius:25px;padding:7px 10px;
-  font-size:9px;font-weight:850;
-}
-.plan-card h3{
-  font-size:40px;letter-spacing:-.065em;
-  line-height:1;margin:17px 0 6px;
-}
-.plan-card h3 span{color:var(--teal)}
-.plan-for{
-  color:#305c68;font-size:12px;font-weight:850;margin:0 0 9px;
-}
-.plan-description{
-  color:#62808a;font-size:11px;line-height:1.65;
-  margin:0 0 13px;
-}
-.plan-card ul{
-  list-style:none;display:grid;gap:9px;flex:1;
-  padding:14px 0 0;margin:0 0 15px;
-  border-top:1px solid #d4e7e9;
-}
-.plan-card li{
-  display:flex;gap:9px;font-size:11px;
-  line-height:1.5;color:#52717b;
-}
-.plan-card li::before{
-  content:"✓";color:var(--teal);
-  font-weight:900;flex-shrink:0;
-}
-.plan-risk{
-  display:flex;justify-content:space-between;gap:12px;
-  padding:13px 0;border-top:1px solid #d4e7e9;
-  font-size:10px;color:#6b8790;
-}
-.plan-risk b{color:#b66e48}
-.plan-card .btn-primary,.plan-card .btn-outline{
-  width:100%;min-height:43px;padding:10px;font-size:10px;
-}
-.plan-note{
-  font-size:11px;color:#738c94;
-  line-height:1.8;margin:22px 0 0;
+/* =========================================
+   SERVICE CARDS
+========================================= */
+
+.services {
+  background: var(--bluebg);
+  border-radius: 48px 48px 0 0;
 }
 
-/* ABOUT */
-.about{background:#e3f3f4}
-.about-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:65px;align-items:center;
-}
-.about-copy p{
-  font-size:13px;line-height:1.85;
-  color:var(--muted);max-width:510px;
-}
-.benefit-list{display:grid;gap:14px}
-.benefit-card{
-  display:flex;gap:20px;padding:25px 27px;
-  background:#fff;border:1px solid var(--line);
-  border-radius:20px;
-}
-.benefit-card>span{
-  color:var(--teal);font-size:13px;font-weight:900;
-}
-.benefit-card h3{font-size:16px;margin:0 0 8px}
-.benefit-card p{
-  color:var(--muted);font-size:12px;
-  line-height:1.7;margin:0;
+.service-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap: 18px;
 }
 
-/* FAQ */
-.faq{background:#fff}
-.faq-grid{
-  display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;
-}
-.faq-list{display:grid;gap:11px}
-.faq-list details{
-  background:#f4fbfc;border:1px solid var(--line);
-  border-radius:15px;padding:19px 22px;
-}
-.faq-list summary{
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:13px;font-weight:800;gap:15px;
-  cursor:pointer;list-style:none;
-}
-.faq-list summary::-webkit-details-marker{display:none}
-.faq-list summary::after{
-  content:"+";font-size:22px;color:var(--teal);
-}
-.faq-list details[open] summary::after{content:"−"}
-.faq-list details p{
-  color:var(--muted);font-size:12px;
-  line-height:1.8;margin:12px 0 0;
+.service-card {
+  min-height: 240px;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 29px;
+
+  background: #ffffff;
+
+  border: 1px solid #d9e9eb;
+
+  border-radius:
+    25px 25px 48px 25px;
+
+  box-shadow:
+    0 8px 24px rgba(23,78,92,.04);
+
+  transition: box-shadow .3s ease;
 }
 
-/* CTA */
-.final-cta{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:35px;margin-bottom:75px;padding:50px 55px;
-  border-radius:29px;color:#fff;
-  background:linear-gradient(115deg,#176b82,#70c0c6);
-}
-.final-cta h2{
-  font-size:clamp(30px,3.8vw,50px);
-  letter-spacing:-.06em;line-height:1.1;margin:0 0 13px;
-}
-.final-cta p{
-  color:#eaffff;font-size:12px;
-  line-height:1.8;max-width:630px;
-}
-.final-cta .btn-primary{flex-shrink:0}
-
-/* FOOTER */
-.footer{background:#103745;color:#e7f5f6}
-.footer-grid{
-  display:grid;grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
-  gap:40px;padding:62px 0 44px;
-}
-.footer-logo-wrap{
-  display:inline-flex;background:#fff;
-  padding:9px 14px;border-radius:11px;margin-bottom:13px;
-}
-.footer-logo{max-height:50px;max-width:160px;object-fit:contain}
-.footer-name{font-size:17px;font-weight:850}
-.footer h3{font-size:13px;margin:6px 0 18px}
-.footer p,.footer li{
-  font-size:11px;line-height:1.85;color:#bfd5dc;
-}
-.footer ul{
-  list-style:none;margin:0;padding:0;display:grid;gap:10px;
-}
-.footer a:hover{color:#9ce6e4}
-.footer strong{color:#fff}
-.footer-legal{
-  border-top:1px solid #ffffff25;padding:27px 0;
-}
-.footer-legal p{margin:0 0 11px}
-.reg-details{
-  border-top:1px solid #ffffff25;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:35px;padding:30px 0;
-}
-.reg-details p{margin:6px 0}
-.copyright{
-  display:flex;justify-content:space-between;
-  flex-wrap:wrap;gap:15px;padding:25px 0;
-  border-top:1px solid #ffffff25;
-  font-size:11px;color:#bfd5dc;
+.service-grid .motion-slot:nth-child(2n) .service-card {
+  background: #d7f0f1;
 }
 
-/* TABLET */
-@media(max-width:1050px){
-  .container{width:calc(100% - 48px)}
-  .nav-links{gap:16px}
-  .hero-grid{gap:28px}
-  .hero-visual{height:510px}
-  .footer-grid{grid-template-columns:1fr 1fr}
+.service-grid .motion-slot:nth-child(3n) .service-card {
+  background: #fff1e9;
 }
 
-@media(max-width:850px){
-  .site-header{
-    top:12px;width:calc(100% - 26px);
-    min-height:71px;padding:10px 13px;
-    border-radius:22px;
-  }
-  .logo img{max-height:44px;max-width:150px}
-  .menu-button{display:block}
-  .nav-links{
-    position:absolute;display:none;
-    flex-direction:column;align-items:stretch;
-    top:calc(100% + 8px);left:0;right:0;
-    background:#fffffff9;border:1px solid var(--line);
-    padding:13px;border-radius:19px;gap:0;
-    box-shadow:0 15px 40px #164e6224;
-  }
-  .nav-links.open{display:flex}
-  .nav-links a{padding:13px 16px}
-  .header-btn{
-    margin-left:auto;font-size:10px;
-    padding:12px 15px;min-height:43px;
-  }
-  .hero{min-height:auto;padding:135px 0 75px}
-  .hero-grid{grid-template-columns:1fr;gap:15px}
-  .hero-content{grid-column:1;grid-row:1}
-  .hero-visual{
-    grid-column:1;grid-row:2;
-    width:100%;max-width:660px;
-    height:470px;margin:auto;
-  }
-  .hero h1{font-size:clamp(46px,8vw,70px)}
-  .scroll-hint{display:none}
-  .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .plans-grid{grid-template-columns:1fr;max-width:590px;margin:auto}
-  .process-grid,.about-grid,.faq-grid{
-    grid-template-columns:1fr;gap:36px;
-  }
-  .section-header{flex-direction:column;align-items:flex-start}
-  .final-cta{padding:39px}
-  .section{padding:78px 0}
+.service-card:hover {
+  box-shadow:
+    0 22px 48px rgba(37,108,128,.15);
 }
 
-@media(max-width:540px){
-  .container{width:calc(100% - 34px)}
-  .site-header{
-    width:calc(100% - 18px);
-    padding:8px;gap:7px;
-  }
-  .logo img{max-height:37px;max-width:110px}
-  .header-btn{
-    font-size:9px;padding:10px;min-height:39px;gap:5px;
-  }
-  .header-btn .arrow{display:none}
-  .menu-button{width:40px;height:39px}
-  .hero{padding:113px 0 48px}
-  .hero h1{font-size:clamp(40px,10.4vw,55px)}
-  .hero-content>p{font-size:14px}
-  .hero-visual{height:350px}
-  .video-caption{font-size:7px}
-  .hero-buttons{display:grid;grid-template-columns:1fr}
-  .hero-buttons a{width:100%}
-  .hero-tags span{font-size:9px}
-  .section{padding:66px 0}
-  .section-header h2,.large-heading{
-    font-size:clamp(34px,8vw,47px);
-  }
-  .service-grid{grid-template-columns:1fr}
-  .service-card{min-height:215px}
-  .services{border-radius:28px 28px 0 0}
-  .ticker{border-radius:0 0 28px 28px}
-  .pricing{padding:62px 0}
-  .plan-card{padding:22px}
-  .final-cta{
-    display:block;padding:31px 25px;margin-bottom:52px;
-  }
-  .final-cta .btn-primary{width:100%;margin-top:18px}
-  .footer-grid{grid-template-columns:1fr;gap:29px;padding:43px 0}
-  .reg-details{grid-template-columns:1fr}
-  .js-motion .motion-slot:not(.arrived) .motion-card{
-    transform:translate3d(0,65px,0) scale(.94);
-  }
+.service-icon {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  background: #e4f6f7;
+  color: var(--teal);
+
+  font-size: 24px;
+  margin-bottom: 22px;
 }
 
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-    scroll-behavior:auto!important;
-  }
-  .js-motion .motion-card,.js-motion .reveal{
-    opacity:1!important;transform:none!important;filter:none!important;
-  }
+.service-number {
+  position: absolute;
+  top: 29px;
+  right: 28px;
+
+  color: #88a6ad;
+  font-size: 11px;
+  font-weight: 800;
 }
+
+.service-card h3 {
+  font-size: 22px;
+  letter-spacing: -.045em;
+
+  line-height: 1.2;
+  margin: 0 0 11px;
+}
+
+.service-card p {
+  font-size: 12px;
+  line-height: 1.8;
+
+  color: #587982;
+  margin: 0;
+
+  max-width: 315px;
+}
+
+.card-arrow {
+  position: absolute;
+  right: 25px;
+  bottom: 19px;
+
+  color: var(--teal);
+  font-size: 22px;
+}
+
+/* =========================================
+   HOW IT WORKS
+========================================= */
+
+.process {
+  background: #ffffff;
+}
+
+.process-grid {
+  display: grid;
+
+  grid-template-columns:
+    .9fr 1.1fr;
+
+  gap: 65px;
+  align-items: center;
+}
+
+.process-copy p {
+  max-width: 470px;
+
+  color: var(--muted);
+  font-size: 13px;
+
+  line-height: 1.85;
+}
+
+.process-steps {
+  display: grid;
+  gap: 13px;
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+
+  padding: 23px 24px;
+
+  background: #f0f9fa;
+
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.step-number {
+  font-size: 16px;
+  color: var(--teal);
+  font-weight: 900;
+}
+
+.step b {
+  font-size: 14px;
+}
+
+.step p {
+  margin: 7px 0 0;
+
+  color: var(--muted);
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+/* =========================================
+   PRICING
+========================================= */
+
+.pricing {
+  background: #fff8f3;
+  padding: 78px 0;
+}
+
+.pricing .section-header {
+  margin-bottom: 30px;
+}
+
+.pricing .section-header h2 {
+  font-size: clamp(35px,4vw,53px);
+}
+
+.plans-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  align-items: stretch;
+  gap: 18px;
+}
+
+.plan-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 25px 23px 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #d9e9eb;
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 29px rgba(22,91,112,.055);
+}
+
+.plans-grid .motion-slot:nth-child(2) .plan-card {
+  background: #ddf5f3;
+  border-color: #8dcfcb;
+}
+
+.plan-label {
+  color: #7295a0;
+
+  font-size: 9px;
+  font-weight: 850;
+
+  letter-spacing: .13em;
+}
+
+.plan-badge {
+  position: absolute;
+
+  top: 16px;
+  right: 17px;
+
+  background: var(--coral);
+  color: #ffffff;
+
+  border-radius: 25px;
+  padding: 7px 10px;
+
+  font-size: 9px;
+  font-weight: 850;
+}
+
+.plan-card h3 {
+  font-size: 40px;
+  letter-spacing: -.065em;
+
+  line-height: 1;
+  margin: 17px 0 6px;
+}
+
+.plan-card h3 span {
+  color: var(--teal);
+}
+
+.plan-for {
+  color: #305c68;
+
+  font-size: 12px;
+  font-weight: 850;
+
+  margin: 0 0 9px;
+}
+
+.plan-description {
+  color: #62808a;
+
+  font-size: 11px;
+  line-height: 1.65;
+
+  margin: 0 0 13px;
+}
+
+.plan-card ul {
+  list-style: none;
+
+  display: grid;
+  gap: 9px;
+
+  flex: 1;
+
+  padding: 14px 0 0;
+  margin: 0 0 15px;
+
+  border-top: 1px solid #d4e7e9;
+}
+
+.plan-card li {
+  display: flex;
+  gap: 9px;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  color: #52717b;
+}
+
+.plan-card li::before {
+  content: "✓";
+
+  color: var(--teal);
+  font-weight: 900;
+
+  flex-shrink: 0;
+}
+
+.plan-risk {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 12px;
+  padding: 13px 0;
+
+  border-top: 1px solid #d4e7e9;
+
+  font-size: 10px;
+  color: #6b8790;
+}
+
+.plan-risk b {
+  color: #b66e48;
+}
+
+.plan-card .btn-primary,
+.plan-card .btn-outline {
+  width: 100%;
+  min-height: 43px;
+
+  padding: 10px;
+  font-size: 10px;
+}
+
+.plan-note {
+  font-size: 11px;
+
+  color: #738c94;
+  line-height: 1.8;
+
+  margin: 22px 0 0;
+}
+
+/* =========================================
+   ABOUT US
+========================================= */
+
+.about {
+  background: #e3f3f4;
+}
+
+.about-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 65px;
+  align-items: center;
+}
+
+.about-copy p {
+  font-size: 13px;
+  line-height: 1.85;
+
+  color: var(--muted);
+  max-width: 510px;
+}
+
+.benefit-list {
+  display: grid;
+  gap: 14px;
+}
+
+.benefit-card {
+  display: flex;
+  gap: 20px;
+
+  padding: 25px 27px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.benefit-card > span {
+  color: var(--teal);
+
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.benefit-card h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.benefit-card p {
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  margin: 0;
+}
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq {
+  background: #ffffff;
+}
+
+.faq-grid {
+  display: grid;
+
+  grid-template-columns:
+    .9fr 1.1fr;
+
+  gap: 60px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 11px;
+}
+
+.faq-list details {
+  background: #f4fbfc;
+
+  border: 1px solid var(--line);
+  border-radius: 15px;
+
+  padding: 19px 22px;
+}
+
+.faq-list summary {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  gap: 15px;
+
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+  content: "+";
+
+  font-size: 22px;
+  color: var(--teal);
+}
+
+.faq-list details[open] summary::after {
+  content: "−";
+}
+
+.faq-list details p {
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.8;
+
+  margin: 12px 0 0;
+}
+
+/* =========================================
+   FINAL CTA
+========================================= */
+
+.final-cta {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 35px;
+
+  margin-bottom: 75px;
+  padding: 50px 55px;
+
+  border-radius: 29px;
+
+  color: #ffffff;
+
+  background: linear-gradient(
+    115deg,
+    #176b82,
+    #70c0c6
+  );
+}
+
+.final-cta h2 {
+  font-size: clamp(30px,3.8vw,50px);
+  letter-spacing: -.06em;
+
+  line-height: 1.1;
+  margin: 0 0 13px;
+}
+
+.final-cta p {
+  color: #eaffff;
+
+  font-size: 12px;
+  line-height: 1.8;
+
+  max-width: 630px;
+}
+
+.final-cta .btn-primary {
+  flex-shrink: 0;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+  background: #103745;
+  color: #e7f5f6;
+}
+
+.footer-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.4fr .75fr 1.1fr 1.3fr;
+
+  gap: 40px;
+  padding: 62px 0 44px;
+}
+
+.footer-logo-wrap {
+  display: inline-flex;
+
+  background: #ffffff;
+
+  padding: 9px 14px;
+  border-radius: 11px;
+
+  margin-bottom: 13px;
+}
+
+.footer-logo {
+  max-height: 50px;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+.footer-name {
+  font-size: 17px;
+  font-weight: 850;
+}
+
+.footer h3 {
+  font-size: 13px;
+  margin: 6px 0 18px;
+}
+
+.footer p,
+.footer li {
+  font-size: 11px;
+  line-height: 1.85;
+
+  color: #bfd5dc;
+}
+
+.footer ul {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  gap: 10px;
+}
+
+.footer a:hover {
+  color: #9ce6e4;
+}
+
+.footer strong {
+  color: #ffffff;
+}
+
+.footer-legal {
+  border-top: 1px solid rgba(255,255,255,.14);
+  padding: 27px 0;
+}
+
+.footer-legal p {
+  margin: 0 0 11px;
+}
+
+.reg-details {
+  border-top: 1px solid rgba(255,255,255,.14);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 35px;
+  padding: 30px 0;
+}
+
+.reg-details p {
+  margin: 6px 0;
+}
+
+.copyright {
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  gap: 15px;
+
+  padding: 25px 0;
+
+  border-top: 1px solid rgba(255,255,255,.14);
+
+  font-size: 11px;
+  color: #bfd5dc;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 1050px) {
+
+  .container {
+    width: calc(100% - 48px);
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .hero-grid {
+    gap: 28px;
+  }
+
+  .hero-visual {
+    height: 510px;
+  }
+
+  .footer-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+
+  .site-header {
+    top: 12px;
+    width: calc(100% - 26px);
+
+    min-height: 71px;
+
+    padding: 10px 13px;
+    border-radius: 22px;
+  }
+
+  .logo img {
+    max-height: 44px;
+    max-width: 150px;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+
+    background: rgba(255,255,255,.98);
+    border: 1px solid var(--line);
+
+    padding: 13px;
+    border-radius: 19px;
+    gap: 0;
+
+    box-shadow:
+      0 15px 40px rgba(22,78,98,.14);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 13px 16px;
+  }
+
+  .header-btn {
+    margin-left: auto;
+
+    font-size: 10px;
+    padding: 12px 15px;
+
+    min-height: 43px;
+  }
+
+  /* Mobile hero remains pure white */
+
+  .hero {
+    min-height: auto;
+    padding: 135px 0 75px;
+
+    background: #ffffff !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .hero-content {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-visual {
+    grid-column: 1;
+    grid-row: 2;
+
+    width: 100%;
+    max-width: 660px;
+
+    height: 470px;
+    margin: auto;
+
+    background: #ffffff !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(46px,8vw,70px);
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  .service-grid {
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 590px;
+    margin: auto;
+  }
+
+  .process-grid,
+  .about-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .final-cta {
+    padding: 39px;
+  }
+
+  .section {
+    padding: 78px 0;
+  }
+
+}
+
+/* =========================================
+   SMALL MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 540px) {
+
+  .container {
+    width: calc(100% - 34px);
+  }
+
+  .site-header {
+    width: calc(100% - 18px);
+    padding: 8px;
+    gap: 7px;
+  }
+
+  .logo img {
+    max-height: 37px;
+    max-width: 110px;
+  }
+
+  .header-btn {
+    font-size: 9px;
+    padding: 10px;
+
+    min-height: 39px;
+    gap: 5px;
+  }
+
+  .header-btn .arrow {
+    display: none;
+  }
+
+  .menu-button {
+    width: 40px;
+    height: 39px;
+  }
+
+  .hero {
+    padding: 113px 0 48px;
+
+    background: #ffffff !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px,10.4vw,55px);
+  }
+
+  .hero-content > p {
+    font-size: 14px;
+  }
+
+  .hero-visual {
+    height: 350px;
+    background: #ffffff !important;
+  }
+
+  .hero-video {
+    background: #ffffff !important;
+  }
+
+  .video-caption {
+    font-size: 7px;
+  }
+
+  .hero-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+  }
+
+  .hero-tags span {
+    font-size: 9px;
+  }
+
+  .section {
+    padding: 66px 0;
+  }
+
+  .section-header h2,
+  .large-heading {
+    font-size: clamp(34px,8vw,47px);
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 215px;
+  }
+
+  .services {
+    border-radius: 28px 28px 0 0;
+  }
+
+  .ticker {
+    border-radius: 0 0 28px 28px;
+  }
+
+  .pricing {
+    padding: 62px 0;
+  }
+
+  .plan-card {
+    padding: 22px;
+  }
+
+  .final-cta {
+    display: block;
+
+    padding: 31px 25px;
+    margin-bottom: 52px;
+  }
+
+  .final-cta .btn-primary {
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+
+    gap: 29px;
+    padding: 43px 0;
+  }
+
+  .reg-details {
+    grid-template-columns: 1fr;
+  }
+
+  /* Lighter card animation on mobile */
+
+  .js-motion .motion-slot:not(.arrived) .motion-card {
+    transform:
+      translate3d(0,65px,0)
+      scale(.94);
+  }
+
+}
+
+/* =========================================
+   ACCESSIBILITY: REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js-motion .motion-card,
+  .js-motion .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+}
+
 </style>
 </head>
 
 <body class="loading">
 
-<div class="scroll-progress" id="scrollProgress"></div>
+<!-- =====================================
+     SCROLL PROGRESS
+===================================== -->
 
-<!-- LOADER -->
+<div
+  class="scroll-progress"
+  id="scrollProgress"
+></div>
+
+<!-- =====================================
+     CANDLESTICK LOADER
+===================================== -->
+
 <div class="loader" id="loader">
+
   <div class="loader-inner">
+
     <div class="loader-candles" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
     </div>
+
     <h2>Preparing OptionNeeti</h2>
+
     <p>Loading your research experience</p>
-    <div class="loading-bar"><span></span></div>
-    <button class="skip-load" id="skipLoad">Open website now</button>
+
+    <div class="loading-bar">
+      <span></span>
+    </div>
+
+    <button
+      class="skip-load"
+      id="skipLoad"
+      type="button"
+    >
+      Open website now
+    </button>
+
   </div>
+
 </div>
 
-<!-- HEADER -->
+<!-- =====================================
+     HEADER
+===================================== -->
+
 <header class="site-header" id="siteHeader">
-  <a href="/" class="logo" aria-label="Sarvneeti homepage">
+
+  <a
+    href="/"
+    class="logo"
+    aria-label="Sarvneeti homepage"
+  >
     <img src="logo.png" alt="Sarvneeti">
   </a>
 
   <nav class="nav-links" id="navLinks">
+
     <a href="#services">Services</a>
+
     <a href="#plans">Pricing</a>
+
     <a href="#about">About Us</a>
+
     <a href="#faq">FAQ</a>
+
     <a href="/contact">Contact</a>
+
   </nav>
 
   <a href="/contact" class="header-btn">
-    GET RESEARCH DETAILS <span class="arrow">↗</span>
+    GET RESEARCH DETAILS
+    <span class="arrow">↗</span>
   </a>
 
   <button
@@ -722,16 +1989,28 @@ a:focus-visible,button:focus-visible,summary:focus-visible{
     aria-label="Open menu"
     aria-controls="navLinks"
     aria-expanded="false"
-  >☰</button>
+  >
+    ☰
+  </button>
+
 </header>
 
 <main>
 
-<!-- HERO: TEXT LEFT / VIDEO RIGHT -->
+<!-- =====================================
+     HERO
+     PURE WHITE BACKGROUND
+     TEXT LEFT / VIDEO RIGHT
+===================================== -->
+
 <section class="hero" id="home">
+
   <div class="container hero-grid">
 
+    <!-- LEFT TEXT -->
+
     <div class="hero-content">
+
       <span class="eyebrow">
         SEBI REGISTERED RESEARCH ANALYST · INH000016533
       </span>
@@ -739,357 +2018,699 @@ a:focus-visible,button:focus-visible,summary:focus-visible{
       <h1>
         Options research.<br>
         Built for
-        <span class="animated-word" id="animatedWord">
+        <span
+          class="animated-word"
+          id="animatedWord"
+        >
           clarity.
         </span>
       </h1>
 
       <p>
         Daily intraday and BTST index options research for
-        <strong>Nifty, Bank Nifty and Sensex</strong>
+        <strong>
+          Nifty, Bank Nifty and Sensex
+        </strong>
         — with structured entries, potential targets,
-        stop-loss levels, market context and
-        premium research channel updates.
+        stop-loss levels, market context and premium
+        research channel updates.
       </p>
 
       <div class="hero-tags">
+
         <span>NIFTY</span>
+
         <span>BANK NIFTY</span>
+
         <span>SENSEX</span>
+
         <span>INTRADAY + BTST</span>
+
       </div>
 
       <div class="hero-buttons">
-        <a class="btn-primary" href="/contact">
+
+        <a href="/contact" class="btn-primary">
           CONNECT WITH RESEARCH DESK ↗
         </a>
-        <a class="btn-outline" href="#plans">
+
+        <a href="#plans" class="btn-outline">
           EXPLORE PLANS ↓
         </a>
+
       </div>
 
       <div class="registration-note">
+
         <span class="check">✓</span>
+
         <span>
-          <b>Research Analyst / Owner: Amit Kori</b><br>
-          SEBI Registration No.: INH000016533<br>
+          <b>
+            Research Analyst / Owner: Amit Kori
+          </b>
+          <br>
+          SEBI Registration No.: INH000016533
+          <br>
           Research does not guarantee returns.
           Trading decisions remain yours.
         </span>
+
       </div>
+
     </div>
 
+    <!-- RIGHT VIDEO -->
+
     <div class="hero-visual" id="heroVisual">
+
       <video
         id="heroVideo"
         class="hero-video"
-        autoplay muted loop playsinline
+        autoplay
+        muted
+        loop
+        playsinline
         preload="auto"
         disablepictureinpicture
         disableremoteplayback
         controlslist="nodownload noplaybackrate nofullscreen"
         aria-hidden="true"
       >
-        <source src="hero.mp4" type="video/mp4">
+
+        <source
+          src="hero.mp4"
+          type="video/mp4"
+        >
+
       </video>
 
       <div class="video-fallback">
-        <div style="font-size:85px">⌁</div>
-        <strong>Research · Levels · Risk</strong>
+
+        <div style="font-size:85px">
+          ⌁
+        </div>
+
+        <strong>
+          Research · Levels · Risk
+        </strong>
+
       </div>
 
       <span class="video-caption">
         ILLUSTRATIVE VISUAL · NOT LIVE MARKET DATA
       </span>
+
     </div>
 
   </div>
-  <div class="scroll-hint">SCROLL TO EXPLORE ↓</div>
+
+  <div class="scroll-hint">
+    SCROLL TO EXPLORE ↓
+  </div>
+
 </section>
 
-<!-- CURVED MOVING RIBBON -->
+<!-- =====================================
+     CURVED MOVING RIBBON
+===================================== -->
+
 <div class="ticker" aria-hidden="true">
+
   <div class="ticker-track">
+
     <div class="ticker-group">
+
       <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
+
       <span>NIFTY</span><i>✦</i>
+
       <span>BANK NIFTY</span><i>✦</i>
+
       <span>SENSEX</span><i>✦</i>
+
       <span>INTRADAY + BTST</span><i>✦</i>
+
       <span>RISK FIRST</span><i>✦</i>
+
     </div>
+
     <div class="ticker-group">
+
       <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
+
       <span>NIFTY</span><i>✦</i>
+
       <span>BANK NIFTY</span><i>✦</i>
+
       <span>SENSEX</span><i>✦</i>
+
       <span>INTRADAY + BTST</span><i>✦</i>
+
       <span>RISK FIRST</span><i>✦</i>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- SERVICES -->
+<!-- =====================================
+     SERVICES
+===================================== -->
+
 <section class="section services" id="services">
+
   <div class="container">
 
     <div class="section-header reveal">
+
       <div>
-        <span class="eyebrow">01 / WHAT WE OFFER</span>
-        <h2>Research with<br>
-          <span class="accent">a clearer direction.</span>
+
+        <span class="eyebrow">
+          01 / WHAT WE OFFER
+        </span>
+
+        <h2>
+          Research with<br>
+          <span class="accent">
+            a clearer direction.
+          </span>
         </h2>
+
       </div>
+
       <p>
         Understand the research thesis, levels that matter
         and associated risks before making your own
         trading decisions.
       </p>
+
     </div>
 
     <div class="service-grid">
 
+      <!-- SERVICE 1 -->
+
       <div class="motion-slot">
+
         <article class="service-card motion-card">
+
           <span class="service-icon">⌁</span>
           <span class="service-number">01</span>
-          <h3>Intraday options<br>setups</h3>
-          <p>Research-led index options setups with entry zones,
-            target levels and stop-loss frameworks.</p>
+
+          <h3>
+            Intraday options<br>
+            setups
+          </h3>
+
+          <p>
+            Research-led index options setups with
+            entry zones, target levels and
+            stop-loss frameworks.
+          </p>
+
           <span class="card-arrow">↗</span>
+
         </article>
+
       </div>
 
+      <!-- SERVICE 2 -->
+
       <div class="motion-slot">
+
         <article class="service-card motion-card">
+
           <span class="service-icon">↗</span>
           <span class="service-number">02</span>
-          <h3>BTST opportunity<br>research</h3>
-          <p>Short-term setups when conditions warrant,
-            including overnight gap risk and premium-decay
-            considerations.</p>
+
+          <h3>
+            BTST opportunity<br>
+            research
+          </h3>
+
+          <p>
+            Short-term setups when conditions warrant,
+            including overnight gap risk and
+            premium-decay considerations.
+          </p>
+
           <span class="card-arrow">↗</span>
+
         </article>
+
       </div>
 
+      <!-- SERVICE 3 -->
+
       <div class="motion-slot">
+
         <article class="service-card motion-card">
+
           <span class="service-icon">✈</span>
           <span class="service-number">03</span>
-          <h3>Premium Telegram<br>channel</h3>
-          <p>Plan-based research alerts, key level updates
-            and market commentary after onboarding.</p>
+
+          <h3>
+            Premium Telegram<br>
+            channel
+          </h3>
+
+          <p>
+            Plan-based research alerts,
+            key level updates and market
+            commentary after onboarding.
+          </p>
+
           <span class="card-arrow">↗</span>
+
         </article>
+
       </div>
 
+      <!-- SERVICE 4 -->
+
       <div class="motion-slot">
+
         <article class="service-card motion-card">
+
           <span class="service-icon">◇</span>
           <span class="service-number">04</span>
-          <h3>Daily risk<br>management</h3>
-          <p>Notes on position sizing, stop-loss discipline,
-            drawdown control and avoiding overtrading.</p>
+
+          <h3>
+            Daily risk<br>
+            management
+          </h3>
+
+          <p>
+            Notes on position sizing,
+            stop-loss discipline, drawdown
+            control and avoiding overtrading.
+          </p>
+
           <span class="card-arrow">↗</span>
+
         </article>
+
       </div>
 
+      <!-- SERVICE 5 -->
+
       <div class="motion-slot">
+
         <article class="service-card motion-card">
+
           <span class="service-icon">◷</span>
           <span class="service-number">05</span>
-          <h3>Expiry & volatility<br>research</h3>
-          <p>Observations on index levels, option premiums,
-            expiry conditions and volatility risk.</p>
+
+          <h3>
+            Expiry &amp; volatility<br>
+            research
+          </h3>
+
+          <p>
+            Observations on index levels,
+            option premiums, expiry conditions
+            and volatility risk.
+          </p>
+
           <span class="card-arrow">↗</span>
+
         </article>
+
       </div>
 
+      <!-- SERVICE 6 -->
+
       <div class="motion-slot">
+
         <article class="service-card motion-card">
+
           <span class="service-icon">◎</span>
           <span class="service-number">06</span>
-          <h3>Trader learning<br>& reviews</h3>
-          <p>Educational explanations of research setups,
-            market psychology and disciplined processes.</p>
+
+          <h3>
+            Trader learning<br>
+            &amp; reviews
+          </h3>
+
+          <p>
+            Educational explanations of research
+            setups, market psychology and
+            disciplined processes.
+          </p>
+
           <span class="card-arrow">↗</span>
+
         </article>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
-<!-- PROCESS -->
+<!-- =====================================
+     PROCESS
+===================================== -->
+
 <section class="section process" id="process">
+
   <div class="container process-grid">
 
     <div class="process-copy reveal">
-      <span class="eyebrow">02 / OUR PROCESS</span>
+
+      <span class="eyebrow">
+        02 / OUR PROCESS
+      </span>
+
       <h2 class="large-heading">
         From market noise<br>
         to a structured<br>
-        <span class="accent">research plan.</span>
+        <span class="accent">
+          research plan.
+        </span>
       </h2>
+
       <p>
         Research ideas move from market observations
         to structured communication, with risk
         considerations at every stage.
       </p>
-      <a href="/contact" class="btn-outline"
-         style="margin-top:20px">
+
+      <a
+        href="/contact"
+        class="btn-outline"
+        style="margin-top:20px"
+      >
         TALK TO OUR DESK ↗
       </a>
+
     </div>
 
     <div class="process-steps">
 
       <div class="motion-slot">
+
         <article class="step motion-card">
+
           <span class="step-number">01</span>
+
           <div>
+
             <b>Choose a research plan</b>
-            <p>Review research coverage, fees, duration,
-              disclosures and onboarding.</p>
+
+            <p>
+              Review research coverage,
+              fees, duration, disclosures
+              and onboarding.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
       <div class="motion-slot">
+
         <article class="step motion-card">
+
           <span class="step-number">02</span>
+
           <div>
+
             <b>Get premium channel access</b>
-            <p>Receive Telegram research channel access
-              after the applicable subscription process.</p>
+
+            <p>
+              Receive Telegram research channel
+              access after the applicable
+              subscription process.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
       <div class="motion-slot">
+
         <article class="step motion-card">
+
           <span class="step-number">03</span>
+
           <div>
+
             <b>Review each research setup</b>
-            <p>Evaluate the entry zone, target levels,
-              stop-loss and invalidation point.</p>
+
+            <p>
+              Evaluate the entry zone,
+              target levels, stop-loss
+              and invalidation point.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
       <div class="motion-slot">
+
         <article class="step motion-card">
+
           <span class="step-number">04</span>
+
           <div>
+
             <b>Execute independently</b>
-            <p>Use research alongside your own assessment.
-              Trading decisions remain yours.</p>
+
+            <p>
+              Use research alongside your own
+              assessment. Trading decisions
+              remain yours.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
-<!-- PRICING -->
+<!-- =====================================
+     PRICING
+===================================== -->
+
 <section class="section pricing" id="plans">
+
   <div class="container">
 
     <div class="section-header reveal">
+
       <div>
-        <span class="eyebrow">03 / RESEARCH PLANS</span>
-        <h2>Find your<br>
-          <span class="accent">trading rhythm.</span>
+
+        <span class="eyebrow">
+          03 / RESEARCH PLANS
+        </span>
+
+        <h2>
+          Find your<br>
+          <span class="accent">
+            trading rhythm.
+          </span>
         </h2>
+
       </div>
+
       <p>
-        Choose research coverage based on market experience,
-        trading approach and your ability to manage options risk.
+        Choose research coverage based on market
+        experience, trading approach and your
+        ability to manage options risk.
       </p>
+
     </div>
 
     <div class="plans-grid">
 
+      <!-- CORE PLAN -->
+
       <div class="motion-slot">
+
         <article class="plan-card motion-card">
-          <span class="plan-label">OPTIONNEETI / 01</span>
-          <h3>Core<span>.</span></h3>
-          <p class="plan-for">For structured learners</p>
+
+          <span class="plan-label">
+            OPTIONNEETI / 01
+          </span>
+
+          <h3>
+            Core<span>.</span>
+          </h3>
+
+          <p class="plan-for">
+            For structured learners
+          </p>
+
           <p class="plan-description">
             A focused starting point for reviewing
             research-led index option setups.
           </p>
+
           <ul>
+
             <li>Up to 1 research setup per trading day</li>
+
             <li>Nifty and selected index options</li>
+
             <li>Entry, target and stop-loss levels</li>
+
             <li>Basic intraday market commentary</li>
+
             <li>Market-hour research support</li>
+
             <li>Educational setup explanations</li>
+
           </ul>
+
           <div class="plan-risk">
-            <span>Risk profile</span><b>HIGH</b>
+
+            <span>Risk profile</span>
+
+            <b>HIGH</b>
+
           </div>
+
           <a href="/contact" class="btn-outline">
             ENQUIRE ABOUT CORE ↗
           </a>
+
         </article>
+
       </div>
 
+      <!-- PRO PLAN -->
+
       <div class="motion-slot">
+
         <article class="plan-card motion-card">
-          <span class="plan-badge">POPULAR PLAN</span>
-          <span class="plan-label">OPTIONNEETI / 02</span>
-          <h3>Pro<span>.</span></h3>
-          <p class="plan-for">For active options traders</p>
-          <p class="plan-description">
-            Broader research coverage and premium alerts
-            for active market participants.
+
+          <span class="plan-badge">
+            POPULAR PLAN
+          </span>
+
+          <span class="plan-label">
+            OPTIONNEETI / 02
+          </span>
+
+          <h3>
+            Pro<span>.</span>
+          </h3>
+
+          <p class="plan-for">
+            For active options traders
           </p>
+
+          <p class="plan-description">
+            Broader research coverage and premium
+            alerts for active market participants.
+          </p>
+
           <ul>
+
             <li>Up to 2 research setups per trading day</li>
+
             <li>Nifty, Bank Nifty and selected indices</li>
+
             <li>Intraday and selected BTST opportunities</li>
+
             <li>Defined entry, exit and risk levels</li>
+
             <li>Expiry and volatility-related research</li>
+
             <li>Premium Telegram alerts and updates</li>
+
             <li>Priority market-hour research support</li>
+
           </ul>
+
           <div class="plan-risk">
-            <span>Risk profile</span><b>HIGH TO VERY HIGH</b>
+
+            <span>Risk profile</span>
+
+            <b>HIGH TO VERY HIGH</b>
+
           </div>
+
           <a href="/contact" class="btn-primary">
             ENQUIRE ABOUT PRO ↗
           </a>
+
         </article>
+
       </div>
 
+      <!-- ELITE PLAN -->
+
       <div class="motion-slot">
+
         <article class="plan-card motion-card">
-          <span class="plan-label">OPTIONNEETI / 03</span>
-          <h3>Elite<span>.</span></h3>
-          <p class="plan-for">For experienced participants</p>
+
+          <span class="plan-label">
+            OPTIONNEETI / 03
+          </span>
+
+          <h3>
+            Elite<span>.</span>
+          </h3>
+
+          <p class="plan-for">
+            For experienced participants
+          </p>
+
           <p class="plan-description">
             Expanded index coverage with volatility
             and expiry-focused research scenarios.
           </p>
+
           <ul>
+
             <li>Up to 3 research setups per trading day</li>
+
             <li>Nifty, Bank Nifty, Sensex and selected indices</li>
+
             <li>Intraday, BTST and expiry research</li>
+
             <li>Advanced volatility and levels commentary</li>
+
             <li>Premium Telegram research updates</li>
+
             <li>Priority research desk support</li>
+
             <li>Trading psychology and risk notes</li>
+
           </ul>
+
           <div class="plan-risk">
-            <span>Risk profile</span><b>HIGH TO VERY HIGH</b>
+
+            <span>Risk profile</span>
+
+            <b>HIGH TO VERY HIGH</b>
+
           </div>
+
           <a href="/contact" class="btn-outline">
             ENQUIRE ABOUT ELITE ↗
           </a>
+
         </article>
+
       </div>
 
     </div>
@@ -1097,471 +2718,1061 @@ a:focus-visible,button:focus-visible,summary:focus-visible{
     <p class="plan-note">
       Plan prices, duration, taxes, terms and cancellation
       policies are provided before onboarding.
-      Setup counts are maximums, not guarantees of daily opportunities.
-      Index options may result in rapid or total loss of invested premium.
+      Setup counts are maximums, not guarantees
+      of daily opportunities. Index options may
+      result in rapid or total loss of invested premium.
     </p>
 
   </div>
+
 </section>
 
-<!-- ABOUT -->
+<!-- =====================================
+     ABOUT
+===================================== -->
+
 <section class="section about" id="about">
+
   <div class="container about-grid">
 
     <div class="about-copy reveal">
-      <span class="eyebrow">04 / OUR APPROACH</span>
+
+      <span class="eyebrow">
+        04 / OUR APPROACH
+      </span>
+
       <h2 class="large-heading">
         Good research.<br>
-        <span class="accent">Clearer decisions.</span>
+        <span class="accent">
+          Clearer decisions.
+        </span>
       </h2>
+
       <p>
         OptionNeeti focuses on market structure,
         research logic and risk-aware communication.
         Understanding the reason behind a setup is
         more useful than blindly following a trade alert.
       </p>
+
       <p>
-        Index options involve significant risk and may not
-        suit every investor. No recommendation can eliminate
-        uncertainty or guarantee a profitable result.
+        Index options involve significant risk
+        and may not suit every investor.
+        No recommendation can eliminate uncertainty
+        or guarantee a profitable result.
       </p>
-      <a href="/contact" class="btn-primary"
-         style="margin-top:16px">
+
+      <a
+        href="/contact"
+        class="btn-primary"
+        style="margin-top:16px"
+      >
         CONNECT WITH US ↗
       </a>
+
     </div>
 
     <div class="benefit-list">
 
       <div class="motion-slot">
+
         <article class="benefit-card motion-card">
+
           <span>01</span>
+
           <div>
+
             <h3>Defined setup invalidation</h3>
-            <p>Understand when the research thesis
-              may no longer hold.</p>
+
+            <p>
+              Understand when the research
+              thesis may no longer hold.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
       <div class="motion-slot">
+
         <article class="benefit-card motion-card">
+
           <span>02</span>
+
           <div>
+
             <h3>Volatility-aware commentary</h3>
-            <p>Consider expiry, time decay and implied
-              volatility when evaluating options.</p>
+
+            <p>
+              Consider expiry, time decay
+              and implied volatility
+              when evaluating options.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
       <div class="motion-slot">
+
         <article class="benefit-card motion-card">
+
           <span>03</span>
+
           <div>
+
             <h3>Educational research logic</h3>
-            <p>Understand the setup rather than simply
-              receiving an entry number.</p>
+
+            <p>
+              Understand the setup rather
+              than simply receiving
+              an entry number.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
       <div class="motion-slot">
+
         <article class="benefit-card motion-card">
+
           <span>04</span>
+
           <div>
+
             <h3>Control over your account</h3>
-            <p>Research only. No client-fund custody,
-              account management or assured returns.</p>
+
+            <p>
+              Research only.
+              No client-fund custody,
+              account management
+              or assured returns.
+            </p>
+
           </div>
+
         </article>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
-<!-- FAQ -->
+<!-- =====================================
+     FAQ
+===================================== -->
+
 <section class="section faq" id="faq">
+
   <div class="container faq-grid">
 
     <div class="reveal">
-      <span class="eyebrow">05 / QUESTIONS ANSWERED</span>
+
+      <span class="eyebrow">
+        05 / QUESTIONS ANSWERED
+      </span>
+
       <h2 class="large-heading">
         Before you<br>
-        <span class="accent">get started.</span>
+        <span class="accent">
+          get started.
+        </span>
       </h2>
-      <p style="font-size:13px;line-height:1.8;color:#607b85">
+
+      <p style="
+        font-size:13px;
+        line-height:1.8;
+        color:#607b85;
+      ">
         Understand services, fees, disclosures,
-        risk considerations and onboarding requirements.
+        risk considerations and
+        onboarding requirements.
       </p>
+
     </div>
 
     <div class="faq-list reveal">
+
       <details>
-        <summary>Which index options are covered?</summary>
-        <p>Nifty and Bank Nifty are primary areas.
+
+        <summary>
+          Which index options are covered?
+        </summary>
+
+        <p>
+          Nifty and Bank Nifty are primary areas.
           Sensex and selected indices are covered
-          depending on plan and market conditions.</p>
+          depending on plan and market conditions.
+        </p>
+
       </details>
 
       <details>
-        <summary>Will I receive a call every day?</summary>
-        <p>Not necessarily. Each plan specifies the maximum.
-          Some sessions may not produce qualifying setups.</p>
+
+        <summary>
+          Will I receive a call every day?
+        </summary>
+
+        <p>
+          Not necessarily. Each plan specifies
+          the maximum. Some sessions may
+          not produce qualifying setups.
+        </p>
+
       </details>
 
       <details>
-        <summary>How do I access premium Telegram?</summary>
-        <p>Channel access is shared after the applicable
-          onboarding and plan activation.</p>
+
+        <summary>
+          How do I access premium Telegram?
+        </summary>
+
+        <p>
+          Channel access is shared after
+          the applicable onboarding
+          and plan activation.
+        </p>
+
       </details>
 
       <details>
-        <summary>What are the risks of BTST options?</summary>
-        <p>Overnight gaps, premium decay and changes in
-          volatility can cause rapid and substantial losses.</p>
+
+        <summary>
+          What are the risks of BTST options?
+        </summary>
+
+        <p>
+          Overnight gaps, premium decay
+          and changes in volatility can
+          cause rapid and substantial losses.
+        </p>
+
       </details>
 
       <details>
-        <summary>Are profits or accuracy guaranteed?</summary>
-        <p>No. SEBI registration or NISM certification
-          does not guarantee performance or returns.</p>
+
+        <summary>
+          Are profits or accuracy guaranteed?
+        </summary>
+
+        <p>
+          No. SEBI registration or NISM certification
+          does not guarantee performance or returns.
+        </p>
+
       </details>
 
       <details>
-        <summary>Do you manage trading accounts?</summary>
-        <p>No. Research and recommendations are provided.
-          Clients independently make trading decisions.</p>
+
+        <summary>
+          Do you manage trading accounts?
+        </summary>
+
+        <p>
+          No. Research and recommendations
+          are provided. Clients independently
+          make trading decisions.
+        </p>
+
       </details>
 
       <details>
-        <summary>Where can I get plan fees?</summary>
-        <p>Contact the research desk for subscription charges,
-          taxes, terms and applicable policies.</p>
+
+        <summary>
+          Where can I get plan fees?
+        </summary>
+
+        <p>
+          Contact the research desk
+          for subscription charges,
+          taxes, terms and applicable policies.
+        </p>
+
       </details>
+
     </div>
 
   </div>
+
 </section>
 
-<!-- FINAL CTA -->
+<!-- =====================================
+     FINAL CTA
+===================================== -->
+
 <section class="container">
+
   <div class="final-cta reveal">
+
     <div>
-      <h2>Clarity starts<br>with a conversation.</h2>
+
+      <h2>
+        Clarity starts<br>
+        with a conversation.
+      </h2>
+
       <p>
         Understand index options research coverage,
-        premium alerts, subscription terms and disclosures.
+        premium alerts, subscription terms
+        and disclosures.
       </p>
+
     </div>
+
     <a href="/contact" class="btn-primary">
       GET RESEARCH DETAILS ↗
     </a>
+
   </div>
+
 </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- =====================================
+     FOOTER
+===================================== -->
+
 <footer class="footer" id="disclaimer">
 
   <div class="container footer-grid">
+
+    <!-- BRAND -->
+
     <div>
+
       <a href="/" class="footer-logo-wrap">
-        <img src="logo.png" class="footer-logo" alt="Sarvneeti">
+
+        <img
+          src="logo.png"
+          class="footer-logo"
+          alt="Sarvneeti"
+        >
+
       </a>
-      <div class="footer-name">Sarvneeti · OptionNeeti</div>
+
+      <div class="footer-name">
+        Sarvneeti · OptionNeeti
+      </div>
+
       <p>
         Research-based index options coverage for
         Nifty, Bank Nifty and Sensex.
         Intraday and BTST setups, research levels,
         risk commentary and educational insights.
       </p>
+
     </div>
 
+    <!-- QUICK LINKS -->
+
     <div>
+
       <h3>Quick Links</h3>
+
       <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#plans">Pricing</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#disclaimer">Disclaimer</a></li>
-        <li><a href="/contact">Contact</a></li>
+
+        <li>
+          <a href="#services">Services</a>
+        </li>
+
+        <li>
+          <a href="#plans">Pricing</a>
+        </li>
+
+        <li>
+          <a href="#about">About Us</a>
+        </li>
+
+        <li>
+          <a href="#faq">FAQ</a>
+        </li>
+
+        <li>
+          <a href="#disclaimer">Disclaimer</a>
+        </li>
+
+        <li>
+          <a href="/contact">Contact</a>
+        </li>
+
       </ul>
+
     </div>
 
+    <!-- CONTACT -->
+
     <div>
+
       <h3>Contact Us</h3>
+
       <ul>
-        <li><a href="/contact">Sarvneeti research desk</a></li>
-        <li>Research channel access after onboarding</li>
+
+        <li>
+          <a href="/contact">
+            Sarvneeti research desk
+          </a>
+        </li>
+
+        <li>
+          Research channel access
+          after onboarding
+        </li>
+
         <li>Monday – Saturday</li>
+
         <li>9:00 AM – 6:00 PM</li>
+
       </ul>
+
     </div>
 
+    <!-- LEGAL LINKS -->
+
     <div>
-      <h3>Legal & Policy</h3>
+
+      <h3>Legal &amp; Policy</h3>
+
       <ul>
-        <li><a href="/legal/disclaimer.html">Disclaimer</a></li>
-        <li><a href="/legal/disclosure.pdf">Disclosure</a></li>
-        <li><a href="/legal/investor-charter.pdf">Investor Charter</a></li>
-        <li><a href="/legal/terms-and-conditions.html">Terms & Conditions</a></li>
-        <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="/legal/grievance-redressal.html">Grievance Redressal</a></li>
-        <li><a href="/legal/complaints.html">Complaints</a></li>
-        <li><a href="/contact">Contact</a></li>
+
+        <li>
+          <a href="/legal/disclaimer.html">
+            Disclaimer
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/disclosure.pdf">
+            Disclosure
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/investor-charter.pdf">
+            Investor Charter
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/terms-and-conditions.html">
+            Terms &amp; Conditions
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/privacy-policy.html">
+            Privacy Policy
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/grievance-redressal.html">
+            Grievance Redressal
+          </a>
+        </li>
+
+        <li>
+          <a href="/legal/complaints.html">
+            Complaints
+          </a>
+        </li>
+
+        <li>
+          <a href="/contact">Contact</a>
+        </li>
+
       </ul>
+
     </div>
+
   </div>
+
+  <!-- DISCLAIMERS -->
 
   <div class="container footer-legal">
-    <p><strong>Disclaimer:</strong>
-      Registration granted by SEBI and certification from NISM
-      in no way guarantee performance of the intermediary
-      or provide any assurance of returns to investors.</p>
 
-    <p><strong>Illustrative content:</strong>
-      Securities, index levels and market visuals, if any,
-      are illustrative and are not live recommendations or
-      verified performance records.</p>
+    <p>
+      <strong>Disclaimer:</strong>
+      Registration granted by SEBI and certification
+      from NISM in no way guarantee performance
+      of the intermediary or provide any assurance
+      of returns to investors.
+    </p>
 
-    <p><strong>Standard warning:</strong>
-      Investment in securities market are subject to market risks.
-      Read all the related documents carefully before investing.</p>
+    <p>
+      <strong>Illustrative content:</strong>
+      Securities, index levels and market visuals,
+      if any, are illustrative and are not live
+      recommendations or verified performance records.
+    </p>
 
-    <p><strong>Mandatory notice:</strong>
-      Clients shall be requested to go through Do's and Don'ts
-      while dealing with RA as specified in SEBI master circular
-      no. SEBI/HO/MIRSD-POD-1/P/CIR/2024/49 dated May 21, 2024
-      or as may be specified by SEBI from time to time.</p>
+    <p>
+      <strong>Standard warning:</strong>
+      Investment in securities market are subject
+      to market risks. Read all the related documents
+      carefully before investing.
+    </p>
+
+    <p>
+      <strong>Mandatory notice:</strong>
+      Clients shall be requested to go through
+      Do's and Don'ts while dealing with RA
+      as specified in SEBI master circular no.
+      SEBI/HO/MIRSD-POD-1/P/CIR/2024/49
+      dated May 21, 2024 or as may be
+      specified by SEBI from time to time.
+    </p>
+
   </div>
+
+  <!-- RESEARCH ANALYST DETAILS -->
 
   <div class="container reg-details">
+
     <div>
-      <h3>SEBI Registered Research Analyst Details</h3>
-      <p><strong>Registered Name / Owner:</strong> Amit Kori</p>
-      <p><strong>Registration Type:</strong> Individual</p>
-      <p><strong>Registration Number:</strong> INH000016533</p>
-      <p><strong>Validity:</strong> November 22, 2027</p>
+
+      <h3>
+        SEBI Registered Research Analyst Details
+      </h3>
+
+      <p>
+        <strong>Registered Name / Owner:</strong>
+        Amit Kori
+      </p>
+
+      <p>
+        <strong>Registration Type:</strong>
+        Individual
+      </p>
+
+      <p>
+        <strong>Registration Number:</strong>
+        INH000016533
+      </p>
+
+      <p>
+        <strong>Validity:</strong>
+        November 22, 2027
+      </p>
+
     </div>
+
     <div>
-      <h3>Nearest SEBI Office Address</h3>
-      <p>SEBI Bhavan BKC, Plot No. C4-A, 'G' Block,
-        Bandra-Kurla Complex, Bandra (East),
-        Mumbai – 400051, Maharashtra, India.</p>
+
+      <h3>
+        Nearest SEBI Office Address
+      </h3>
+
+      <p>
+        SEBI Bhavan BKC,
+        Plot No. C4-A, 'G' Block,
+        Bandra-Kurla Complex,
+        Bandra (East),
+        Mumbai – 400051,
+        Maharashtra, India.
+      </p>
+
     </div>
+
   </div>
 
+  <!-- COPYRIGHT -->
+
   <div class="container copyright">
-    <span>© <span id="year">2026</span>
-      Sarvneeti · OptionNeeti. All Rights Reserved.</span>
-    <span>Research recommendations only ·
-      <a href="/contact">Contact the research desk ↗</a></span>
+
+    <span>
+      © <span id="year">2026</span>
+      Sarvneeti · OptionNeeti.
+      All Rights Reserved.
+    </span>
+
+    <span>
+      Research recommendations only ·
+      <a href="/contact">
+        Contact the research desk ↗
+      </a>
+    </span>
+
   </div>
 
 </footer>
 
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
 <script>
+
 (() => {
+
   "use strict";
 
-  const $ = selector => document.querySelector(selector);
+  const $ = selector =>
+    document.querySelector(selector);
+
   const reduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  /* VIDEO PRELOADER */
+  /* ===================================
+     VIDEO LOADER
+  =================================== */
+
   const loader = $("#loader");
+
   const video = $("#heroVideo");
+
   const skip = $("#skipLoad");
+
   const visual = $("#heroVisual");
+
   let ready = false;
 
   function openSite() {
+
     if (ready) return;
+
     ready = true;
+
     loader.classList.add("hide");
+
     document.body.classList.remove("loading");
+
     if (video && video.readyState >= 2) {
+
       video.play().catch(() => {});
+
     }
+
   }
 
   if (video) {
-    video.muted = true;
-    video.defaultMuted = true;
-    video.volume = 0;
-    video.addEventListener("loadeddata", openSite, {once:true});
-    video.addEventListener("canplay", openSite, {once:true});
-    video.addEventListener("error", () => {
-      visual.classList.add("video-error");
-      openSite();
-    }, {once:true});
 
-    if (video.readyState >= 2) openSite();
-    else video.load();
+    video.muted = true;
+
+    video.defaultMuted = true;
+
+    video.volume = 0;
+
+    video.addEventListener(
+      "loadeddata",
+      openSite,
+      { once: true }
+    );
+
+    video.addEventListener(
+      "canplay",
+      openSite,
+      { once: true }
+    );
+
+    video.addEventListener(
+      "error",
+      () => {
+
+        visual.classList.add("video-error");
+
+        openSite();
+
+      },
+      { once: true }
+    );
+
+    if (video.readyState >= 2) {
+
+      openSite();
+
+    } else {
+
+      video.load();
+
+    }
+
   } else {
+
     openSite();
+
   }
 
-  setTimeout(() => skip.classList.add("visible"), 3200);
-  setTimeout(openSite, 8000);
-  skip.addEventListener("click", openSite);
+  /* Offer manual skip for slow connections */
 
-  /* ROTATING HERO WORDS */
-  const words = ["clarity.", "discipline.", "precision.", "confidence."];
+  setTimeout(() => {
+
+    if (!ready) {
+      skip.classList.add("visible");
+    }
+
+  }, 3200);
+
+  /* Avoid infinite loading */
+
+  setTimeout(openSite, 8000);
+
+  skip.addEventListener(
+    "click",
+    openSite
+  );
+
+  /* ===================================
+     HERO WORD ANIMATION
+  =================================== */
+
+  const words = [
+    "clarity.",
+    "discipline.",
+    "precision.",
+    "confidence."
+  ];
+
   const word = $("#animatedWord");
+
   let wordIndex = 0;
 
   if (!reduced) {
+
     setInterval(() => {
+
       word.classList.add("changing");
+
       setTimeout(() => {
-        wordIndex = (wordIndex + 1) % words.length;
+
+        wordIndex =
+          (wordIndex + 1) % words.length;
+
         word.textContent = words[wordIndex];
+
         word.classList.remove("changing");
+
       }, 300);
+
     }, 3400);
+
   }
 
-  /* MOBILE MENU */
+  /* ===================================
+     MOBILE MENU
+  =================================== */
+
   const menu = $("#menuButton");
+
   const links = $("#navLinks");
 
   menu.addEventListener("click", () => {
-    const shown = links.classList.toggle("open");
-    menu.textContent = shown ? "✕" : "☰";
-    menu.setAttribute("aria-expanded", String(shown));
+
+    const shown =
+      links.classList.toggle("open");
+
+    menu.textContent =
+      shown ? "✕" : "☰";
+
+    menu.setAttribute(
+      "aria-expanded",
+      String(shown)
+    );
+
   });
 
   links.querySelectorAll("a").forEach(link => {
+
     link.addEventListener("click", () => {
+
       links.classList.remove("open");
+
       menu.textContent = "☰";
-      menu.setAttribute("aria-expanded", "false");
+
+      menu.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
     });
+
   });
 
-  /* SECTION HEADINGS */
-  if (!reduced && "IntersectionObserver" in window) {
-    document.documentElement.classList.add("js-motion");
+  /* ===================================
+     REVEAL SECTION HEADINGS
+  =================================== */
 
-    const titleObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          titleObserver.unobserve(entry.target);
-        }
-      });
-    }, {threshold:.08});
+  const hasObserver =
+    "IntersectionObserver" in window;
 
-    document.querySelectorAll(".reveal").forEach(
-      node => titleObserver.observe(node)
+  if (!reduced && hasObserver) {
+
+    document.documentElement.classList.add(
+      "js-motion"
     );
+
+    const titleObserver =
+      new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add(
+              "visible"
+            );
+
+            titleObserver.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      }, {
+        threshold: .08
+      });
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(node => {
+
+        titleObserver.observe(node);
+
+      });
+
   }
 
-  /* STAGGERED 3D CARD ENTRANCES */
-  const slots = [...document.querySelectorAll(".motion-slot")];
+  /* ===================================
+     STAGGERED 3D CARD ANIMATIONS
+  =================================== */
+
+  const slots = [
+    ...document.querySelectorAll(
+      ".motion-slot"
+    )
+  ];
 
   function initializeCards() {
+
     const width = window.innerWidth;
 
     slots.forEach(slot => {
+
       const parent = slot.parentElement;
-      const siblings = [...parent.children];
-      const index = siblings.indexOf(slot);
+
+      const siblings = [
+        ...parent.children
+      ];
+
+      const index =
+        siblings.indexOf(slot);
 
       let columns = 1;
 
-      if (parent.matches(".service-grid")) {
-        columns = width > 850 ? 3 : width > 540 ? 2 : 1;
-      } else if (parent.matches(".plans-grid")) {
-        columns = width > 850 ? 3 : 1;
+      if (
+        parent.matches(".service-grid")
+      ) {
+
+        columns =
+          width > 850
+            ? 3
+            : width > 540
+              ? 2
+              : 1;
+
+      } else if (
+        parent.matches(".plans-grid")
+      ) {
+
+        columns =
+          width > 850 ? 3 : 1;
+
       }
 
-      const column = index % columns;
-      const side = index % 2 === 0 ? -1 : 1;
+      const column =
+        index % columns;
 
-      slot.style.setProperty("--delay", `${column * 180}ms`);
-      slot.style.setProperty("--from-x", `${side * 45}px`);
-      slot.style.setProperty("--from-ry", `${side * 8}deg`);
+      const side =
+        index % 2 === 0 ? -1 : 1;
+
+      slot.style.setProperty(
+        "--delay",
+        `${column * 180}ms`
+      );
+
+      slot.style.setProperty(
+        "--from-x",
+        `${side * 45}px`
+      );
+
+      slot.style.setProperty(
+        "--from-ry",
+        `${side * 8}deg`
+      );
+
     });
+
   }
 
   initializeCards();
 
-  if (!reduced && "IntersectionObserver" in window) {
-    const cardObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("arrived");
-          cardObserver.unobserve(entry.target);
-        }
+  if (!reduced && hasObserver) {
+
+    const cardObserver =
+      new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add(
+              "arrived"
+            );
+
+            cardObserver.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      }, {
+
+        threshold: .10,
+
+        rootMargin:
+          "0px 0px -4% 0px"
+
       });
-    }, {
-      threshold:.10,
-      rootMargin:"0px 0px -4% 0px"
+
+    slots.forEach(slot => {
+
+      cardObserver.observe(slot);
+
     });
 
-    slots.forEach(slot => cardObserver.observe(slot));
   } else {
-    slots.forEach(slot => slot.classList.add("arrived"));
+
+    slots.forEach(slot => {
+
+      slot.classList.add("arrived");
+
+    });
+
   }
 
-  /* NAVBAR AND SCROLL PROGRESS */
+  /* ===================================
+     HEADER + SCROLL PROGRESS
+  =================================== */
+
   const header = $("#siteHeader");
+
   const progress = $("#scrollProgress");
+
   let scrollPending = false;
 
   function updateScroll() {
+
     scrollPending = false;
 
     const y = window.scrollY;
+
     const max = Math.max(
       1,
-      document.documentElement.scrollHeight - window.innerHeight
+
+      document.documentElement.scrollHeight -
+      window.innerHeight
     );
 
-    header.classList.toggle("scrolled", y > 70);
-    progress.style.width = `${Math.min(100, y / max * 100)}%`;
+    header.classList.toggle(
+      "scrolled",
+      y > 70
+    );
+
+    progress.style.width =
+      `${Math.min(100, y / max * 100)}%`;
+
   }
 
-  window.addEventListener("scroll", () => {
-    if (!scrollPending) {
-      scrollPending = true;
-      requestAnimationFrame(updateScroll);
-    }
-  }, {passive:true});
+  window.addEventListener(
+    "scroll",
+    () => {
 
-  window.addEventListener("resize", () => {
-    initializeCards();
-    requestAnimationFrame(updateScroll);
-  }, {passive:true});
+      if (!scrollPending) {
+
+        scrollPending = true;
+
+        requestAnimationFrame(
+          updateScroll
+        );
+
+      }
+
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      initializeCards();
+
+      requestAnimationFrame(
+        updateScroll
+      );
+
+    },
+    { passive: true }
+  );
 
   updateScroll();
 
-  /* PAUSE VIDEO OUTSIDE VIEWPORT */
-  if (video && "IntersectionObserver" in window) {
-    const videoObserver = new IntersectionObserver(entries => {
-      if (!ready) return;
+  /* ===================================
+     PAUSE VIDEO WHEN OUT OF VIEW
+  =================================== */
 
-      if (entries[0].isIntersecting) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    }, {threshold:.03});
+  if (video && hasObserver) {
+
+    const videoObserver =
+      new IntersectionObserver(entries => {
+
+        if (!ready) return;
+
+        if (entries[0].isIntersecting) {
+
+          video.play().catch(() => {});
+
+        } else {
+
+          video.pause();
+
+        }
+
+      }, {
+
+        threshold: .03
+
+      });
 
     videoObserver.observe(video);
+
   }
 
-  /* YEAR */
-  $("#year").textContent = new Date().getFullYear();
+  /* ===================================
+     FOOTER YEAR
+  =================================== */
+
+  $("#year").textContent =
+    new Date().getFullYear();
 
 })();
+
 </script>
+
 </body>
 </html>
