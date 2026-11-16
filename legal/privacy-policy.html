@@ -1,0 +1,2966 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<title>Privacy Policy | Sarvneeti</title>
+<meta name="description" content="Learn how Sarvneeti collects, uses, protects, shares and manages personal information submitted through its website and research services.">
+<link rel="canonical" href="https://sarvneeti.com/legal/privacy-policy.html">
+<link rel="icon" type="image/png" href="../fevicon.png">
+
+<style>
+/* =========================================
+   SARVNEETI DESIGN SYSTEM
+========================================= */
+
+:root{
+  --navy:#123b48;
+  --deep:#126479;
+  --teal:#1997a6;
+  --aqua:#79ccd0;
+  --coral:#fc624e;
+  --muted:#617d87;
+  --line:#d8e9ec;
+  --bluebg:#e9f6f7;
+  --peach:#fff4ee;
+  --white:#ffffff;
+  --max:1250px;
+}
+
+*,*::before,*::after{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:115px;
+}
+
+body{
+  margin:0;
+  background:#fff;
+  color:var(--navy);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,
+  "Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+.container{
+  width:min(var(--max),calc(100% - 52px));
+  margin:auto;
+}
+
+::selection{
+  background:#bde9e9;
+  color:var(--navy);
+}
+
+a:focus-visible,
+button:focus-visible{
+  outline:3px solid var(--teal);
+  outline-offset:4px;
+}
+
+/* =========================================
+   SCROLL PROGRESS
+========================================= */
+
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0;
+  height:3px;
+  z-index:999;
+  background:linear-gradient(
+    90deg,var(--teal),var(--coral)
+  );
+}
+
+/* =========================================
+   FLOATING HEADER
+========================================= */
+
+.site-header{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1450px,calc(100% - 40px));
+  min-height:82px;
+  padding:12px 22px 12px 27px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  z-index:900;
+  background:rgba(255,255,255,.97);
+  border:1px solid #d9e8eb;
+  border-radius:27px;
+  box-shadow:0 15px 45px rgba(24,94,107,.1);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  transition:top .3s,min-height .3s,box-shadow .3s;
+}
+
+.site-header.scrolled{
+  top:9px;
+  min-height:68px;
+  box-shadow:0 9px 28px rgba(24,94,107,.15);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+}
+
+.logo img{
+  display:block;
+  max-height:53px;
+  max-width:205px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.header-links{
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.header-links a{
+  color:#315b66;
+  font-size:13px;
+  font-weight:750;
+  transition:color .25s;
+}
+
+.header-links a:hover{
+  color:var(--teal);
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  min-height:48px;
+  padding:14px 22px;
+  border:0;
+  border-radius:12px;
+  background:var(--coral);
+  color:white;
+  font-size:11px;
+  font-weight:850;
+  transition:transform .3s,background .3s,box-shadow .3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  background:#ed523f;
+  box-shadow:0 12px 27px rgba(252,98,78,.22);
+}
+
+.btn-outline{
+  background:white;
+  color:var(--deep);
+  border:1px solid #bddbdf;
+}
+
+.btn-outline:hover{
+  background:#e9f7f8;
+  color:var(--deep);
+  box-shadow:none;
+}
+
+.menu-button{
+  display:none;
+  width:43px;
+  height:43px;
+  background:#eef8f9;
+  border:1px solid var(--line);
+  border-radius:11px;
+  font-size:21px;
+  color:var(--navy);
+}
+
+/* =========================================
+   SCROLL REVEALS
+========================================= */
+
+.reveal{
+  opacity:1;
+  transform:none;
+}
+
+.js-motion .reveal{
+  transition:
+    opacity .85s ease,
+    transform .9s cubic-bezier(.17,1,.3,1);
+}
+
+.js-motion .reveal:not(.visible){
+  opacity:0;
+  transform:translateY(42px);
+}
+
+.js-motion .reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+.motion-slot{
+  min-width:0;
+  perspective:1300px;
+}
+
+.motion-card{
+  height:100%;
+  transform-origin:center 80%;
+  backface-visibility:hidden;
+  transition:
+    transform .95s cubic-bezier(.17,1,.3,1),
+    opacity .8s ease,
+    filter .8s ease;
+  transition-delay:var(--delay,0ms);
+}
+
+.js-motion .motion-slot:not(.arrived) .motion-card{
+  opacity:0;
+  filter:blur(6px);
+  transform:
+    translate3d(var(--from-x,0px),85px,0)
+    rotateX(11deg)
+    scale(.92);
+}
+
+.js-motion .motion-slot.arrived .motion-card{
+  opacity:1;
+  filter:none;
+  transform:none;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+  position:relative;
+  padding:165px 0 95px;
+  background:white;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:650px;
+  height:650px;
+  top:-270px;
+  right:-250px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,rgba(207,239,241,.7),transparent 73%
+  );
+  pointer-events:none;
+}
+
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  align-items:center;
+  gap:65px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.eyebrow::before{
+  content:"";
+  width:24px;
+  height:2px;
+  background:currentColor;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 16px;
+  margin-bottom:24px;
+  border:1px solid #d0e9e9;
+  border-radius:40px;
+  background:#eaf8f8;
+  color:#207f8d;
+  font-size:11px;
+  font-weight:850;
+}
+
+.hero-badge::before{
+  content:"";
+  width:9px;
+  height:9px;
+  background:var(--teal);
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(25,151,166,.1);
+}
+
+.hero h1{
+  margin:0 0 25px;
+  font-size:clamp(52px,5.8vw,82px);
+  line-height:1.065;
+  font-weight:850;
+  letter-spacing:-.073em;
+}
+
+.gradient-text{
+  display:inline-block;
+  background:linear-gradient(
+    110deg,#168ba3,#5bc7be,#f18b74,#168ba3
+  );
+  background-size:300% 100%;
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+  animation:gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove{
+  to{background-position:300% 0}
+}
+
+.hero-description{
+  max-width:620px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.9;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:29px;
+}
+
+.hero-registration{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-top:34px;
+  padding-top:21px;
+  border-top:1px solid var(--line);
+  color:#6b858e;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.registration-symbol{
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  flex-shrink:0;
+  border:1px solid #b9dddf;
+  border-radius:50%;
+  color:var(--teal);
+  font-weight:900;
+}
+
+.hero-registration strong{
+  color:#305e69;
+}
+
+/* =========================================
+   ANIMATED PRIVACY ILLUSTRATION
+========================================= */
+
+.hero-art{
+  position:relative;
+  min-height:460px;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
+
+.hero-art::before{
+  content:"";
+  position:absolute;
+  width:92%;
+  aspect-ratio:1;
+  background:radial-gradient(
+    circle,
+    rgba(178,232,233,.4),
+    rgba(233,248,249,.2) 60%,
+    transparent 76%
+  );
+  border-radius:50%;
+  z-index:-1;
+  animation:glowPulse 7s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+  50%{
+    transform:scale(1.12);
+    opacity:.65;
+  }
+}
+
+.orbit{
+  position:absolute;
+  width:84%;
+  aspect-ratio:1;
+  border:1px solid #cce7e9;
+  border-radius:50%;
+  transform:rotate(-25deg) scaleY(.66);
+}
+
+.orbit.two{
+  width:107%;
+  border-color:#e1edef;
+  transform:rotate(32deg) scaleY(.66);
+}
+
+.orbit::after{
+  content:"";
+  position:absolute;
+  top:9%;
+  left:19%;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--coral);
+  box-shadow:0 0 0 8px rgba(252,98,78,.09);
+}
+
+.orbit.two::after{
+  top:78%;
+  left:73%;
+  background:var(--teal);
+  box-shadow:0 0 0 8px rgba(25,151,166,.09);
+}
+
+.privacy-panel{
+  position:relative;
+  width:82%;
+  max-width:375px;
+  padding:27px;
+  border:1px solid #d3e7e9;
+  border-radius:27px;
+  background:linear-gradient(145deg,#fff,#edf9fa);
+  box-shadow:0 30px 75px rgba(29,101,115,.15);
+  animation:panelFloat 7s ease-in-out infinite;
+}
+
+@keyframes panelFloat{
+  0%,100%{
+    transform:rotate(-5deg) translateY(0);
+  }
+  50%{
+    transform:rotate(-3deg) translateY(-15px);
+  }
+}
+
+.panel-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding-bottom:20px;
+  border-bottom:1px solid #dcebed;
+}
+
+.panel-label{
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.12em;
+}
+
+.panel-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:#e3f5f5;
+  color:var(--teal);
+}
+
+.panel-icon svg{
+  width:27px;
+  height:27px;
+}
+
+.privacy-panel h3{
+  margin:21px 0 16px;
+  font-size:21px;
+  letter-spacing:-.045em;
+}
+
+.panel-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 12px;
+  margin-top:10px;
+  background:white;
+  border:1px solid #e1edef;
+  border-radius:12px;
+}
+
+.panel-row-icon{
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:32px;
+  height:32px;
+  border-radius:9px;
+  background:#e6f7f7;
+  color:var(--teal);
+  font-weight:900;
+}
+
+.panel-row b{
+  display:block;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.panel-row small{
+  display:block;
+  font-size:10px;
+  color:#748f97;
+}
+
+.floating-chip{
+  position:absolute;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 16px;
+  border:1px solid #d5e8eb;
+  border-radius:15px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 14px 35px rgba(29,97,112,.12);
+  font-size:11px;
+  font-weight:850;
+  animation:chipFloat 6s ease-in-out infinite;
+}
+
+.floating-chip.top{
+  top:12%;
+  right:0;
+}
+
+.floating-chip.bottom{
+  bottom:9%;
+  left:0;
+  animation-delay:-3s;
+}
+
+.floating-chip span{
+  color:var(--teal);
+  font-size:18px;
+}
+
+@keyframes chipFloat{
+  50%{transform:translateY(-12px)}
+}
+
+/* =========================================
+   CURVED RIBBON
+========================================= */
+
+.ticker{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(
+    100deg,#248ca2,#70bec7,#9bcfd0
+  );
+  color:white;
+  border-radius:0 0 46px 46px;
+}
+
+.ticker-track{
+  display:flex;
+  width:max-content;
+  animation:tickerMove 32s linear infinite;
+}
+
+.ticker-group{
+  display:flex;
+  align-items:center;
+  gap:37px;
+  padding:21px 18px;
+  white-space:nowrap;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.14em;
+}
+
+.ticker-group i{
+  color:#ffe6d8;
+  font-style:normal;
+  font-size:17px;
+}
+
+@keyframes tickerMove{
+  to{transform:translateX(-50%)}
+}
+
+/* =========================================
+   COMMON SECTIONS
+========================================= */
+
+.section{
+  padding:86px 0;
+}
+
+.section-header{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:36px;
+}
+
+.section-header h2,
+.large-heading{
+  font-size:clamp(35px,4.4vw,58px);
+  line-height:1.1;
+  letter-spacing:-.065em;
+  margin:15px 0 0;
+}
+
+.section-header p{
+  max-width:430px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+}
+
+.accent{color:var(--teal)}
+
+.blue-section{
+  background:var(--bluebg);
+  border-radius:46px 46px 0 0;
+  overflow-x:clip;
+}
+
+.white-section{
+  background:white;
+  overflow-x:clip;
+}
+
+.peach-section{
+  background:var(--peach);
+  overflow-x:clip;
+}
+
+/* =========================================
+   PRIVACY POLICY LAYOUT
+========================================= */
+
+.policy-layout{
+  display:grid;
+  grid-template-columns:250px minmax(0,1fr);
+  gap:28px;
+  align-items:start;
+}
+
+.policy-nav{
+  position:sticky;
+  top:108px;
+  padding:22px;
+  border:1px solid #d4e7ea;
+  border-radius:20px;
+  background:white;
+}
+
+.policy-nav-title{
+  display:block;
+  margin-bottom:16px;
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.policy-nav-links{
+  display:grid;
+  gap:2px;
+}
+
+.policy-nav a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 8px;
+  border-radius:9px;
+  color:#567682;
+  font-size:12px;
+  font-weight:750;
+  transition:background .25s,color .25s;
+}
+
+.policy-nav a:hover{
+  background:#eef8f9;
+  color:var(--deep);
+}
+
+.policy-nav a span{
+  color:#96b2b8;
+  font-size:10px;
+  font-weight:850;
+}
+
+.policy-content{
+  display:grid;
+  gap:17px;
+  min-width:0;
+}
+
+.policy-card{
+  background:white;
+  border:1px solid #d7e8eb;
+  border-radius:23px;
+  padding:29px;
+  box-shadow:0 9px 25px rgba(23,78,92,.035);
+  scroll-margin-top:120px;
+}
+
+.policy-card:nth-child(even){
+  background:#fbfefe;
+}
+
+.policy-head{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding-bottom:20px;
+  margin-bottom:20px;
+  border-bottom:1px solid #e4eff1;
+}
+
+.policy-icon{
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:47px;
+  height:47px;
+  border-radius:13px;
+  background:#e3f5f5;
+  color:var(--teal);
+  font-size:21px;
+}
+
+.policy-number{
+  display:block;
+  color:var(--teal);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.12em;
+  margin-bottom:7px;
+}
+
+.policy-card h3{
+  margin:0;
+  font-size:21px;
+  letter-spacing:-.045em;
+}
+
+.policy-card p,
+.policy-card li{
+  color:#5d7a84;
+  font-size:13px;
+  line-height:1.9;
+}
+
+.policy-card p{
+  margin:0 0 14px;
+}
+
+.policy-card p:last-child{
+  margin-bottom:0;
+}
+
+.policy-card ul{
+  margin:0 0 15px;
+  padding-left:20px;
+}
+
+.policy-card li{
+  margin:7px 0;
+  padding-left:3px;
+}
+
+.policy-card strong{
+  color:#335d69;
+}
+
+.policy-card a{
+  color:var(--deep);
+  font-weight:800;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* =========================================
+   KEY PRIVACY CARDS
+========================================= */
+
+.privacy-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.privacy-card{
+  min-height:225px;
+  padding:28px;
+  border:1px solid #d7e8eb;
+  border-radius:23px;
+  background:white;
+}
+
+.privacy-grid .motion-slot:nth-child(2) .privacy-card{
+  background:#dff3f1;
+}
+
+.privacy-grid .motion-slot:nth-child(3) .privacy-card{
+  background:#fff0e8;
+}
+
+.privacy-icon{
+  width:47px;
+  height:47px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#e4f6f7;
+  color:var(--teal);
+  font-size:22px;
+  margin-bottom:23px;
+}
+
+.privacy-card h3{
+  font-size:19px;
+  letter-spacing:-.035em;
+  margin:0 0 11px;
+}
+
+.privacy-card p{
+  color:#607d87;
+  font-size:12px;
+  line-height:1.85;
+  margin:0;
+}
+
+/* =========================================
+   NOTICE
+========================================= */
+
+.notice-panel{
+  display:flex;
+  align-items:flex-start;
+  gap:22px;
+  padding:30px 33px;
+  margin-top:25px;
+  border:1px solid #d7e9eb;
+  border-radius:23px;
+  background:#e8f6f7;
+}
+
+.notice-icon{
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:47px;
+  height:47px;
+  border-radius:13px;
+  background:white;
+  color:var(--coral);
+  font-size:23px;
+  font-weight:900;
+}
+
+.notice-panel h3{
+  font-size:16px;
+  margin:0 0 9px;
+}
+
+.notice-panel p{
+  color:#617e87;
+  font-size:12px;
+  line-height:1.85;
+  margin:0;
+}
+
+/* =========================================
+   FINAL CTA
+========================================= */
+
+.final-cta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:35px;
+  padding:43px 47px;
+  border-radius:26px;
+  background:linear-gradient(115deg,#176b82,#70c0c6);
+  color:white;
+}
+
+.final-cta h2{
+  font-size:clamp(29px,3.5vw,45px);
+  line-height:1.12;
+  letter-spacing:-.055em;
+  margin:0 0 12px;
+}
+
+.final-cta p{
+  max-width:610px;
+  color:#e7f9fa;
+  font-size:12px;
+  line-height:1.85;
+  margin:0;
+}
+
+.final-cta .btn{
+  flex-shrink:0;
+}
+
+/* =========================================
+   MATCHING SARVNEETI FOOTER
+========================================= */
+
+.footer{
+  background:#103745;
+  color:#e7f5f6;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
+  gap:40px;
+  padding:62px 0 44px;
+}
+
+.footer-logo-wrap{
+  display:inline-flex;
+  padding:9px 14px;
+  margin-bottom:13px;
+  background:white;
+  border-radius:11px;
+}
+
+.footer-logo{
+  display:block;
+  max-width:160px;
+  max-height:50px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.footer-name{
+  font-size:17px;
+  font-weight:850;
+}
+
+.footer h3{
+  font-size:13px;
+  margin:6px 0 18px;
+}
+
+.footer p,
+.footer li{
+  color:#bfd5dc;
+  font-size:11px;
+  line-height:1.85;
+}
+
+.footer ul{
+  display:grid;
+  gap:10px;
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.footer a:hover{
+  color:#9ce6e4;
+}
+
+.footer strong{
+  color:white;
+}
+
+.footer-legal{
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:27px 0;
+}
+
+.footer-legal p{
+  margin:0 0 11px;
+}
+
+.reg-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  padding:30px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+
+.reg-details p{
+  margin:6px 0;
+}
+
+.copyright{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  padding:25px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+  color:#bfd5dc;
+  font-size:11px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media(max-width:1100px){
+  .container{
+    width:calc(100% - 46px);
+  }
+
+  .header-links{
+    gap:15px;
+  }
+
+  .hero-grid{
+    gap:30px;
+  }
+
+  .policy-layout{
+    grid-template-columns:220px minmax(0,1fr);
+    gap:18px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:850px){
+  .site-header{
+    top:12px;
+    width:calc(100% - 25px);
+    min-height:71px;
+    padding:10px 13px;
+    border-radius:22px;
+  }
+
+  .logo img{
+    max-height:44px;
+    max-width:150px;
+  }
+
+  .menu-button{
+    display:block;
+  }
+
+  .header-links{
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    right:0;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:13px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:white;
+    box-shadow:0 15px 35px rgba(32,87,105,.13);
+  }
+
+  .header-links.open{
+    display:flex;
+  }
+
+  .header-links a{
+    padding:13px 15px;
+  }
+
+  .header-cta{
+    margin-left:auto;
+    min-height:43px;
+    padding:12px 15px;
+    font-size:10px;
+  }
+
+  .hero{
+    padding:139px 0 75px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .hero-art{
+    max-width:520px;
+    width:100%;
+    min-height:420px;
+    margin:auto;
+  }
+
+  .policy-layout{
+    grid-template-columns:1fr;
+  }
+
+  .policy-nav{
+    position:static;
+  }
+
+  .policy-nav-links{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .section{
+    padding:75px 0;
+  }
+
+  .section-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .privacy-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:570px){
+  .container{
+    width:calc(100% - 32px);
+  }
+
+  .site-header{
+    width:calc(100% - 16px);
+    padding:8px;
+    gap:7px;
+  }
+
+  .logo img{
+    max-height:37px;
+    max-width:117px;
+  }
+
+  .header-cta{
+    min-height:39px;
+    padding:10px;
+    font-size:9px;
+  }
+
+  .menu-button{
+    width:39px;
+    height:39px;
+  }
+
+  .hero{
+    padding:116px 0 50px;
+  }
+
+  .hero h1{
+    font-size:clamp(42px,10.8vw,61px);
+  }
+
+  .hero-description{
+    font-size:13px;
+  }
+
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .hero-actions a{
+    width:100%;
+  }
+
+  .hero-art{
+    min-height:340px;
+  }
+
+  .privacy-panel{
+    width:85%;
+    padding:17px;
+  }
+
+  .privacy-panel h3{
+    font-size:17px;
+  }
+
+  .panel-row{
+    padding:11px;
+  }
+
+  .panel-row b{
+    font-size:10px;
+  }
+
+  .panel-row small{
+    font-size:9px;
+  }
+
+  .floating-chip{
+    padding:10px;
+    font-size:9px;
+  }
+
+  .ticker{
+    border-radius:0 0 27px 27px;
+  }
+
+  .blue-section{
+    border-radius:28px 28px 0 0;
+  }
+
+  .section{
+    padding:63px 0;
+  }
+
+  .section-header h2,
+  .large-heading{
+    font-size:clamp(33px,8vw,46px);
+  }
+
+  .policy-nav{
+    padding:16px;
+  }
+
+  .policy-nav-links{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .policy-nav a{
+    font-size:10px;
+    padding:10px 6px;
+  }
+
+  .policy-card{
+    padding:22px 18px;
+  }
+
+  .policy-head{
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .policy-card h3{
+    font-size:18px;
+  }
+
+  .policy-card p,
+  .policy-card li{
+    font-size:12px;
+  }
+
+  .privacy-grid{
+    grid-template-columns:1fr;
+  }
+
+  .privacy-card{
+    min-height:200px;
+  }
+
+  .notice-panel{
+    padding:23px;
+    gap:14px;
+  }
+
+  .final-cta{
+    display:block;
+    padding:30px 25px;
+  }
+
+  .final-cta .btn{
+    width:100%;
+    margin-top:23px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:29px;
+    padding:43px 0;
+  }
+
+  .reg-details{
+    grid-template-columns:1fr;
+  }
+
+  .js-motion .motion-slot:not(.arrived) .motion-card{
+    transform:translateY(55px) scale(.95);
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+
+  .js-motion .reveal,
+  .js-motion .motion-card{
+    opacity:1!important;
+    filter:none!important;
+    transform:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="site-header" id="siteHeader">
+
+  <a href="../" class="logo"
+     aria-label="Sarvneeti homepage">
+    <img src="../logo.png" alt="Sarvneeti">
+  </a>
+
+  <nav class="header-links" id="headerLinks">
+    <a href="../">Home</a>
+    <a href="#privacy-policy">Privacy Policy</a>
+    <a href="#privacy-principles">Privacy Practices</a>
+    <a href="terms-and-conditions.html">Terms</a>
+  </nav>
+
+  <a href="../#contact" class="btn header-cta">
+    CONTACT US ↗
+  </a>
+
+  <button
+    id="menuButton"
+    class="menu-button"
+    type="button"
+    aria-controls="headerLinks"
+    aria-expanded="false"
+    aria-label="Open navigation"
+  >☰</button>
+
+</header>
+
+<main>
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div class="reveal">
+
+      <div class="hero-badge">
+        PRIVACY NOTICE · SARVNEETI
+      </div>
+
+      <h1>
+        Your Privacy.<br>
+        <span class="gradient-text">Our Responsibility.</span>
+      </h1>
+
+      <p class="hero-description">
+        This Privacy Policy explains how Sarvneeti
+        collects, uses, manages, protects and may
+        share personal information provided through
+        our website, research services and related
+        communication channels.
+      </p>
+
+      <div class="hero-actions">
+
+        <a href="#privacy-policy" class="btn">
+          READ PRIVACY POLICY ↗
+        </a>
+
+        <a href="../#contact" class="btn btn-outline">
+          CONTACT US ↓
+        </a>
+
+      </div>
+
+      <div class="hero-registration">
+
+        <span class="registration-symbol">✓</span>
+
+        <span>
+          <strong>SEBI Registered Research Analyst</strong><br>
+          Registration No.: INH000016533<br>
+          Privacy and research-related enquiries
+          can be raised through our official channels.
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- ANIMATED HERO VISUAL -->
+
+    <div class="hero-art" aria-hidden="true">
+
+      <div class="orbit"></div>
+      <div class="orbit two"></div>
+
+      <div class="privacy-panel">
+
+        <div class="panel-top">
+
+          <span class="panel-label">
+            PRIVACY &amp; DATA
+          </span>
+
+          <div class="panel-icon">
+
+            <svg viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="5" y="10" width="14"
+                height="11" rx="2"/>
+              <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+              <path d="M12 14v3"/>
+            </svg>
+
+          </div>
+
+        </div>
+
+        <h3>Our privacy priorities</h3>
+
+        <div class="panel-row">
+          <span class="panel-row-icon">✓</span>
+          <div>
+            <b>Purpose-led collection</b>
+            <small>Information for defined services</small>
+          </div>
+        </div>
+
+        <div class="panel-row">
+          <span class="panel-row-icon">◇</span>
+          <div>
+            <b>Data protection</b>
+            <small>Appropriate security controls</small>
+          </div>
+        </div>
+
+        <div class="panel-row">
+          <span class="panel-row-icon">✦</span>
+          <div>
+            <b>Respect for your choices</b>
+            <small>Requests and communication preferences</small>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="floating-chip top">
+        <span>✦</span> Privacy Awareness
+      </div>
+
+      <div class="floating-chip bottom">
+        <span>◇</span> Data Responsibility
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     CURVED RIBBON
+========================================= -->
+
+<div class="ticker" aria-hidden="true">
+
+  <div class="ticker-track">
+
+    <div class="ticker-group">
+      <span>DATA PRIVACY</span><i>✦</i>
+      <span>SECURE COMMUNICATION</span><i>✦</i>
+      <span>INFORMATION PROTECTION</span><i>✦</i>
+      <span>TRANSPARENCY</span><i>✦</i>
+      <span>YOUR CHOICES</span><i>✦</i>
+    </div>
+
+    <div class="ticker-group">
+      <span>DATA PRIVACY</span><i>✦</i>
+      <span>SECURE COMMUNICATION</span><i>✦</i>
+      <span>INFORMATION PROTECTION</span><i>✦</i>
+      <span>TRANSPARENCY</span><i>✦</i>
+      <span>YOUR CHOICES</span><i>✦</i>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================
+     PRIVACY POLICY CONTENT
+========================================= -->
+
+<section class="section blue-section" id="privacy-policy">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+
+      <div>
+
+        <span class="eyebrow">
+          01 / PRIVACY POLICY
+        </span>
+
+        <h2>
+          How we handle<br>
+          <span class="accent">your information.</span>
+        </h2>
+
+      </div>
+
+      <p>
+        Please review the following information
+        about our collection, use, sharing,
+        protection and management of personal data.
+      </p>
+
+    </div>
+
+    <div class="policy-layout">
+
+      <!-- POLICY NAV -->
+
+      <aside class="policy-nav reveal"
+        aria-label="Privacy policy contents">
+
+        <span class="policy-nav-title">
+          ON THIS PAGE
+        </span>
+
+        <div class="policy-nav-links">
+
+          <a href="#policy-1">
+            <span>01</span> Our Commitment
+          </a>
+
+          <a href="#policy-2">
+            <span>02</span> Information Collected
+          </a>
+
+          <a href="#policy-3">
+            <span>03</span> Use of Information
+          </a>
+
+          <a href="#policy-4">
+            <span>04</span> Data Protection
+          </a>
+
+          <a href="#policy-5">
+            <span>05</span> Communication
+          </a>
+
+          <a href="#policy-6">
+            <span>06</span> Information Sharing
+          </a>
+
+          <a href="#policy-7">
+            <span>07</span> Enquiry Consent
+          </a>
+
+          <a href="#policy-8">
+            <span>08</span> Retention
+          </a>
+
+          <a href="#policy-9">
+            <span>09</span> Your Choices
+          </a>
+
+          <a href="#policy-10">
+            <span>10</span> Third-Party Services
+          </a>
+
+          <a href="#policy-11">
+            <span>11</span> Policy Updates
+          </a>
+
+        </div>
+
+      </aside>
+
+      <!-- PRIVACY POLICY SECTIONS -->
+
+      <div class="policy-content">
+
+        <!-- SECTION 01 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-1">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">◇</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 01
+                </span>
+                <h3>Our Privacy Commitment</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Sarvneeti recognizes the importance
+              of privacy and the responsible handling
+              of personal information.
+            </p>
+
+            <p>
+              We aim to be transparent about the
+              information collected through our
+              website and research-related
+              communication channels, the purposes
+              for which that information is used,
+              and the choices available to individuals.
+            </p>
+
+            <p>
+              Personal information should be handled
+              in accordance with applicable legal
+              requirements and the relevant
+              purposes disclosed to users.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 02 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-2">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">▤</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 02
+                </span>
+                <h3>Information We Collect</h3>
+              </div>
+
+            </div>
+
+            <p>
+              We may collect personal information
+              that you voluntarily provide through
+              our website, enquiry forms, complaint
+              forms, research subscriptions or
+              official communication channels.
+            </p>
+
+            <p>
+              Depending on the interaction, this
+              may include:
+            </p>
+
+            <ul>
+              <li>Full name</li>
+              <li>Email address</li>
+              <li>Contact or mobile number</li>
+              <li>
+                Research service interests
+                and enquiry details
+              </li>
+              <li>
+                Complaint descriptions
+                and follow-up information
+              </li>
+              <li>
+                Subscription and onboarding
+                details where applicable
+              </li>
+              <li>
+                Records of communications
+                relating to our services
+              </li>
+            </ul>
+
+            <p>
+              Additional information may be
+              collected where necessary for
+              applicable regulatory, contractual
+              or lawful operational requirements.
+              Such collection should be explained
+              at the relevant point of collection.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 03 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-3">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">◎</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 03
+                </span>
+                <h3>How We Use Your Information</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Personal information may be used
+              for legitimate and disclosed
+              purposes connected with
+              Sarvneeti's operations.
+            </p>
+
+            <ul>
+              <li>
+                Responding to enquiries and
+                service-related questions
+              </li>
+
+              <li>
+                Providing subscribed research
+                services and relevant updates
+              </li>
+
+              <li>
+                Completing applicable onboarding
+                and account-related procedures
+              </li>
+
+              <li>
+                Handling complaints, support
+                requests and grievance follow-up
+              </li>
+
+              <li>
+                Maintaining records required
+                for legal or regulatory compliance
+              </li>
+
+              <li>
+                Improving service quality
+                and communication processes
+              </li>
+
+              <li>
+                Sending optional promotional
+                communications where permitted
+                by law and supported by the
+                appropriate consent or authority
+              </li>
+            </ul>
+
+            <p>
+              We do not treat an enquiry as
+              permission to use personal data
+              for unrelated purposes.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 04 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-4">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">✓</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 04
+                </span>
+                <h3>Data Accuracy &amp; Protection</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Sarvneeti aims to maintain accurate
+              personal information and take
+              reasonable steps to protect the
+              confidentiality, integrity and
+              availability of data under its control.
+            </p>
+
+            <p>
+              Appropriate safeguards may include
+              restricted access to relevant records,
+              controlled access to service tools,
+              secure account practices and
+              oversight of authorized personnel
+              and service providers.
+            </p>
+
+            <p>
+              No electronic storage, communication
+              or transmission system can be
+              guaranteed to be completely secure.
+            </p>
+
+            <p>
+              Users should avoid submitting
+              passwords, trading PINs, OTPs,
+              security answers or other secret
+              account credentials through
+              website enquiry or complaint forms.
+            </p>
+
+            <p>
+              Where an unauthorized access
+              or data-security incident occurs,
+              applicable legal and regulatory
+              obligations will govern the
+              necessary response.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 05 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-5">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">✉</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 05
+                </span>
+                <h3>Service &amp; Promotional Communication</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Sarvneeti may contact individuals
+              regarding enquiries, subscriptions,
+              support requests, regulatory notices,
+              service updates and other
+              relevant operational matters.
+            </p>
+
+            <p>
+              These communications may take
+              place through appropriate channels,
+              including email, telephone,
+              SMS or WhatsApp.
+            </p>
+
+            <p>
+              Optional promotional communications,
+              newsletters, surveys, new-service
+              announcements or marketing messages
+              will be handled in accordance with
+              applicable consent and
+              telecommunications requirements.
+            </p>
+
+            <p>
+              You may request to stop optional
+              promotional communications through
+              the relevant communication channel
+              or our official contact facility.
+            </p>
+
+            <p>
+              Opting out of promotional communication
+              may not prevent necessary transactional,
+              service-related or legally required
+              notices.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 06 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-6">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">↗</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 06
+                </span>
+                <h3>Sharing of Information</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Personal information may be shared
+              where reasonably necessary for
+              permitted and disclosed purposes
+              or as required by applicable law.
+            </p>
+
+            <p>
+              Depending on the circumstances,
+              recipients may include:
+            </p>
+
+            <ul>
+              <li>
+                Regulatory or governmental
+                authorities where disclosure
+                is lawfully required
+              </li>
+
+              <li>
+                Authorized service providers
+                involved in website hosting,
+                communication or data processing
+              </li>
+
+              <li>
+                Professional service providers
+                where relevant to legitimate
+                operational or legal needs
+              </li>
+
+              <li>
+                Other recipients where you
+                have appropriately authorized
+                the disclosure
+              </li>
+            </ul>
+
+            <p>
+              Sharing should be limited to
+              relevant purposes and subject
+              to applicable confidentiality,
+              security and data-protection
+              obligations.
+            </p>
+
+            <p>
+              We do not treat this Privacy
+              Policy as unrestricted permission
+              to share personal information
+              for unrelated purposes.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 07 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-7">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">⌁</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 07
+                </span>
+                <h3>Enquiry Forms &amp; Contact Consent</h3>
+              </div>
+
+            </div>
+
+            <p>
+              When you submit an enquiry or
+              contact Sarvneeti through an
+              official communication channel,
+              the information you provide may
+              be used to respond to the specific
+              request and undertake relevant
+              follow-up communication.
+            </p>
+
+            <p>
+              This may include contact by email,
+              phone or other relevant channels
+              using the contact details supplied.
+            </p>
+
+            <p>
+              Submission of an enquiry does not
+              automatically constitute blanket
+              consent for promotional calls,
+              unrelated marketing messages
+              or communications inconsistent
+              with applicable DND and
+              telecommunications requirements.
+            </p>
+
+            <p>
+              If a website form is connected to
+              an authorized data-storage service,
+              the submitted information may be
+              processed through that service
+              for the disclosed purpose.
+            </p>
+
+            <p>
+              The collection notice and consent
+              presented alongside each form
+              should be read together with
+              this Privacy Policy.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 08 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-8">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">◷</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 08
+                </span>
+                <h3>Data Retention &amp; Record Management</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Information may be retained for
+              the period reasonably required
+              to fulfil the relevant purpose
+              for which it was collected,
+              including service delivery,
+              complaint handling, lawful
+              operational requirements
+              and regulatory recordkeeping.
+            </p>
+
+            <p>
+              Certain information may need
+              to be retained for periods
+              prescribed by applicable law
+              or regulatory requirements.
+            </p>
+
+            <p>
+              Where information is no longer
+              required for an applicable purpose,
+              its deletion, anonymization
+              or continued preservation
+              will be assessed according
+              to applicable obligations.
+            </p>
+
+            <p>
+              Requests for deletion or
+              correction will be considered
+              subject to identity verification,
+              legal retention obligations
+              and other applicable limitations.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 09 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-9">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">◇</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 09
+                </span>
+                <h3>Your Choices &amp; Privacy Requests</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Individuals may contact
+              Sarvneeti regarding personal
+              information provided through
+              the website or research services.
+            </p>
+
+            <p>
+              Depending on applicable law
+              and the relevant circumstances,
+              requests may concern:
+            </p>
+
+            <ul>
+              <li>
+                Access to information about
+                the processing of personal data
+              </li>
+
+              <li>
+                Correction of inaccurate
+                personal information
+              </li>
+
+              <li>
+                Withdrawal of consent
+                where consent is the
+                relevant lawful basis
+              </li>
+
+              <li>
+                Deletion of data where permitted
+                and not subject to retention obligations
+              </li>
+
+              <li>
+                Communication preferences
+                and related privacy concerns
+              </li>
+            </ul>
+
+            <p>
+              Requests can be initiated through
+              the
+              <a href="../#contact">
+                Sarvneeti Contact section
+              </a>.
+              We may require reasonable
+              verification before acting on
+              requests involving personal information.
+            </p>
+
+            <p>
+              The response process will
+              be governed by applicable
+              laws and the nature
+              of the request.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 10 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-10">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">▣</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 10
+                </span>
+                <h3>Third-Party Services &amp; External Links</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Our website may contain links
+              to third-party websites,
+              regulatory resources and
+              external communication platforms.
+            </p>
+
+            <p>
+              Where authorized third-party
+              services are used for data
+              storage, form processing,
+              hosting or communication,
+              their role should be assessed
+              under the applicable privacy
+              and data-protection requirements.
+            </p>
+
+            <p>
+              Third-party websites may
+              operate under separate
+              privacy policies and terms.
+              Users should review those
+              documents before providing
+              personal information directly
+              to external services.
+            </p>
+
+            <p>
+              If optional analytics,
+              advertising technologies
+              or non-essential cookies
+              are introduced, the applicable
+              notices and choices should
+              be provided before they
+              are used where required.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- SECTION 11 -->
+
+        <div class="motion-slot">
+
+          <article class="policy-card motion-card" id="policy-11">
+
+            <div class="policy-head">
+
+              <span class="policy-icon">↻</span>
+
+              <div>
+                <span class="policy-number">
+                  SECTION 11
+                </span>
+                <h3>Policy Updates &amp; Our Commitment</h3>
+              </div>
+
+            </div>
+
+            <p>
+              Sarvneeti may revise this
+              Privacy Policy to reflect
+              changes in services, data
+              processing practices,
+              operational requirements
+              or applicable laws.
+            </p>
+
+            <p>
+              Material changes requiring
+              particular notice or consent
+              will be handled according
+              to applicable requirements.
+            </p>
+
+            <p>
+              Users are encouraged to
+              review the currently published
+              version of this policy
+              when using the website
+              or research services.
+            </p>
+
+            <p>
+              We value the trust of our
+              visitors and clients and
+              aim to maintain responsible,
+              transparent handling of
+              their personal information.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     PRIVACY PRINCIPLES
+========================================= -->
+
+<section class="section white-section"
+  id="privacy-principles">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+
+      <div>
+
+        <span class="eyebrow">
+          02 / OUR PRIVACY APPROACH
+        </span>
+
+        <h2>
+          Responsible data.<br>
+          <span class="accent">Clearer practices.</span>
+        </h2>
+
+      </div>
+
+      <p>
+        Our privacy approach emphasizes
+        clarity about data collection,
+        appropriate safeguards and
+        respect for lawful user choices.
+      </p>
+
+    </div>
+
+    <div class="privacy-grid">
+
+      <div class="motion-slot">
+
+        <article class="privacy-card motion-card">
+
+          <span class="privacy-icon">◇</span>
+
+          <h3>Purpose-Led Information</h3>
+
+          <p>
+            Personal details should be
+            collected and used for defined,
+            disclosed and lawful purposes.
+          </p>
+
+        </article>
+
+      </div>
+
+      <div class="motion-slot">
+
+        <article class="privacy-card motion-card">
+
+          <span class="privacy-icon">✓</span>
+
+          <h3>Appropriate Protection</h3>
+
+          <p>
+            Relevant technical and
+            organizational safeguards
+            support responsible data handling.
+          </p>
+
+        </article>
+
+      </div>
+
+      <div class="motion-slot">
+
+        <article class="privacy-card motion-card">
+
+          <span class="privacy-icon">✦</span>
+
+          <h3>Respect for Your Choices</h3>
+
+          <p>
+            Privacy requests and
+            communication preferences
+            should be addressed in
+            accordance with applicable law.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+    <div class="notice-panel reveal">
+
+      <span class="notice-icon">!</span>
+
+      <div>
+
+        <h3>Important Information Security Reminder</h3>
+
+        <p>
+          Sarvneeti's website contact and
+          complaint forms should not be
+          used to share trading passwords,
+          demat credentials, OTPs, PINs
+          or confidential account access
+          details. Report any suspicious
+          request through official channels.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     PRIVACY ENQUIRY CTA
+========================================= -->
+
+<section class="section peach-section">
+
+  <div class="container">
+
+    <div class="final-cta reveal">
+
+      <div>
+
+        <h2>
+          Questions about<br>
+          your personal information?
+        </h2>
+
+        <p>
+          Contact Sarvneeti to raise
+          a privacy-related enquiry,
+          request information about
+          data handling or discuss
+          a concern relating to
+          your personal details.
+        </p>
+
+      </div>
+
+      <a href="../#contact" class="btn">
+        CONTACT US ↗
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- =========================================
+     SARVNEETI FOOTER
+========================================= -->
+
+<footer class="footer" id="footer">
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+
+    <div>
+
+      <a href="../" class="footer-logo-wrap">
+
+        <img
+          src="../logo.png"
+          class="footer-logo"
+          alt="Sarvneeti"
+        >
+
+      </a>
+
+      <div class="footer-name">Sarvneeti</div>
+
+      <p>
+        SEBI registered research analyst
+        services focused on equity
+        and options research,
+        market insights,
+        risk-aware analysis and
+        financial market education.
+      </p>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+
+    <div>
+
+      <h3>Quick Links</h3>
+
+      <ul>
+
+        <li>
+          <a href="../">Home</a>
+        </li>
+
+        <li>
+          <a href="../#services">Services</a>
+        </li>
+
+        <li>
+          <a href="../#about">About Us</a>
+        </li>
+
+        <li>
+          <a href="../#contact">Contact</a>
+        </li>
+
+        <li>
+          <a href="#privacy-policy">
+            Privacy Policy
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- CONTACT -->
+
+    <div>
+
+      <h3>Contact Us</h3>
+
+      <ul>
+
+        <li>
+          <a href="../#contact">
+            Sarvneeti Research Desk
+          </a>
+        </li>
+
+        <li>Monday – Saturday</li>
+
+        <li>9:00 AM – 6:00 PM IST</li>
+
+        <li>
+          <a href="complaints.html">
+            Submit a Complaint
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- LEGAL -->
+
+    <div>
+
+      <h3>Legal &amp; Policy</h3>
+
+      <ul>
+
+        <li>
+          <a href="disclaimer.html">
+            Disclaimer
+          </a>
+        </li>
+
+        <li>
+          <a href="disclosure.pdf">
+            Disclosure
+          </a>
+        </li>
+
+        <li>
+          <a href="investor-charter.pdf">
+            Investor Charter
+          </a>
+        </li>
+
+        <li>
+          <a href="terms-and-conditions.html">
+            Terms &amp; Conditions
+          </a>
+        </li>
+
+        <li>
+          <a href="privacy-policy.html"
+            aria-current="page">
+            Privacy Policy
+          </a>
+        </li>
+
+        <li>
+          <a href="grievance-redressal.html">
+            Grievance Redressal
+          </a>
+        </li>
+
+        <li>
+          <a href="complaints.html">
+            Complaints
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- REGULATORY NOTICES -->
+
+  <div class="container footer-legal">
+
+    <p>
+      <strong>Disclaimer:</strong>
+      Registration granted by SEBI
+      and certification from NISM
+      in no way guarantee performance
+      of the intermediary or provide
+      any assurance of returns
+      to investors.
+    </p>
+
+    <p>
+      <strong>Illustrative Content:</strong>
+      Securities quoted or displayed,
+      if any, are for illustration
+      only and are not recommendatory
+      solely by virtue of display.
+    </p>
+
+    <p>
+      <strong>Standard Warning:</strong>
+      Investment in securities market
+      are subject to market risks.
+      Read all the related documents
+      carefully before investing.
+    </p>
+
+    <p>
+      <strong>Mandatory Notice:</strong>
+      Clients should review the
+      applicable Do's and Don'ts
+      while dealing with Research
+      Analysts, as specified by
+      SEBI from time to time.
+    </p>
+
+  </div>
+
+  <!-- RESEARCH ANALYST DETAILS -->
+
+  <div class="container reg-details">
+
+    <div>
+
+      <h3>
+        SEBI Registered Research Analyst Details
+      </h3>
+
+      <p>
+        <strong>Registered Name / Owner:</strong>
+        Amit Kori
+      </p>
+
+      <p>
+        <strong>Registration Type:</strong>
+        Individual
+      </p>
+
+      <p>
+        <strong>Registration Number:</strong>
+        INH000016533
+      </p>
+
+      <p>
+        <strong>Validity:</strong>
+        November 22, 2027
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>
+        Nearest SEBI Office Address
+      </h3>
+
+      <p>
+        SEBI Bhavan BKC, Plot No. C4-A,
+        'G' Block, Bandra-Kurla Complex,
+        Bandra (East), Mumbai – 400051,
+        Maharashtra, India.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+
+  <div class="container copyright">
+
+    <span>
+      © <span id="year">2026</span>
+      Sarvneeti. All Rights Reserved.
+    </span>
+
+    <span>
+      Privacy &amp; Research Information ·
+      <a href="../#contact">Contact Us ↗</a>
+    </span>
+
+  </div>
+
+</footer>
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = selector =>
+    document.querySelector(selector);
+
+  const reduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const hasObserver =
+    "IntersectionObserver" in window;
+
+  /* MOBILE HEADER */
+
+  const menu = $("#menuButton");
+  const links = $("#headerLinks");
+
+  menu.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+
+    menu.textContent = open ? "✕" : "☰";
+
+    menu.setAttribute(
+      "aria-expanded",
+      String(open)
+    );
+
+    menu.setAttribute(
+      "aria-label",
+      open ? "Close navigation" : "Open navigation"
+    );
+  });
+
+  links.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      links.classList.remove("open");
+      menu.textContent = "☰";
+      menu.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  /* SCROLL REVEAL */
+
+  if (!reduced && hasObserver) {
+    document.documentElement.classList.add("js-motion");
+
+    const revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold:.07,
+        rootMargin:"0px 0px -4% 0px"
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    /* STAGGERED CARD ANIMATIONS */
+
+    const slots = [
+      ...document.querySelectorAll(".motion-slot")
+    ];
+
+    function configureCards() {
+      slots.forEach(slot => {
+        const parent = slot.parentElement;
+        const index = [...parent.children].indexOf(slot);
+
+        let columns = 1;
+
+        if (parent.matches(".privacy-grid")) {
+          columns = window.innerWidth > 1100 ? 3 :
+            window.innerWidth > 570 ? 2 : 1;
+        }
+
+        slot.style.setProperty(
+          "--delay",
+          `${(index % columns) * 160}ms`
+        );
+
+        slot.style.setProperty(
+          "--from-x",
+          `${index % 2 === 0 ? -30 : 30}px`
+        );
+      });
+    }
+
+    configureCards();
+
+    window.addEventListener(
+      "resize",
+      configureCards,
+      {passive:true}
+    );
+
+    const cardObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("arrived");
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold:.06,
+        rootMargin:"0px 0px -4% 0px"
+      }
+    );
+
+    slots.forEach(el => {
+      cardObserver.observe(el);
+    });
+  }
+
+  /* HEADER + SCROLL INDICATOR */
+
+  const header = $("#siteHeader");
+  const progress = $("#scrollProgress");
+
+  let pending = false;
+
+  function updateScroll() {
+    pending = false;
+
+    const y = window.scrollY;
+
+    const max = Math.max(
+      1,
+      document.documentElement.scrollHeight -
+      window.innerHeight
+    );
+
+    header.classList.toggle(
+      "scrolled",
+      y > 65
+    );
+
+    progress.style.width =
+      `${Math.min(100,(y/max)*100)}%`;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!pending) {
+      pending = true;
+      requestAnimationFrame(updateScroll);
+    }
+  }, {passive:true});
+
+  updateScroll();
+
+  /* FOOTER YEAR */
+
+  $("#year").textContent =
+    new Date().getFullYear();
+
+})();
+</script>
+
+</body>
+</html>
