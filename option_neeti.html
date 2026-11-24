@@ -10,7 +10,9 @@
 <meta name="description"
 content="OptionNeeti. Research-based intraday and BTST index options setups for Nifty, Bank Nifty and Sensex. Explore our research plans.">
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23168ba3%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fc624e%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23123b48%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2219%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%228%22%2F%3E%3Cpath%20d%3D%22M32%2017v30%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Crect%20x%3D%2227%22%20y%3D%2225%22%20width%3D%2210%22%20height%3D%2214%22%20rx%3D%222%22%20fill%3D%22%2379ccd0%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/png" href="/fevicon.png">
+<link rel="shortcut icon" type="image/png" href="/fevicon.png">
+<link rel="apple-touch-icon" href="/fevicon.png">
 
 <style>
 /* =====================================
@@ -841,6 +843,7 @@ summary:focus-visible {
 .pricing {
   background:#fff8f3;
   padding:65px 0 70px;
+  border-radius:48px 48px 0 0;
 }
 
 .pricing .section-header {
@@ -1560,42 +1563,43 @@ summary:focus-visible {
   }
 }
 
-/* OPTIONNEETI — ANIMATED TEXT WORDMARK */
-.brand-wordmark {
-  display:inline-block;
-  white-space:nowrap;
-  font-size:clamp(25px,3vw,38px);
-  font-weight:900;
-  letter-spacing:-.075em;
-  line-height:1.18;
-  color:#168ba3;
-  background:linear-gradient(
-    105deg,#126479 0%,#1997a6 22%,#52c5b9 43%,
-    #fc624e 64%,#168ba3 85%,#126479 100%
-  );
-  background-size:300% 100%;
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:wordColor 6s linear infinite;
+/* SARVNEETI LOGO ON OPTIONNEETI PRODUCT PAGE */
+.logo img {
+  display:block;
+  width:auto;
+  height:auto;
+  max-height:53px;
+  max-width:205px;
+  object-fit:contain;
 }
-
 .footer-brand {
   display:inline-flex;
+  align-items:center;
+  padding:9px 13px;
+  background:white;
+  border-radius:11px;
   margin-bottom:12px;
 }
-
-.footer-brand .brand-wordmark {
-  font-size:32px;
-  background-image:linear-gradient(
-    105deg,#bae9eb,#79ccd0,#ffab94,#bae9eb
-  );
+.footer-logo {
+  display:block;
+  width:auto;
+  height:auto;
+  max-height:50px;
+  max-width:160px;
+  object-fit:contain;
 }
-
+.footer-name {
+  color:#e7f5f6;
+  font-size:19px;
+  font-weight:850;
+  letter-spacing:-.03em;
+  margin:0 0 12px;
+}
+@media(max-width:850px) {
+  .logo img { max-height:44px; max-width:150px; }
+}
 @media(max-width:540px) {
-  .logo .brand-wordmark {
-    font-size:clamp(23px,6.3vw,31px);
-  }
+  .logo img { max-height:37px; max-width:120px; }
 }
 
 </style>
@@ -1630,12 +1634,12 @@ summary:focus-visible {
 <header class="site-header" id="siteHeader">
 
   <a href="#home" class="logo" aria-label="OptionNeeti home">
-    <span class="brand-wordmark">OptionNeeti</span>
+    <img src="/logo.png" alt="Sarvneeti logo" width="205" height="53">
   </a>
 
   <nav class="nav-links" id="navLinks">
-    <a href="#services">Services</a>
     <a href="#plans">Pricing</a>
+    <a href="#services">Services</a>
     <a href="#about">About Us</a>
     <a href="#faq">FAQ</a>
     <a href="/contact">Contact</a>
@@ -1757,228 +1761,6 @@ summary:focus-visible {
 </section>
 
 <!-- =====================================
-   CURVED RIBBON
-===================================== -->
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-
-    <div class="ticker-group">
-      <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
-      <span>NIFTY</span><i>✦</i>
-      <span>BANK NIFTY</span><i>✦</i>
-      <span>SENSEX</span><i>✦</i>
-      <span>INTRADAY + BTST</span><i>✦</i>
-      <span>RISK FIRST</span><i>✦</i>
-    </div>
-
-    <div class="ticker-group">
-      <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
-      <span>NIFTY</span><i>✦</i>
-      <span>BANK NIFTY</span><i>✦</i>
-      <span>SENSEX</span><i>✦</i>
-      <span>INTRADAY + BTST</span><i>✦</i>
-      <span>RISK FIRST</span><i>✦</i>
-    </div>
-
-  </div>
-</div>
-
-<!-- =====================================
-   SERVICES
-===================================== -->
-
-<section class="section services" id="services">
-  <div class="container">
-
-    <div class="section-header reveal">
-      <div>
-        <span class="eyebrow">01 / WHAT WE OFFER</span>
-        <h2>
-          Research with<br>
-          <span class="accent">a clearer direction.</span>
-        </h2>
-      </div>
-
-      <p>
-        Understand the research thesis, levels that matter
-        and associated risks before making your own
-        trading decisions.
-      </p>
-    </div>
-
-    <div class="service-grid">
-
-      <div class="motion-slot">
-        <article class="service-card motion-card">
-          <span class="service-icon">⌁</span>
-          <span class="service-number">01</span>
-          <h3>Intraday options<br>setups</h3>
-          <p>
-            Research-led index options setups with entry zones,
-            target levels and stop-loss frameworks.
-          </p>
-          <span class="card-arrow">↗</span>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="service-card motion-card">
-          <span class="service-icon">↗</span>
-          <span class="service-number">02</span>
-          <h3>BTST opportunity<br>research</h3>
-          <p>
-            Short-term setups when conditions warrant,
-            including overnight gap risk and
-            premium-decay considerations.
-          </p>
-          <span class="card-arrow">↗</span>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="service-card motion-card">
-          <span class="service-icon">✈</span>
-          <span class="service-number">03</span>
-          <h3>Premium Telegram<br>channel</h3>
-          <p>
-            Plan-based research alerts, key level updates
-            and market commentary after onboarding.
-          </p>
-          <span class="card-arrow">↗</span>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="service-card motion-card">
-          <span class="service-icon">◇</span>
-          <span class="service-number">04</span>
-          <h3>Daily risk<br>management</h3>
-          <p>
-            Notes on position sizing, stop-loss discipline,
-            drawdown control and avoiding overtrading.
-          </p>
-          <span class="card-arrow">↗</span>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="service-card motion-card">
-          <span class="service-icon">◷</span>
-          <span class="service-number">05</span>
-          <h3>Expiry &amp; volatility<br>research</h3>
-          <p>
-            Observations on index levels, option premiums,
-            expiry conditions and volatility risk.
-          </p>
-          <span class="card-arrow">↗</span>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="service-card motion-card">
-          <span class="service-icon">◎</span>
-          <span class="service-number">06</span>
-          <h3>Trader learning<br>&amp; reviews</h3>
-          <p>
-            Educational explanations of research setups,
-            market psychology and disciplined processes.
-          </p>
-          <span class="card-arrow">↗</span>
-        </article>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =====================================
-   PROCESS
-===================================== -->
-
-<section class="section process" id="process">
-  <div class="container process-grid">
-
-    <div class="process-copy reveal">
-      <span class="eyebrow">02 / OUR PROCESS</span>
-
-      <h2 class="large-heading">
-        From market noise<br>
-        to a structured<br>
-        <span class="accent">research plan.</span>
-      </h2>
-
-      <p>
-        Research ideas move from market observations
-        to structured communication, with risk
-        considerations at every stage.
-      </p>
-
-      <a href="/contact" class="btn-outline"
-         style="margin-top:20px">
-        TALK TO OUR DESK ↗
-      </a>
-    </div>
-
-    <div class="process-steps">
-
-      <div class="motion-slot">
-        <article class="step motion-card">
-          <span class="step-number">01</span>
-          <div>
-            <b>Choose a research plan</b>
-            <p>
-              Review research coverage, fees, duration,
-              disclosures and onboarding.
-            </p>
-          </div>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="step motion-card">
-          <span class="step-number">02</span>
-          <div>
-            <b>Get premium channel access</b>
-            <p>
-              Receive research channel access
-              after the applicable subscription process.
-            </p>
-          </div>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="step motion-card">
-          <span class="step-number">03</span>
-          <div>
-            <b>Review each research setup</b>
-            <p>
-              Evaluate the entry zone, target levels,
-              stop-loss and invalidation point.
-            </p>
-          </div>
-        </article>
-      </div>
-
-      <div class="motion-slot">
-        <article class="step motion-card">
-          <span class="step-number">04</span>
-          <div>
-            <b>Execute independently</b>
-            <p>
-              Use research alongside your own assessment.
-              Trading decisions remain yours.
-            </p>
-          </div>
-        </article>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =====================================
    PRICING: FOUR NEW PLANS
 ===================================== -->
 
@@ -1987,7 +1769,7 @@ summary:focus-visible {
 
     <div class="section-header reveal">
       <div>
-        <span class="eyebrow">03 / RESEARCH PLANS</span>
+        <span class="eyebrow">01 / RESEARCH PLANS</span>
         <h2>
           Choose your<br>
           <span class="accent">research advantage.</span>
@@ -2184,6 +1966,230 @@ summary:focus-visible {
 
   </div>
 </section>
+
+<!-- =====================================
+   CURVED RIBBON
+===================================== -->
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+
+    <div class="ticker-group">
+      <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
+      <span>NIFTY</span><i>✦</i>
+      <span>BANK NIFTY</span><i>✦</i>
+      <span>SENSEX</span><i>✦</i>
+      <span>INTRADAY + BTST</span><i>✦</i>
+      <span>RISK FIRST</span><i>✦</i>
+    </div>
+
+    <div class="ticker-group">
+      <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
+      <span>NIFTY</span><i>✦</i>
+      <span>BANK NIFTY</span><i>✦</i>
+      <span>SENSEX</span><i>✦</i>
+      <span>INTRADAY + BTST</span><i>✦</i>
+      <span>RISK FIRST</span><i>✦</i>
+    </div>
+
+  </div>
+</div>
+
+<!-- =====================================
+   SERVICES
+===================================== -->
+
+<section class="section services" id="services">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <span class="eyebrow">02 / WHAT WE OFFER</span>
+        <h2>
+          Research with<br>
+          <span class="accent">a clearer direction.</span>
+        </h2>
+      </div>
+
+      <p>
+        Understand the research thesis, levels that matter
+        and associated risks before making your own
+        trading decisions.
+      </p>
+    </div>
+
+    <div class="service-grid">
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">⌁</span>
+          <span class="service-number">01</span>
+          <h3>Intraday options<br>setups</h3>
+          <p>
+            Research-led index options setups with entry zones,
+            target levels and stop-loss frameworks.
+          </p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">↗</span>
+          <span class="service-number">02</span>
+          <h3>BTST opportunity<br>research</h3>
+          <p>
+            Short-term setups when conditions warrant,
+            including overnight gap risk and
+            premium-decay considerations.
+          </p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">✈</span>
+          <span class="service-number">03</span>
+          <h3>Premium Telegram<br>channel</h3>
+          <p>
+            Plan-based research alerts, key level updates
+            and market commentary after onboarding.
+          </p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">◇</span>
+          <span class="service-number">04</span>
+          <h3>Daily risk<br>management</h3>
+          <p>
+            Notes on position sizing, stop-loss discipline,
+            drawdown control and avoiding overtrading.
+          </p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">◷</span>
+          <span class="service-number">05</span>
+          <h3>Expiry &amp; volatility<br>research</h3>
+          <p>
+            Observations on index levels, option premiums,
+            expiry conditions and volatility risk.
+          </p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">◎</span>
+          <span class="service-number">06</span>
+          <h3>Trader learning<br>&amp; reviews</h3>
+          <p>
+            Educational explanations of research setups,
+            market psychology and disciplined processes.
+          </p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================
+   PROCESS
+===================================== -->
+
+<section class="section process" id="process">
+  <div class="container process-grid">
+
+    <div class="process-copy reveal">
+      <span class="eyebrow">03 / OUR PROCESS</span>
+
+      <h2 class="large-heading">
+        From market noise<br>
+        to a structured<br>
+        <span class="accent">research plan.</span>
+      </h2>
+
+      <p>
+        Research ideas move from market observations
+        to structured communication, with risk
+        considerations at every stage.
+      </p>
+
+      <a href="/contact" class="btn-outline"
+         style="margin-top:20px">
+        TALK TO OUR DESK ↗
+      </a>
+    </div>
+
+    <div class="process-steps">
+
+      <div class="motion-slot">
+        <article class="step motion-card">
+          <span class="step-number">01</span>
+          <div>
+            <b>Choose a research plan</b>
+            <p>
+              Review research coverage, fees, duration,
+              disclosures and onboarding.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="step motion-card">
+          <span class="step-number">02</span>
+          <div>
+            <b>Get premium channel access</b>
+            <p>
+              Receive research channel access
+              after the applicable subscription process.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="step motion-card">
+          <span class="step-number">03</span>
+          <div>
+            <b>Review each research setup</b>
+            <p>
+              Evaluate the entry zone, target levels,
+              stop-loss and invalidation point.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="step motion-card">
+          <span class="step-number">04</span>
+          <div>
+            <b>Execute independently</b>
+            <p>
+              Use research alongside your own assessment.
+              Trading decisions remain yours.
+            </p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
 <!-- =====================================
    ABOUT
@@ -2419,8 +2425,9 @@ summary:focus-visible {
     <!-- BRAND -->
     <div>
       <a href="#home" class="footer-brand" aria-label="OptionNeeti home">
-        <span class="brand-wordmark">OptionNeeti</span>
+        <img src="/logo.png" alt="Sarvneeti logo" class="footer-logo" width="160" height="50" loading="lazy">
       </a>
+      <div class="footer-name">OptionNeeti</div>
 
       <p>
         Research-based index options coverage for
@@ -2434,8 +2441,8 @@ summary:focus-visible {
     <div>
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="#services">Services</a></li>
         <li><a href="#plans">Pricing</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#disclaimer">Disclaimer</a></li>
@@ -2553,7 +2560,7 @@ summary:focus-visible {
       <p>OptionNeeti research services are provided by the registered individual Research Analyst identified below.</p>
 
       <p>
-        <strong>Registered Name / Owner:</strong>
+        <strong>Registered Name:</strong>
         Amit Kori
       </p>
 
