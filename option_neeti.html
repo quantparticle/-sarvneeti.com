@@ -5,14 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 
-<title>OptionNeeti | Index Options Research</title>
+<title>OptionNeeti | Nifty, Bank Nifty &amp; Sensex Options Research</title>
 
 <meta name="description"
-content="OptionNeeti. Research-based intraday and BTST index options setups for Nifty, Bank Nifty and Sensex. Explore our research plans.">
+content="Discover OptionNeeti, a dedicated index-options research experience featuring Nifty, Bank Nifty and Sensex intraday and BTST market setups, analysis, risk context and research plans.">
 
-<link rel="icon" type="image/png" href="/fevicon.png">
+<link rel="icon" type="image/png" sizes="any" href="/fevicon.png">
 <link rel="shortcut icon" type="image/png" href="/fevicon.png">
 <link rel="apple-touch-icon" href="/fevicon.png">
+<meta property="og:title" content="OptionNeeti | Index Options Research">
+<meta property="og:description" content="OptionNeeti puts Nifty, Bank Nifty and Sensex options research, setup context and risk insights in one structured research experience.">
 
 <style>
 /* =====================================
@@ -1602,6 +1604,169 @@ summary:focus-visible {
   .logo img { max-height:37px; max-width:120px; }
 }
 
+
+
+/* =====================================
+   OPTIONNEETI PRODUCT-IDENTITY MOTION
+   Subtle, progressive and motion-safe
+===================================== */
+
+.logo{gap:13px}
+.brand-wordmark,.brand-glow,.product-hero-name{
+  background:linear-gradient(105deg,#126479 4%,#1997a6 36%,#59c6bd 57%,#fc624e 78%,#126479 100%);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  animation:optionColorFlow 8s linear infinite;
+}
+.brand-wordmark{
+  font-weight:900;
+  font-size:clamp(17px,1.75vw,23px);
+  letter-spacing:-.065em;
+  white-space:nowrap;
+  line-height:1.1;
+  transition:transform .3s ease;
+}
+.brand-dot{font-weight:900}
+.logo:hover .brand-wordmark{transform:translateY(-2px)}
+.product-hero-name{position:relative;display:inline-block}
+.product-hero-name::after{
+  content:"";position:absolute;left:2px;bottom:0;width:98%;height:5px;
+  border-radius:100px;background:linear-gradient(90deg,#1997a6,#fc624e);
+  transform:scaleX(.2);transform-origin:left;
+  opacity:.4;animation:productUnderline 5.5s ease-in-out infinite;
+}
+@keyframes optionColorFlow{to{background-position:300% 0}}
+@keyframes productUnderline{50%{transform:scaleX(1);opacity:.8}}
+
+/* Light ambient motion behind original white hero */
+.hero::before,.hero::after{
+  content:"";position:absolute;pointer-events:none;z-index:0;
+  width:340px;height:340px;border-radius:50%;
+  filter:blur(76px);opacity:.2;
+}
+.hero::before{
+  top:4%;right:-160px;background:#76cfd0;
+  animation:ambientDrift 15s ease-in-out infinite alternate;
+}
+.hero::after{
+  bottom:-160px;left:-180px;background:#ffd4c4;
+  animation:ambientDrift 17s ease-in-out infinite alternate-reverse;
+}
+.hero-grid{position:relative;z-index:1}
+@keyframes ambientDrift{to{transform:translate3d(35px,-28px,0) scale(1.13)}}
+
+/* Hero entrance runs after the existing candlestick preloader */
+.site-ready .hero-content .eyebrow{animation:heroRise .62s both}
+.site-ready .hero-content h1{animation:heroRise .75s .10s both}
+.site-ready .hero-content>p{animation:heroRise .8s .2s both}
+.site-ready .hero-tags{animation:heroRise .8s .3s both}
+.site-ready .hero-buttons{animation:heroRise .8s .38s both}
+.site-ready .registration-note{animation:heroRise .8s .46s both}
+@keyframes heroRise{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero-tags span{
+  transition:background .3s,border-color .3s,transform .3s,box-shadow .3s;
+}
+.hero-tags span:hover{
+  background:#e2f6f7;border-color:#9bced1;
+  transform:translateY(-4px);box-shadow:0 8px 16px #1d728311;
+}
+
+/* Stronger but clean animation accents on existing cards */
+.pricing{position:relative;isolation:isolate}
+.pricing>.container{position:relative;z-index:1}
+.pricing::before{
+  content:"";position:absolute;top:-120px;right:-110px;
+  width:360px;height:360px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#f7b9a630,transparent 70%);
+  animation:ambientDrift 14s ease-in-out infinite alternate;
+}
+.plan-card{overflow:hidden;transition:box-shadow .35s ease,border-color .35s ease}
+.plan-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 28%,#ffffff85 48%,transparent 68%);
+  transform:translateX(-150%);transition:transform .9s cubic-bezier(.2,.9,.2,1);
+}
+.plan-card:hover::after{transform:translateX(150%)}
+.plan-card:hover{box-shadow:0 20px 42px #165b701e;border-color:#9dd0d4}
+.plan-price strong{transition:transform .28s ease,color .28s ease}
+.plan-card:hover .plan-price strong{transform:translateY(-3px);color:#168ba3}
+.plan-badge{animation:badgeBreath 3.4s ease-in-out infinite}
+@keyframes badgeBreath{50%{box-shadow:0 0 0 7px #fc624e18}}
+
+.service-icon{
+  transition:transform .45s cubic-bezier(.2,1,.2,1),background .3s ease;
+}
+.service-card:hover .service-icon{transform:rotate(-9deg) scale(1.13);background:#cef0f0}
+.service-card .card-arrow{transition:transform .35s ease}
+.service-card:hover .card-arrow{transform:translate(4px,-4px)}
+.benefit-card{transition:background .3s ease,box-shadow .3s ease}
+.benefit-card:hover{background:#f9ffff;box-shadow:0 12px 29px #13667a13}
+.benefit-card>span{transition:transform .3s ease}
+.benefit-card:hover>span{transform:translateY(-4px)}
+.process-steps .step-number{transition:transform .3s ease,color .3s}
+.process-steps .step:hover .step-number{transform:scale(1.18);color:#fc624e}
+
+/* FAQ state feedback: retains native details/summary semantics */
+.faq-list details{transition:background .3s,border-color .3s,box-shadow .3s}
+.faq-list details[open]{background:#eaf8f9;border-color:#b7dfe2;box-shadow:0 10px 24px #1264790d}
+.faq-list details[open] p{animation:faqOpen .36s ease-out}
+@keyframes faqOpen{
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* CTA and footer keep the original shape, gain subtle movement */
+.final-cta{position:relative;overflow:hidden}
+.final-cta::before{
+  content:"";position:absolute;inset:-70% auto auto -120px;
+  width:210px;height:300%;pointer-events:none;
+  background:linear-gradient(90deg,transparent,#ffffff25,transparent);
+  transform:rotate(22deg) translateX(-350px);
+  animation:ctaShine 10s ease-in-out infinite;
+}
+@keyframes ctaShine{35%,100%{transform:rotate(22deg) translateX(1250px)}}
+.cta-brand{color:#e8ffff;text-shadow:0 0 18px #d6ffff3b}
+.footer-name.brand-glow{font-size:22px;letter-spacing:-.055em}
+.ticker-group i{animation:tickerTwinkle 2.8s ease-in-out infinite alternate}
+@keyframes tickerTwinkle{to{opacity:.45;transform:scale(.82)}}
+
+@media(max-width:1100px){
+  .brand-wordmark{font-size:18px}
+  .logo{gap:10px}
+}
+@media(max-width:850px){
+  /* As requested previously: no Enquire button in mobile/tablet header. */
+  .site-header .header-btn{display:none!important}
+  .site-header .menu-button{margin-left:auto}
+  .brand-wordmark{font-size:21px}
+}
+@media(max-width:540px){
+  .brand-wordmark{font-size:clamp(15px,4.1vw,19px)}
+  .logo{gap:8px}
+  .product-hero-name::after{height:3px}
+  .hero::before,.hero::after{width:230px;height:230px}
+}
+@media(max-width:370px){
+  .brand-wordmark{font-size:14px}
+  .logo img{max-width:94px}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-wordmark,.brand-glow,.product-hero-name,.product-hero-name::after,
+  .hero::before,.hero::after,.hero-content>*,.plan-badge,.pricing::before,
+  .final-cta::before,.ticker-group i{animation:none!important}
+  .site-ready .hero-content .eyebrow,.site-ready .hero-content h1,
+  .site-ready .hero-content>p,.site-ready .hero-tags,
+  .site-ready .hero-buttons,.site-ready .registration-note{
+    opacity:1!important;transform:none!important;
+  }
+}
+
 </style>
 </head>
 
@@ -1618,7 +1783,7 @@ summary:focus-visible {
     </div>
 
     <h2>Preparing OptionNeeti</h2>
-    <p>Loading your research experience</p>
+    <p>Loading your OptionNeeti options-research experience</p>
 
     <div class="loading-bar">
       <span></span>
@@ -1634,7 +1799,8 @@ summary:focus-visible {
 <header class="site-header" id="siteHeader">
 
   <a href="#home" class="logo" aria-label="OptionNeeti home">
-    <img src="/logo.png" alt="Sarvneeti logo" width="205" height="53">
+    <img src="/logo.png" alt="Research analyst brand logo" width="205" height="53">
+    <span class="brand-wordmark" aria-hidden="true">OptionNeeti<span class="brand-dot">.</span></span>
   </a>
 
   <nav class="nav-links" id="navLinks">
@@ -1646,7 +1812,7 @@ summary:focus-visible {
   </nav>
 
   <a href="/contact" class="header-btn">
-    <span class="full-label">GET RESEARCH DETAILS</span>
+    <span class="full-label">EXPLORE OPTIONNEETI</span>
     <span class="short-label">ENQUIRE</span>
     <span aria-hidden="true">↗</span>
   </a>
@@ -1674,26 +1840,25 @@ summary:focus-visible {
     <div class="hero-content">
 
       <span class="eyebrow">
-        SEBI REGISTERED RESEARCH ANALYST · INH000016533
+        OPTIONNEETI · INDEX OPTIONS RESEARCH
       </span>
 
       <h1>
-        Options research.<br>
-        Built for
-        <span class="animated-word" id="animatedWord">
-          clarity.
-        </span>
+        <span class="product-hero-name">OptionNeeti.</span><br>
+        Index options,<br>
+        <span class="animated-word" id="animatedWord">decoded.</span>
       </h1>
 
       <p>
-        Daily intraday and BTST index options research for
-        <strong>Nifty, Bank Nifty and Sensex</strong>
-        — with structured entries, potential targets,
-        stop-loss levels, market context and
-        premium research channel updates.
+        Meet <strong>OptionNeeti</strong> — a focused index-options
+        research experience for <strong>Nifty, Bank Nifty and Sensex</strong>.
+        Explore intraday and BTST setups with the research thesis,
+        entry zones, potential targets, stop-loss context and market risks
+        explained together, not just a number on a screen.
       </p>
 
       <div class="hero-tags">
+        <span>OPTIONNEETI RESEARCH</span>
         <span>NIFTY</span>
         <span>BANK NIFTY</span>
         <span>SENSEX</span>
@@ -1701,12 +1866,12 @@ summary:focus-visible {
       </div>
 
       <div class="hero-buttons">
-        <a href="/contact" class="btn-primary">
-          CONNECT WITH RESEARCH DESK ↗
+        <a href="#services" class="btn-primary">
+          DISCOVER OPTIONNEETI ↗
         </a>
 
         <a href="#plans" class="btn-outline">
-          EXPLORE PLANS ↓
+          VIEW OPTIONNEETI PLANS ↓
         </a>
       </div>
 
@@ -1714,10 +1879,10 @@ summary:focus-visible {
         <span class="check">✓</span>
 
         <span>
-          <b>SEBI Registered Research Analyst</b><br>
-          Registration No.: INH000016533<br>
-          Research does not guarantee returns.
-          Trading decisions remain yours.
+          <b>OptionNeeti research · SEBI RA Reg. INH000016533</b><br>
+          Research ideas are educational and risk-aware;
+          outcomes and returns are never guaranteed.
+          You decide whether and how to trade.
         </span>
       </div>
 
@@ -1744,11 +1909,11 @@ summary:focus-visible {
 
       <div class="video-fallback" aria-hidden="true">
         <div style="font-size:85px">⌁</div>
-        <strong>Research · Levels · Risk</strong>
+        <strong>OptionNeeti · Context · Levels · Risk</strong>
       </div>
 
       <span class="video-caption">
-        ILLUSTRATIVE VISUAL · NOT LIVE MARKET DATA
+        OPTIONNEETI VISUAL · ILLUSTRATIVE, NOT LIVE DATA
       </span>
 
     </div>
@@ -1769,18 +1934,18 @@ summary:focus-visible {
 
     <div class="section-header reveal">
       <div>
-        <span class="eyebrow">01 / RESEARCH PLANS</span>
+        <span class="eyebrow">01 / OPTIONNEETI PLANS</span>
         <h2>
-          Choose your<br>
-          <span class="accent">research advantage.</span>
+          Find your <span class="brand-glow">OptionNeeti</span><br>
+          <span class="accent">research plan.</span>
         </h2>
       </div>
 
       <p>
-        Four structured research packages designed for
-        different trading experience levels.
-        Explore the coverage and choose the duration
-        that suits your needs.
+        OptionNeeti offers four ways to access structured
+        index-options research. Compare the depth of analysis,
+        communication and subscription duration that fit
+        your own research needs.
       </p>
     </div>
 
@@ -1806,14 +1971,14 @@ summary:focus-visible {
           </div>
 
           <p class="plan-for">
-            For beginners exploring options trading.
+            Start with OptionNeeti’s core index-options research.
           </p>
 
           <ul>
-            <li>Short-term research guidance</li>
-            <li>Actionable insights &amp; basic support</li>
-            <li>Analysis via Mail / WhatsApp</li>
-            <li>Researched target &amp; stop-loss levels</li>
+            <li>OptionNeeti short-term index-options research</li>
+            <li>Setup thesis, key levels and basic support</li>
+            <li>Research via email / WhatsApp as applicable</li>
+            <li>Potential targets, stop-loss and risk levels</li>
           </ul>
 
           <div class="plan-risk">
@@ -1853,14 +2018,14 @@ summary:focus-visible {
           </div>
 
           <p class="plan-for">
-            For traders seeking deeper market research.
+            Go deeper into market moves with OptionNeeti.
           </p>
 
           <ul>
-            <li>1–2 analyses per relevant market movement</li>
-            <li>In-depth analysis for informed decisions</li>
-            <li>Comprehensive support &amp; updates</li>
-            <li>Researched target &amp; stop-loss levels</li>
+            <li>1–2 analyses per qualifying market movement</li>
+            <li>In-depth OptionNeeti research rationale</li>
+            <li>Market-context updates and plan support</li>
+            <li>Potential targets, stop-loss and risk levels</li>
           </ul>
 
           <div class="plan-risk">
@@ -1896,14 +2061,14 @@ summary:focus-visible {
           </div>
 
           <p class="plan-for">
-            For experienced traders seeking advanced research.
+            Advanced OptionNeeti research for active traders.
           </p>
 
           <ul>
-            <li>2–3 analyses per relevant market movement</li>
-            <li>In-depth analysis for informed decisions</li>
-            <li>Comprehensive support &amp; updates</li>
-            <li>Researched target &amp; stop-loss levels</li>
+            <li>2–3 analyses per qualifying market movement</li>
+            <li>In-depth OptionNeeti research rationale</li>
+            <li>Market-context updates and plan support</li>
+            <li>Potential targets, stop-loss and risk levels</li>
           </ul>
 
           <div class="plan-risk">
@@ -1939,14 +2104,14 @@ summary:focus-visible {
           </div>
 
           <p class="plan-for">
-            Full-year research coverage with dedicated support.
+            Longer-term access to the OptionNeeti research experience.
           </p>
 
           <ul>
-            <li>Up to 3 analyses per relevant market movement</li>
-            <li>Dedicated RM for real-time research support</li>
-            <li>Comprehensive support &amp; updates</li>
-            <li>Researched target &amp; stop-loss levels</li>
+            <li>Up to 3 analyses per qualifying movement</li>
+            <li>Dedicated research support under your plan</li>
+            <li>Market-context updates and plan support</li>
+            <li>Potential targets, stop-loss and risk levels</li>
           </ul>
 
           <div class="plan-risk">
@@ -1964,6 +2129,12 @@ summary:focus-visible {
 
     </div>
 
+    <p class="plan-note reveal">
+      OptionNeeti provides research, not a trading account or assured outcome.
+      The number of qualifying setups depends on market conditions. Fees shown
+      exclude applicable statutory charges; onboarding terms apply.
+    </p>
+
   </div>
 </section>
 
@@ -1975,21 +2146,21 @@ summary:focus-visible {
   <div class="ticker-track">
 
     <div class="ticker-group">
-      <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
+      <span>OPTIONNEETI · OPTIONS RESEARCH</span><i>✦</i>
       <span>NIFTY</span><i>✦</i>
       <span>BANK NIFTY</span><i>✦</i>
       <span>SENSEX</span><i>✦</i>
       <span>INTRADAY + BTST</span><i>✦</i>
-      <span>RISK FIRST</span><i>✦</i>
+      <span>OPTIONNEETI · RISK FIRST</span><i>✦</i>
     </div>
 
     <div class="ticker-group">
-      <span>INDEX OPTIONS RESEARCH</span><i>✦</i>
+      <span>OPTIONNEETI · OPTIONS RESEARCH</span><i>✦</i>
       <span>NIFTY</span><i>✦</i>
       <span>BANK NIFTY</span><i>✦</i>
       <span>SENSEX</span><i>✦</i>
       <span>INTRADAY + BTST</span><i>✦</i>
-      <span>RISK FIRST</span><i>✦</i>
+      <span>OPTIONNEETI · RISK FIRST</span><i>✦</i>
     </div>
 
   </div>
@@ -2004,17 +2175,17 @@ summary:focus-visible {
 
     <div class="section-header reveal">
       <div>
-        <span class="eyebrow">02 / WHAT WE OFFER</span>
+        <span class="eyebrow">02 / INSIDE OPTIONNEETI</span>
         <h2>
-          Research with<br>
-          <span class="accent">a clearer direction.</span>
+          What <span class="brand-glow">OptionNeeti</span><br>
+          <span class="accent">brings to your screen.</span>
         </h2>
       </div>
 
       <p>
-        Understand the research thesis, levels that matter
-        and associated risks before making your own
-        trading decisions.
+        OptionNeeti combines a market view, possible setup levels,
+        and risk commentary in one research journey — so each
+        update has context rather than just a buy or sell prompt.
       </p>
     </div>
 
@@ -2024,10 +2195,10 @@ summary:focus-visible {
         <article class="service-card motion-card">
           <span class="service-icon">⌁</span>
           <span class="service-number">01</span>
-          <h3>Intraday options<br>setups</h3>
+          <h3>OptionNeeti intraday<br>research</h3>
           <p>
-            Research-led index options setups with entry zones,
-            target levels and stop-loss frameworks.
+            OptionNeeti examines intraday index-option setups,
+            entry zones, potential targets, and what could invalidate an idea.
           </p>
           <span class="card-arrow">↗</span>
         </article>
@@ -2037,11 +2208,11 @@ summary:focus-visible {
         <article class="service-card motion-card">
           <span class="service-icon">↗</span>
           <span class="service-number">02</span>
-          <h3>BTST opportunity<br>research</h3>
+          <h3>OptionNeeti BTST<br>perspective</h3>
           <p>
-            Short-term setups when conditions warrant,
-            including overnight gap risk and
-            premium-decay considerations.
+            When conditions warrant, OptionNeeti covers possible
+            buy-today-sell-tomorrow setups alongside overnight gaps,
+            premium decay, and uncertainty.
           </p>
           <span class="card-arrow">↗</span>
         </article>
@@ -2051,10 +2222,11 @@ summary:focus-visible {
         <article class="service-card motion-card">
           <span class="service-icon">✈</span>
           <span class="service-number">03</span>
-          <h3>Premium Telegram<br>channel</h3>
+          <h3>OptionNeeti research<br>updates</h3>
           <p>
-            Plan-based research alerts, key level updates
-            and market commentary after onboarding.
+            After onboarding, receive plan-based OptionNeeti
+            research notes, changing market levels and relevant
+            commentary through the applicable channels.
           </p>
           <span class="card-arrow">↗</span>
         </article>
@@ -2064,10 +2236,11 @@ summary:focus-visible {
         <article class="service-card motion-card">
           <span class="service-icon">◇</span>
           <span class="service-number">04</span>
-          <h3>Daily risk<br>management</h3>
+          <h3>OptionNeeti risk<br>framework</h3>
           <p>
-            Notes on position sizing, stop-loss discipline,
-            drawdown control and avoiding overtrading.
+            Explore the risk side of an options idea: stop-loss
+            considerations, invalidation, position sizing and
+            the cost of chasing fast moves.
           </p>
           <span class="card-arrow">↗</span>
         </article>
@@ -2077,10 +2250,11 @@ summary:focus-visible {
         <article class="service-card motion-card">
           <span class="service-icon">◷</span>
           <span class="service-number">05</span>
-          <h3>Expiry &amp; volatility<br>research</h3>
+          <h3>OptionNeeti expiry<br>&amp; volatility lens</h3>
           <p>
-            Observations on index levels, option premiums,
-            expiry conditions and volatility risk.
+            Track how expiry, changing volatility, time decay
+            and option premiums can change the interpretation
+            of index research.
           </p>
           <span class="card-arrow">↗</span>
         </article>
@@ -2090,10 +2264,11 @@ summary:focus-visible {
         <article class="service-card motion-card">
           <span class="service-icon">◎</span>
           <span class="service-number">06</span>
-          <h3>Trader learning<br>&amp; reviews</h3>
+          <h3>The OptionNeeti<br>learning layer</h3>
           <p>
-            Educational explanations of research setups,
-            market psychology and disciplined processes.
+            Research notes explain why a setup is considered,
+            what assumptions matter and how disciplined
+            decisions differ from impulse trades.
           </p>
           <span class="card-arrow">↗</span>
         </article>
@@ -2111,23 +2286,24 @@ summary:focus-visible {
   <div class="container process-grid">
 
     <div class="process-copy reveal">
-      <span class="eyebrow">03 / OUR PROCESS</span>
+      <span class="eyebrow">03 / THE OPTIONNEETI JOURNEY</span>
 
       <h2 class="large-heading">
-        From market noise<br>
-        to a structured<br>
-        <span class="accent">research plan.</span>
+        From first look<br>
+        to your own view.<br>
+        <span class="brand-glow">The OptionNeeti way.</span>
       </h2>
 
       <p>
-        Research ideas move from market observations
-        to structured communication, with risk
-        considerations at every stage.
+        With OptionNeeti, the process starts with the index,
+        moves through a research thesis and possible levels,
+        and ends with an independent decision by you.
+        No shortcut replaces risk awareness.
       </p>
 
       <a href="/contact" class="btn-outline"
          style="margin-top:20px">
-        TALK TO OUR DESK ↗
+        ASK ABOUT OPTIONNEETI ↗
       </a>
     </div>
 
@@ -2137,10 +2313,10 @@ summary:focus-visible {
         <article class="step motion-card">
           <span class="step-number">01</span>
           <div>
-            <b>Choose a research plan</b>
+            <b>Choose your OptionNeeti plan</b>
             <p>
-              Review research coverage, fees, duration,
-              disclosures and onboarding.
+              Compare OptionNeeti coverage, subscription
+              duration, disclosures and onboarding steps.
             </p>
           </div>
         </article>
@@ -2150,10 +2326,10 @@ summary:focus-visible {
         <article class="step motion-card">
           <span class="step-number">02</span>
           <div>
-            <b>Get premium channel access</b>
+            <b>Access OptionNeeti updates</b>
             <p>
-              Receive research channel access
-              after the applicable subscription process.
+              Receive your eligible OptionNeeti research
+              channel updates once onboarding is complete.
             </p>
           </div>
         </article>
@@ -2163,10 +2339,10 @@ summary:focus-visible {
         <article class="step motion-card">
           <span class="step-number">03</span>
           <div>
-            <b>Review each research setup</b>
+            <b>Understand the OptionNeeti setup</b>
             <p>
-              Evaluate the entry zone, target levels,
-              stop-loss and invalidation point.
+              Review the idea, potential entry area,
+              target logic, stop-loss and invalidation context.
             </p>
           </div>
         </article>
@@ -2176,10 +2352,10 @@ summary:focus-visible {
         <article class="step motion-card">
           <span class="step-number">04</span>
           <div>
-            <b>Execute independently</b>
+            <b>Make your own options decision</b>
             <p>
-              Use research alongside your own assessment.
-              Trading decisions remain yours.
+              Use OptionNeeti alongside your own
+              analysis and risk limits. Execution remains yours.
             </p>
           </div>
         </article>
@@ -2200,30 +2376,31 @@ summary:focus-visible {
 
     <div class="about-copy reveal">
 
-      <span class="eyebrow">04 / OUR APPROACH</span>
+      <span class="eyebrow">04 / WHY OPTIONNEETI</span>
 
       <h2 class="large-heading">
-        Good research.<br>
-        <span class="accent">Clearer decisions.</span>
+        The idea behind<br>
+        <span class="brand-glow">OptionNeeti.</span>
       </h2>
 
       <p>
-        OptionNeeti focuses on market structure,
-        research logic and risk-aware communication.
-        Understanding the reason behind a setup is
-        more useful than blindly following a trade alert.
+        OptionNeeti is built around one principle: an options
+        research update should explain the <strong>why</strong>,
+        not only the <strong>where</strong>. Index direction,
+        market structure, setup levels and risks belong
+        together in a usable research explanation.
       </p>
 
       <p>
-        Index options involve significant risk and may
-        not suit every investor. No recommendation can
-        eliminate uncertainty or guarantee a
-        profitable result.
+        That is why OptionNeeti also highlights invalidation,
+        expiry effects and premium behaviour. Options are
+        high-risk products, and even researched setups may
+        lose money. There are no guaranteed outcomes.
       </p>
 
       <a href="/contact" class="btn-primary"
          style="margin-top:16px">
-        CONNECT WITH US ↗
+        EXPLORE OPTIONNEETI ↗
       </a>
     </div>
 
@@ -2233,10 +2410,10 @@ summary:focus-visible {
         <article class="benefit-card motion-card">
           <span>01</span>
           <div>
-            <h3>Defined setup invalidation</h3>
+            <h3>Know when the thesis changes</h3>
             <p>
-              Understand when the research thesis
-              may no longer hold.
+              OptionNeeti explains the conditions that
+              may weaken or invalidate a research setup.
             </p>
           </div>
         </article>
@@ -2246,10 +2423,10 @@ summary:focus-visible {
         <article class="benefit-card motion-card">
           <span>02</span>
           <div>
-            <h3>Volatility-aware commentary</h3>
+            <h3>See beyond the index level</h3>
             <p>
-              Consider expiry, time decay and implied
-              volatility when evaluating options.
+              OptionNeeti includes premium behaviour,
+              time decay, volatility and expiry context.
             </p>
           </div>
         </article>
@@ -2259,10 +2436,10 @@ summary:focus-visible {
         <article class="benefit-card motion-card">
           <span>03</span>
           <div>
-            <h3>Educational research logic</h3>
+            <h3>Learn the reasoning behind a setup</h3>
             <p>
-              Understand the setup rather than
-              simply receiving an entry number.
+              See the rationale for OptionNeeti levels,
+              assumptions and supporting market observations.
             </p>
           </div>
         </article>
@@ -2272,10 +2449,10 @@ summary:focus-visible {
         <article class="benefit-card motion-card">
           <span>04</span>
           <div>
-            <h3>Control over your account</h3>
+            <h3>Your research. Your decision.</h3>
             <p>
-              Research only. No client-fund custody,
-              account management or assured returns.
+              OptionNeeti supplies research only. You retain
+              control of execution and your trading account.
             </p>
           </div>
         </article>
@@ -2293,91 +2470,102 @@ summary:focus-visible {
   <div class="container faq-grid">
 
     <div class="reveal">
-      <span class="eyebrow">05 / QUESTIONS ANSWERED</span>
+      <span class="eyebrow">05 / ABOUT OPTIONNEETI</span>
 
       <h2 class="large-heading">
-        Before you<br>
-        <span class="accent">get started.</span>
+        Your <span class="brand-glow">OptionNeeti</span><br>
+        <span class="accent">questions, answered.</span>
       </h2>
 
       <p style="font-size:13px;line-height:1.8;color:#607b85">
-        Understand research services, plan fees,
-        disclosures, risks and onboarding requirements.
+        Get to know the OptionNeeti product, the indices
+        it follows, how research is shared, what each
+        plan covers and the risks of index options.
       </p>
     </div>
 
     <div class="faq-list reveal">
 
       <details>
-        <summary>Which index options are covered?</summary>
+        <summary>What is OptionNeeti?</summary>
         <p>
-          Research primarily covers Nifty and Bank Nifty.
-          Sensex and selected indices may also be covered
-          depending on the plan and market conditions.
+          OptionNeeti is an index-options research experience focused on
+          explaining potential setups, key market levels, thesis and risks.
+          It covers Nifty, Bank Nifty and, where relevant, Sensex options.
+          It is research, not an order-execution or portfolio-management platform.
         </p>
       </details>
 
       <details>
-        <summary>How many analyses will I receive?</summary>
+        <summary>Which indices does OptionNeeti research?</summary>
         <p>
-          Coverage depends on the selected plan and
-          market conditions. The number of analyses
-          indicated is not a guarantee that qualifying
-          research setups will arise.
+          OptionNeeti focuses primarily on Nifty and Bank Nifty.
+          Sensex and selected indices may also be included
+          depending on the plan and current market conditions.
         </p>
       </details>
 
       <details>
-        <summary>How do I receive research updates?</summary>
+        <summary>How often does OptionNeeti share setups?</summary>
         <p>
-          Communication may include email, WhatsApp
-          or relevant research channels, depending
-          on your selected plan and onboarding.
+          The frequency depends on your OptionNeeti plan and
+          whether suitable market conditions occur.
+          A quoted maximum is not a promise that a
+          qualifying setup will appear every day.
         </p>
       </details>
 
       <details>
-        <summary>What are the risks of BTST options?</summary>
+        <summary>Where will I get OptionNeeti updates?</summary>
         <p>
-          Overnight gaps, premium decay and changes
-          in volatility can cause rapid and
-          substantial losses.
+          OptionNeeti research may be sent through email,
+          WhatsApp or the applicable research channel,
+          depending on your plan and completed onboarding.
         </p>
       </details>
 
       <details>
-        <summary>Are profits or accuracy guaranteed?</summary>
+        <summary>Does OptionNeeti explain BTST risk?</summary>
         <p>
-          No. SEBI registration or NISM certification
-          does not guarantee performance or returns.
+          Yes. OptionNeeti BTST research considers overnight
+          gap moves, time decay and volatility changes.
+          These risks can still result in substantial losses.
         </p>
       </details>
 
       <details>
-        <summary>Do you manage trading accounts?</summary>
+        <summary>Does OptionNeeti guarantee option profits?</summary>
         <p>
-          No. Research and recommendations are provided.
-          Clients independently make their trading
-          and execution decisions.
+          No. OptionNeeti does not guarantee profits,
+          accuracy or specific outcomes. SEBI registration
+          and NISM certification do not guarantee returns.
         </p>
       </details>
 
       <details>
-        <summary>Are taxes included in plan prices?</summary>
+        <summary>Will OptionNeeti trade in my account?</summary>
         <p>
-          The displayed prices exclude applicable
-          statutory charges. Full fees, payment terms
-          and refund conditions are shared before onboarding.
+          No. OptionNeeti provides research. Your account,
+          order placement, position sizing and execution
+          decisions remain under your control.
         </p>
       </details>
 
       <details>
-        <summary>How do I subscribe?</summary>
+        <summary>Are OptionNeeti plan prices inclusive of tax?</summary>
         <p>
-          Select a research plan and contact our desk.
-          The applicable disclosures, agreement and
-          payment process will be explained before
-          your subscription is activated.
+          Displayed OptionNeeti prices exclude applicable
+          statutory charges. Check the agreement for
+          final fees, payment schedule and refund conditions.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I join OptionNeeti?</summary>
+        <p>
+          Choose an OptionNeeti plan and contact the research desk.
+          Review disclosures, the client agreement, fees and
+          onboarding before activating your research access.
         </p>
       </details>
 
@@ -2394,19 +2582,19 @@ summary:focus-visible {
   <div class="final-cta reveal">
     <div>
       <h2>
-        Clarity starts<br>
-        with a conversation.
+        Ready to explore<br>
+        <span class="cta-brand">OptionNeeti?</span>
       </h2>
 
       <p>
-        Understand index options research coverage,
-        subscription plans, research updates,
-        terms and risk disclosures.
+        Discover how OptionNeeti follows Nifty, Bank Nifty and Sensex,
+        compares intraday and BTST research setups and communicates
+        risks. Explore a plan that matches your research needs.
       </p>
     </div>
 
     <a href="/contact" class="btn-primary">
-      GET RESEARCH DETAILS ↗
+      EXPLORE OPTIONNEETI ↗
     </a>
   </div>
 
@@ -2425,15 +2613,15 @@ summary:focus-visible {
     <!-- BRAND -->
     <div>
       <a href="#home" class="footer-brand" aria-label="OptionNeeti home">
-        <img src="/logo.png" alt="Sarvneeti logo" class="footer-logo" width="160" height="50" loading="lazy">
+        <img src="/logo.png" alt="Research analyst brand logo" class="footer-logo" width="160" height="50" loading="lazy">
       </a>
-      <div class="footer-name">OptionNeeti</div>
+      <div class="footer-name brand-glow">OptionNeeti.</div>
 
       <p>
-        Research-based index options coverage for
-        Nifty, Bank Nifty and Sensex.
-        Intraday and BTST setups, research levels,
-        risk commentary and educational insights.
+        OptionNeeti brings Nifty, Bank Nifty and Sensex
+        options research together — with intraday and BTST
+        market observations, potential levels, research rationale
+        and risk-aware commentary.
       </p>
     </div>
 
@@ -2452,7 +2640,7 @@ summary:focus-visible {
 
     <!-- CONTACT -->
     <div>
-      <h3>Contact Us</h3>
+      <h3>OptionNeeti Research Desk</h3>
       <ul>
         <li>
           <a href="/contact">OptionNeeti research desk</a>
@@ -2557,7 +2745,7 @@ summary:focus-visible {
     <div>
       <h3>SEBI Registered Research Analyst Details</h3>
 
-      <p>OptionNeeti research services are provided by the registered individual Research Analyst identified below.</p>
+      <p>OptionNeeti research is provided by the registered individual Research Analyst identified below.</p>
 
       <p>
         <strong>Registered Name:</strong>
@@ -2599,7 +2787,7 @@ summary:focus-visible {
     </span>
 
     <span>
-      Research recommendations only ·
+      OptionNeeti research only ·
       <a href="/contact">Contact the research desk ↗</a>
     </span>
   </div>
@@ -2615,6 +2803,18 @@ summary:focus-visible {
   "use strict";
 
   const $ = selector => document.querySelector(selector);
+
+  // The OptionNeeti wordmark remains legible if the existing logo asset
+  // has not yet been deployed to the site root.
+  document.querySelectorAll('img[src="/logo.png"]').forEach(img => {
+    function hideMissingLogo() {
+      img.style.display = "none";
+      const footerBadge = img.closest(".footer-brand");
+      if (footerBadge) footerBadge.style.display = "none";
+    }
+    img.addEventListener("error", hideMissingLogo, { once:true });
+    if (img.complete && img.naturalWidth === 0) hideMissingLogo();
+  });
 
   const reduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
@@ -2641,6 +2841,7 @@ summary:focus-visible {
 
     loader.classList.add("hide");
     document.body.classList.remove("loading");
+    document.body.classList.add("site-ready");
 
     if (video && video.readyState >= 2) {
       video.play().catch(() => {});
@@ -2707,10 +2908,10 @@ summary:focus-visible {
   =================================== */
 
   const words = [
-    "clarity.",
-    "discipline.",
-    "precision.",
-    "confidence."
+    "decoded.",
+    "explained.",
+    "structured.",
+    "in focus."
   ];
 
   const word = $("#animatedWord");
