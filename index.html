@@ -6,21 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 
-<title>Sarvneeti | Explore OptionNeeti Index Options Research</title>
+<title>Sarvneeti | OptionNeeti Index Options Research</title>
+<meta name="description" content="Explore OptionNeeti index options research for Nifty, Bank Nifty and Sensex, including intraday and BTST scenarios, market levels, volatility and risk-aware analysis.">
 
-<meta name="description"
-content="Discover OptionNeeti, Sarvneeti's index options research offering for Nifty, Bank Nifty and Sensex, alongside equity research, structured insights and risk-aware market analysis.">
-
-<link rel="icon" type="image/png" href="/fevicon.png?v=2">
-<link rel="shortcut icon" type="image/png" href="/fevicon.png?v=2">
-<link rel="apple-touch-icon" href="/fevicon.png?v=2">
+<link rel="icon" type="image/png" href="/fevicon.png?v=3">
+<link rel="shortcut icon" href="/fevicon.png?v=3">
+<link rel="apple-touch-icon" href="/fevicon.png?v=3">
 
 <style>
-/* ======================================
-   GLOBAL
-====================================== */
-
-:root {
+/* ================= GLOBAL ================= */
+:root{
   --navy:#123b48;
   --deep:#126479;
   --teal:#1997a6;
@@ -30,135 +25,81 @@ content="Discover OptionNeeti, Sarvneeti's index options research offering for N
   --line:#d8e9ec;
   --bluebg:#e9f6f7;
   --peach:#fff4ee;
-  --white:#ffffff;
   --max:1250px;
 }
-
 *,
 *::before,
-*::after {
-  box-sizing:border-box;
-}
-
-html {
+*::after{box-sizing:border-box}
+html{
   scroll-behavior:smooth;
   scroll-padding-top:115px;
 }
-
-body {
+body{
   margin:0;
   background:white;
   color:var(--navy);
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Arial,sans-serif;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
-
-a {
-  text-decoration:none;
-  color:inherit;
-}
-
-button,
-input,
-select,
-textarea {
-  font:inherit;
-}
-
-button {
-  cursor:pointer;
-}
-
-.container {
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{
   width:min(var(--max),calc(100% - 64px));
   margin:auto;
 }
-
-::selection {
-  background:#bde9e9;
-  color:var(--navy);
-}
-
+::selection{background:#bde9e9;color:var(--navy)}
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible{
   outline:2px solid var(--teal);
   outline-offset:3px;
 }
 
-/* ======================================
-   SCROLL PROGRESS
-====================================== */
-
-.scroll-progress {
+/* ================= HEADER ================= */
+.scroll-progress{
   position:fixed;
-  top:0;
-  left:0;
-  width:0;
-  height:3px;
+  top:0;left:0;
+  width:0;height:3px;
   z-index:999;
-  background:linear-gradient(
-    90deg,var(--teal),var(--coral)
-  );
+  background:linear-gradient(90deg,var(--teal),var(--coral));
 }
-
-/* ======================================
-   FLOATING HEADER
-====================================== */
-
-.site-header {
+.site-header{
   position:fixed;
   top:18px;
   left:50%;
   transform:translateX(-50%);
-
   width:min(1450px,calc(100% - 40px));
   min-height:83px;
   padding:12px 20px 12px 28px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:20px;
-
   z-index:900;
-
   background:rgba(255,255,255,.96);
   border:1px solid rgba(26,83,97,.13);
   border-radius:28px;
-
   box-shadow:0 15px 50px rgba(24,94,107,.1);
-
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
-
-  transition:
-    top .35s,
-    min-height .35s,
-    box-shadow .35s;
+  transition:top .35s,min-height .35s,box-shadow .35s;
 }
-
-.site-header.scrolled {
+.site-header.scrolled{
   top:10px;
   min-height:69px;
   box-shadow:0 10px 35px rgba(24,94,107,.15);
 }
-
-.logo {
+.logo{
   display:inline-flex;
   align-items:center;
+  flex-shrink:0;
 }
-
-.logo img {
+.logo img{
   display:block;
   max-height:54px;
   max-width:210px;
@@ -166,138 +107,171 @@ textarea:focus-visible {
   height:auto;
   object-fit:contain;
 }
-
-.header-contact,
-.btn-primary {
-  display:inline-flex;
-  justify-content:center;
+.header-actions{
+  display:flex;
   align-items:center;
   gap:13px;
-
-  padding:15px 23px;
+}
+.header-services{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
   min-height:49px;
-
-  border:none;
+  padding:13px 17px;
+  color:#245a68;
+  background:#f1fafa;
+  border:1px solid #cce6e9;
   border-radius:12px;
-
-  background:var(--coral);
-  color:white;
-
+  white-space:nowrap;
   font-size:12px;
   font-weight:850;
-
-  transition:
-    transform .3s,
-    background .3s,
-    box-shadow .3s;
+  transition:background .3s,transform .3s;
 }
-
-.header-contact:hover,
-.btn-primary:hover {
+.header-services:hover{
+  background:#daf2f4;
+  transform:translateY(-2px);
+}
+.header-services span{color:var(--teal)}
+.header-product{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid #b9e0e5;
+  color:var(--deep);
+  background:#effafb;
+  border-radius:12px;
+  padding:12px 16px;
+  font-size:11px;
+  font-weight:850;
+  transition:.25s;
+}
+.header-product:hover{
+  background:#dff5f4;
+  transform:translateY(-2px);
+}
+.header-contact,.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:15px 23px;
+  min-height:49px;
+  border:none;
+  border-radius:12px;
+  background:var(--coral);
+  color:white;
+  font-size:12px;
+  font-weight:850;
+  transition:transform .3s,background .3s,box-shadow .3s;
+}
+.header-contact:hover,.btn-primary:hover{
   background:#ed503c;
-  transform:translateY(-4px);
+  transform:translateY(-3px);
   box-shadow:0 14px 30px rgba(252,98,78,.23);
 }
-
-.btn-outline {
+.btn-outline{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:10px;
   min-height:49px;
   padding:14px 22px;
-  border-radius:12px;
   border:1px solid #bbd8dd;
+  border-radius:12px;
   background:#fff;
   color:#245b69;
   font-size:12px;
   font-weight:850;
   transition:transform .3s,background .3s;
 }
-
-.btn-outline:hover {
+.btn-outline:hover{
   transform:translateY(-3px);
   background:#eef9fa;
 }
 
-/* ======================================
-   SCROLL ANIMATION SYSTEM
-====================================== */
-
-.reveal {
-  opacity:1;
-  transform:none;
-}
-
-.js-motion .reveal:not(.visible) {
+/* ================= ANIMATIONS ================= */
+.reveal{opacity:1;transform:none}
+.js-motion .reveal:not(.visible){
   opacity:0;
   transform:translateY(45px);
 }
-
-.js-motion .reveal {
-  transition:
-    opacity .85s ease,
+.js-motion .reveal{
+  transition:opacity .85s ease,
     transform .9s cubic-bezier(.16,1,.3,1);
 }
-
-.js-motion .reveal.visible {
+.js-motion .reveal.visible{
   opacity:1;
   transform:none;
 }
-
-.motion-slot {
+.motion-slot{
   min-width:0;
   perspective:1300px;
 }
-
-.motion-card {
+.motion-card{
   height:100%;
   transform-origin:center 75%;
   backface-visibility:hidden;
-  transition:
-    transform .95s cubic-bezier(.17,1,.3,1),
-    opacity .8s ease,
-    filter .8s ease;
+  transition:transform .95s cubic-bezier(.17,1,.3,1),
+    opacity .8s ease,filter .8s ease;
   transition-delay:var(--delay,0ms);
 }
-
-.js-motion .motion-slot:not(.arrived) .motion-card {
+.js-motion .motion-slot:not(.arrived) .motion-card{
   opacity:0;
   filter:blur(7px);
-  transform:
-    translate3d(var(--from-x,0px),100px,0)
-    rotateX(12deg)
-    scale(.89);
+  transform:translate3d(var(--from-x,0px),100px,0)
+    rotateX(12deg) scale(.89);
 }
-
-.js-motion .motion-slot.arrived .motion-card {
+.js-motion .motion-slot.arrived .motion-card{
   opacity:1;
   filter:blur(0);
   transform:none;
 }
+.gradient-word,.product-name{
+  display:inline-block;
+  background:linear-gradient(
+    105deg,#168ba3,#50bfb9,#f38a72,#168ba3
+  );
+  background-size:300% 100%;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation:gradientMove 6s linear infinite;
+}
+@keyframes gradientMove{
+  to{background-position:300% 0}
+}
+.pulse-dot{
+  display:inline-block;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#21adab;
+  box-shadow:0 0 0 0 rgba(32,167,169,.4);
+  animation:productPulse 2.5s infinite;
+  flex-shrink:0;
+}
+@keyframes productPulse{
+  60%{box-shadow:0 0 0 8px rgba(32,167,169,0)}
+  100%{box-shadow:0 0 0 0 rgba(32,167,169,0)}
+}
 
-/* ======================================
-   HERO
-====================================== */
-
-.hero {
+/* ================= HERO ================= */
+.hero{
   position:relative;
   min-height:100svh;
   display:flex;
   align-items:center;
-  background:#fff;
+  background:white;
   padding:160px 0 110px;
   overflow:hidden;
 }
-
-.hero-grid {
+.hero-grid{
   display:grid;
   grid-template-columns:1.06fr .94fr;
   align-items:center;
   gap:65px;
 }
-
-.eyebrow {
+.eyebrow{
   display:inline-flex;
   align-items:center;
   gap:10px;
@@ -307,67 +281,61 @@ textarea:focus-visible {
   text-transform:uppercase;
   font-weight:850;
 }
-
-.eyebrow::before {
+.eyebrow::before{
   content:"";
-  display:block;
-  width:24px;
-  height:2px;
+  width:24px;height:2px;
   background:currentColor;
 }
-
-.hero h1 {
+.product-chip{
+  display:inline-flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:9px;
+  background:#e8f6f6;
+  color:#176d7d;
+  border:1px solid #b7e3e3;
+  border-radius:100px;
+  padding:10px 15px;
+  margin-top:27px;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.035em;
+  box-shadow:0 8px 30px rgba(24,153,164,.08);
+}
+.product-chip strong{font-size:12px;color:var(--deep)}
+.product-chip:hover{background:#daf3f3}
+.hero h1{
   font-size:clamp(55px,6vw,88px);
   line-height:1.045;
   letter-spacing:-.075em;
   margin:28px 0 24px;
   font-weight:850;
 }
-
-.gradient-word {
-  display:inline-block;
-  background:linear-gradient(
-    100deg,
-    #168ba3,
-    #50bfb9,
-    #f38a72,
-    #168ba3
-  );
-  background-size:300% 100%;
-  color:transparent;
-  background-clip:text;
-  -webkit-background-clip:text;
-  animation:gradientMove 6s linear infinite;
-}
-
-@keyframes gradientMove {
-  to {
-    background-position:300% 0;
-  }
-}
-
-.hero-description {
+.hero-description{
   color:var(--muted);
   font-size:16px;
   line-height:1.9;
   max-width:570px;
 }
-
-.hero-actions {
+.product-link-inline{
+  font-weight:850;
+  color:#148d9b;
+  border-bottom:1px solid rgba(20,141,155,.35);
+}
+.product-link-inline:hover{color:var(--coral)}
+.hero-actions{
   display:flex;
   flex-wrap:wrap;
   gap:13px;
   margin-top:32px;
 }
-
-.hero-tags {
+.hero-tags{
   display:flex;
   flex-wrap:wrap;
   gap:9px;
   margin-top:29px;
 }
-
-.hero-tags span {
+.hero-tags span{
   padding:10px 14px;
   border-radius:50px;
   background:#f5fbfc;
@@ -376,8 +344,7 @@ textarea:focus-visible {
   font-weight:850;
   color:#4e7983;
 }
-
-.hero-reg {
+.hero-reg{
   display:flex;
   align-items:flex-start;
   gap:13px;
@@ -388,271 +355,330 @@ textarea:focus-visible {
   font-size:11px;
   line-height:1.8;
 }
-
-.reg-icon {
+.reg-icon{
   flex-shrink:0;
   display:grid;
   place-items:center;
-  width:31px;
-  height:31px;
-  border-radius:50%;
+  width:31px;height:31px;
   border:1px solid #b9dddf;
+  border-radius:50%;
   color:var(--teal);
   font-weight:900;
 }
+.hero-reg strong{color:#335b68}
 
-.hero-reg strong {
-  color:#335b68;
-}
-
-/* ======================================
-   HERO ANIMATED VISUAL
-====================================== */
-
-.hero-art {
+/* ===== NEW HERO RIGHT-SIDE ANIMATION ===== */
+.hero-art{
   position:relative;
-  height:540px;
+  height:555px;
+  min-width:0;
   display:grid;
   place-items:center;
   isolation:isolate;
 }
-
-.hero-art::before {
-  content:"";
+.visual-glow{
   position:absolute;
-  width:90%;
-  aspect-ratio:1;
+  inset:9%;
   border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(125,211,215,.25),
-    rgba(227,246,247,.16) 55%,
-    transparent 73%
-  );
-  filter:blur(10px);
-  animation:glowPulse 7s ease-in-out infinite;
+  background:radial-gradient(circle,#a4e1e160,transparent 73%);
+  filter:blur(29px);
+  animation:visualGlow 7s ease-in-out infinite;
   z-index:-1;
 }
-
-@keyframes glowPulse {
-  50% {
-    transform:scale(1.13);
-    opacity:.7;
-  }
+@keyframes visualGlow{
+  50%{transform:scale(1.13);opacity:.62}
 }
-
-.visual-ring {
+.orbit{
   position:absolute;
-  width:88%;
+  width:91%;
   aspect-ratio:1;
-  border:1px solid #d9ebed;
+  border:1px dashed #c5e1e5;
   border-radius:50%;
-  transform:rotate(-24deg) scaleY(.68);
+  z-index:-1;
+  animation:orbitSpin 30s linear infinite;
 }
-
-.visual-ring.two {
-  width:110%;
-  border-color:#e6eff1;
-  transform:rotate(35deg) scaleY(.65);
-}
-
-.visual-ring::after {
+.orbit::after{
   content:"";
   position:absolute;
-  width:11px;
-  height:11px;
+  top:11%;left:15%;
+  width:11px;height:11px;
   border-radius:50%;
   background:var(--coral);
-  left:18%;
-  top:12%;
-  box-shadow:0 0 0 9px rgba(252,98,78,.08);
+  box-shadow:0 0 0 10px #fc624e12;
 }
-
-.visual-ring.two::after {
+.orbit-two{
+  width:111%;
+  border-color:#d5e9ec;
+  animation-direction:reverse;
+  animation-duration:44s;
+}
+.orbit-two::after{
+  top:71%;left:85%;
   background:var(--teal);
-  left:auto;
-  right:22%;
-  top:78%;
-  box-shadow:0 0 0 9px rgba(25,151,166,.08);
+  box-shadow:0 0 0 10px #1997a613;
 }
-
-/* Main analytics illustration */
-
-.analytics-card {
+@keyframes orbitSpin{
+  to{transform:rotate(360deg)}
+}
+.option-screen{
   position:relative;
-  width:83%;
-  max-width:440px;
-  background:#ffffff;
-  border:1px solid #cfe5e9;
+  width:87%;
+  max-width:485px;
+  padding:19px 20px 17px;
+  border:1px solid #cce4e8;
   border-radius:25px;
+  background:rgba(255,255,255,.985);
+  box-shadow:0 35px 95px #1c6e811d;
   overflow:hidden;
-  box-shadow:0 32px 90px rgba(29,105,122,.16);
-  transform:rotate(-5deg);
-  animation:visualFloat 7s ease-in-out infinite;
 }
-
-@keyframes visualFloat {
-  0%,100% {
-    transform:rotate(-5deg) translateY(0);
-  }
-  50% {
-    transform:rotate(-3deg) translateY(-15px);
-  }
-}
-
-.analytics-header {
+.screen-top,.screen-identity{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:20px 22px;
-  border-bottom:1px solid #e3eff1;
+  gap:10px;
 }
-
-.analytics-header span {
-  font-size:10px;
+.screen-top{
+  justify-content:space-between;
+  padding-bottom:14px;
+  border-bottom:1px solid #e4eff1;
+}
+.screen-symbol{
+  display:grid;
+  place-items:center;
+  width:39px;height:39px;
+  border-radius:12px;
+  background:#e3f6f6;
+  color:#12909c;
+  font-size:27px;
+}
+.screen-identity strong{
+  display:block;
+  letter-spacing:-.045em;
+  font-size:19px;
+}
+.screen-identity small{
+  display:block;
+  margin-top:2px;
+  font-size:8px;
+  color:#819ba2;
+  font-weight:800;
+  letter-spacing:.1em;
+}
+.screen-demo{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 9px;
+  background:#effafa;
+  color:#247986;
+  border:1px solid #cbebeb;
+  border-radius:50px;
+  font-size:8px;
   font-weight:850;
-  color:#688a93;
-  letter-spacing:.12em;
+  white-space:nowrap;
 }
-
-.analytics-header b {
-  font-size:11px;
-  color:#149d91;
+.screen-demo .pulse-dot{width:6px;height:6px}
+.index-switcher{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+  margin:17px 0 12px;
 }
-
-.chart-wrap {
-  padding:20px;
+.index-tab{
+  min-width:0;
+  padding:10px 4px;
+  border:1px solid #e0edef;
+  border-radius:9px;
+  background:#f8fcfc;
+  color:#67858e;
+  font-size:9px;
+  font-weight:850;
+  transition:background .25s,color .25s,transform .25s;
 }
-
-.chart-wrap svg {
+.index-tab.active{
+  color:white;
+  background:#188d9c;
+  border-color:#188d9c;
+  box-shadow:0 6px 13px #188d9c1c;
+}
+.index-tab:hover{transform:translateY(-2px)}
+.screen-research{padding:9px 1px 1px}
+.screen-research>span{
+  display:block;
+  color:#7d9aa2;
+  letter-spacing:.13em;
+  font-size:8px;
+  font-weight:850;
+}
+.screen-research strong{
+  display:block;
+  font-size:24px;
+  letter-spacing:-.06em;
+  margin:5px 0 3px;
+}
+.screen-research p{
+  margin:0;
+  color:#76909a;
+  font-size:10px;
+}
+.animated-chart{
+  position:relative;
+  margin-top:10px;
+  padding:9px 10px 7px;
+  border:1px solid #e4f0f1;
+  border-radius:14px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#f9fefe,#eff9f9);
+}
+.options-chart{
   display:block;
   width:100%;
   height:auto;
 }
-
-.chart-line {
-  stroke-dasharray:700;
-  stroke-dashoffset:700;
-  animation:drawChart 3.5s .5s ease forwards;
+.chart-candles .candle{
+  transform-box:fill-box;
+  transform-origin:center bottom;
+  animation:candleMove 3.7s ease-in-out infinite alternate;
+  animation-delay:calc(var(--n,0) * -.22s);
 }
-
-@keyframes drawChart {
-  to {
-    stroke-dashoffset:0;
-  }
+.c1{--n:1}.c2{--n:2}.c3{--n:3}.c4{--n:4}
+.c5{--n:5}.c6{--n:6}.c7{--n:7}.c8{--n:8}
+.c9{--n:9}.c10{--n:10}.c11{--n:11}
+@keyframes candleMove{
+  50%{transform:translateY(-5px) scaleY(1.04)}
 }
-
-.analytics-footer {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  padding:0 20px 20px;
+.research-line{
+  stroke-dasharray:720;
+  stroke-dashoffset:720;
+  animation:lineResearch 8s ease-in-out infinite;
 }
-
-.analytics-metric {
-  background:#f0f8f9;
-  border-radius:11px;
-  padding:12px 10px;
+@keyframes lineResearch{
+  0%,8%{stroke-dashoffset:720}
+  46%,100%{stroke-dashoffset:0}
 }
-
-.analytics-metric small {
-  display:block;
-  color:#7e9aa3;
-  font-size:9px;
-  margin-bottom:6px;
+.chart-end-ring{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:endPulse 2.4s ease-in-out infinite;
 }
-
-.analytics-metric strong {
-  color:#2f5f6b;
-  font-size:11px;
+@keyframes endPulse{
+  50%{transform:scale(1.8);opacity:.06}
 }
-
-.float-card {
+.chart-scan{
   position:absolute;
+  top:0;bottom:0;
+  left:-15%;
+  width:28%;
+  transform:skewX(-14deg);
+  background:linear-gradient(90deg,transparent,#6ee0db10,transparent);
+  animation:scanChart 6s linear infinite;
+  pointer-events:none;
+  z-index:2;
+}
+@keyframes scanChart{
+  to{left:115%}
+}
+.chart-caption{
+  text-align:center;
+  font-size:8px;
+  letter-spacing:.05em;
+  color:#8b9da3;
+}
+.screen-metrics{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+  margin-top:12px;
+}
+.screen-metrics div{
+  min-width:0;
+  padding:10px 8px;
+  background:#f0f8f9;
+  border-radius:9px;
+}
+.screen-metrics span{
+  display:block;
+  font-size:7px;
+  color:#8aa2a9;
+  font-weight:800;
+}
+.screen-metrics strong{
+  display:block;
+  margin-top:5px;
+  font-size:9px;
+  color:#386977;
+  line-height:1.3;
+}
+.screen-bottom{
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:15px 18px;
-  border:1px solid #d6e8eb;
-  border-radius:16px;
-  background:rgba(255,255,255,.96);
-  box-shadow:0 18px 42px rgba(27,93,111,.13);
-  animation:smallFloat 6s ease-in-out infinite;
+  gap:7px;
+  margin-top:13px;
+  padding-top:10px;
+  border-top:1px solid #e6eff1;
+  color:#78929b;
+  font-size:9px;
+}
+.screen-bottom-dot{
+  width:7px;height:7px;
+  background:#18a9a2;
+  border-radius:50%;
+}
+.research-float{
+  position:absolute;
   z-index:3;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:12px 14px;
+  border:1px solid #cde4e8;
+  border-radius:14px;
+  background:#ffffffed;
+  box-shadow:0 15px 32px #205d7024;
+  animation:researchFloat 6s ease-in-out infinite;
 }
-
-.float-card.top {
-  top:10%;
-  right:-1%;
-}
-
-.float-card.bottom {
-  bottom:9%;
-  left:-2%;
-  animation-delay:-3s;
-}
-
-@keyframes smallFloat {
-  50% {
-    transform:translateY(-12px);
-  }
-}
-
-.float-icon {
-  width:37px;
-  height:37px;
+.research-float>span{
   display:grid;
   place-items:center;
-  background:#e4f7f7;
-  color:var(--teal);
-  border-radius:12px;
+  width:32px;height:32px;
+  border-radius:10px;
+  background:#e7f7f7;
+  color:#1294a0;
   font-size:20px;
 }
-
-.float-card b {
+.research-float strong{
   display:block;
-  font-size:12px;
-  margin-bottom:4px;
+  font-size:11px;
+  color:#234f5b;
 }
-
-.float-card small {
-  font-size:10px;
-  color:#829aa2;
-}
-
-.visual-caption {
-  position:absolute;
-  bottom:-8px;
-  left:50%;
-  transform:translateX(-50%);
+.research-float small{
+  display:block;
+  margin-top:3px;
   font-size:9px;
-  letter-spacing:.13em;
-  color:#8da5ac;
-  font-weight:850;
-  white-space:nowrap;
+  color:#8199a1;
+}
+.research-float-top{top:3%;right:-2%}
+.research-float-bottom{
+  bottom:2%;left:-2%;
+  animation-delay:-3s;
+}
+@keyframes researchFloat{
+  50%{transform:translateY(-12px)}
 }
 
-/* ======================================
-   CURVED MOVING RIBBON
-====================================== */
-
-.ticker {
+/* ================= MOVING RIBBON ================= */
+.ticker{
   position:relative;
   overflow:hidden;
-  background:linear-gradient(
-    100deg,#248ca2,#70bec7,#9bcfd0
-  );
-  color:#fff;
+  background:linear-gradient(100deg,#248ca2,#70bec7,#9bcfd0);
+  color:white;
   border-radius:0 0 48px 48px;
 }
-
-.ticker-track {
+.ticker-track{
   display:flex;
   width:max-content;
   animation:tickerMove 32s linear infinite;
 }
-
-.ticker-group {
+.ticker-group{
   display:flex;
   align-items:center;
   gap:38px;
@@ -662,160 +688,338 @@ textarea:focus-visible {
   font-weight:850;
   letter-spacing:.14em;
 }
-
-.ticker-group i {
-  font-size:18px;
+.ticker-group i{
   color:#ffe6d8;
+  font-size:18px;
   font-style:normal;
 }
-
-@keyframes tickerMove {
-  to {
-    transform:translateX(-50%);
-  }
+@keyframes tickerMove{
+  to{transform:translateX(-50%)}
 }
 
-/* ======================================
-   SECTION HEADINGS
-====================================== */
-
-.section {
-  padding:95px 0;
-}
-
-.section-header {
+/* ================= SECTION HEADINGS ================= */
+.section{padding:95px 0}
+.section-header{
   display:flex;
   align-items:end;
   justify-content:space-between;
   gap:30px;
   margin-bottom:41px;
 }
-
-.section-header h2,
-.large-heading {
+.section-header h2,.large-heading{
   font-size:clamp(36px,4.5vw,61px);
   line-height:1.1;
   letter-spacing:-.065em;
   margin:16px 0 0;
 }
-
-.section-header p {
+.section-header p{
   color:var(--muted);
   font-size:13px;
   line-height:1.85;
   max-width:430px;
 }
+.accent{color:var(--teal)}
 
-.accent {
-  color:var(--teal);
+/* ================= OPTIONNEETI SPOTLIGHT ================= */
+.option-spotlight{
+  position:relative;
+  background:linear-gradient(135deg,#fffaf7 0%,#fff 58%,#e9f8f9 100%);
+  overflow:hidden;
+  isolation:isolate;
+}
+.option-spotlight::before{
+  content:"";
+  position:absolute;
+  right:-160px;top:-100px;
+  width:450px;height:450px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(52,187,190,.19),transparent 70%);
+  pointer-events:none;
+  animation:spotlightBreathe 7s ease-in-out infinite;
+  z-index:-1;
+}
+@keyframes spotlightBreathe{
+  50%{transform:scale(1.18);opacity:.75}
+}
+.spotlight-grid{
+  display:grid;
+  grid-template-columns:1.03fr .97fr;
+  gap:55px;
+  align-items:center;
+}
+.spotlight-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:#138c9b;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.13em;
+}
+.spotlight-title{
+  font-size:clamp(41px,5.4vw,73px);
+  line-height:1.065;
+  letter-spacing:-.07em;
+  margin:20px 0;
+}
+.spotlight-text{
+  max-width:570px;
+  color:#617d87;
+  font-size:14px;
+  line-height:1.95;
+  margin-bottom:19px;
+}
+.spotlight-points{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:24px 0 29px;
+}
+.spotlight-points span{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid #d4e9eb;
+  border-radius:12px;
+  background:rgba(255,255,255,.78);
+  padding:12px 13px;
+  color:#2c6875;
+  font-size:11px;
+  font-weight:800;
+}
+.spotlight-points span::before{
+  content:"✓";
+  font-weight:900;
+  color:#16a0a0;
+}
+.spotlight-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.spotlight-note{
+  font-size:11px;
+  color:#789199;
+  line-height:1.8;
+  margin-top:19px;
+}
+.option-demo{
+  position:relative;
+  background:#fff;
+  border:1px solid #cce5e7;
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 28px 70px rgba(14,87,106,.1);
+  overflow:hidden;
+  animation:optionFloat 7s ease-in-out infinite;
+}
+@keyframes optionFloat{
+  50%{transform:translateY(-12px)}
+}
+.option-demo::after{
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:linear-gradient(
+    120deg,transparent 44%,rgba(255,255,255,.6) 50%,transparent 56%
+  );
+  transform:translateX(-75%);
+  animation:demoShine 9s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes demoShine{
+  0%,64%{transform:translateX(-75%)}
+  100%{transform:translateX(85%)}
+}
+.demo-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding-bottom:19px;
+  border-bottom:1px solid #e0eff0;
+}
+.demo-name{
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:-.035em;
+}
+.demo-kicker{
+  display:block;
+  margin-top:4px;
+  color:#79969e;
+  font-size:10px;
+  letter-spacing:.1em;
+  font-weight:800;
+}
+.demo-pill{
+  font-size:9px;
+  font-weight:850;
+  color:#138a95;
+  background:#e9f8f8;
+  padding:9px 11px;
+  border:1px solid #ccecee;
+  border-radius:50px;
+  white-space:nowrap;
+}
+.demo-flow{
+  display:grid;
+  gap:13px;
+  padding:23px 0 9px;
+}
+.demo-flow-row{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  background:#f6fbfb;
+  border:1px solid #e0eff0;
+  border-radius:14px;
+  padding:17px;
+  transition:transform .3s,box-shadow .3s;
+}
+.demo-flow-row:hover{
+  transform:translateX(5px);
+  box-shadow:0 10px 28px rgba(24,125,136,.08);
+}
+.demo-step{
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:37px;height:37px;
+  border-radius:12px;
+  background:#e3f5f5;
+  color:#14939e;
+  font-size:12px;
+  font-weight:900;
+}
+.demo-flow-row:nth-child(2) .demo-step{
+  background:#fff0e9;
+  color:#e8765f;
+}
+.demo-flow-row b{font-size:13px}
+.demo-flow-row p{
+  margin:3px 0 0;
+  color:#779098;
+  font-size:11px;
+  line-height:1.6;
+}
+.demo-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border-top:1px solid #e0eff0;
+  padding-top:17px;
+  margin-top:13px;
+}
+.demo-bottom small{
+  color:#758f97;
+  font-size:10px;
+  line-height:1.5;
+}
+.demo-bottom a{
+  font-size:11px;
+  font-weight:900;
+  color:#108a99;
+  white-space:nowrap;
 }
 
-/* ======================================
-   SERVICES
-====================================== */
-
-.services {
+/* ================= OPTIONNEETI SERVICES ================= */
+.services{
   background:var(--bluebg);
   border-radius:48px 48px 0 0;
   overflow-x:clip;
 }
-
-.service-grid {
+.service-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
-
-.service-card {
+.service-card{
   position:relative;
-  min-height:255px;
+  display:flex;
+  flex-direction:column;
+  min-height:260px;
   padding:30px;
   background:white;
   border:1px solid #d8e8eb;
   border-radius:25px 25px 48px 25px;
   box-shadow:0 8px 24px rgba(23,78,92,.04);
   overflow:hidden;
+  transition:box-shadow .35s,border-color .35s;
 }
-
-.service-grid .motion-slot:nth-child(2n) .service-card {
+.service-grid .motion-slot:nth-child(2n) .service-card{
   background:#d8f0f1;
 }
-
-.service-grid .motion-slot:nth-child(3n) .service-card {
+.service-grid .motion-slot:nth-child(3n) .service-card{
   background:#fff1e9;
 }
-
-.service-icon {
+.service-card:hover{
+  box-shadow:0 20px 40px #146d8220;
+  border-color:#a9d7dd;
+}
+.service-icon{
   display:grid;
   place-items:center;
-  width:48px;
-  height:48px;
+  width:48px;height:48px;
   border-radius:14px;
   background:#e5f7f7;
   color:var(--teal);
   font-size:24px;
   margin-bottom:25px;
 }
-
-.service-card h3 {
+.service-card h3{
   font-size:21px;
   letter-spacing:-.04em;
   margin:0 0 12px;
 }
-
-.service-card p {
+.service-card p{
   color:#617e86;
   font-size:12px;
   line-height:1.85;
   margin:0;
 }
-
-.service-number {
+.service-number{
   position:absolute;
-  top:28px;
-  right:27px;
+  top:28px;right:27px;
   font-size:11px;
   font-weight:850;
   color:#8da7ae;
 }
-
-.service-arrow {
-  position:absolute;
-  bottom:18px;
-  right:25px;
-  color:var(--teal);
-  font-size:23px;
+.service-product-link{
+  display:inline-flex;
+  align-self:flex-start;
+  margin-top:auto;
+  padding-top:17px;
+  border-bottom:1px solid #9dd5d7;
+  color:#167d91;
+  font-size:11px;
+  font-weight:850;
+}
+.service-product-link:hover{color:#e75e49}
+.service-disclaimer{
+  margin:28px 0 0;
+  color:#718991;
+  font-size:11px;
+  line-height:1.8;
 }
 
-/* ======================================
-   ABOUT
-====================================== */
-
-.about {
-  background:white;
-  overflow-x:clip;
-}
-
-.about-grid {
+/* ================= ABOUT ================= */
+.about{background:white;overflow-x:clip}
+.about-grid{
   display:grid;
   grid-template-columns:.95fr 1.05fr;
   gap:75px;
   align-items:center;
 }
-
-.about-copy p {
+.about-copy p{
   font-size:13px;
   color:var(--muted);
   line-height:1.9;
   max-width:500px;
 }
-
-.benefit-list {
-  display:grid;
-  gap:14px;
-}
-
-.benefit-card {
+.benefit-list{display:grid;gap:14px}
+.benefit-card{
   display:flex;
   gap:20px;
   padding:25px 27px;
@@ -823,63 +1027,49 @@ textarea:focus-visible {
   border:1px solid #d9e9eb;
   border-radius:20px;
 }
-
-.benefit-card span {
+.benefit-card>span{
   color:var(--teal);
   font-size:13px;
   font-weight:900;
 }
-
-.benefit-card h3 {
-  font-size:16px;
-  margin:0 0 8px;
-}
-
-.benefit-card p {
+.benefit-card h3{font-size:16px;margin:0 0 8px}
+.benefit-card p{
   color:var(--muted);
   font-size:12px;
   line-height:1.75;
   margin:0;
 }
 
-/* ======================================
-   CONTACT - BEFORE FOOTER
-====================================== */
-
-.contact-section {
+/* ================= CONTACT ================= */
+.contact-section{
   background:#e7f5f6;
   border-radius:48px 48px 0 0;
   overflow-x:clip;
 }
-
-.contact-layout {
+.contact-layout{
   display:grid;
   grid-template-columns:.85fr 1.15fr;
   gap:40px;
   align-items:start;
 }
-
-.contact-copy h2 {
+.contact-copy h2{
   font-size:clamp(38px,4.5vw,61px);
   letter-spacing:-.065em;
   line-height:1.1;
   margin:17px 0 23px;
 }
-
-.contact-copy > p {
+.contact-copy>p{
   color:var(--muted);
   font-size:14px;
   line-height:1.9;
   max-width:480px;
 }
-
-.contact-points {
+.contact-points{
   display:grid;
   gap:13px;
   margin-top:30px;
 }
-
-.contact-point {
+.contact-point{
   display:flex;
   align-items:flex-start;
   gap:15px;
@@ -888,81 +1078,59 @@ textarea:focus-visible {
   border-radius:17px;
   background:rgba(255,255,255,.7);
 }
-
-.contact-point > span {
+.contact-point>span{
   display:grid;
   place-items:center;
   flex-shrink:0;
-  width:39px;
-  height:39px;
+  width:39px;height:39px;
   background:#e3f5f6;
   border-radius:11px;
   color:var(--teal);
   font-size:20px;
 }
-
-.contact-point b {
-  display:block;
-  font-size:13px;
-  margin-bottom:5px;
-}
-
-.contact-point p {
+.contact-point b{display:block;font-size:13px;margin-bottom:5px}
+.contact-point p{
   margin:0;
   color:#6b8790;
   font-size:11px;
   line-height:1.7;
 }
-
-/* FORM */
-
-.contact-form-card {
+.contact-form-card{
   padding:35px;
   background:white;
   border:1px solid #d8e9eb;
   border-radius:27px;
   box-shadow:0 22px 60px rgba(23,103,117,.08);
 }
-
-.contact-form-card h3 {
+.contact-form-card h3{
   margin:0 0 10px;
   font-size:30px;
   letter-spacing:-.05em;
 }
-
-.form-description {
+.form-description{
   font-size:12px;
   line-height:1.75;
   color:var(--muted);
   margin:0 0 25px;
 }
-
-.form-grid {
+.form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:18px;
 }
-
-.field {
+.field{
   display:flex;
   flex-direction:column;
   gap:9px;
   min-width:0;
 }
-
-.field.full {
-  grid-column:1/-1;
-}
-
-.field label {
+.field.full{grid-column:1/-1}
+.field label{
   font-size:11px;
   font-weight:850;
   color:#375f69;
 }
-
-.field input,
-.field select,
-.field textarea {
+.field input,.field select,.field textarea{
   width:100%;
   padding:15px;
   min-height:51px;
@@ -974,177 +1142,129 @@ textarea:focus-visible {
   font-size:13px;
   transition:border-color .25s,box-shadow .25s;
 }
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
+.field input:focus,.field select:focus,.field textarea:focus{
   border-color:var(--teal);
   box-shadow:0 0 0 4px rgba(25,151,166,.1);
   background:white;
 }
-
-.field input::placeholder,
-.field textarea::placeholder {
+.field input::placeholder,.field textarea::placeholder{
   color:#96acb3;
 }
-
-.field textarea {
+.field textarea{
   min-height:125px;
   resize:vertical;
   line-height:1.7;
 }
-
-.field select {
-  cursor:pointer;
-}
-
-.consent {
+.field select{cursor:pointer}
+.consent{
   display:flex;
-  gap:11px;
   align-items:flex-start;
+  gap:11px;
   margin:22px 0;
   color:#6d8890;
   font-size:11px;
   line-height:1.75;
 }
-
-.consent input {
-  width:16px;
-  height:16px;
+.consent input{
+  width:16px;height:16px;
   flex-shrink:0;
   margin-top:2px;
   accent-color:var(--teal);
 }
-
-.submit-btn {
+.submit-btn{
   width:100%;
+  min-height:51px;
   border:0;
   border-radius:12px;
-  min-height:51px;
   background:var(--coral);
   color:white;
   font-size:12px;
   font-weight:850;
   transition:transform .3s,background .3s;
 }
-
-.submit-btn:hover {
+.submit-btn:hover{
   background:#ec523e;
   transform:translateY(-3px);
 }
-
-.form-note {
+.form-note{
   color:#829aa2;
   font-size:10px;
   line-height:1.8;
   text-align:center;
   margin:17px 0 0;
 }
-
-.form-status {
+.form-status{
   display:none;
   margin:17px 0 0;
+  padding:13px;
   background:#fff8eb;
   border:1px solid #efd5b3;
+  border-radius:11px;
   color:#82602a;
-  padding:13px;
   font-size:12px;
   line-height:1.75;
-  border-radius:11px;
 }
+.form-status.show{display:block}
 
-.form-status.show {
-  display:block;
-}
-
-/* ======================================
-   FOOTER
-====================================== */
-
-.footer {
-  background:#103745;
-  color:#e7f5f6;
-}
-
-.footer-grid {
+/* ================= FOOTER ================= */
+.footer{background:#103745;color:#e7f5f6}
+.footer-grid{
   display:grid;
   grid-template-columns:1.4fr .75fr 1.1fr 1.3fr;
   gap:40px;
   padding:62px 0 44px;
 }
-
-.footer-logo-wrap {
+.footer-logo-wrap{
   display:inline-flex;
   background:white;
   padding:9px 14px;
   border-radius:11px;
   margin-bottom:13px;
 }
-
-.footer-logo {
+.footer-logo{
   display:block;
   max-height:50px;
   max-width:160px;
-  width:auto;
-  height:auto;
+  width:auto;height:auto;
   object-fit:contain;
 }
-
-.footer-name {
-  font-size:17px;
-  font-weight:850;
-}
-
-.footer h3 {
-  font-size:13px;
-  margin:6px 0 18px;
-}
-
-.footer p,
-.footer li {
+.footer-name{font-size:17px;font-weight:850}
+.footer h3{font-size:13px;margin:6px 0 18px}
+.footer p,.footer li{
   font-size:11px;
   line-height:1.85;
   color:#bfd5dc;
 }
-
-.footer ul {
+.footer ul{
   list-style:none;
-  padding:0;
-  margin:0;
-  display:grid;
-  gap:10px;
+  padding:0;margin:0;
+  display:grid;gap:10px;
 }
-
-.footer a:hover {
-  color:#9ce6e4;
+.footer a:hover{color:#9ce6e4}
+.footer strong{color:white}
+.footer-product-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  color:#a3f0e9!important;
+  font-size:12px;
+  font-weight:850;
 }
-
-.footer strong {
-  color:white;
-}
-
-.footer-legal {
+.footer-legal{
   padding:27px 0;
   border-top:1px solid rgba(255,255,255,.14);
 }
-
-.footer-legal p {
-  margin:0 0 11px;
-}
-
-.reg-details {
+.footer-legal p{margin:0 0 11px}
+.reg-details{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:35px;
   padding:30px 0;
   border-top:1px solid rgba(255,255,255,.14);
 }
-
-.reg-details p {
-  margin:6px 0;
-}
-
-.copyright {
+.reg-details p{margin:6px 0}
+.copyright{
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
@@ -1155,412 +1275,213 @@ textarea:focus-visible {
   font-size:11px;
 }
 
-/* ======================================
-   TABLET
-====================================== */
-
-@media(max-width:1050px) {
-  .container {
-    width:calc(100% - 48px);
-  }
-
-  .hero-grid {
-    gap:30px;
-  }
-
-  .hero-art {
-    height:460px;
-  }
-
-  .service-grid {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .footer-grid {
-    grid-template-columns:1fr 1fr;
-  }
+/* ================= RESPONSIVE ================= */
+@media(max-width:1050px){
+  .container{width:calc(100% - 48px)}
+  .hero-grid{gap:30px}
+  .hero-art{height:520px}
+  .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .research-float-top{right:0}
+  .research-float-bottom{left:0}
 }
-
-@media(max-width:850px) {
-  .site-header {
+@media(max-width:1000px){
+  .spotlight-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+  .option-demo{max-width:650px}
+}
+@media(max-width:850px){
+  .site-header{
     top:12px;
     width:calc(100% - 26px);
     min-height:72px;
     padding:10px 14px;
     border-radius:23px;
   }
-
-  .logo img {
-    max-height:44px;
-    max-width:155px;
-  }
-
-  .hero {
+  .logo img{max-height:44px;max-width:155px}
+  .hero{
     min-height:auto;
     padding:143px 0 65px;
   }
-
-  .hero-grid,
-  .about-grid,
-  .contact-layout {
+  .hero-grid,.about-grid,.contact-layout{
     grid-template-columns:1fr;
   }
-
-  .hero-grid {
-    gap:10px;
-  }
-
-  .hero-art {
-    max-width:560px;
+  .hero-grid{gap:10px}
+  .hero-art{
+    max-width:570px;
     width:100%;
-    height:440px;
+    height:540px;
     margin:auto;
   }
-
-  .hero h1 {
-    font-size:clamp(53px,8vw,75px);
-  }
-
-  .section {
-    padding:75px 0;
-  }
-
-  .section-header {
+  .hero h1{font-size:clamp(53px,8vw,75px)}
+  .section{padding:75px 0}
+  .section-header{
     flex-direction:column;
     align-items:flex-start;
   }
 }
-
-@media(max-width:540px) {
-  .container {
-    width:calc(100% - 34px);
+@media(max-width:700px){
+  .header-product{display:none}
+  .header-actions{gap:8px}
+  .header-services{
+    font-size:10px;
+    padding:11px 13px;
+    min-height:44px;
   }
-
-  .site-header {
+}
+@media(max-width:540px){
+  .container{width:calc(100% - 34px)}
+  .site-header{
     width:calc(100% - 18px);
     padding:8px;
     min-height:64px;
+    gap:8px;
   }
-
-  .logo img {
+  .site-header .logo img{
     max-height:41px;
-    max-width:148px;
+    max-width:125px;
   }
-
-  .header-contact {
-    padding:12px 15px;
-    min-height:40px;
-    font-size:10px;
+  .header-actions{gap:7px}
+  .header-services{
+    font-size:9px;
+    padding:9px 10px;
+    min-height:38px;
   }
-
-  .hero {
-    padding:117px 0 40px;
+  .header-contact{
+    padding:9px 10px;
+    min-height:38px;
+    font-size:9px;
+    gap:5px;
   }
-
-  .hero h1 {
-    font-size:clamp(45px,11vw,62px);
-  }
-
-  .hero-description {
-    font-size:14px;
-  }
-
-  .hero-actions {
+  .hero{padding:117px 0 40px}
+  .hero h1{font-size:clamp(45px,11vw,62px)}
+  .hero-description{font-size:14px}
+  .hero-actions{
     display:grid;
     grid-template-columns:1fr;
   }
-
-  .hero-actions a {
-    width:100%;
+  .hero-actions a{width:100%}
+  .hero-art{
+    height:400px;
+    max-width:420px;
   }
-
-  .hero-art {
-    height:325px;
+  .option-screen{
+    width:92%;
+    padding:12px 12px 10px;
+    border-radius:19px;
   }
-
-  .analytics-card {
-    width:83%;
-    border-radius:17px;
-  }
-
-  .analytics-header {
-    padding:13px;
-  }
-
-  .analytics-header span {
-    font-size:8px;
-  }
-
-  .analytics-header b {
-    font-size:9px;
-  }
-
-  .chart-wrap {
-    padding:12px;
-  }
-
-  .analytics-footer {
-    padding:0 11px 12px;
-    gap:5px;
-  }
-
-  .analytics-metric {
-    padding:8px 6px;
-  }
-
-  .analytics-metric strong {
-    font-size:8px;
-  }
-
-  .analytics-metric small {
-    font-size:7px;
-  }
-
-  .float-card {
-    padding:9px;
-    gap:6px;
-  }
-
-  .float-card b {
-    font-size:9px;
-  }
-
-  .float-card small {
-    font-size:8px;
-  }
-
-  .float-icon {
-    width:27px;
-    height:27px;
-    font-size:16px;
-  }
-
-  .visual-caption {
-    font-size:7px;
-  }
-
-  .ticker {
-    border-radius:0 0 28px 28px;
-  }
-
-  .services,
-  .contact-section {
+  .screen-symbol{width:32px;height:32px;font-size:22px}
+  .screen-identity strong{font-size:16px}
+  .screen-identity small{font-size:7px}
+  .screen-demo{font-size:7px;padding:6px}
+  .index-switcher{margin:11px 0 8px;gap:4px}
+  .index-tab{font-size:8px;padding:8px 3px}
+  .screen-research strong{font-size:20px}
+  .screen-research p{font-size:9px}
+  .animated-chart{padding:5px 7px}
+  .screen-metrics{gap:4px;margin-top:7px}
+  .screen-metrics div{padding:8px 5px}
+  .screen-metrics span{font-size:6px}
+  .screen-metrics strong{font-size:8px}
+  .screen-bottom{font-size:8px;margin-top:8px;padding-top:7px}
+  .research-float{padding:7px 8px;gap:6px;border-radius:10px}
+  .research-float>span{width:24px;height:24px;font-size:16px}
+  .research-float strong{font-size:9px}
+  .research-float small{font-size:7px}
+  .research-float-top{top:0;right:0}
+  .research-float-bottom{bottom:0;left:0}
+  .orbit{width:98%}
+  .orbit-two{width:113%}
+  .ticker{border-radius:0 0 28px 28px}
+  .services,.contact-section{
     border-radius:28px 28px 0 0;
   }
-
-  .section {
-    padding:65px 0;
-  }
-
-  .section-header h2,
-  .large-heading {
+  .section{padding:65px 0}
+  .section-header h2,.large-heading{
     font-size:clamp(34px,8vw,46px);
   }
-
-  .service-grid {
-    grid-template-columns:1fr;
-  }
-
-  .service-card {
-    min-height:225px;
-  }
-
-  .contact-form-card {
-    padding:23px 18px;
-  }
-
-  .form-grid {
-    grid-template-columns:1fr;
-  }
-
-  .field.full {
-    grid-column:auto;
-  }
-
-  .footer-grid {
+  .service-grid{grid-template-columns:1fr}
+  .service-card{min-height:225px}
+  .spotlight-points{grid-template-columns:1fr}
+  .spotlight-title{font-size:clamp(40px,11vw,58px)}
+  .option-demo{padding:19px;border-radius:23px}
+  .demo-top{align-items:flex-start;flex-direction:column}
+  .spotlight-buttons a{width:100%}
+  .contact-form-card{padding:23px 18px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .footer-grid{
     grid-template-columns:1fr;
     gap:29px;
     padding:43px 0;
   }
-
-  .reg-details {
-    grid-template-columns:1fr;
-  }
-
-  .js-motion .motion-slot:not(.arrived) .motion-card {
-    transform:translateY(55px) scale(.95);
-  }
+  .reg-details{grid-template-columns:1fr}
 }
-
-/* ======================================
-   ACCESSIBILITY
-====================================== */
-
-@media(prefers-reduced-motion:reduce) {
-  *,
-  *::before,
-  *::after {
+@media(max-width:420px){
+  .site-header .header-contact{display:none}
+  .site-header .header-services{margin-left:auto}
+}
+@media(max-width:365px){
+  .site-header .logo img{max-width:105px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
     scroll-behavior:auto!important;
   }
-
-  .js-motion .reveal,
-  .js-motion .motion-card {
+  .js-motion .reveal,.js-motion .motion-card{
     opacity:1!important;
     transform:none!important;
     filter:none!important;
   }
+  .research-line{stroke-dashoffset:0!important}
 }
-
-
-/* ======================================
-   OPTIONNEETI FEATURE HIGHLIGHT
-   The existing Sarvneeti design is preserved.
-====================================== */
-
-.header-actions { display:flex; align-items:center; gap:13px; }
-.header-product {
-  display:inline-flex; align-items:center; gap:9px;
-  border:1px solid #b9e0e5; color:#126479;
-  background:#effafb; border-radius:12px; padding:12px 16px;
-  font-size:11px; font-weight:850; transition:.25s;
-}
-.header-product:hover { background:#dff5f4; transform:translateY(-2px); }
-.pulse-dot { display:inline-block; width:8px; height:8px; border-radius:50%;
-  background:#21adab; box-shadow:0 0 0 0 rgba(32,167,169,.4);
-  animation:productPulse 2.5s infinite; flex-shrink:0; }
-@keyframes productPulse { 60% {box-shadow:0 0 0 8px rgba(32,167,169,0)} 100% {box-shadow:0 0 0 0 rgba(32,167,169,0)} }
-.product-chip {
-  display:inline-flex; align-items:center; flex-wrap:wrap; gap:9px;
-  background:#e8f6f6; color:#176d7d; border:1px solid #b7e3e3;
-  border-radius:100px; padding:10px 15px; margin-top:27px;
-  font-size:10px; font-weight:850; letter-spacing:.035em;
-  box-shadow:0 8px 30px rgba(24,153,164,.08);
-}
-.product-chip strong {font-size:12px; color:#126479;}
-.product-chip:hover {background:#daf3f3;}
-.product-name {display:inline-block; font-weight:900;
-  background:linear-gradient(110deg,#0b8396 0%,#36b4b2 38%,#f18067 70%,#0b8396 100%);
-  background-size:280% 100%; color:transparent; -webkit-background-clip:text;
-  background-clip:text; animation:gradientMove 5s linear infinite; }
-.product-link-inline {font-weight:850; color:#148d9b; border-bottom:1px solid rgba(20,141,155,.35);}
-.product-link-inline:hover {color:#fc624e;}
-
-.option-spotlight {
-  position:relative; background:linear-gradient(135deg,#fffaf7 0%,#fff 58%,#e9f8f9 100%);
-  overflow:hidden; isolation:isolate;
-}
-.option-spotlight::before {content:""; position:absolute; right:-160px; top:-100px;
-  width:450px; height:450px; border-radius:50%; background:radial-gradient(circle,rgba(52,187,190,.19),transparent 70%);
-  pointer-events:none; animation:spotlightBreathe 7s ease-in-out infinite; z-index:-1;}
-@keyframes spotlightBreathe {50% {transform:scale(1.18);opacity:.75}}
-.spotlight-grid {display:grid; grid-template-columns:1.03fr .97fr; gap:55px; align-items:center;}
-.spotlight-eyebrow {display:inline-flex; align-items:center;gap:9px;color:#138c9b;font-size:11px;font-weight:850;letter-spacing:.13em;}
-.spotlight-title {font-size:clamp(41px,5.4vw,73px);line-height:1.065;letter-spacing:-.07em;margin:20px 0;}
-.spotlight-text {max-width:570px;color:#617d87;font-size:14px;line-height:1.95;margin-bottom:19px;}
-.spotlight-points {display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 29px;}
-.spotlight-points span {display:flex;gap:9px;align-items:center;border:1px solid #d4e9eb;border-radius:12px;
-  background:rgba(255,255,255,.78);padding:12px 13px;color:#2c6875;font-size:11px;font-weight:800;}
-.spotlight-points span::before {content:"✓";font-weight:900;color:#16a0a0;}
-.spotlight-buttons {display:flex;gap:12px;flex-wrap:wrap;}
-.spotlight-note {font-size:11px;color:#789199;line-height:1.8;margin-top:19px;}
-
-.option-demo {position:relative;background:#fff; border:1px solid #cce5e7; border-radius:28px;
-  padding:28px;box-shadow:0 28px 70px rgba(14,87,106,.1);overflow:hidden;
-  animation:optionFloat 7s ease-in-out infinite;}
-@keyframes optionFloat {50%{transform:translateY(-12px)}}
-.option-demo::after {content:"";position:absolute;inset:-50%;
-  background:linear-gradient(120deg,transparent 44%,rgba(255,255,255,.6) 50%,transparent 56%);
-  transform:translateX(-75%);animation:demoShine 9s ease-in-out infinite;pointer-events:none;}
-@keyframes demoShine {0%,64%{transform:translateX(-75%)}100%{transform:translateX(85%)}}
-.demo-top {display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding-bottom:19px;border-bottom:1px solid #e0eff0;}
-.demo-name {font-size:21px;letter-spacing:-.035em;font-weight:900;}
-.demo-kicker {display:block;margin-top:4px;color:#79969e;font-size:10px;letter-spacing:.1em;font-weight:800;}
-.demo-pill {font-size:9px;letter-spacing:.06em;font-weight:850;color:#138a95;background:#e9f8f8;
-  padding:9px 11px;border:1px solid #ccecee;border-radius:50px;white-space:nowrap;}
-.demo-flow {position:relative;display:grid;gap:13px;padding:23px 0 9px;}
-.demo-flow-row {display:flex;align-items:center;gap:16px;background:#f6fbfb;border:1px solid #e0eff0;
-  border-radius:14px;padding:17px; transition:transform .3s,box-shadow .3s;}
-.demo-flow-row:hover {transform:translateX(5px);box-shadow:0 10px 28px rgba(24,125,136,.08)}
-.demo-step {display:grid;place-items:center;flex-shrink:0;width:37px;height:37px;border-radius:12px;
-  background:#e3f5f5;color:#14939e;font-size:12px;font-weight:900;}
-.demo-flow-row:nth-child(2) .demo-step {background:#fff0e9;color:#e8765f;}
-.demo-flow-row b {font-size:13px;}
-.demo-flow-row p {margin:3px 0 0;color:#779098;font-size:11px;line-height:1.6;}
-.demo-bottom {display:flex;align-items:center;justify-content:space-between;gap:15px;
-  border-top:1px solid #e0eff0;padding-top:17px;margin-top:13px;}
-.demo-bottom small {font-size:10px;line-height:1.5;color:#758f97;}
-.demo-bottom a {font-size:11px;font-weight:900;color:#108a99;white-space:nowrap;}
-
-.service-grid .motion-slot:nth-child(2) .service-card {background:linear-gradient(145deg,#d8f4f2,#fff)!important;border-color:#7ccccc!important;
-  box-shadow:0 16px 40px rgba(30,146,151,.1)!important;}
-.service-product-flag {display:inline-block;background:#fc624e;color:#fff;font-size:9px;font-weight:850;
-  letter-spacing:.08em;padding:7px 10px;border-radius:30px;margin:0 0 14px;}
-.service-product-link {display:inline-flex;color:#167d91;font-size:11px;font-weight:850;margin-top:16px;
-  border-bottom:1px solid #9dd5d7;padding-bottom:4px;position:relative;z-index:2;}
-.service-product-link:hover{color:#e75e49;}
-.footer-product-cta {display:inline-flex;align-items:center;gap:8px;margin-top:14px;
-  color:#a3f0e9!important;font-size:12px;font-weight:850;}
-@media(max-width:1000px){.spotlight-grid{grid-template-columns:1fr;gap:35px}.option-demo{max-width:650px}}
-@media(max-width:700px){.header-product{display:none}.spotlight-points{grid-template-columns:1fr 1fr}}
-@media(max-width:540px){.option-spotlight{padding:65px 0}.spotlight-points{grid-template-columns:1fr}
-  .spotlight-title{font-size:clamp(40px,11vw,58px)}.option-demo{padding:19px;border-radius:23px}
-  .demo-top{align-items:flex-start;flex-direction:column}.spotlight-buttons a{width:100%}}
-@media(prefers-reduced-motion:reduce){.product-name,.product-chip .pulse-dot,.option-demo,.option-demo::after,.option-spotlight::before{animation:none!important}}
-
 </style>
 </head>
 
 <body>
 
-<!-- SCROLL BAR -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ======================================
-   SIMPLE HEADER
-====================================== -->
-
+<!-- HEADER -->
 <header class="site-header" id="siteHeader">
-
   <a class="logo" href="/" aria-label="Sarvneeti Home">
-    <img src="logo.png" alt="Sarvneeti">
+    <img src="/logo.png" alt="Sarvneeti">
   </a>
 
   <div class="header-actions">
-    <a class="header-product" href="/option_neeti" aria-label="Explore OptionNeeti">
-      <span class="pulse-dot" aria-hidden="true"></span> OPTIONNEETI ↗
+    <a class="header-services" href="#services">
+      SERVICES <span aria-hidden="true">↓</span>
     </a>
+
+    <a class="header-product" href="/option_neeti">
+      <span class="pulse-dot"></span>
+      OPTIONNEETI ↗
+    </a>
+
     <a href="#contact" class="header-contact">
       CONTACT US <span aria-hidden="true">↗</span>
     </a>
   </div>
-
 </header>
 
 <main>
 
-<!-- ======================================
-   HERO
-====================================== -->
-
+<!-- HERO -->
 <section class="hero" id="home">
-
   <div class="container hero-grid">
 
-    <!-- LEFT CONTENT -->
-
     <div class="hero-content">
-
       <span class="eyebrow">
-        SEBI REGISTERED RESEARCH ANALYST
-        · INH000016533
+        SEBI REGISTERED RESEARCH ANALYST · INH000016533
       </span>
 
       <a class="product-chip" href="/option_neeti">
-        <span class="pulse-dot" aria-hidden="true"></span>
+        <span class="pulse-dot"></span>
         DISCOVER OUR FEATURED PRODUCT
         <strong>OptionNeeti ↗</strong>
       </a>
@@ -1568,30 +1489,28 @@ textarea:focus-visible {
       <h1>
         Research.<br>
         Insight.<br>
-        <span class="gradient-word">
-          OptionNeeti.
-        </span>
+        <span class="gradient-word">OptionNeeti.</span>
       </h1>
 
       <p class="hero-description">
-        Meet <a class="product-link-inline" href="/option_neeti">OptionNeeti</a>
-        — our dedicated index options research product for
-        <strong>Nifty, Bank Nifty and Sensex</strong>. Explore research-led
-        intraday and BTST scenarios with market context, possible entry zones,
-        target levels, stop-loss considerations and clearly explained risks.
-        Sarvneeti also provides broader equity and market research.
+        Meet <a class="product-link-inline"
+        href="/option_neeti">OptionNeeti</a> —
+        our dedicated index options research product for
+        <strong>Nifty, Bank Nifty and Sensex</strong>.
+        Explore research-led intraday and BTST scenarios
+        with market context, possible entry zones,
+        target levels, stop-loss considerations and
+        clearly explained risks. Sarvneeti also provides
+        broader equity and market research.
       </p>
 
       <div class="hero-actions">
-
         <a href="/option_neeti" class="btn-primary">
-          EXPLORE OPTIONNEETI <span aria-hidden="true">↗</span>
+          EXPLORE OPTIONNEETI ↗
         </a>
-
-        <a href="#contact" class="btn-outline">
-          ASK ABOUT OPTIONNEETI <span aria-hidden="true">↓</span>
+        <a href="#services" class="btn-outline">
+          VIEW OUR SERVICES ↓
         </a>
-
       </div>
 
       <div class="hero-tags">
@@ -1603,202 +1522,248 @@ textarea:focus-visible {
       </div>
 
       <div class="hero-reg">
-
         <span class="reg-icon">✓</span>
-
         <span>
           <strong>SEBI Registered Research Analyst</strong><br>
           Registration No.: INH000016533<br>
           Research does not guarantee returns.
           Market investments involve risk.
         </span>
-
       </div>
-
     </div>
 
-    <!-- RIGHT ANIMATED VISUAL -->
+    <!-- NEW RIGHT-SIDE OPTIONS ANIMATION -->
+    <div class="hero-art" id="optionVisual">
 
-    <div class="hero-art" aria-hidden="true">
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="visual-glow" aria-hidden="true"></div>
 
-      <div class="visual-ring"></div>
-      <div class="visual-ring two"></div>
+      <div class="option-screen">
 
-      <div class="analytics-card">
-
-        <div class="analytics-header">
-          <span>OPTIONNEETI / RESEARCH OVERVIEW</span>
-          <b>● RESEARCH VIEW</b>
+        <div class="screen-top">
+          <div class="screen-identity">
+            <div class="screen-symbol">⌁</div>
+            <div>
+              <strong>OptionNeeti</strong>
+              <small>INDEX OPTIONS RESEARCH</small>
+            </div>
+          </div>
+          <span class="screen-demo">
+            <span class="pulse-dot"></span>
+            RESEARCH DEMO
+          </span>
         </div>
 
-        <div class="chart-wrap">
+        <div class="index-switcher"
+             role="group"
+             aria-label="Illustrative index research categories">
+          <button type="button"
+                  class="index-tab active"
+                  data-index="nifty"
+                  aria-pressed="true">NIFTY</button>
 
-          <svg viewBox="0 0 430 210">
+          <button type="button"
+                  class="index-tab"
+                  data-index="bank"
+                  aria-pressed="false">BANK NIFTY</button>
+
+          <button type="button"
+                  class="index-tab"
+                  data-index="sensex"
+                  aria-pressed="false">SENSEX</button>
+        </div>
+
+        <div class="screen-research">
+          <span>RESEARCH COVERAGE</span>
+          <strong id="screenTitle">Nifty Options</strong>
+          <p id="screenSubtitle">
+            Market structure · potential setups · risk
+          </p>
+        </div>
+
+        <div class="animated-chart" aria-hidden="true">
+          <div class="chart-scan"></div>
+
+          <svg class="options-chart"
+               viewBox="0 0 480 210"
+               preserveAspectRatio="xMidYMid meet">
 
             <defs>
-              <linearGradient
-                id="chartFill"
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop
-                  offset="0"
-                  stop-color="#67c6bf"
-                  stop-opacity=".27"
-                />
-                <stop
-                  offset="1"
-                  stop-color="#67c6bf"
-                  stop-opacity="0"
-                />
+              <linearGradient id="researchFill"
+                              x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"
+                      stop-color="#49c9bd"
+                      stop-opacity=".28"/>
+                <stop offset="100%"
+                      stop-color="#49c9bd"
+                      stop-opacity="0"/>
+              </linearGradient>
+
+              <linearGradient id="researchStroke"
+                              x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#1597a7"/>
+                <stop offset="55%" stop-color="#20b9af"/>
+                <stop offset="100%" stop-color="#fc624e"/>
               </linearGradient>
             </defs>
 
-            <!-- GRID -->
-
-            <g
-              stroke="#dcecef"
-              stroke-width="1"
-            >
-              <path d="M0 40H430"/>
-              <path d="M0 85H430"/>
-              <path d="M0 130H430"/>
-              <path d="M0 175H430"/>
-
-              <path d="M60 0V205"/>
-              <path d="M150 0V205"/>
-              <path d="M240 0V205"/>
-              <path d="M330 0V205"/>
+            <g stroke="#d9edef"
+               stroke-width="1"
+               stroke-dasharray="4 7">
+              <path d="M0 35H480 M0 80H480 M0 125H480 M0 170H480"/>
+              <path d="M60 0V210 M150 0V210 M240 0V210 M330 0V210 M420 0V210"/>
             </g>
 
-            <!-- AREA -->
+            <g class="chart-candles" stroke-width="2.2">
+
+              <g class="candle c1">
+                <path d="M40 134V180" stroke="#139d94"/>
+                <rect x="32" y="148" width="16" height="22"
+                      rx="2" fill="#25b9ad"/>
+              </g>
+
+              <g class="candle c2">
+                <path d="M78 116V165" stroke="#ea836f"/>
+                <rect x="70" y="121" width="16" height="26"
+                      rx="2" fill="#f38a76"/>
+              </g>
+
+              <g class="candle c3">
+                <path d="M116 111V165" stroke="#139d94"/>
+                <rect x="108" y="123" width="16" height="28"
+                      rx="2" fill="#25b9ad"/>
+              </g>
+
+              <g class="candle c4">
+                <path d="M154 88V144" stroke="#139d94"/>
+                <rect x="146" y="101" width="16" height="30"
+                      rx="2" fill="#25b9ad"/>
+              </g>
+
+              <g class="candle c5">
+                <path d="M192 99V159" stroke="#ea836f"/>
+                <rect x="184" y="106" width="16" height="31"
+                      rx="2" fill="#f38a76"/>
+              </g>
+
+              <g class="candle c6">
+                <path d="M230 66V128" stroke="#139d94"/>
+                <rect x="222" y="77" width="16" height="34"
+                      rx="2" fill="#25b9ad"/>
+              </g>
+
+              <g class="candle c7">
+                <path d="M268 81V143" stroke="#ea836f"/>
+                <rect x="260" y="87" width="16" height="27"
+                      rx="2" fill="#f38a76"/>
+              </g>
+
+              <g class="candle c8">
+                <path d="M306 50V117" stroke="#139d94"/>
+                <rect x="298" y="64" width="16" height="33"
+                      rx="2" fill="#25b9ad"/>
+              </g>
+
+              <g class="candle c9">
+                <path d="M344 65V128" stroke="#ea836f"/>
+                <rect x="336" y="75" width="16" height="30"
+                      rx="2" fill="#f38a76"/>
+              </g>
+
+              <g class="candle c10">
+                <path d="M382 32V95" stroke="#139d94"/>
+                <rect x="374" y="43" width="16" height="34"
+                      rx="2" fill="#25b9ad"/>
+              </g>
+
+              <g class="candle c11">
+                <path d="M420 23V84" stroke="#139d94"/>
+                <rect x="412" y="37" width="16" height="26"
+                      rx="2" fill="#25b9ad"/>
+              </g>
+
+            </g>
 
             <path
-              d="
-                M0 170
-                L28 160
-                L55 169
-                L82 140
-                L110 150
-                L140 116
-                L170 128
-                L200 98
-                L231 108
-                L260 75
-                L290 90
-                L320 58
-                L351 67
-                L382 39
-                L420 22
-                L430 22
-                L430 205
-                L0 205 Z
-              "
-              fill="url(#chartFill)"
+              d="M16 175 L55 164 L88 170 L124 143 L161 127
+                 L199 137 L237 101 L271 108 L311 82
+                 L347 91 L389 51 L431 42 L468 25
+                 L468 205 L16 205Z"
+              fill="url(#researchFill)"
             />
 
-            <!-- LINE -->
-
             <path
-              class="chart-line"
-              d="
-                M0 170
-                L28 160
-                L55 169
-                L82 140
-                L110 150
-                L140 116
-                L170 128
-                L200 98
-                L231 108
-                L260 75
-                L290 90
-                L320 58
-                L351 67
-                L382 39
-                L420 22
-              "
-              stroke="#229d9f"
+              class="research-line"
+              d="M16 175 L55 164 L88 170 L124 143 L161 127
+                 L199 137 L237 101 L271 108 L311 82
+                 L347 91 L389 51 L431 42 L468 25"
+              fill="none"
+              stroke="url(#researchStroke)"
               stroke-width="4"
               stroke-linecap="round"
               stroke-linejoin="round"
-              fill="none"
             />
 
-            <circle
-              cx="420"
-              cy="22"
-              r="6"
-              fill="#fc624e"
-            />
+            <circle class="chart-end-ring"
+                    cx="468" cy="25" r="11"
+                    fill="#fc624e" opacity=".17"/>
+
+            <circle cx="468" cy="25" r="5" fill="#fc624e"/>
 
           </svg>
 
+          <div class="chart-caption">
+            Illustrative chart animation · Not live market data
+          </div>
         </div>
 
-        <div class="analytics-footer">
-
-          <div class="analytics-metric">
-            <small>RESEARCH</small>
-            <strong>Market levels</strong>
+        <div class="screen-metrics">
+          <div>
+            <span>MARKET CONTEXT</span>
+            <strong>Index structure</strong>
           </div>
-
-          <div class="analytics-metric">
-            <small>FRAMEWORK</small>
-            <strong>Trade planning</strong>
+          <div>
+            <span>SETUP REVIEW</span>
+            <strong>Levels &amp; thesis</strong>
           </div>
-
-          <div class="analytics-metric">
-            <small>PRIORITY</small>
-            <strong>Risk controls</strong>
+          <div>
+            <span>PRIORITY</span>
+            <strong>Risk awareness</strong>
           </div>
+        </div>
 
+        <div class="screen-bottom">
+          <span class="screen-bottom-dot"></span>
+          Insight first. Decisions remain yours.
         </div>
 
       </div>
 
-      <div class="float-card top">
-
-        <span class="float-icon">✦</span>
-
+      <div class="research-float research-float-top">
+        <span>✦</span>
         <div>
-          <b>OptionNeeti research</b>
-          <small>Index options context</small>
+          <strong>Research thesis</strong>
+          <small>Context before action</small>
         </div>
-
       </div>
 
-      <div class="float-card bottom">
-
-        <span class="float-icon">◇</span>
-
+      <div class="research-float research-float-bottom">
+        <span>◇</span>
         <div>
-          <b>Risk-aware approach</b>
-          <small>Structured market levels</small>
+          <strong>Options risk lens</strong>
+          <small>Volatility · expiry · decay</small>
         </div>
-
       </div>
-
-      <span class="visual-caption">
-        ILLUSTRATIVE MARKET GRAPHIC · NOT LIVE DATA
-      </span>
 
     </div>
 
   </div>
-
 </section>
 
-<!-- ======================================
-   CURVED RIBBON
-====================================== -->
-
+<!-- MOVING RIBBON -->
 <div class="ticker" aria-hidden="true">
-
   <div class="ticker-track">
-
     <div class="ticker-group">
       <span>OPTIONNEETI</span><i>✦</i>
       <span>NIFTY OPTIONS</span><i>✦</i>
@@ -1806,7 +1771,6 @@ textarea:focus-visible {
       <span>SENSEX</span><i>✦</i>
       <span>INTRADAY + BTST RESEARCH</span><i>✦</i>
     </div>
-
     <div class="ticker-group">
       <span>OPTIONNEETI</span><i>✦</i>
       <span>NIFTY OPTIONS</span><i>✦</i>
@@ -1814,308 +1778,365 @@ textarea:focus-visible {
       <span>SENSEX</span><i>✦</i>
       <span>INTRADAY + BTST RESEARCH</span><i>✦</i>
     </div>
-
   </div>
-
 </div>
 
-
-<!-- ======================================
-   OPTIONNEETI FEATURED PRODUCT
-====================================== -->
+<!-- FEATURED OPTIONNEETI PRODUCT -->
 <section class="section option-spotlight" id="optionneeti">
   <div class="container spotlight-grid">
+
     <div class="reveal">
-      <span class="spotlight-eyebrow">✦ FEATURED RESEARCH PRODUCT</span>
+      <span class="spotlight-eyebrow">
+        ✦ FEATURED RESEARCH PRODUCT
+      </span>
+
       <h2 class="spotlight-title">
         Meet <span class="product-name">OptionNeeti.</span><br>
-        Index options,<br>with more context.
+        Index options,<br>
+        with more context.
       </h2>
+
       <p class="spotlight-text">
-        <strong>OptionNeeti</strong> is a dedicated index options research experience
-        covering Nifty, Bank Nifty and Sensex. It brings together market observations,
-        potential intraday and BTST setups, the reasoning behind each idea and the
-        factors that could invalidate the research view.
+        <strong>OptionNeeti</strong> is a dedicated index
+        options research experience covering Nifty,
+        Bank Nifty and Sensex. It brings together market
+        observations, potential intraday and BTST setups,
+        the reasoning behind each idea and the factors
+        that could invalidate the research view.
       </p>
+
       <p class="spotlight-text">
-        Built for traders who want to examine a research thesis—not blindly follow
-        an alert. OptionNeeti communicates possible entry zones, potential targets,
-        stop-loss context and relevant expiry or volatility risks when applicable.
+        Built for traders who want to examine a research
+        thesis—not blindly follow an alert. OptionNeeti
+        communicates possible entry zones, potential targets,
+        stop-loss context and relevant expiry or volatility
+        risks when applicable.
       </p>
+
       <div class="spotlight-points">
         <span>Nifty · Bank Nifty · Sensex</span>
         <span>Intraday &amp; BTST context</span>
         <span>Targets and stop-loss framework</span>
         <span>Volatility and risk considerations</span>
       </div>
+
       <div class="spotlight-buttons">
-        <a href="/option_neeti" class="btn-primary">DISCOVER OPTIONNEETI ↗</a>
-        <a href="/option_neeti#plans" class="btn-outline">VIEW RESEARCH PLANS ↓</a>
+        <a href="/option_neeti" class="btn-primary">
+          DISCOVER OPTIONNEETI ↗
+        </a>
+        <a href="/option_neeti#plans" class="btn-outline">
+          VIEW RESEARCH PLANS ↓
+        </a>
       </div>
-      <p class="spotlight-note">For research and information only. Index options involve high risk;
-        no outcome or return is assured.</p>
+
+      <p class="spotlight-note">
+        For research and information only. Index options
+        involve high risk; no outcome or return is assured.
+      </p>
     </div>
+
     <div class="reveal">
-      <div class="option-demo" aria-label="Illustrative OptionNeeti research workflow">
+      <div class="option-demo"
+           aria-label="Illustrative OptionNeeti research workflow">
+
         <div class="demo-top">
-          <div><span class="demo-name product-name">OptionNeeti</span>
-            <span class="demo-kicker">INDEX OPTIONS RESEARCH</span></div>
+          <div>
+            <span class="demo-name product-name">
+              OptionNeeti
+            </span>
+            <span class="demo-kicker">
+              INDEX OPTIONS RESEARCH
+            </span>
+          </div>
           <span class="demo-pill">RESEARCH WORKFLOW</span>
         </div>
+
         <div class="demo-flow">
-          <div class="demo-flow-row"><span class="demo-step">01</span><div>
-            <b>Read the market context</b>
-            <p>Underlying index, structure, momentum and volatility</p>
-          </div></div>
-          <div class="demo-flow-row"><span class="demo-step">02</span><div>
-            <b>Review the research setup</b>
-            <p>Potential entry zone, target context and invalidation</p>
-          </div></div>
-          <div class="demo-flow-row"><span class="demo-step">03</span><div>
-            <b>Understand the risk</b>
-            <p>Premium decay, expiry exposure and possible losses</p>
-          </div></div>
-          <div class="demo-flow-row"><span class="demo-step">04</span><div>
-            <b>Decide independently</b>
-            <p>Research supports assessment; you control execution</p>
-          </div></div>
+
+          <div class="demo-flow-row">
+            <span class="demo-step">01</span>
+            <div>
+              <b>Read the market context</b>
+              <p>Underlying index, structure, momentum and volatility</p>
+            </div>
+          </div>
+
+          <div class="demo-flow-row">
+            <span class="demo-step">02</span>
+            <div>
+              <b>Review the research setup</b>
+              <p>Potential entry zone, target context and invalidation</p>
+            </div>
+          </div>
+
+          <div class="demo-flow-row">
+            <span class="demo-step">03</span>
+            <div>
+              <b>Understand the risk</b>
+              <p>Premium decay, expiry exposure and possible losses</p>
+            </div>
+          </div>
+
+          <div class="demo-flow-row">
+            <span class="demo-step">04</span>
+            <div>
+              <b>Decide independently</b>
+              <p>Research supports assessment; you control execution</p>
+            </div>
+          </div>
+
         </div>
+
         <div class="demo-bottom">
-          <small>Illustrative workflow · Not a live trading signal</small>
+          <small>
+            Illustrative workflow · Not a live trading signal
+          </small>
           <a href="/option_neeti">Explore product ↗</a>
         </div>
+
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- ======================================
-   SERVICES
-====================================== -->
-
+<!-- SERVICES: OPTIONNEETI -->
 <section class="section services" id="services">
-
   <div class="container">
 
     <div class="section-header reveal">
-
       <div>
-
-        <span class="eyebrow">
-          01 / WHAT WE DO
-        </span>
-
+        <span class="eyebrow">01 / OUR SERVICES</span>
         <h2>
-          Financial research<br>
-          <span class="accent">
-            with purpose.
-          </span>
+          <span class="product-name">OptionNeeti.</span><br>
+          <span class="accent">Options research services.</span>
         </h2>
-
       </div>
 
       <p>
-        Explore Sarvneeti research services—including the featured
-        <strong>OptionNeeti</strong> index options product—built around
-        market context, research levels and risk awareness.
+        Explore our OptionNeeti coverage across Nifty,
+        Bank Nifty and Sensex index options, intraday
+        and BTST scenarios, options-chain context,
+        volatility and disciplined risk research.
       </p>
-
     </div>
 
     <div class="service-grid">
 
       <div class="motion-slot">
         <article class="service-card motion-card">
-
           <span class="service-icon">↗</span>
           <span class="service-number">01</span>
-
-          <h3>Equity Research</h3>
-
+          <h3>Nifty Options Research</h3>
           <p>
-            Research-based market observations,
-            company analysis, key price levels and
-            potential trading or investment scenarios.
+            OptionNeeti research for Nifty index options:
+            direction, key price zones, potential trade setups,
+            strike context and conditions that may invalidate a view.
           </p>
-
-          <span class="service-arrow">↗</span>
-
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="service-card motion-card">
-
           <span class="service-icon">⌁</span>
           <span class="service-number">02</span>
-
-          <span class="service-product-flag">FEATURED PRODUCT</span>
-          <h3><span class="product-name">OptionNeeti</span><br>Index Options Research</h3>
-
+          <h3>Bank Nifty Options Research</h3>
           <p>
-            Dedicated Nifty, Bank Nifty and Sensex options research,
-            including intraday and BTST scenarios, market structure,
-            target and stop-loss context, and risk commentary.
+            Bank Nifty options perspectives covering
+            banking-index momentum, volatility, market structure
+            and risk considerations around possible setups.
           </p>
-          <a href="/option_neeti" class="service-product-link">EXPLORE OPTIONNEETI ↗</a>
-
-          <span class="service-arrow">↗</span>
-
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="service-card motion-card">
-
           <span class="service-icon">◇</span>
           <span class="service-number">03</span>
-
-          <h3>Risk Management</h3>
-
+          <h3>Sensex Options Research</h3>
           <p>
-            Research commentary on stop-loss levels,
-            trade invalidation, market volatility
-            and disciplined risk assessment.
+            Research-led Sensex option scenarios with index
+            levels, premium behaviour, potential targets,
+            invalidation points and relevant market risks.
           </p>
-
-          <span class="service-arrow">↗</span>
-
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="service-card motion-card">
-
           <span class="service-icon">◷</span>
           <span class="service-number">04</span>
-
-          <h3>Market Insights</h3>
-
+          <h3>Intraday Options Research</h3>
           <p>
-            Research on market developments, index
-            movements and important factors that
-            may influence price action.
+            Short-term research on possible index-option
+            entries and exits, market timing context,
+            stop-loss considerations and fast-changing
+            intraday conditions.
           </p>
-
-          <span class="service-arrow">↗</span>
-
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="service-card motion-card">
-
-          <span class="service-icon">◎</span>
+          <span class="service-icon">↗</span>
           <span class="service-number">05</span>
-
-          <h3>Research Frameworks</h3>
-
+          <h3>BTST Options Perspectives</h3>
           <p>
-            Structured analysis with supporting
-            rationale, market context and defined
-            levels for evaluating research ideas.
+            Buy-today-sell-tomorrow research where relevant,
+            with overnight gap exposure, theta decay,
+            option-premium changes and event risks explained.
           </p>
-
-          <span class="service-arrow">↗</span>
-
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="service-card motion-card">
-
-          <span class="service-icon">✦</span>
+          <span class="service-icon">◎</span>
           <span class="service-number">06</span>
-
-          <h3>Investor Education</h3>
-
+          <h3>Option Chain &amp; OI Analysis</h3>
           <p>
-            Clear explanations of research methods,
-            market concepts and financial risk
-            to support informed decisions.
+            Interpretation of option-chain structure,
+            open interest, put-call positioning and
+            changes in participation as supporting
+            research inputs.
           </p>
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
+        </article>
+      </div>
 
-          <span class="service-arrow">↗</span>
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">✦</span>
+          <span class="service-number">07</span>
+          <h3>Expiry &amp; Volatility Research</h3>
+          <p>
+            Understanding expiry-day behaviour,
+            implied volatility, time decay and changing
+            option sensitivity when evaluating
+            index-option scenarios.
+          </p>
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
+        </article>
+      </div>
 
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">≋</span>
+          <span class="service-number">08</span>
+          <h3>Strike &amp; Premium Context</h3>
+          <p>
+            Research commentary on strike selection
+            considerations, option premium behaviour,
+            intrinsic and time value, and changing
+            market conditions.
+          </p>
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
+        </article>
+      </div>
+
+      <div class="motion-slot">
+        <article class="service-card motion-card">
+          <span class="service-icon">✓</span>
+          <span class="service-number">09</span>
+          <h3>Risk &amp; Research Framework</h3>
+          <p>
+            Clearly stated research rationale, potential
+            stop-loss and target levels, trade invalidation,
+            position-risk factors and independent
+            decision-making.
+          </p>
+          <a class="service-product-link" href="/option_neeti">
+            EXPLORE OPTIONNEETI ↗
+          </a>
         </article>
       </div>
 
     </div>
 
-  </div>
+    <p class="service-disclaimer reveal">
+      OptionNeeti provides research information, not trade
+      execution. All options involve substantial risk, and
+      suitable research setups depend on market conditions.
+      No profits or outcomes are guaranteed.
+    </p>
 
+  </div>
 </section>
 
-<!-- ======================================
-   ABOUT / BENEFITS
-====================================== -->
-
+<!-- ABOUT -->
 <section class="section about" id="about">
-
   <div class="container about-grid">
 
     <div class="about-copy reveal">
-
-      <span class="eyebrow">
-        02 / OUR APPROACH
-      </span>
+      <span class="eyebrow">02 / OUR APPROACH</span>
 
       <h2 class="large-heading">
         Insight beyond<br>
-        <span class="accent">
-          the numbers.
-        </span>
+        <span class="accent">the numbers.</span>
       </h2>
 
       <p>
-        Sarvneeti focuses on research-backed
-        market observations and risk-aware
-        communication. Our approach is built around
-        understanding what the market is doing,
-        the rationale behind a research view
-        and the conditions that could change it.
+        Sarvneeti focuses on research-backed market
+        observations and risk-aware communication.
+        Our approach is built around understanding
+        what the market is doing, the rationale behind
+        a research view and the conditions that could change it.
       </p>
 
       <p>
-        The <a href="/option_neeti" class="product-link-inline">OptionNeeti</a>
-        product applies this approach to Nifty, Bank Nifty and Sensex options,
-        presenting research scenarios alongside the assumptions and risks
-        that traders should independently evaluate.
+        The <a href="/option_neeti"
+        class="product-link-inline">OptionNeeti</a>
+        product applies this approach to Nifty, Bank Nifty
+        and Sensex options, presenting research scenarios
+        alongside the assumptions and risks that traders
+        should independently evaluate.
       </p>
 
-      <a
-        href="#contact"
-        class="btn-primary"
-        style="margin-top:17px"
-      >
+      <a href="#contact" class="btn-primary"
+         style="margin-top:17px">
         CONNECT WITH US ↗
       </a>
-
     </div>
 
     <div class="benefit-list">
 
       <div class="motion-slot">
         <article class="benefit-card motion-card">
-
           <span>01</span>
-
           <div>
             <h3>Research-first thinking</h3>
             <p>
-              Market observations supported by
-              research logic and context.
+              Market observations supported by research
+              logic and context.
             </p>
           </div>
-
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="benefit-card motion-card">
-
           <span>02</span>
-
           <div>
             <h3>Risk-aware communication</h3>
             <p>
@@ -2123,15 +2144,12 @@ textarea:focus-visible {
               invalidation levels and relevant risks.
             </p>
           </div>
-
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="benefit-card motion-card">
-
           <span>03</span>
-
           <div>
             <h3>Clear market perspectives</h3>
             <p>
@@ -2139,15 +2157,12 @@ textarea:focus-visible {
               across equity and options markets.
             </p>
           </div>
-
         </article>
       </div>
 
       <div class="motion-slot">
         <article class="benefit-card motion-card">
-
           <span>04</span>
-
           <div>
             <h3>Independent decision-making</h3>
             <p>
@@ -2155,72 +2170,55 @@ textarea:focus-visible {
               all investment decisions remain yours.
             </p>
           </div>
-
         </article>
       </div>
 
     </div>
 
   </div>
-
 </section>
 
-<!-- ======================================
-   CONTACT SECTION
-   DIRECTLY ABOVE FOOTER
-====================================== -->
-
+<!-- CONTACT -->
 <section class="section contact-section" id="contact">
-
   <div class="container">
-
     <div class="contact-layout">
 
-      <!-- LEFT CONTENT -->
-
       <div class="contact-copy reveal">
-
-        <span class="eyebrow">
-          03 / CONNECT WITH US
-        </span>
+        <span class="eyebrow">03 / CONNECT WITH US</span>
 
         <h2>
           Let's talk<br>
-          <span class="accent">
-            financial research.
-          </span>
+          <span class="accent">financial research.</span>
         </h2>
 
         <p>
-          Want to understand <a href="/option_neeti" class="product-link-inline">OptionNeeti</a>,
-          its index options research coverage and available subscription plans?
-          Send an enquiry to our research desk. You can also ask about
-          our wider equity and market research services.
+          Want to understand <a href="/option_neeti"
+          class="product-link-inline">OptionNeeti</a>,
+          its index options research coverage and
+          available subscription plans? Send an enquiry
+          to our research desk. You can also ask about
+          wider equity and market research services.
         </p>
 
         <div class="contact-points">
 
           <div class="motion-slot">
             <div class="contact-point motion-card">
-
               <span>✦</span>
-
               <div>
                 <b>OptionNeeti — Index Options Research</b>
                 <p>
-                  Explore Nifty, Bank Nifty and Sensex research,
-                  intraday and BTST scenarios, and plan information.
+                  Explore Nifty, Bank Nifty and Sensex
+                  research, intraday and BTST scenarios,
+                  and plan information.
                 </p>
               </div>
-
             </div>
           </div>
 
           <div class="motion-slot">
             <div class="contact-point motion-card">
-
               <span>◷</span>
-
               <div>
                 <b>Research Desk Hours</b>
                 <p>
@@ -2228,37 +2226,27 @@ textarea:focus-visible {
                   9:00 AM – 6:00 PM IST
                 </p>
               </div>
-
             </div>
           </div>
 
           <div class="motion-slot">
             <div class="contact-point motion-card">
-
               <span>✓</span>
-
               <div>
                 <b>SEBI Registered Research Analyst</b>
-                <p>
-                  Registration No. INH000016533
-                </p>
+                <p>Registration No. INH000016533</p>
               </div>
-
             </div>
           </div>
 
         </div>
-
       </div>
 
-      <!-- RIGHT FORM -->
-
+      <!-- CONTACT FORM -->
       <div class="motion-slot">
-
         <div class="contact-form-card motion-card">
 
           <h3>Send an enquiry.</h3>
-
           <p class="form-description">
             Share your contact details and tell us
             what you would like to know about
@@ -2270,195 +2258,131 @@ textarea:focus-visible {
             <div class="form-grid">
 
               <div class="field">
-                <label for="name">
-                  Full Name *
-                </label>
-
-                <input
-                  id="name"
-                  type="text"
-                  placeholder="Enter your name"
-                  autocomplete="name"
-                  maxlength="100"
-                  required
-                >
+                <label for="name">Full Name *</label>
+                <input id="name" type="text"
+                       placeholder="Enter your name"
+                       autocomplete="name"
+                       maxlength="100" required>
               </div>
 
               <div class="field">
-                <label for="email">
-                  Email Address *
-                </label>
-
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="name@example.com"
-                  autocomplete="email"
-                  maxlength="150"
-                  required
-                >
+                <label for="email">Email Address *</label>
+                <input id="email" type="email"
+                       placeholder="name@example.com"
+                       autocomplete="email"
+                       maxlength="150" required>
               </div>
 
               <div class="field">
-                <label for="phone">
-                  Mobile Number
-                </label>
-
-                <input
-                  id="phone"
-                  type="tel"
-                  placeholder="+91 XXXXX XXXXX"
-                  autocomplete="tel"
-                  maxlength="20"
-                >
+                <label for="phone">Mobile Number</label>
+                <input id="phone" type="tel"
+                       placeholder="+91 XXXXX XXXXX"
+                       autocomplete="tel"
+                       maxlength="20">
               </div>
 
               <div class="field">
-                <label for="interest">
-                  Interested In *
-                </label>
-
-                <select
-                  id="interest"
-                  required
-                >
-
+                <label for="interest">Interested In *</label>
+                <select id="interest" required>
                   <option value="" selected disabled>
                     Select service
                   </option>
-
+                  <option value="OptionNeeti - Nifty Options">
+                    OptionNeeti — Nifty Options
+                  </option>
+                  <option value="OptionNeeti - Bank Nifty Options">
+                    OptionNeeti — Bank Nifty Options
+                  </option>
+                  <option value="OptionNeeti - Sensex Options">
+                    OptionNeeti — Sensex Options
+                  </option>
+                  <option value="OptionNeeti - Intraday and BTST">
+                    OptionNeeti — Intraday &amp; BTST
+                  </option>
+                  <option value="OptionNeeti - General Research">
+                    OptionNeeti — General Research
+                  </option>
                   <option value="Equity Research">
                     Equity Research
                   </option>
-
-                  <option value="OptionNeeti - Index Options Research">
-                    OptionNeeti — Index Options Research
-                  </option>
-
-                  <option value="Options Research">
-                    Other Options Research
-                  </option>
-
-                  <option value="Market Insights">
-                    Market Insights
-                  </option>
-
                   <option value="General Enquiry">
                     General Enquiry
                   </option>
-
                 </select>
               </div>
 
               <div class="field full">
-                <label for="message">
-                  Your Message *
-                </label>
-
-                <textarea
-                  id="message"
-                  placeholder="Tell us how we can help..."
-                  maxlength="2500"
-                  required
-                ></textarea>
+                <label for="message">Your Message *</label>
+                <textarea id="message"
+                          placeholder="Tell us how we can help..."
+                          maxlength="2500"
+                          required></textarea>
               </div>
 
             </div>
 
             <label class="consent">
-
-              <input
-                type="checkbox"
-                id="consent"
-                required
-              >
-
+              <input type="checkbox" id="consent" required>
               <span>
-                I agree to provide the entered
-                details for the purpose of receiving
-                a response to my enquiry.
-                I understand that securities markets
+                I agree to provide the entered details for
+                the purpose of receiving a response to my
+                enquiry. I understand that securities markets
                 involve risk and returns are not guaranteed.
               </span>
-
             </label>
 
-            <button
-              type="submit"
-              class="submit-btn"
-            >
+            <button type="submit" class="submit-btn">
               PREPARE ENQUIRY ↗
             </button>
 
-            <p
-              class="form-status"
-              id="formStatus"
-              role="status"
-              aria-live="polite"
-            ></p>
+            <p class="form-status" id="formStatus"
+               role="status" aria-live="polite"></p>
 
             <p class="form-note">
-              This website does not automatically
-              submit enquiries. Once the official
-              contact email is configured, your email
-              application opens with the prepared message.
+              This website does not automatically submit
+              enquiries. Once the official contact email
+              is configured, your email application opens
+              with the prepared message.
             </p>
 
           </form>
-
         </div>
-
       </div>
 
     </div>
-
   </div>
-
 </section>
 
 </main>
 
-<!-- ======================================
-   FOOTER
-====================================== -->
-
+<!-- FOOTER -->
 <footer class="footer" id="disclaimer">
 
   <div class="container footer-grid">
 
-    <!-- BRAND -->
-
     <div>
-
       <a href="/" class="footer-logo-wrap">
-
-        <img
-          src="logo.png"
-          class="footer-logo"
-          alt="Sarvneeti"
-        >
-
+        <img src="/logo.png" class="footer-logo"
+             alt="Sarvneeti">
       </a>
 
-      <div class="footer-name">
-        Sarvneeti
-      </div>
+      <div class="footer-name">Sarvneeti</div>
 
       <p>
-        Discover <strong>OptionNeeti</strong>, our index options research
-        product for Nifty, Bank Nifty and Sensex, alongside
-        wider equity research and risk-aware market analysis.
-        <br><a href="/option_neeti" class="footer-product-cta">EXPLORE OPTIONNEETI ↗</a>
+        Discover <strong>OptionNeeti</strong>,
+        our index options research product for
+        Nifty, Bank Nifty and Sensex, alongside
+        wider equity research and risk-aware
+        market analysis.
+        <br>
+        <a href="/option_neeti" class="footer-product-cta">
+          EXPLORE OPTIONNEETI ↗
+        </a>
       </p>
-
     </div>
 
-    <!-- QUICK LINKS -->
-
     <div>
-
       <h3>Quick Links</h3>
-
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="/option_neeti">OptionNeeti Product</a></li>
@@ -2468,92 +2392,57 @@ textarea:focus-visible {
         <li><a href="#contact">Contact Us</a></li>
         <li><a href="#disclaimer">Disclaimer</a></li>
       </ul>
-
     </div>
 
-    <!-- CONTACT INFORMATION -->
-
     <div>
-
       <h3>Contact Us</h3>
-
       <ul>
-        <li>
-          <a href="#contact">
-            Connect with the research desk
-          </a>
-        </li>
-
+        <li><a href="#contact">Connect with the research desk</a></li>
         <li>Monday – Saturday</li>
         <li>9:00 AM – 6:00 PM IST</li>
         <li>Research enquiries and support</li>
       </ul>
-
     </div>
 
-    <!-- LEGAL -->
-
     <div>
-
       <h3>Legal &amp; Policy</h3>
-
       <ul>
-
         <li>
-          <a href="/legal/disclaimer.html">
-            Disclaimer
-          </a>
+          <a href="/legal/disclaimer.html">Disclaimer</a>
         </li>
-
         <li>
-          <a href="/legal/disclosure.pdf">
-            Disclosure
-          </a>
+          <a href="/legal/disclosure.pdf">Disclosure</a>
         </li>
-
         <li>
           <a href="/legal/investor-charter.pdf">
             Investor Charter
           </a>
         </li>
-
         <li>
           <a href="/legal/terms-and-conditions.html">
             Terms &amp; Conditions
           </a>
         </li>
-
         <li>
           <a href="/legal/privacy-policy.html">
             Privacy Policy
           </a>
         </li>
-
         <li>
           <a href="/legal/grievance-redressal.html">
             Grievance Redressal
           </a>
         </li>
-
         <li>
           <a href="/legal/complaints.html">
             Complaints
           </a>
         </li>
-
-        <li>
-          <a href="#contact">
-            Contact
-          </a>
-        </li>
-
+        <li><a href="#contact">Contact</a></li>
       </ul>
-
     </div>
 
   </div>
-
-  <!-- DISCLAIMER -->
 
   <div class="container footer-legal">
 
@@ -2569,38 +2458,33 @@ textarea:focus-visible {
       <strong>Illustrative content:</strong>
       Securities, charts, index levels and market
       visuals displayed on this website, if any,
-      are for illustration and are not
-      live recommendations or verified performance.
+      are for illustration and are not live
+      recommendations or verified performance.
     </p>
 
     <p>
       <strong>Standard warning:</strong>
       Investment in securities market are subject
-      to market risks. Read all the related
-      documents carefully before investing.
+      to market risks. Read all the related documents
+      carefully before investing.
     </p>
 
     <p>
       <strong>Mandatory notice:</strong>
       Clients shall be requested to go through
-      Do's and Don'ts while dealing with RA
-      as specified in SEBI master circular no.
-      SEBI/HO/MIRSD-POD-1/P/CIR/2024/49
-      dated May 21, 2024 or as may be
-      specified by SEBI from time to time.
+      Do's and Don'ts while dealing with RA as
+      specified in SEBI master circular no.
+      SEBI/HO/MIRSD-POD-1/P/CIR/2024/49 dated
+      May 21, 2024 or as may be specified by
+      SEBI from time to time.
     </p>
 
   </div>
 
-  <!-- RESEARCH ANALYST DETAILS -->
-
   <div class="container reg-details">
 
     <div>
-
-      <h3>
-        SEBI Registered Research Analyst Details
-      </h3>
+      <h3>SEBI Registered Research Analyst Details</h3>
 
       <p>
         <strong>Registered Name:</strong>
@@ -2621,11 +2505,9 @@ textarea:focus-visible {
         <strong>Validity:</strong>
         November 22, 2027
       </p>
-
     </div>
 
     <div>
-
       <h3>Nearest SEBI Office Address</h3>
 
       <p>
@@ -2634,15 +2516,11 @@ textarea:focus-visible {
         Bandra (East), Mumbai – 400051,
         Maharashtra, India.
       </p>
-
     </div>
 
   </div>
 
-  <!-- COPYRIGHT -->
-
   <div class="container copyright">
-
     <span>
       © <span id="year">2026</span>
       Sarvneeti. All Rights Reserved.
@@ -2652,75 +2530,48 @@ textarea:focus-visible {
       Research recommendations only ·
       <a href="#contact">Contact Us ↗</a>
     </span>
-
   </div>
 
 </footer>
-
-<!-- ======================================
-   JAVASCRIPT
-====================================== -->
 
 <script>
 (() => {
   "use strict";
 
-  /* ===================================
-     CONFIGURATION
-
-     Add your official Sarvneeti email.
-
-     Example:
-     const CONTACT_EMAIL = "hello@yourdomain.com";
-
-     Do not use an unconfirmed address.
-  =================================== */
-
+  /* Set an official email when available.
+     Example: const CONTACT_EMAIL = "support@yourdomain.com";
+     Do not use an unconfirmed address. */
   const CONTACT_EMAIL = "";
 
   const $ = selector => document.querySelector(selector);
-
   const reduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
+  const hasObserver = "IntersectionObserver" in window;
 
-  const hasObserver =
-    "IntersectionObserver" in window;
-
-  /* ===================================
-     REVEAL HEADINGS
-  =================================== */
-
+  /* SCROLL REVEAL */
   if (!reduced && hasObserver) {
     document.documentElement.classList.add("js-motion");
 
-    const revealObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold:.08,
-        rootMargin:"0px 0px -5% 0px"
-      }
-    );
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold:.08,
+      rootMargin:"0px 0px -5% 0px"
+    });
 
     document.querySelectorAll(".reveal").forEach(el => {
       revealObserver.observe(el);
     });
   }
 
-  /* ===================================
-     STAGGERED CARD ANIMATION
-  =================================== */
-
-  const slots = [
-    ...document.querySelectorAll(".motion-slot")
-  ];
+  /* STAGGERED CARD ANIMATION */
+  const slots = [...document.querySelectorAll(".motion-slot")];
 
   function setupCards() {
     const width = window.innerWidth;
@@ -2732,58 +2583,90 @@ textarea:focus-visible {
       let columns = 1;
 
       if (parent.matches(".service-grid")) {
-        columns = width > 1050 ? 3 :
-          width > 540 ? 2 : 1;
+        columns = width > 1050 ? 3 : width > 540 ? 2 : 1;
       }
 
       const column = index % columns;
       const side = index % 2 === 0 ? -1 : 1;
 
-      slot.style.setProperty(
-        "--delay",
-        `${column * 175}ms`
-      );
-
-      slot.style.setProperty(
-        "--from-x",
-        `${side * 40}px`
-      );
+      slot.style.setProperty("--delay",`${column * 175}ms`);
+      slot.style.setProperty("--from-x",`${side * 40}px`);
     });
   }
 
   setupCards();
 
   if (!reduced && hasObserver) {
-    const cardObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("arrived");
-            cardObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold:.08,
-        rootMargin:"0px 0px -5% 0px"
-      }
-    );
+    const cardObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("arrived");
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold:.08,
+      rootMargin:"0px 0px -5% 0px"
+    });
 
     slots.forEach(slot => cardObserver.observe(slot));
   } else {
     slots.forEach(slot => slot.classList.add("arrived"));
   }
 
-  /* ===================================
-     HOMEPAGE CONTACT FORM
+  /* INTERACTIVE / ANIMATED INDEX SELECTOR
+     Content is illustrative, not live prices. */
+  const indexButtons = [...document.querySelectorAll(".index-tab")];
+  const screenTitle = $("#screenTitle");
+  const screenSubtitle = $("#screenSubtitle");
 
-     Static GitHub Pages cannot receive
-     submissions on its own.
+  const indexCopy = {
+    nifty: [
+      "Nifty Options",
+      "Market structure · potential setups · risk"
+    ],
+    bank: [
+      "Bank Nifty Options",
+      "Banking index · volatility · research levels"
+    ],
+    sensex: [
+      "Sensex Options",
+      "Index context · options thesis · expiry risk"
+    ]
+  };
 
-     This opens an email draft once
-     CONTACT_EMAIL is configured.
-  =================================== */
+  let activeIndex = 0;
 
+  function showIndex(key) {
+    if (!indexCopy[key]) return;
+
+    screenTitle.textContent = indexCopy[key][0];
+    screenSubtitle.textContent = indexCopy[key][1];
+
+    indexButtons.forEach((btn,i) => {
+      const selected = btn.dataset.index === key;
+
+      btn.classList.toggle("active",selected);
+      btn.setAttribute("aria-pressed",String(selected));
+
+      if (selected) activeIndex = i;
+    });
+  }
+
+  indexButtons.forEach(btn => {
+    btn.addEventListener("click",() => {
+      showIndex(btn.dataset.index);
+    });
+  });
+
+  if (!reduced && indexButtons.length) {
+    setInterval(() => {
+      const next = (activeIndex + 1) % indexButtons.length;
+      showIndex(indexButtons[next].dataset.index);
+    },4200);
+  }
+
+  /* CONTACT FORM */
   const form = $("#contactForm");
   const status = $("#formStatus");
 
@@ -2792,19 +2675,17 @@ textarea:focus-visible {
     status.classList.add("show");
   }
 
-  form.addEventListener("submit", event => {
+  form.addEventListener("submit",event => {
     event.preventDefault();
 
     status.classList.remove("show");
     status.textContent = "";
 
-    if (!form.reportValidity()) {
-      return;
-    }
+    if (!form.reportValidity()) return;
 
     if (!CONTACT_EMAIL) {
       showStatus(
-        "The official Sarvneeti contact email has not been configured yet. Please use the published official contact details to reach the research desk."
+        "The official contact email has not been configured yet. Please use the published official contact details to reach the research desk."
       );
       return;
     }
@@ -2815,8 +2696,7 @@ textarea:focus-visible {
     const interest = $("#interest").value;
     const message = $("#message").value.trim();
 
-    const subject =
-      `Sarvneeti Research Enquiry - ${interest}`;
+    const subject = `Sarvneeti Research Enquiry - ${interest}`;
 
     const body = [
       "Sarvneeti Research Enquiry",
@@ -2838,56 +2718,46 @@ textarea:focus-visible {
       `&body=${encodeURIComponent(body)}`;
 
     showStatus(
-      "Your email app will open with the prepared enquiry. Please review it and press Send. This website has not sent it automatically."
+      "Your email application will open with the prepared enquiry. Review it and press Send."
     );
 
     window.location.href = mailtoURL;
   });
 
-  /* ===================================
-     HEADER + SCROLL PROGRESS
-  =================================== */
-
+  /* HEADER & SCROLL PROGRESS */
   const header = $("#siteHeader");
   const progress = $("#scrollProgress");
-
   let pending = false;
 
   function updateScroll() {
     pending = false;
 
     const y = window.scrollY;
-
     const max = Math.max(
       1,
-      document.documentElement.scrollHeight -
-      window.innerHeight
+      document.documentElement.scrollHeight - window.innerHeight
     );
 
-    header.classList.toggle("scrolled", y > 65);
-
+    header.classList.toggle("scrolled",y > 65);
     progress.style.width =
       `${Math.min(100,(y / max) * 100)}%`;
   }
 
-  window.addEventListener("scroll", () => {
+  window.addEventListener("scroll",() => {
     if (!pending) {
       pending = true;
       requestAnimationFrame(updateScroll);
     }
-  }, { passive:true });
+  },{passive:true});
 
-  window.addEventListener("resize", () => {
+  window.addEventListener("resize",() => {
     setupCards();
     requestAnimationFrame(updateScroll);
-  }, { passive:true });
+  },{passive:true});
 
   updateScroll();
 
-  /* ===================================
-     COPYRIGHT YEAR
-  =================================== */
-
+  /* COPYRIGHT YEAR */
   $("#year").textContent = new Date().getFullYear();
 
 })();
