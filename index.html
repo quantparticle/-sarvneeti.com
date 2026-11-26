@@ -6,12 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 
-<title>Sarvneeti | Equity & Options Research</title>
+<title>Sarvneeti | Explore OptionNeeti Index Options Research</title>
 
 <meta name="description"
-content="Sarvneeti provides research-based equity and options market insights, trading levels, risk management guidance and financial market analysis.">
+content="Discover OptionNeeti, Sarvneeti's index options research offering for Nifty, Bank Nifty and Sensex, alongside equity research, structured insights and risk-aware market analysis.">
 
-<link rel="icon" type="image/png" href="fevicon.png">
+<link rel="icon" type="image/png" href="/fevicon.png?v=2">
+<link rel="shortcut icon" type="image/png" href="/fevicon.png?v=2">
+<link rel="apple-touch-icon" href="/fevicon.png?v=2">
 
 <style>
 /* ======================================
@@ -1412,6 +1414,103 @@ textarea:focus-visible {
   }
 }
 
+
+/* ======================================
+   OPTIONNEETI FEATURE HIGHLIGHT
+   The existing Sarvneeti design is preserved.
+====================================== */
+
+.header-actions { display:flex; align-items:center; gap:13px; }
+.header-product {
+  display:inline-flex; align-items:center; gap:9px;
+  border:1px solid #b9e0e5; color:#126479;
+  background:#effafb; border-radius:12px; padding:12px 16px;
+  font-size:11px; font-weight:850; transition:.25s;
+}
+.header-product:hover { background:#dff5f4; transform:translateY(-2px); }
+.pulse-dot { display:inline-block; width:8px; height:8px; border-radius:50%;
+  background:#21adab; box-shadow:0 0 0 0 rgba(32,167,169,.4);
+  animation:productPulse 2.5s infinite; flex-shrink:0; }
+@keyframes productPulse { 60% {box-shadow:0 0 0 8px rgba(32,167,169,0)} 100% {box-shadow:0 0 0 0 rgba(32,167,169,0)} }
+.product-chip {
+  display:inline-flex; align-items:center; flex-wrap:wrap; gap:9px;
+  background:#e8f6f6; color:#176d7d; border:1px solid #b7e3e3;
+  border-radius:100px; padding:10px 15px; margin-top:27px;
+  font-size:10px; font-weight:850; letter-spacing:.035em;
+  box-shadow:0 8px 30px rgba(24,153,164,.08);
+}
+.product-chip strong {font-size:12px; color:#126479;}
+.product-chip:hover {background:#daf3f3;}
+.product-name {display:inline-block; font-weight:900;
+  background:linear-gradient(110deg,#0b8396 0%,#36b4b2 38%,#f18067 70%,#0b8396 100%);
+  background-size:280% 100%; color:transparent; -webkit-background-clip:text;
+  background-clip:text; animation:gradientMove 5s linear infinite; }
+.product-link-inline {font-weight:850; color:#148d9b; border-bottom:1px solid rgba(20,141,155,.35);}
+.product-link-inline:hover {color:#fc624e;}
+
+.option-spotlight {
+  position:relative; background:linear-gradient(135deg,#fffaf7 0%,#fff 58%,#e9f8f9 100%);
+  overflow:hidden; isolation:isolate;
+}
+.option-spotlight::before {content:""; position:absolute; right:-160px; top:-100px;
+  width:450px; height:450px; border-radius:50%; background:radial-gradient(circle,rgba(52,187,190,.19),transparent 70%);
+  pointer-events:none; animation:spotlightBreathe 7s ease-in-out infinite; z-index:-1;}
+@keyframes spotlightBreathe {50% {transform:scale(1.18);opacity:.75}}
+.spotlight-grid {display:grid; grid-template-columns:1.03fr .97fr; gap:55px; align-items:center;}
+.spotlight-eyebrow {display:inline-flex; align-items:center;gap:9px;color:#138c9b;font-size:11px;font-weight:850;letter-spacing:.13em;}
+.spotlight-title {font-size:clamp(41px,5.4vw,73px);line-height:1.065;letter-spacing:-.07em;margin:20px 0;}
+.spotlight-text {max-width:570px;color:#617d87;font-size:14px;line-height:1.95;margin-bottom:19px;}
+.spotlight-points {display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 29px;}
+.spotlight-points span {display:flex;gap:9px;align-items:center;border:1px solid #d4e9eb;border-radius:12px;
+  background:rgba(255,255,255,.78);padding:12px 13px;color:#2c6875;font-size:11px;font-weight:800;}
+.spotlight-points span::before {content:"✓";font-weight:900;color:#16a0a0;}
+.spotlight-buttons {display:flex;gap:12px;flex-wrap:wrap;}
+.spotlight-note {font-size:11px;color:#789199;line-height:1.8;margin-top:19px;}
+
+.option-demo {position:relative;background:#fff; border:1px solid #cce5e7; border-radius:28px;
+  padding:28px;box-shadow:0 28px 70px rgba(14,87,106,.1);overflow:hidden;
+  animation:optionFloat 7s ease-in-out infinite;}
+@keyframes optionFloat {50%{transform:translateY(-12px)}}
+.option-demo::after {content:"";position:absolute;inset:-50%;
+  background:linear-gradient(120deg,transparent 44%,rgba(255,255,255,.6) 50%,transparent 56%);
+  transform:translateX(-75%);animation:demoShine 9s ease-in-out infinite;pointer-events:none;}
+@keyframes demoShine {0%,64%{transform:translateX(-75%)}100%{transform:translateX(85%)}}
+.demo-top {display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding-bottom:19px;border-bottom:1px solid #e0eff0;}
+.demo-name {font-size:21px;letter-spacing:-.035em;font-weight:900;}
+.demo-kicker {display:block;margin-top:4px;color:#79969e;font-size:10px;letter-spacing:.1em;font-weight:800;}
+.demo-pill {font-size:9px;letter-spacing:.06em;font-weight:850;color:#138a95;background:#e9f8f8;
+  padding:9px 11px;border:1px solid #ccecee;border-radius:50px;white-space:nowrap;}
+.demo-flow {position:relative;display:grid;gap:13px;padding:23px 0 9px;}
+.demo-flow-row {display:flex;align-items:center;gap:16px;background:#f6fbfb;border:1px solid #e0eff0;
+  border-radius:14px;padding:17px; transition:transform .3s,box-shadow .3s;}
+.demo-flow-row:hover {transform:translateX(5px);box-shadow:0 10px 28px rgba(24,125,136,.08)}
+.demo-step {display:grid;place-items:center;flex-shrink:0;width:37px;height:37px;border-radius:12px;
+  background:#e3f5f5;color:#14939e;font-size:12px;font-weight:900;}
+.demo-flow-row:nth-child(2) .demo-step {background:#fff0e9;color:#e8765f;}
+.demo-flow-row b {font-size:13px;}
+.demo-flow-row p {margin:3px 0 0;color:#779098;font-size:11px;line-height:1.6;}
+.demo-bottom {display:flex;align-items:center;justify-content:space-between;gap:15px;
+  border-top:1px solid #e0eff0;padding-top:17px;margin-top:13px;}
+.demo-bottom small {font-size:10px;line-height:1.5;color:#758f97;}
+.demo-bottom a {font-size:11px;font-weight:900;color:#108a99;white-space:nowrap;}
+
+.service-grid .motion-slot:nth-child(2) .service-card {background:linear-gradient(145deg,#d8f4f2,#fff)!important;border-color:#7ccccc!important;
+  box-shadow:0 16px 40px rgba(30,146,151,.1)!important;}
+.service-product-flag {display:inline-block;background:#fc624e;color:#fff;font-size:9px;font-weight:850;
+  letter-spacing:.08em;padding:7px 10px;border-radius:30px;margin:0 0 14px;}
+.service-product-link {display:inline-flex;color:#167d91;font-size:11px;font-weight:850;margin-top:16px;
+  border-bottom:1px solid #9dd5d7;padding-bottom:4px;position:relative;z-index:2;}
+.service-product-link:hover{color:#e75e49;}
+.footer-product-cta {display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  color:#a3f0e9!important;font-size:12px;font-weight:850;}
+@media(max-width:1000px){.spotlight-grid{grid-template-columns:1fr;gap:35px}.option-demo{max-width:650px}}
+@media(max-width:700px){.header-product{display:none}.spotlight-points{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.option-spotlight{padding:65px 0}.spotlight-points{grid-template-columns:1fr}
+  .spotlight-title{font-size:clamp(40px,11vw,58px)}.option-demo{padding:19px;border-radius:23px}
+  .demo-top{align-items:flex-start;flex-direction:column}.spotlight-buttons a{width:100%}}
+@media(prefers-reduced-motion:reduce){.product-name,.product-chip .pulse-dot,.option-demo,.option-demo::after,.option-spotlight::before{animation:none!important}}
+
 </style>
 </head>
 
@@ -1430,10 +1529,14 @@ textarea:focus-visible {
     <img src="logo.png" alt="Sarvneeti">
   </a>
 
-  <a href="#contact" class="header-contact">
-    CONTACT US
-    <span aria-hidden="true">↗</span>
-  </a>
+  <div class="header-actions">
+    <a class="header-product" href="/option_neeti" aria-label="Explore OptionNeeti">
+      <span class="pulse-dot" aria-hidden="true"></span> OPTIONNEETI ↗
+    </a>
+    <a href="#contact" class="header-contact">
+      CONTACT US <span aria-hidden="true">↗</span>
+    </a>
+  </div>
 
 </header>
 
@@ -1456,40 +1559,47 @@ textarea:focus-visible {
         · INH000016533
       </span>
 
+      <a class="product-chip" href="/option_neeti">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        DISCOVER OUR FEATURED PRODUCT
+        <strong>OptionNeeti ↗</strong>
+      </a>
+
       <h1>
         Research.<br>
         Insight.<br>
         <span class="gradient-word">
-          Better decisions.
+          OptionNeeti.
         </span>
       </h1>
 
       <p class="hero-description">
-        Research-driven equity and options market insights,
-        structured trading levels and risk-aware guidance.
-        Helping market participants evaluate opportunities
-        with clearer research and a disciplined approach.
+        Meet <a class="product-link-inline" href="/option_neeti">OptionNeeti</a>
+        — our dedicated index options research product for
+        <strong>Nifty, Bank Nifty and Sensex</strong>. Explore research-led
+        intraday and BTST scenarios with market context, possible entry zones,
+        target levels, stop-loss considerations and clearly explained risks.
+        Sarvneeti also provides broader equity and market research.
       </p>
 
       <div class="hero-actions">
 
-        <a href="#contact" class="btn-primary">
-          CONNECT WITH OUR RESEARCH DESK
-          <span aria-hidden="true">↗</span>
+        <a href="/option_neeti" class="btn-primary">
+          EXPLORE OPTIONNEETI <span aria-hidden="true">↗</span>
         </a>
 
-        <a href="#services" class="btn-outline">
-          EXPLORE OUR SERVICES
-          <span aria-hidden="true">↓</span>
+        <a href="#contact" class="btn-outline">
+          ASK ABOUT OPTIONNEETI <span aria-hidden="true">↓</span>
         </a>
 
       </div>
 
       <div class="hero-tags">
-        <span>EQUITY RESEARCH</span>
-        <span>OPTIONS RESEARCH</span>
-        <span>MARKET INSIGHTS</span>
-        <span>RISK MANAGEMENT</span>
+        <span>OPTIONNEETI</span>
+        <span>NIFTY OPTIONS</span>
+        <span>BANK NIFTY</span>
+        <span>SENSEX</span>
+        <span>INTRADAY + BTST</span>
       </div>
 
       <div class="hero-reg">
@@ -1517,7 +1627,7 @@ textarea:focus-visible {
       <div class="analytics-card">
 
         <div class="analytics-header">
-          <span>MARKET RESEARCH / OVERVIEW</span>
+          <span>OPTIONNEETI / RESEARCH OVERVIEW</span>
           <b>● RESEARCH VIEW</b>
         </div>
 
@@ -1654,8 +1764,8 @@ textarea:focus-visible {
         <span class="float-icon">✦</span>
 
         <div>
-          <b>Research-led insights</b>
-          <small>Market analysis</small>
+          <b>OptionNeeti research</b>
+          <small>Index options context</small>
         </div>
 
       </div>
@@ -1690,24 +1800,94 @@ textarea:focus-visible {
   <div class="ticker-track">
 
     <div class="ticker-group">
-      <span>EQUITY RESEARCH</span><i>✦</i>
-      <span>OPTIONS RESEARCH</span><i>✦</i>
-      <span>MARKET INSIGHTS</span><i>✦</i>
-      <span>RISK MANAGEMENT</span><i>✦</i>
-      <span>STRUCTURED RESEARCH</span><i>✦</i>
+      <span>OPTIONNEETI</span><i>✦</i>
+      <span>NIFTY OPTIONS</span><i>✦</i>
+      <span>BANK NIFTY</span><i>✦</i>
+      <span>SENSEX</span><i>✦</i>
+      <span>INTRADAY + BTST RESEARCH</span><i>✦</i>
     </div>
 
     <div class="ticker-group">
-      <span>EQUITY RESEARCH</span><i>✦</i>
-      <span>OPTIONS RESEARCH</span><i>✦</i>
-      <span>MARKET INSIGHTS</span><i>✦</i>
-      <span>RISK MANAGEMENT</span><i>✦</i>
-      <span>STRUCTURED RESEARCH</span><i>✦</i>
+      <span>OPTIONNEETI</span><i>✦</i>
+      <span>NIFTY OPTIONS</span><i>✦</i>
+      <span>BANK NIFTY</span><i>✦</i>
+      <span>SENSEX</span><i>✦</i>
+      <span>INTRADAY + BTST RESEARCH</span><i>✦</i>
     </div>
 
   </div>
 
 </div>
+
+
+<!-- ======================================
+   OPTIONNEETI FEATURED PRODUCT
+====================================== -->
+<section class="section option-spotlight" id="optionneeti">
+  <div class="container spotlight-grid">
+    <div class="reveal">
+      <span class="spotlight-eyebrow">✦ FEATURED RESEARCH PRODUCT</span>
+      <h2 class="spotlight-title">
+        Meet <span class="product-name">OptionNeeti.</span><br>
+        Index options,<br>with more context.
+      </h2>
+      <p class="spotlight-text">
+        <strong>OptionNeeti</strong> is a dedicated index options research experience
+        covering Nifty, Bank Nifty and Sensex. It brings together market observations,
+        potential intraday and BTST setups, the reasoning behind each idea and the
+        factors that could invalidate the research view.
+      </p>
+      <p class="spotlight-text">
+        Built for traders who want to examine a research thesis—not blindly follow
+        an alert. OptionNeeti communicates possible entry zones, potential targets,
+        stop-loss context and relevant expiry or volatility risks when applicable.
+      </p>
+      <div class="spotlight-points">
+        <span>Nifty · Bank Nifty · Sensex</span>
+        <span>Intraday &amp; BTST context</span>
+        <span>Targets and stop-loss framework</span>
+        <span>Volatility and risk considerations</span>
+      </div>
+      <div class="spotlight-buttons">
+        <a href="/option_neeti" class="btn-primary">DISCOVER OPTIONNEETI ↗</a>
+        <a href="/option_neeti#plans" class="btn-outline">VIEW RESEARCH PLANS ↓</a>
+      </div>
+      <p class="spotlight-note">For research and information only. Index options involve high risk;
+        no outcome or return is assured.</p>
+    </div>
+    <div class="reveal">
+      <div class="option-demo" aria-label="Illustrative OptionNeeti research workflow">
+        <div class="demo-top">
+          <div><span class="demo-name product-name">OptionNeeti</span>
+            <span class="demo-kicker">INDEX OPTIONS RESEARCH</span></div>
+          <span class="demo-pill">RESEARCH WORKFLOW</span>
+        </div>
+        <div class="demo-flow">
+          <div class="demo-flow-row"><span class="demo-step">01</span><div>
+            <b>Read the market context</b>
+            <p>Underlying index, structure, momentum and volatility</p>
+          </div></div>
+          <div class="demo-flow-row"><span class="demo-step">02</span><div>
+            <b>Review the research setup</b>
+            <p>Potential entry zone, target context and invalidation</p>
+          </div></div>
+          <div class="demo-flow-row"><span class="demo-step">03</span><div>
+            <b>Understand the risk</b>
+            <p>Premium decay, expiry exposure and possible losses</p>
+          </div></div>
+          <div class="demo-flow-row"><span class="demo-step">04</span><div>
+            <b>Decide independently</b>
+            <p>Research supports assessment; you control execution</p>
+          </div></div>
+        </div>
+        <div class="demo-bottom">
+          <small>Illustrative workflow · Not a live trading signal</small>
+          <a href="/option_neeti">Explore product ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ======================================
    SERVICES
@@ -1735,9 +1915,9 @@ textarea:focus-visible {
       </div>
 
       <p>
-        Our research focuses on helping market
-        participants understand market opportunities,
-        price levels and relevant risk factors.
+        Explore Sarvneeti research services—including the featured
+        <strong>OptionNeeti</strong> index options product—built around
+        market context, research levels and risk awareness.
       </p>
 
     </div>
@@ -1769,13 +1949,15 @@ textarea:focus-visible {
           <span class="service-icon">⌁</span>
           <span class="service-number">02</span>
 
-          <h3>Options Research</h3>
+          <span class="service-product-flag">FEATURED PRODUCT</span>
+          <h3><span class="product-name">OptionNeeti</span><br>Index Options Research</h3>
 
           <p>
-            Index and equity options research,
-            market structure, volatility observations
-            and clearly explained trading scenarios.
+            Dedicated Nifty, Bank Nifty and Sensex options research,
+            including intraday and BTST scenarios, market structure,
+            target and stop-loss context, and risk commentary.
           </p>
+          <a href="/option_neeti" class="service-product-link">EXPLORE OPTIONNEETI ↗</a>
 
           <span class="service-arrow">↗</span>
 
@@ -1895,10 +2077,10 @@ textarea:focus-visible {
       </p>
 
       <p>
-        Our objective is to support informed,
-        independent financial decisions with
-        structured information and transparent
-        risk considerations.
+        The <a href="/option_neeti" class="product-link-inline">OptionNeeti</a>
+        product applies this approach to Nifty, Bank Nifty and Sensex options,
+        presenting research scenarios alongside the assumptions and risks
+        that traders should independently evaluate.
       </p>
 
       <a
@@ -2010,10 +2192,10 @@ textarea:focus-visible {
         </h2>
 
         <p>
-          Interested in learning more about Sarvneeti's
-          equity and options research services?
-          Send an enquiry and connect with our
-          research desk.
+          Want to understand <a href="/option_neeti" class="product-link-inline">OptionNeeti</a>,
+          its index options research coverage and available subscription plans?
+          Send an enquiry to our research desk. You can also ask about
+          our wider equity and market research services.
         </p>
 
         <div class="contact-points">
@@ -2024,10 +2206,10 @@ textarea:focus-visible {
               <span>✦</span>
 
               <div>
-                <b>Equity &amp; Options Research</b>
+                <b>OptionNeeti — Index Options Research</b>
                 <p>
-                  Learn about our research coverage
-                  and financial market insights.
+                  Explore Nifty, Bank Nifty and Sensex research,
+                  intraday and BTST scenarios, and plan information.
                 </p>
               </div>
 
@@ -2149,8 +2331,12 @@ textarea:focus-visible {
                     Equity Research
                   </option>
 
+                  <option value="OptionNeeti - Index Options Research">
+                    OptionNeeti — Index Options Research
+                  </option>
+
                   <option value="Options Research">
-                    Options Research
+                    Other Options Research
                   </option>
 
                   <option value="Market Insights">
@@ -2259,10 +2445,10 @@ textarea:focus-visible {
       </div>
 
       <p>
-        SEBI registered research analyst services
-        focused on equity and options research,
-        market insights, risk-aware analysis and
-        financial market education.
+        Discover <strong>OptionNeeti</strong>, our index options research
+        product for Nifty, Bank Nifty and Sensex, alongside
+        wider equity research and risk-aware market analysis.
+        <br><a href="/option_neeti" class="footer-product-cta">EXPLORE OPTIONNEETI ↗</a>
       </p>
 
     </div>
@@ -2275,6 +2461,8 @@ textarea:focus-visible {
 
       <ul>
         <li><a href="#home">Home</a></li>
+        <li><a href="/option_neeti">OptionNeeti Product</a></li>
+        <li><a href="/option_neeti#plans">OptionNeeti Plans</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact Us</a></li>
@@ -2415,7 +2603,7 @@ textarea:focus-visible {
       </h3>
 
       <p>
-        <strong>Registered Name / Owner:</strong>
+        <strong>Registered Name:</strong>
         Amit Kori
       </p>
 
