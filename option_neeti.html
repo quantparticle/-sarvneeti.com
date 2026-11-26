@@ -10,9 +10,10 @@
 <meta name="description"
 content="Discover OptionNeeti, a dedicated index-options research experience featuring Nifty, Bank Nifty and Sensex intraday and BTST market setups, analysis, risk context and research plans.">
 
-<link rel="icon" type="image/png" sizes="any" href="/fevicon.png">
-<link rel="shortcut icon" type="image/png" href="/fevicon.png">
-<link rel="apple-touch-icon" href="/fevicon.png">
+<!-- Upload fevicon.png to https://sarvneeti.com/fevicon.png (site root). -->
+<link rel="icon" type="image/png" href="/fevicon.png?v=2">
+<link rel="shortcut icon" type="image/png" href="/fevicon.png?v=2">
+<link rel="apple-touch-icon" href="/fevicon.png?v=2">
 <meta property="og:title" content="OptionNeeti | Index Options Research">
 <meta property="og:description" content="OptionNeeti puts Nifty, Bank Nifty and Sensex options research, setup context and risk insights in one structured research experience.">
 
@@ -1612,7 +1613,7 @@ summary:focus-visible {
 ===================================== */
 
 .logo{gap:13px}
-.brand-wordmark,.brand-glow,.product-hero-name{
+.brand-glow,.product-hero-name{
   background:linear-gradient(105deg,#126479 4%,#1997a6 36%,#59c6bd 57%,#fc624e 78%,#126479 100%);
   background-size:300% 100%;
   -webkit-background-clip:text;
@@ -1621,16 +1622,6 @@ summary:focus-visible {
   color:transparent;
   animation:optionColorFlow 8s linear infinite;
 }
-.brand-wordmark{
-  font-weight:900;
-  font-size:clamp(17px,1.75vw,23px);
-  letter-spacing:-.065em;
-  white-space:nowrap;
-  line-height:1.1;
-  transition:transform .3s ease;
-}
-.brand-dot{font-weight:900}
-.logo:hover .brand-wordmark{transform:translateY(-2px)}
 .product-hero-name{position:relative;display:inline-block}
 .product-hero-name::after{
   content:"";position:absolute;left:2px;bottom:0;width:98%;height:5px;
@@ -1737,27 +1728,23 @@ summary:focus-visible {
 @keyframes tickerTwinkle{to{opacity:.45;transform:scale(.82)}}
 
 @media(max-width:1100px){
-  .brand-wordmark{font-size:18px}
   .logo{gap:10px}
 }
 @media(max-width:850px){
   /* As requested previously: no Enquire button in mobile/tablet header. */
   .site-header .header-btn{display:none!important}
   .site-header .menu-button{margin-left:auto}
-  .brand-wordmark{font-size:21px}
 }
 @media(max-width:540px){
-  .brand-wordmark{font-size:clamp(15px,4.1vw,19px)}
   .logo{gap:8px}
   .product-hero-name::after{height:3px}
   .hero::before,.hero::after{width:230px;height:230px}
 }
 @media(max-width:370px){
-  .brand-wordmark{font-size:14px}
   .logo img{max-width:94px}
 }
 @media(prefers-reduced-motion:reduce){
-  .brand-wordmark,.brand-glow,.product-hero-name,.product-hero-name::after,
+  .brand-glow,.product-hero-name,.product-hero-name::after,
   .hero::before,.hero::after,.hero-content>*,.plan-badge,.pricing::before,
   .final-cta::before,.ticker-group i{animation:none!important}
   .site-ready .hero-content .eyebrow,.site-ready .hero-content h1,
@@ -1800,7 +1787,6 @@ summary:focus-visible {
 
   <a href="#home" class="logo" aria-label="OptionNeeti home">
     <img src="/logo.png" alt="Research analyst brand logo" width="205" height="53">
-    <span class="brand-wordmark" aria-hidden="true">OptionNeeti<span class="brand-dot">.</span></span>
   </a>
 
   <nav class="nav-links" id="navLinks">
@@ -2804,8 +2790,7 @@ summary:focus-visible {
 
   const $ = selector => document.querySelector(selector);
 
-  // The OptionNeeti wordmark remains legible if the existing logo asset
-  // has not yet been deployed to the site root.
+  // Hide missing logo assets without breaking layout.
   document.querySelectorAll('img[src="/logo.png"]').forEach(img => {
     function hideMissingLogo() {
       img.style.display = "none";
